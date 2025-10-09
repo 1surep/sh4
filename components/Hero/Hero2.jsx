@@ -28,12 +28,12 @@ const Hero2=()=>{
                     <h1 className="bg-[url('/d2.png')] bg-cover  bg-center bg-no-repeat bg-clip-text text-transparent font-extrabold leading-none tracking-tight text-[14vw] uppercase text-pan text-glow">
                         welcome to <br /> SIERRA H4.
                     </h1>
-                    <div className="mt-3 flex items-center justify-center gap-4">
+                    <div className="lg:mt-3 mt-10 flex items-center justify-center gap-4">
                         <a href="#about" className="btn btn-primary">Join The Adventure</a>
                         {/* <a href="#tickets" className="btn btn-outline">Get Tickets</a> */}
                     </div>
 
-                    <div className="mt-1 flex justify-center">
+                    <div className="lg:mt-1 mt-16  flex justify-center">
                         <div className="scroll-cue text-white/70 text-sm flex flex-col items-center">
                             <span>Scroll</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-1">
