@@ -10,8 +10,8 @@ const Home=()=>{
       <main className="">
    
         <Hero2/>
-        <Hero1/>
-        <Hero3/>
+        {/* <Hero1/> */}
+        {/* <Hero3/> */}
    
       </main>
     </>

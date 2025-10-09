@@ -52,7 +52,7 @@ body {
   right: 0;
 }
 
-/* Hero2 enhancements */
+/* Optimized Hero2 enhancements */
 @keyframes pan-bg {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
@@ -60,19 +60,32 @@ body {
 
 .text-pan {
   background-size: 200% auto;
-  animation: pan-bg 16s linear infinite;
+  animation: pan-bg 20s linear infinite; /* Slower animation */
+  will-change: background-position; /* Optimize for animation */
 }
 
-.text-glow {
-  filter: drop-shadow(0 0 16px rgba(255,255,255,0.4)) drop-shadow(0 0 32px rgba(0,150,255,0.3)) drop-shadow(0 0 48px rgba(255,255,255,0.2));
+/* Lighter glow effect for better performance */
+.text-glow-optimized {
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+  will-change: filter;
+}
+
+/* Enhanced glow effect to match the image */
+.text-glow-enhanced {
+  filter: 
+    drop-shadow(0 0 10px rgba(0, 255, 255, 0.6)) /* Cyan glow */
+    drop-shadow(0 0 20px rgba(0, 255, 255, 0.4)) /* Outer cyan glow */
+    drop-shadow(0 0 30px rgba(255, 255, 255, 0.3)); /* White outer glow */
+  will-change: filter;
 }
 
 @keyframes floaty {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+  50% { transform: translateY(4px); } /* Reduced movement */
 }
 
 .scroll-cue {
-  animation: floaty 2.2s ease-in-out infinite;
+  animation: floaty 3s ease-in-out infinite; /* Slower animation */
+  will-change: transform;
 }
 
