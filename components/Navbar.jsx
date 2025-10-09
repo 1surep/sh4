@@ -104,7 +104,7 @@ const Navbar = () => {
                     {menuItems.map((item, index) => (
                         <motion.li 
                             key={item}
-                            className="hvr-underline-from-left cursor-pointer"
+                            className="hvr-underline-from-left cursor-pointer text-gray-700"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             initial={{ opacity: 0, y: -10 }}
@@ -118,13 +118,13 @@ const Navbar = () => {
 
                 {/* Admin login */}
                 <motion.div 
-                    className="flex items-center gap-3 font-black"
+                    className="flex items-center gap-3 font-black text-gray-700"
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     whileHover={{ scale: 1.05 }}
                 >
-                    Misma <LuUserCog className="text-2xl"/>
+                    Misma <LuUserCog className="text-2xl text-gray-700"/>
                 </motion.div>
             </nav>
 
