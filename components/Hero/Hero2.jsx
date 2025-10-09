@@ -25,8 +25,8 @@ const Hero2=()=>{
                     }}
                     className="text-center"
                 >
-                    <h1 className="bg-[url('/d2.png')] bg-cover bg-center bg-no-repeat bg-clip-text text-transparent font-extrabold leading-none tracking-tight text-[15vw] uppercase text-pan text-glow">
-                        welcome to <br /> PAN 2027
+                    <h1 className="bg-[url('/d2.png')] bg-cover bg-center bg-no-repeat bg-clip-text text-transparent font-extrabold leading-none tracking-tight text-[14vw] uppercase text-pan text-glow">
+                        welcome to <br /> SIERRA H4.
                     </h1>
                     <div className="mt-8 flex items-center justify-center gap-4">
                         <a href="#about" className="btn btn-primary">Explore</a>
