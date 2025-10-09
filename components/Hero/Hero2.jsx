@@ -31,7 +31,7 @@ const Hero2=()=>{
                         welcome to <br /> SIERRA H4.
                     </h1>
                     <div className="lg:mt-3 mt-10 flex items-center justify-center gap-4">
-                        <a href="#about" className="btn btn-primary">Join The Adventure</a>
+                        <a href="#about" className="btn btn-primar bg-green-500 hover:bg-green-700 hover:text-gray-100 text-gray-900">Join The Adventure</a>
                         {/* <a href="#tickets" className="btn btn-outline">Get Tickets</a> */}
                     </div>
 
