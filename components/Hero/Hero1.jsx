@@ -27,12 +27,12 @@ const Hero1=()=>{
         <section
           id="section1"
           className="px-[1rem] lg:px-[3rem] bg-cover kenburns-top bg-no-repeat min-h-screen pt-32 lg:pt-40 "
-          style={{ backgroundImage: "url('/d1.jpg')" }}
+          style={{ backgroundImage: "url('/d2.jpg')" }}
         >
           {/* Overlay */}
           <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-[1]" />
 
-          <div className="z-10 relative tracking-[1px] text-gray-100 text-3xl lg:text-5xl space-y-5">
+          {/* <div className="z-10 relative tracking-[1px] text-gray-100 text-3xl lg:text-5xl space-y-5">
             <h1 className="uppercase relative  font-black  text-center z-10 ">
               welcome to
             </h1>
@@ -53,7 +53,7 @@ const Hero1=()=>{
                 </span>
               </h1>
             </div>
-          </div>
+          </div> */}
         </section>
       </>
     );

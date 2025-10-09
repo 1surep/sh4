@@ -7,7 +7,7 @@ import { LuUserCog } from "react-icons/lu";
 const Navbar=()=>{
     return (
         <div>
-            <nav className="px-[1rem] lg:px-[3rem] font-semibold lg:flex items-center justify-between py-3 w-full bg-white shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] fixed z-50 hidden ">
+            <nav className="px-[1rem] lg:px-[3rem] font-semibold lg:flex items-center justify-between py-2 w-full bg-white shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] fixed z-50 hidden ">
                 {/* logo */}
                 <div className="flex items-center gap-3">
                     <Image src='/logo.jpg' width={80} height={80} alt="sierrah4_logo"/>

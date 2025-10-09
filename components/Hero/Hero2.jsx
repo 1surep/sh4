@@ -27,7 +27,7 @@ const Hero2=()=>{
                     }}
                     className="text-center relative z-10"
                 >
-                    <h1 className="bg-[url('/d2.png')] bg-cover  bg-center bg-no-repeat bg-clip-text text-transparent font-extrabold leading-none tracking-tight text-[14vw] uppercase text-pan text-glow">
+                    <h1 className="bg-[url('/d2.png')] bg-cover  bg-center bg-no-repeat bg-clip-text text-transparent font-extrabold leading-none tracking-tight text-[13vw] uppercase text-pan text-glow">
                         welcome to <br /> SIERRA H4.
                     </h1>
                     <div className="lg:mt-3 mt-10 flex items-center justify-center gap-4">
