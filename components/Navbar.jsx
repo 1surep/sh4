@@ -233,8 +233,8 @@ const Navbar = () => {
                                     className="mt-8 pt-4 border-t border-gray-200"
                                     variants={menuItemVariants}
                                 >
-                                    <div className="flex items-center gap-3 font-black text-gray-700">
-                                        <LuUserCog className="text-xl"/>
+                                    <div className="flex items-center text-xl gap-3 font-black text-gray-700">
+                                        <LuUserCog className="text-2xl"/>
                                         <span>Misma</span>
                                     </div>
                                 </motion.div>
