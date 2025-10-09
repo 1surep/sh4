@@ -7,7 +7,7 @@ const Home=()=>{
   return (
     <>
       <main className="">
-        <Hero1/>
+        {/* <Hero1/> */}
         <Hero2/>
    
       </main>

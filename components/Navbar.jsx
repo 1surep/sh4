@@ -11,7 +11,7 @@ const Navbar=()=>{
                 {/* logo */}
                 <div className="flex items-center gap-3">
                     <Image src='/logo.jpg' width={80} height={80} alt="sierrah4_logo"/>
-                    <div>
+                    <div className="text-center">
                         <p className="text-cyan-600">Sierra H4</p>
                         <p className="text-sm text-green-600 text-center">The Duo Kennel</p>
                     </div>
