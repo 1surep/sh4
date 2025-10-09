@@ -17,13 +17,15 @@ const Hero2=()=>{
     };
     return (
         <>
-            <section className="min-h-screen pt-28 flex items-center justify-center bg-black" onMouseMove={onMove} onMouseLeave={resetTilt}>
+            <section className="min-h-screen pt-28 flex items-center justify-center bg-black relative" onMouseMove={onMove} onMouseLeave={resetTilt}>
+                {/* Dark overlay for better text contrast */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
                 <div
                     style={{
                         transform: `perspective(1000px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
                         transition: "transform 200ms ease-out"
                     }}
-                    className="text-center"
+                    className="text-center relative z-10"
                 >
                     <h1 className="bg-[url('/d2.png')] bg-cover  bg-center bg-no-repeat bg-clip-text text-transparent font-extrabold leading-none tracking-tight text-[14vw] uppercase text-pan text-glow">
                         welcome to <br /> SIERRA H4.
@@ -33,9 +35,9 @@ const Hero2=()=>{
                         {/* <a href="#tickets" className="btn btn-outline">Get Tickets</a> */}
                     </div>
 
-                    <div className="lg:mt-1 mt-16  flex justify-center">
-                        <div className="scroll-cue text-white/70 text-sm flex flex-col items-center">
-                            <span>Scroll</span>
+                    <div className="lg:mt-1 mt-10  flex justify-center">
+                        <div className="scroll-cue text-white/90 text-sm flex flex-col items-center">
+                            <span className="font-medium">Scroll</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-1">
                                 <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
