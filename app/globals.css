@@ -89,3 +89,62 @@ body {
   will-change: transform;
 }
 
+
+/* News ticker styles */
+.news-ticker-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #000000CC;
+  padding: 0.5rem 0;
+}
+
+.news-ticker {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: tickerScroll 160s linear infinite;
+  will-change: transform;
+}
+
+.news-ticker-item {
+  color: white;
+  font-size: 1.1rem;
+  padding: 0 1.5rem;
+  font-family: "Outfit", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Make footprint icons yellow */
+.footprint-icon {
+  color: #fbbf24; /* yellow-400 */
+}
+
+@media (max-width: 768px) {
+  .news-ticker-item {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+}
+
+@keyframes tickerScroll {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-50%);
+  }
+}
+
+/* Optional: makes the animation smoother */
+.news-ticker-container:hover .news-ticker {
+  animation-play-state: paused;
+}
+
+*{
+  scroll-behavior: smooth;;
+}
+
+
+
+
+

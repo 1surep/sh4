@@ -2,16 +2,30 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView, useScroll, useTransform } from "framer-motion";
 import { SocialIcon } from "react-social-icons";
+import { BsCalendarDate } from "react-icons/bs";
+import { MdOutlineAccessTime } from "react-icons/md";
+import { LiaMoneyBillWaveSolid } from "react-icons/lia";
+import { SlLocationPin } from "react-icons/sl";
 
 const HeroTwo = () => {
-  const images = ["/d4.jpg", "/D6.png", "/D7.png"];
+  const images = ["/D4.jpg", "/D.png", "/D7.png"];
   const [currentIndex, setCurrentIndex] = useState(0);
   
   // Refs for scroll-triggered animations
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  
+  // Scroll detection for ON ON animation
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Transform scroll progress to trigger animation at 50%
+  const onOnOpacity = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
+  const onOnY = useTransform(scrollYProgress, [0.4, 0.6], [-100, 0]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -83,14 +97,14 @@ const HeroTwo = () => {
                 fill
                 priority
                 quality={100}
-                className="object-cover"
+                className="object-cover "
               />
             </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60 z-[1]" />
+        <div className="absolute inset-0 bg-gray-900/40 z-[1]" />
 
         <motion.div
           className="z-10 text-white relative h-full flex flex-col"
@@ -151,14 +165,48 @@ const HeroTwo = () => {
               className="text-3xl font-bold text-yellow-300 py-4 pb-4"
               variants={itemVariants}
             >
-              We are a Running Club with a Drinking Problem...
+             We are experts in running, drinking, and making excuses for being late....
             </motion.h1>
             <motion.h1
-              className="text-2xl z-20 md:text-4xl lg:text-5xl xl:text-6xl font-extrabold bg-gradient-to-r from-[#2aa9e8] to-[#1FAE53] bg-clip-text text-transparent uppercase leading-tight"
+              className="text-2xl z-20 md:text-4xl lg:text-5xl xl:text-6xl font-extrabold bg-gradient-to-r from-[#2aa9e8] to-[#1FAE53] bg-clip-text text-transparent  leading-tight"
               variants={itemVariants}
             >
               We Drink Beer to <br /> Save Water
             </motion.h1>
+            
+            {/* ON ON Text with scroll-triggered animation */}
+            <motion.div
+              className="mt-8 flex flex-col items-center"
+              style={{
+                opacity: onOnOpacity,
+                y: onOnY,
+              }}
+            >
+              <motion.h2
+                className="text-6xl  font-black text-yellow-300 tracking-wider"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: 0.2
+                }}
+              >
+                R U ON?
+              </motion.h2>
+              <motion.h2
+                className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-wider"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: 0.4
+                }}
+              >
+               
+              </motion.h2>
+            </motion.div>
           </motion.div>
 
           {/* RUN INFO DIV - Responsive positioning */}
@@ -177,7 +225,7 @@ const HeroTwo = () => {
             <div className="flex flex-col sm:flex-row w-full gap-4 sm:gap-6 bg-black/40 rounded-b-xl backdrop-blur-lg border border-white/20 shadow-lg p-4">
               <div className="w-full sm:w-1/2 flex justify-center">
                 <Image
-                  src="/runpic.png"
+                  src="/weeklyrunpic.png"
                   width={150}
                   height={150}
                   alt="sh4 weekly run information"
@@ -187,14 +235,14 @@ const HeroTwo = () => {
 
               <div className="w-full sm:w-1/2 flex flex-col justify-center px-2 gap-2 py-2 sm:py-3">
                 <h1 className="font-black text-yellow-300 text-center sm:text-left text-base sm:text-lg">
-                  Run No:. 90900
+                  Run No.: 501
                 </h1>
 
                 <ul className="space-y-1 text-sm sm:text-base text-center sm:text-left">
-                  <li className="font-medium">March 20, 2022</li>
-                  <li>OnOn Out 06:00 PM</li>
-                  <li>Rego: SL 10</li>
-                  <li className="text-sm">Bajra Sandhi Renon, Denpasar</li>
+                  <li className="font-medium flex items-center gap-2"><BsCalendarDate />March 20, 2022</li>
+                  <li className="font-medium flex items-center gap-2"><MdOutlineAccessTime />Time 06:00 PM</li>
+                  <li className="font-medium flex items-center gap-2"><LiaMoneyBillWaveSolid />Rego: SL 10</li>
+                  <li className="text-sm font-medium flex items-center gap-2"><SlLocationPin />Bajra Sandhi Renon, Denpasar</li>
                 </ul>
               </div>
             </div>
