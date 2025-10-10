@@ -1,18 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { SocialIcon } from "react-social-icons";
 
 const HeroTwo = () => {
   const images = ["/d4.jpg", "/D6.png", "/D7.png"];
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // Refs for scroll-triggered animations
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 6000);
     return () => clearInterval(intervalId);
   }, [images.length]);
 
@@ -58,6 +62,7 @@ const HeroTwo = () => {
   return (
     <>
       <section
+        ref={sectionRef}
         id="section1"
         className="relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 min-h-screen pt-20 pb-8 md:pb-12"
       >
@@ -91,7 +96,7 @@ const HeroTwo = () => {
           className="z-10 text-white relative h-full flex flex-col"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
         >
           {/* ICON DIV - Responsive social icons */}
           <motion.div
@@ -163,7 +168,7 @@ const HeroTwo = () => {
             className="relative lg:absolute lg:right-8 xl:right-16 lg:top-[12rem] xl:top-[14rem] text-gray-100 mx-auto lg:mx-0 max-w-md lg:max-w-sm xl:max-w-md"
             variants={runInfoVariants}
             initial="hidden"
-            animate="visible"
+            animate={isInView ? "visible" : "hidden"}
           >
             <div className="bg-black/40 w-full rounded-t-xl overflow-hidden">
               <h1 className="text-yellow-300 font-black p-3 sm:p-4 text-center text-base sm:text-lg backdrop-blur-lg border border-white/20 shadow-lg">

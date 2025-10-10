@@ -152,7 +152,7 @@ const Navbar = () => {
                 {/* Mobile Menu Button */}
                 <motion.button
                     onClick={toggleMobileMenu}
-                    className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
+                    className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200  transition-colors"
                     variants={hamburgerVariants}
                     animate={isMobileMenuOpen ? "open" : "closed"}
                     whileTap={{ scale: 0.9 }}
