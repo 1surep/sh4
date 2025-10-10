@@ -79,7 +79,7 @@ const Navbar = () => {
     return (
         <div>
             {/* Desktop Navbar */}
-            <nav className="px-[1rem] lg:px-[3rem] font-semibold  items-center justify-between py-2 w-full bg-white shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] fixed z-50 hidden lg:flex">
+            <nav className="px-[1rem] lg:px-[3rem] font-semibold  items-center justify-between py-2 w-full bg-white shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] fixed z-50 hidden lg:flex ">
                 {/* logo */}
                 <motion.div 
                     className="flex items-center gap-3"
