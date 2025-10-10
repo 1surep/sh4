@@ -10,7 +10,7 @@ import { LiaMoneyBillWaveSolid } from "react-icons/lia";
 import { SlLocationPin } from "react-icons/sl";
 
 const HeroTwo = () => {
-  const images = ["/D4.jpg", "/D.png", "/D7.png"];
+  const images = ["/D4.png", "/D.png", "/D7.png"];
   const [currentIndex, setCurrentIndex] = useState(0);
   
   // Refs for scroll-triggered animations
