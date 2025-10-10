@@ -41,7 +41,7 @@ const HeroOne = () => {
   return (
     <>
       <section
-        className="min-h-screen pt-28 flex items-center justify-center bg-black relative"
+        className="min-h-screen pt-28 flex items-center justify-center bg-black/80 relative"
         onMouseMove={onMove}
         onMouseLeave={resetTilt}
       >
