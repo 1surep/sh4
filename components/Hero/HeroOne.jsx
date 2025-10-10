@@ -48,7 +48,7 @@ const HeroOne = () => {
         {/* Dark overlay for better text contrast */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         <div style={transformStyle} className="text-center relative z-10">
-          <h1 className="bg-[url('/D2.png')] bg-cover bg-center bg-no-repeat bg-clip-text text-transparent font-extrabold leading-none tracking-tight text-[13vw] uppercase text-pan text-glow-enhanced">
+          <h1 className="bg-[url('/d2.png')] bg-cover bg-center bg-no-repeat bg-clip-text text-transparent font-extrabold leading-none tracking-tight text-[13vw] uppercase text-pan text-glow-enhanced">
             welcome to <br /> SIERRA H4...
           </h1>
 

@@ -64,7 +64,7 @@ const HeroTwo = () => {
       <section
         ref={sectionRef}
         id="section1"
-        className="relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 min-h-screen pt-20 pb-8 md:pb-12"
+        className="relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 min-h-screen pt-12 pb-8 md:pb-12"
       >
         {/* Sliding background with Next.js Image */}
         <div className="absolute inset-0">
@@ -96,13 +96,12 @@ const HeroTwo = () => {
           className="z-10 text-white relative h-full flex flex-col"
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
+          animate={isInView ? "visible" : "hidden"}>
+
           {/* ICON DIV - Responsive social icons */}
           <motion.div
-            className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 mb-6 sm:mb-8"
-            variants={itemVariants}
-          >
+            className="flex items-center justify-center sm:justify-start gap-3 mb-6 sm:mb-8"
+            variants={itemVariants}>
             {/* WhatsApp */}
             <motion.div variants={socialIconVariants} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
               <SocialIcon
@@ -146,33 +145,32 @@ const HeroTwo = () => {
 
           {/* MIDDLE DIV - Responsive hero text */}
           <motion.div
-            className="flex flex-col items-center text-center px-2 sm:px-4 mb-8 sm:mb-12 md:mb-16 lg:mb-20"
-            variants={itemVariants}
-          >
+            className="flex flex-col items-center text-center px-2 "
+            variants={itemVariants}>
             <motion.h1
-              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-yellow-300 mb-3 sm:mb-4 md:mb-6"
+              className="text-3xl font-bold text-yellow-300 py-4 pb-4"
               variants={itemVariants}
             >
               We are a Running Club with a Drinking Problem...
             </motion.h1>
             <motion.h1
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold bg-gradient-to-r from-[#2aa9e8] to-[#1FAE53] bg-clip-text text-transparent uppercase leading-tight"
+              className="text-2xl z-20 md:text-4xl lg:text-5xl xl:text-6xl font-extrabold bg-gradient-to-r from-[#2aa9e8] to-[#1FAE53] bg-clip-text text-transparent uppercase leading-tight"
               variants={itemVariants}
             >
-              We Drink Beer to Save Water
+              We Drink Beer to <br /> Save Water
             </motion.h1>
           </motion.div>
 
           {/* RUN INFO DIV - Responsive positioning */}
           <motion.div
-            className="relative lg:absolute lg:right-8 xl:right-16 lg:top-[12rem] xl:top-[14rem] text-gray-100 mx-auto lg:mx-0 max-w-md lg:max-w-sm xl:max-w-md"
+            className="relative lg:absolute lg:right-0 xl:right-0 lg:top-[12rem] xl:top-[14rem] text-gray-100 mx-auto lg:mx-0 max-w-md lg:max-w-sm xl:max-w-md"
             variants={runInfoVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
             <div className="bg-black/40 w-full rounded-t-xl overflow-hidden">
-              <h1 className="text-yellow-300 font-black p-3 sm:p-4 text-center text-base sm:text-lg backdrop-blur-lg border border-white/20 shadow-lg">
-                Weekly Run Update!
+              <h1 className="text-yellow-300 font-black p-3 sm:p-4 text-center text-base sm:text-lg ">
+                Our Weekly Run Update!
               </h1>
             </div>
 
