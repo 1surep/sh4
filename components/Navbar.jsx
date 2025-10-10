@@ -131,18 +131,23 @@ const Navbar = () => {
             {/* Mobile Navbar */}
             <nav className="lg:hidden px-4 py-3 w-full bg-white shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] fixed z-50 flex items-center justify-between">
                 {/* Mobile Logo */}
-                <motion.div 
-                    className="flex items-center gap-2"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <Image src='/logo.jpg' width={50} height={50} alt="sierrah4_logo" className="rounded-full"/>
-                    <div>
-                        <p className="text-cyan-600 text-sm font-bold">Sierra H4</p>
-                        <p className="text-xs text-green-600">The Duo Kennel</p>
-                    </div>
-                </motion.div>
+                <AnimatePresence>
+                    {!isMobileMenuOpen && (
+                        <motion.div 
+                            className="flex items-center gap-2"
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -30 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <Image src='/logo.jpg' width={50} height={50} alt="sierrah4_logo" className="rounded-full"/>
+                            <div>
+                                <p className="text-cyan-600 text-sm font-bold">Sierra H4</p>
+                                <p className="text-xs text-green-600">The Duo Kennel</p>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Mobile Menu Button */}
                 <motion.button
