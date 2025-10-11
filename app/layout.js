@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 const outfit = Outfit({
   variable: "--font-outfit", // Define the CSS variable
   subsets: ["latin"],
-  // weight: '400',
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
 export const metadata = {
@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-      <body className={`${outfit.className} antialiased`}>
+      <body className={`${outfit.variable} font-outfit antialiased`}>
         <Navbar/>
         {children}
       </body>

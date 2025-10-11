@@ -87,7 +87,15 @@ const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <Image src='/logo.jpg' width={80} height={80} alt="sierrah4_logo" className="rounded-full"/>
+                    <Image 
+                        src='/logo.jpg' 
+                        width={80} 
+                        height={80} 
+                        alt="sierrah4_logo" 
+                        className="rounded-full"
+                        priority
+                        unoptimized={false}
+                    />
                     <div className="text-center">
                         <p className="text-cyan-600">Sierra H4</p>
                         <p className="text-sm text-green-600 text-center">The Duo Kennel</p>
@@ -140,7 +148,15 @@ const Navbar = () => {
                             exit={{ opacity: 0, x: -30 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <Image src='/logo.jpg' width={50} height={50} alt="sierrah4_logo" className="rounded-full"/>
+                            <Image 
+                                src='/logo.jpg' 
+                                width={50} 
+                                height={50} 
+                                alt="sierrah4_logo" 
+                                className="rounded-full"
+                                priority
+                                unoptimized={false}
+                            />
                             <div>
                                 <p className="text-cyan-600 text-sm font-bold">Sierra H4</p>
                                 <p className="text-xs text-green-600">The Duo Kennel</p>
@@ -208,7 +224,15 @@ const Navbar = () => {
                             {/* Mobile Menu Header */}
                             <div className="flex items-center justify-between p-4 border-b border-gray-200">
                                 <div className="flex items-center gap-3">
-                                    <Image src='/logo.jpg' width={40} height={40} alt="sierrah4_logo" className="rounded-full"/>
+                                    <Image 
+                                        src='/logo.jpg' 
+                                        width={40} 
+                                        height={40} 
+                                        alt="sierrah4_logo" 
+                                        className="rounded-full"
+                                        priority
+                                        unoptimized={false}
+                                    />
                                     <div>
                                         <p className="text-cyan-600 font-bold">Sierra H4</p>
                                         <p className="text-xs text-green-600">The Duo Kennel</p>

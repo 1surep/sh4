@@ -58,7 +58,7 @@ const HeroOne = () => {
             <div className="  flex items-center justify-center gap-4">
               <a
                 href="#about"
-                className="btn btn-primary bg-green-500 hover:bg-green-700 hover:text-gray-100 text-gray-900">
+                className="bg-green-500 cursor-pointer hover:bg-green-700 hover:text-gray-200 text-black font-semibold px-6 py-3 rounded-2xl transition-all">
                 Join The Adventure
               </a>
              
@@ -68,7 +68,7 @@ const HeroOne = () => {
             <div className="flex items-center justify-center gap-4">
               <a
                 href="#about"
-                className="btn btn-primary bg-yellow-300 hover:bg-yellow-500 hover:text-gray-100 text-gray-700">
+                className="bg-[#f9b84f] cursor-pointer hover:text-gray-700 hover:bg-[#e3a63f] text-black font-semibold px-6 py-3 rounded-2xl transition-all">
                 On On PAN Africa 2027
               </a>
              
