@@ -26,7 +26,7 @@ const HeroFour=()=>{
                 {/* Heading */}
               <section className="relative flex flex-col items-center justify-center py-16 bg-white">
                 {/* Background word */}
-                <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-widest">
+                <h1 className="absolute text-[6rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-widest">
                   HASH
                 </h1>
 
