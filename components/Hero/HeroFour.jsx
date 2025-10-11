@@ -42,7 +42,7 @@ const HeroFour=()=>{
               </section>
 
               <div className="py-6">
-                <p>
+                <p className="tracking-[1px]">
                 The Hash House Harriers is an international group of non-competitive social running clubs. Enthusiasts refer to themselves as “hashers” and to the activity as “hashing”. Although the parameters that each chapter sets may differ, in general, a hare sets a trail and is followed by the pack. At the run’s conclusion, hashers typically eat, drink, and socialize. The group typically gets together to humourously note on-trail misbehaviour with tongue-in-cheek drinking songs and “down downs”.
                 </p>
               </div>
