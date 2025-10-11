@@ -11,7 +11,7 @@ const HeroFour=()=>{
             {/* image */}
             <div className="w-full">
               <Image
-                src="/hashing.jpg"
+                src="/ontour.png"
                 width={1920}
                 height={1080}
                 alt="image-of-sh4-hashers"
@@ -48,7 +48,7 @@ const HeroFour=()=>{
               </div>
 
               {/* Button */}
-              <button className="items-center flex gap-1 text-[#f9b84f] cursor-pointer font-bold">
+              <button className="items-center border-2 border-[#f9b84f] px-3 py-1 rounded-[8px] hover:bg-yellow-500 hover:text-gray-100 transition-all duration-500 ease-in-out flex gap-1 text-[#f9b84f] cursor-pointer font-bold">
                 Read More...<FiCornerRightDown  className="animate-bounce font-bold"/>
               </button>
             </div>

@@ -3,7 +3,7 @@ import React from "react";
 const HeroSix = () => {
     return (
       <div>
-        {/* Section 1 heading */}
+        {/* Section 1 HEADING */}
         <section className="relative flex flex-col items-center justify-center py-16 bg-white">
           {/* Background word */}
           <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-widest">
@@ -26,7 +26,7 @@ const HeroSix = () => {
           {/* Background Runner Image */}
           <div className="absolute inset-0 flex items-center justify-center">
             <img
-              src="/run.png"
+              src="/onon.png"
               alt="Runner"
               className="h-full w-auto object-cover opacity-90"
             />
@@ -90,9 +90,9 @@ const HeroSix = () => {
        
 
                {/* Top Left - 01. Be Healthy */}
-               <div className="absolute top-16 left-16 max-w-xs z-10">
+               <div className="absolute top-16 left-16 max-w-xs z-10 hvr-skew">
                  <div className="text-gray-700 text-7xl font-bold mb-2">01.</div>
-                 <div className="text-[#f9b84f] text-3xl font-semibold italic mb-">Be Healthy</div>
+                 <div className="text-[#f9b84f] text-3xl font-semibold italic mb- ">Be Healthy</div>
                  {/* <div className="w-16 h-0.5 text-gray-600 mb-4 z-10"></div> */}
                  <p className="text-base leading-relaxed text-gray-700 z-10">
                     To promote physical fitness amongst it's members.
@@ -100,7 +100,7 @@ const HeroSix = () => {
                </div>
 
                {/* Bottom Left - 02. Be One of Us */}
-               <div className="absolute bottom-16 left-16 max-w-xs z-10">
+               <div className="absolute bottom-16 left-16 max-w-xs z-10 hvr-skew">
                  <div className="text-gray-700 text-7xl font-bold mb-2">02.</div>
                  <div className="text-[#f9b84f] text-3xl font-semibold italic mb-">Be Strong</div>
                  {/* <div className="w-16 h-0.5 bg-gray-50 mb-4"></div> */}
@@ -110,7 +110,7 @@ const HeroSix = () => {
                </div>
 
                {/* Top Right - 03. Be Strong */}
-               <div className="absolute top-16 right-16 max-w-xs text-right z-10">
+               <div className="absolute top-16 right-16 max-w-xs text-right z-10 hvr-skew">
                  <div className="text-gray-700 text-7xl font-bold mb-2">03.</div>
                  <div className="text-[#f9b84f] text-3xl font-semibold italic mb-3">Beer It</div>
                  {/* <div className="w-16 h-0.5 bg-gray-50 mb-4 ml-auto "></div> */}
@@ -120,7 +120,7 @@ const HeroSix = () => {
                </div>
 
                {/* Bottom Right - 04. Be Fast */}
-               <div className="absolute bottom-16 right-16 max-w-xs text-right z-10">
+               <div className="absolute bottom-16 right-16 max-w-xs text-right z-10 hvr-skew">
                  <div className="text-gray-700 text-7xl font-bold mb-2">04.</div>
                  <div className="text-[#f9b84f] text-3xl font-semibold italic mb-3">Be Fast</div>
                  {/* <div className="w-16 h-0.5 bg-gray-50 mb-4 ml-auto"></div> */}

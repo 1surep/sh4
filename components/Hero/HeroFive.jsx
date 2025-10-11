@@ -40,7 +40,7 @@ const HeroFive=()=>{
             <SwiperSlide>
               <div className=" overflow-hidden relative w-full h-48">
                 <Image
-                  src="/D4.png"
+                  src="/s1.jpg"
                   fill
                   alt="image"
                   className="rounded-[12px] object-cover"
@@ -88,7 +88,7 @@ const HeroFive=()=>{
             <SwiperSlide>
               <div className=" overflow-hidden relative w-full h-48">
                 <Image
-                  src="/D.png"
+                  src="/s2.jpg"
                   fill
                   alt="image"
                   className="rounded-[12px] object-cover"
@@ -108,6 +108,244 @@ const HeroFive=()=>{
                 />
               </div>
             </SwiperSlide>
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s3.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s4.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s5.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s6.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s7.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s8.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s9.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s10.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s11.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s12.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s13.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s14.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s15.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s16.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s17.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+          
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s19.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+           
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s21.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+            <SwiperSlide>
+              <div className=" overflow-hidden relative w-full h-48">
+                <Image
+                  src="/s22.jpg"
+                  fill
+                  alt="image"
+                  className="rounded-[12px] object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
+              </div>
+            </SwiperSlide>
+
+
+           
+
+
+           
 
 
           </Swiper>

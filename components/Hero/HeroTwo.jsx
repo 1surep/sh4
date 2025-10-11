@@ -10,7 +10,7 @@ import { LiaMoneyBillWaveSolid } from "react-icons/lia";
 import { SlLocationPin } from "react-icons/sl";
 
 const HeroTwo = () => {
-  const images = ["/D4.png", "/D.png", "/D7.png"];
+  const images = ["/circle.jpg", "/beer.jpg", "/hashing.jpg"];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showRUOn, setShowRUOn] = useState(false);
 
@@ -128,7 +128,7 @@ const HeroTwo = () => {
 
         {/* Enhanced gradient overlay for better readability */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/40 to-gray-900/60 z-[1]"
+          className="absolute inset-0 bg-black/50 z-[1]"
           aria-hidden="true"
         />
 
