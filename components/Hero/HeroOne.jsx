@@ -68,7 +68,7 @@ const HeroOne = () => {
             <div className="flex items-center justify-center gap-4">
               <a
                 href="#about"
-                className="btn btn-primary bg-gray-100 hover:bg-black hover:text-gray-100 text-green-700">
+                className="btn btn-primary bg-yellow-300 hover:bg-yellow-500 hover:text-gray-100 text-gray-700">
                 On On PAN Africa 2027
               </a>
              

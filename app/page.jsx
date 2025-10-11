@@ -13,7 +13,7 @@ const Home=()=>{
         <HeroOne/>
         <HeroTwo/>
         <HeroThree/>
-        {/* <HeroFour/> */}
+        <HeroFour/>
        
       
        
