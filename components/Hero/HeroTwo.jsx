@@ -222,9 +222,15 @@ const HeroTwo = () => {
             variants={itemVariants}>
             {/* Tagline */}
             <motion.p
-              className="text-2xl  font-medium text-yellow-300/90 mb-6 max-w-3xl leading-relaxed drop-shadow-lg"
+              className="text-2xl hidden lg:flex  font-medium text-yellow-300/90 mb-6 max-w-3xl  drop-shadow-lg"
               variants={itemVariants}>
               We are experts in running, drinking, and making excuses for being late...
+            </motion.p>
+
+            <motion.p
+              className="text-2xl flex lg:hidden leading-7 font-medium text-yellow-300/90 mb-6 max-w-3xl  drop-shadow-lg"
+              variants={itemVariants}>
+              We are experts in running, drinking, <br /> and making excuses for being late...
             </motion.p>
 
             {/* Main Heading */}
