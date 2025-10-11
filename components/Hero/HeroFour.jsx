@@ -6,7 +6,7 @@ import { FiCornerRightDown } from "react-icons/fi";
 const HeroFour=()=>{
     return (
       <>
-        <section className="min-h-screen bg-yellow-50 flex items-center justify-between  px-[0rem] lg:px-[3rem] w-full">
+        <section className="min-h-screen bg-yellow-50 flex items-center justify-between pt-12 px-[0rem] lg:px-[3rem] w-full">
           <div className="bg-gray-100 grid grid-cols-1 lg:flex items-center gap-4">
             {/* image */}
             <div className="w-full">
