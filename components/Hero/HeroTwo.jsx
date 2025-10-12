@@ -10,7 +10,7 @@ import { LiaMoneyBillWaveSolid } from "react-icons/lia";
 import { SlLocationPin } from "react-icons/sl";
 
 const HeroTwo = () => {
-  const images = ["/beer.jpg", "/circle.jpg", "/D4.png"];
+  const images = ["/beer.jpg", "/circle.jpg","/beer.jpg", "/D4.png"];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showRUOn, setShowRUOn] = useState(false);
 

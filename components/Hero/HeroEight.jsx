@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Dock, DockIcon } from "@/components/ui/dock";
-import GuessGame from "@/components/GuessGame"; // ✅ correct import path
+import GuessGame from "@/components/GuessGame"; 
+import { GrGamepad } from "react-icons/gr";
 
 const HeroEight = () => {
   const [showGame, setShowGame] = useState(false);
@@ -64,9 +65,9 @@ const HeroEight = () => {
         </section>
 
         {/* Body of section */}
-        <div className="bg-yellow-50 flex items-center justify-center py-12 px-[0rem] lg:px-[3rem] w-full">
+        <div className="bg-yellow-50 flex items-center justify-center py-12 px-[1rem] lg:px-[3rem] w-full">
           <div className="bg-gray-100 grid grid-cols-1 lg:flex items-center gap-4 justify-center">
-            <Dock iconSize={80} className="gap-5">
+            <Dock iconSize={80} className="gap-3 lg:gap-5">
               {dockItems.map((item, index) => (
                 <DockIcon
                   key={index}
@@ -85,9 +86,8 @@ const HeroEight = () => {
         <div className="flex justify-center py-8">
           <button
             onClick={() => setShowGame(true)}
-            className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-700 hover:text-gray-900 font-semibold px-6 py-3 rounded-2xl transition-all"
-          >
-            Press Play
+            className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-700 hover:text-gray-900 font-semibold px-6 py-3 rounded-2xl transition-all flex items-center gap-2">
+            Press Play <GrGamepad className="animate-bounce text-2xl"/>
           </button>
         </div>
       </section>
