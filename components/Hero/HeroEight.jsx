@@ -83,13 +83,14 @@ const HeroEight = () => {
         </div>
 
         {/* Play Button */}
-        <div className="flex justify-center py-8">
+        <div className="flex  justify-center pt-8">
           <button
             onClick={() => setShowGame(true)}
             className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-700 hover:text-gray-900 font-semibold px-6 py-3 rounded-2xl transition-all flex items-center gap-2">
             Press Play <GrGamepad className="animate-bounce text-2xl"/>
           </button>
         </div>
+        <p className="text-sm text-center pb-8 "><i>How well do you know the hash? Press Play to find out</i></p>
       </section>
 
       {/* Game Modal */}

@@ -2,6 +2,7 @@
 import HeroEight from "@/components/Hero/HeroEight";
 import HeroFive from "@/components/Hero/HeroFive";
 import HeroFour from "@/components/Hero/HeroFour";
+import HeroNine from "@/components/Hero/HeroNine";
 import HeroOne from "@/components/Hero/HeroOne";
 import HeroSeven from "@/components/Hero/HeroSeven";
 import HeroSix from "@/components/Hero/HeroSix";
@@ -22,6 +23,7 @@ const Home=()=>{
         <HeroSix/>
         <HeroSeven/>
         <HeroEight/>
+        <HeroNine/>
        
       
        

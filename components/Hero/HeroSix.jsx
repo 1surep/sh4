@@ -1,6 +1,13 @@
+'use client'
+
 import React from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const HeroSix = () => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, amount: 0.5 }); // Changed amount to 0.5
+
     return (
       <div>
         {/* Section 1 HEADING */}
@@ -24,11 +31,14 @@ const HeroSix = () => {
         {/* section 2 body */}
         <section className="min-h-screen bg-yellow-50 relative overflow-hidden">
           {/* Background Runner Image */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <img
+          <div ref={ref} className="absolute inset-0 flex items-center justify-center">
+            <motion.img
               src="/onon.png"
               alt="Runner"
               className="h-full w-auto object-cover opacity-90"
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: isInView ? 0 : 100, opacity: isInView ? 0.9 : 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             />
           </div>
 
