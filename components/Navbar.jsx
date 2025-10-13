@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { LuUserCog } from "react-icons/lu";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link"; // Added Link import
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,13 +16,24 @@ const Navbar = () => {
 
     const menuItems = [
         "Home",
-        "About Us", 
+        "About Us",
         "Events",
         "PAN 2027",
         "Gallery",
         "SH4 Shop",
         "Contact Us"
     ];
+
+    // Define the paths for each menu item
+    const itemPaths = {
+        "Home": "/",
+        "About Us": "/about",
+        "Events": "/events",
+        "PAN 2027": "/pan2027",
+        "Gallery": "/gallery",
+        "SH4 Shop": "/sh4shop",
+        "Contact Us": "/contact"
+    };
 
     const mobileMenuVariants = {
         closed: {
@@ -81,16 +93,16 @@ const Navbar = () => {
             {/* Desktop Navbar */}
             <nav className="px-[1rem] lg:px-[3rem] font-semibold  items-center justify-between py-2 w-full bg-yellow-50 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] fixed z-50 hidden lg:flex ">
                 {/* logo */}
-                <motion.div 
+                <motion.div
                     className="flex items-center gap-3"
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}>
-                    <Image 
-                        src='/logo.jpg' 
-                        width={80} 
-                        height={80} 
-                        alt="sierrah4_logo" 
+                    <Image
+                        src='/logo.jpg'
+                        width={80}
+                        height={80}
+                        alt="sierrah4_logo"
                         className="rounded-full"
                         priority
                         unoptimized={false}
@@ -102,14 +114,14 @@ const Navbar = () => {
                 </motion.div>
 
                 {/* list */}
-                <motion.ul 
+                <motion.ul
                     className="flex items-center gap-5"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     {menuItems.map((item, index) => (
-                        <motion.li 
+                        <motion.li
                             key={item}
                             className="hvr-underline-from-left cursor-pointer text-gray-700"
                             whileHover={{ scale: 1.05 }}
@@ -118,13 +130,15 @@ const Navbar = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                         >
-                            {item}
+                            <Link href={itemPaths[item]}> {/* Link for desktop */}
+                                {item}
+                            </Link>
                         </motion.li>
                     ))}
                 </motion.ul>
 
                 {/* Admin login */}
-                <motion.div 
+                <motion.div
                     className="flex items-center gap-3 font-black text-gray-700"
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -140,18 +154,18 @@ const Navbar = () => {
                 {/* Mobile Logo */}
                 <AnimatePresence>
                     {!isMobileMenuOpen && (
-                        <motion.div 
+                        <motion.div
                             className="flex items-center gap-2"
                             initial={{ opacity: 0, x: -30 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -30 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <Image 
-                                src='/logo.jpg' 
-                                width={50} 
-                                height={50} 
-                                alt="sierrah4_logo" 
+                            <Image
+                                src='/logo.jpg'
+                                width={50}
+                                height={50}
+                                alt="sierrah4_logo"
                                 className="rounded-full"
                                 priority
                                 unoptimized={false}
@@ -223,11 +237,11 @@ const Navbar = () => {
                             {/* Mobile Menu Header */}
                             <div className="flex items-center justify-between p-4 border-b border-gray-200">
                                 <div className="flex items-center gap-3">
-                                    <Image 
-                                        src='/logo.jpg' 
-                                        width={40} 
-                                        height={40} 
-                                        alt="sierrah4_logo" 
+                                    <Image
+                                        src='/logo.jpg'
+                                        width={40}
+                                        height={40}
+                                        alt="sierrah4_logo"
                                         className="rounded-full"
                                         priority
                                         unoptimized={false}
@@ -251,7 +265,9 @@ const Navbar = () => {
                                             whileTap={{ scale: 0.98 }}
                                             onClick={toggleMobileMenu}
                                         >
-                                            {item}
+                                            <Link href={itemPaths[item]}> {/* Link for mobile */}
+                                                {item}
+                                            </Link>
                                         </motion.li>
                                     ))}
                                 </motion.ul>
