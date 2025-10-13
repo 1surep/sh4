@@ -15,7 +15,7 @@ export default function NotFound() {
         </div>
       </div>
 
-      <h1 className="text-white text-6xl font-bold mt-10">404: Page Under Construction</h1>
+      <h1 className="text-white text-6xl font-bold mt-10">404: Under-Construction 🚧</h1>
       <p className="text-gray-300 text-lg mt-2">Beer It 🍺</p>
 
       <a
