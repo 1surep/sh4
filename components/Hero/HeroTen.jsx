@@ -24,11 +24,11 @@ const HeroTen=()=>{
           {/* Body section */}
           <section className="bg-yellow-50 min-h-screen py-12 px-[1rem] lg:px-[3rem]">
             <div className=" bg-gray-100 min-h-screen">
-              <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+              <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32  rounded-[12px] ">
                 <img
                   src="/s13.jpg"
                   alt="Running"
-                  className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
+                  className="absolute inset-0 -z-10 h-full w-full object-cover rounded-[12px] object-right md:object-center"
                 />
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black opacity-50 -z-10"></div>
@@ -64,7 +64,7 @@ const HeroTen=()=>{
                     </p>
                     <h2 className="mt-2 text-4xl font-black uppercase tracking-tight sm:text-6xl text-center bg-gradient-to-r from-[#2a9b59] via-[#3da7d4] to-[#d9c938] bg-clip-text text-transparent">
                       Hashing in Sierra Leone is unlike anything you've ever experienced...
-                      presence!
+                      ON ON!
                     </h2>
 
                     <div className="mt-4 flex justify-center">
