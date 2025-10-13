@@ -90,7 +90,7 @@ const HeroEight = () => {
             Press Play <GrGamepad className="animate-bounce text-2xl"/>
           </button>
         </div>
-        <p className="text-sm text-center pb-8 "><i>How well do you know the hash? Press Play to find out</i></p>
+        <p className="text-sm text-center pt-1 pb-8 "><i>How well do you know the hash? Press Play to find out</i></p>
       </section>
 
       {/* Game Modal */}

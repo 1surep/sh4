@@ -85,8 +85,7 @@ const Navbar = () => {
                     className="flex items-center gap-3"
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
+                    transition={{ duration: 0.5 }}>
                     <Image 
                         src='/logo.jpg' 
                         width={80} 
