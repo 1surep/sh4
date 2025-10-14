@@ -1,12 +1,11 @@
 'use client';
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { MdLocationOn, MdEmail } from "react-icons/md";
 import { BsFillTelephoneInboundFill } from "react-icons/bs";
-
+import { SocialIcon } from "react-social-icons";
 
 const Footer = () => {
   const footerVariants = {
@@ -29,7 +28,7 @@ const Footer = () => {
 
   const socialIconVariants = {
     hover: {
-      scale: 1.2,
+      scale: 1.1,
       rotate: 360,
       transition: { duration: 0.4, ease: "easeInOut" },
     },
@@ -80,7 +79,7 @@ const Footer = () => {
               fun, and beer!
             </p>
 
-            <ul className="pt-6 text-gray-200">
+            <ul className="pt-6 text-gray-200 space-y-2">
               <li className="flex items-center gap-2">
                 <MdLocationOn /> Freetown, Sierra Leone
               </li>
@@ -162,46 +161,94 @@ const Footer = () => {
 
         {/* Social Media + Copyright */}
         <motion.div
-          className="mt-10 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center"
+          className="mt-10 pt-6 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between gap-4"
           variants={itemVariants}
         >
-          <div className="flex space-x-6 mb-4 md:mb-0">
-            <motion.a
-              href="#"
-              className="text-2xl hover:text-blue-500"
+          {/* Social Icons - Smaller + Centered */}
+          <motion.nav
+            className="flex items-center justify-center gap-3"
+            variants={itemVariants}
+            aria-label="Social media links"
+          >
+            {/* WhatsApp */}
+            <motion.div
               variants={socialIconVariants}
-              whileHover="hover"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <FaFacebook />
-            </motion.a>
-            <motion.a
-              href="#"
-              className="text-2xl hover:text-blue-400"
+              <SocialIcon
+                href="https://www.whatsapp.com"
+                url="https://www.whatsapp.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Join us on WhatsApp"
+                style={{ height: 32, width: 32 }}
+                className="transition-shadow hover:shadow-lg hover:shadow-green-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
+              />
+            </motion.div>
+
+            {/* TikTok */}
+            <motion.div
               variants={socialIconVariants}
-              whileHover="hover"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <FaTwitter />
-            </motion.a>
-            <motion.a
-              href="#"
-              className="text-2xl hover:text-pink-500"
+              <SocialIcon
+                href="https://www.tiktok.com"
+                url="https://www.tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on TikTok"
+                style={{ height: 32, width: 32 }}
+                className="transition-shadow hover:shadow-lg hover:shadow-pink-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
+              />
+            </motion.div>
+
+            {/* Instagram */}
+            <motion.div
               variants={socialIconVariants}
-              whileHover="hover"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <FaInstagram />
-            </motion.a>
-            <motion.a
-              href="#"
-              className="text-2xl hover:text-blue-700"
+              <SocialIcon
+                href="https://www.instagram.com"
+                url="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
+                style={{ height: 32, width: 32 }}
+                className="transition-shadow hover:shadow-lg hover:shadow-purple-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
+              />
+            </motion.div>
+
+            {/* Facebook */}
+            <motion.div
               variants={socialIconVariants}
-              whileHover="hover"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <FaLinkedin />
-            </motion.a>
-          </div>
-          <p className="text-gray-300 text-sm">
-            &copy; {new Date().getFullYear()} Sierra H4. All Rights Reserved.
-            Designed & Developed by info@loukama.com
+              <SocialIcon
+                href="https://www.facebook.com"
+                url="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Facebook"
+                style={{ height: 32, width: 32 }}
+                className="transition-shadow hover:shadow-lg hover:shadow-blue-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
+              />
+            </motion.div>
+          </motion.nav>
+
+          {/* Copyright */}
+          <p className="text-gray-300 text-sm text-center">
+            © {new Date().getFullYear()} Sierra H4. All Rights Reserved.{" "}
+            <span className="text-yellow-400 font-medium">
+              Designed & Developed by info@loukama.com
+            </span>
           </p>
         </motion.div>
       </div>
