@@ -114,6 +114,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/events" className="hover:text-yellow-400 transition-colors">
+                  PAN Africa 2027
+                </Link>
+              </li>
+              <li>
                 <Link href="/gallery" className="hover:text-yellow-400 transition-colors">
                   Gallery
                 </Link>
@@ -121,6 +126,12 @@ const Footer = () => {
               <li>
                 <Link href="/contact" className="hover:text-yellow-400 transition-colors">
                   Contact Us
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/" className="hover:text-yellow-400 transition-colors">
+                  Visa
                 </Link>
               </li>
             </ul>

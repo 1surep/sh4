@@ -29,7 +29,7 @@ const Navbar = () => {
         "Home": "/",
         "About Us": "/about",
         "Events": "/events",
-        "PAN 2027": "/pan2027",
+        "PAN 2027": "/pan-africa-2027",
         "Gallery": "/gallery",
         "SH4 Shop": "/sh4shop",
         "Contact Us": "/contact"
