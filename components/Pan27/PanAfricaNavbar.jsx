@@ -72,7 +72,7 @@ const PanAfricaNavbar = () => {
 
   return (
     <>
-      <nav className="px-4 sm:px-6 lg:px-12 font-semibold items-center flex justify-between py-4 w-full overflow-hidden bg-green-900 text-gray-200 shadow-lg fixed z-50"
+      <motion.nav className="px-4 sm:px-6 lg:px-12 font-semibold items-center flex justify-between py-4 w-full overflow-hidden bg-green-900 text-gray-200 shadow-lg fixed z-50"
         variants={footerVariants}
         initial="hidden"
         whileInView="visible"
@@ -164,7 +164,7 @@ const PanAfricaNavbar = () => {
             )}
           </AnimatePresence>
         </motion.button>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>

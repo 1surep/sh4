@@ -1,463 +1,175 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef } from 'react';
-import PanAfricaNavbar from './PanAfricaNavbar';
-import Footer from '../Footer';
+import React, { useState, useEffect } from "react";
+import PanAfricaNavbar from "./PanAfricaNavbar";
+import Footer from "../Footer";
+
+// Helper function to calculate countdown
+const calculateTimeLeft = () => {
+  const targetDate = new Date("2027-07-26T00:00:00").getTime();
+  const now = new Date().getTime();
+  const difference = targetDate - now;
+
+  if (difference > 0) {
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+      (difference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return { days, hours, minutes, seconds };
+  } else {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+};
 
 export default function PanAfricaPage() {
-    const countdownRef = useRef(null);
-
-    useEffect(() => {
-        // FlipClock implementation
-        const FlipClock = function (options) {
-            this.tickInterval = false;
-            this.digitSelectors = [];
-            this.options = this.createConfig(options);
-
-            this.init();
-        };
-
-        FlipClock.prototype.createConfig = function(options) {
-            return Object.assign({}, this.getDefaultConfig(), options);
-        };
-
-        FlipClock.prototype.getDefaultConfig = function() {
-            return {
-                tickDuration: 1000,
-                isCountdown: true,
-                startTime: '31:00:00:05',
-                maxTime: '23:59:59',
-                minTime: '00:00:00',
-                containerElement: countdownRef.current,
-                segmentSelectorPrefix: 'flipclock-',
-                face: {
-                    days: {
-                        maxValue: 31
-                    },
-                    hours: {
-                        maxValue: 23
-                    },
-                    minutes: {
-                        maxValue: 59
-                    },
-                    seconds: {
-                        maxValue: 59
-                    }
-                }
-            };
-        };
-
-        FlipClock.prototype.initFeatureDetection = function() {
-            // Check for CSS transition support
-            const testEl = document.createElement('div');
-            const style = testEl.style;
-            return style.transition !== undefined || 
-                   style.WebkitTransition !== undefined || 
-                   style.MozTransition !== undefined || 
-                   style.MsTransition !== undefined || 
-                   style.OTransition !== undefined;
-        };
-
-        FlipClock.prototype.isFeatureSupported = function(feature) {
-            return this.initFeatureDetection();
-        };
-
-        FlipClock.prototype.init = function() {
-            if (this.options.containerElement) {
-                this.options.containerElement.innerHTML = '';
-            }
-
-            if (this.tickInterval !== false) {
-                clearInterval(this.tickInterval);
-                this.tickInterval = false;
-            }
-
-            this.appendMarkupToContainer();
-            this.setDimensions();
-            this.setupFallbacks();
-            this.start();
-        };
-
-        FlipClock.prototype.setupFallbacks = function() {
-            const hasTransition = this.isFeatureSupported('transition');
-            
-            if (hasTransition) {
-                const firstChild = this.options.containerElement.querySelector('ul.flip li:first-child');
-                if (firstChild) {
-                    firstChild.style.zIndex = '2';
-                }
-            } else {
-                const firstChild = this.options.containerElement.querySelector('ul.flip li:first-child');
-                if (firstChild) {
-                    firstChild.style.zIndex = '3';
-                }
-                
-                // Add fallback class for IE
-                const flipElements = this.options.containerElement.querySelectorAll('ul.flip:nth-child(2n+2):not(:last-child)');
-                flipElements.forEach(el => el.classList.add('nth-child-2np2-notlast'));
-            }
-        };
-
-        FlipClock.prototype.setDimensions = function() {
-            // Let CSS handle the responsive dimensions
-            // This method is kept for compatibility but dimensions are now handled by CSS media queries
-            const flipElements = this.options.containerElement.querySelectorAll('ul.flip');
-            flipElements.forEach(el => {
-                // Remove any inline styles that might interfere with CSS
-                el.style.width = '';
-                el.style.fontSize = '';
-                
-                const liElements = el.querySelectorAll('li');
-                liElements.forEach(li => {
-                    li.style.lineHeight = '';
-                });
-            });
-        };
-
-        FlipClock.prototype.createSegment = function(faceSegmentGroupName) {
-            const faceSegmentGroup = this.options.face[faceSegmentGroupName];
-            const segmentSelectorAddons = ['-ten', '-one'];
-            const rounded = Math.ceil(faceSegmentGroup.maxValue / 10);
-            let segment = [];
-
-            if (faceSegmentGroup.maxValue / 10 > 1) {
-                segment = [
-                    {
-                        selector: this.options.segmentSelectorPrefix + faceSegmentGroupName + segmentSelectorAddons[0],
-                        ticks: rounded
-                    },
-                    {
-                        selector: this.options.segmentSelectorPrefix + faceSegmentGroupName + segmentSelectorAddons[1],
-                        ticks: 10
-                    }
-                ];
-            } else {
-                segment = [
-                    {
-                        selector: this.options.segmentSelectorPrefix + faceSegmentGroupName + segmentSelectorAddons[1],
-                        ticks: 10
-                    }
-                ];
-            }
-
-            return segment;
-        };
-
-        FlipClock.prototype.appendMarkupToContainer = function() {
-            let baseZIndex = 0;
-            
-            for (const faceSegmentGroup in this.options.face) {
-                this.options.face[faceSegmentGroup].segments = this.createSegment(faceSegmentGroup);
-
-                for (let i = 0; i < this.options.face[faceSegmentGroup].segments.length; i++) {
-                    const faceSegmentElement = this.createFaceSegment(this.options.face[faceSegmentGroup].segments[i]);
-
-                    this.digitSelectors.push(this.options.face[faceSegmentGroup].segments[i].selector);
-                    this.options.containerElement.appendChild(faceSegmentElement);
-
-                    faceSegmentElement.setAttribute('data-face-segment-group', faceSegmentGroup);
-                    faceSegmentElement.classList.add(faceSegmentGroup);
-                    faceSegmentElement.style.zIndex = baseZIndex++;
-                }
-            }
-
-            this.digitSelectors.reverse();
-        };
-
-        FlipClock.prototype.createFaceSegment = function(faceSegment) {
-            const faceElement = document.createElement('ul');
-            faceElement.className = 'flip ' + faceSegment.selector;
-
-            for (let i = 0; i < faceSegment.ticks; i++) {
-                const digit = i;
-                faceElement.appendChild(this.createFaceDigit(digit));
-            }
-
-            return faceElement;
-        };
-
-        FlipClock.prototype.createFaceDigit = function(digit) {
-            const digitInnerFragment = '<div class="shadow"></div><div class="inn">' + digit + '</div>';
-            const li = document.createElement('li');
-            li.setAttribute('data-digit', digit);
-            li.innerHTML = '<span>' +
-                '<div class="up">' + digitInnerFragment + '</div>' +
-                '<div class="down">' + digitInnerFragment + '</div>' +
-                '</span>';
-            return li;
-        };
-
-        FlipClock.prototype.start = function() {
-            this.setToTime(this.options.startTime);
-
-            const self = this;
-            this.tickInterval = setInterval(function () {
-                self.tick();
-            }, this.options.tickDuration);
-        };
-
-        FlipClock.prototype.stop = function() {
-            clearInterval(this.tickInterval);
-        };
-
-        FlipClock.prototype.resetDigits = function() {
-            this.options.containerElement.classList.remove('play');
-
-            for (let i = 0; i < this.digitSelectors.length; i++) {
-                const active = this.options.containerElement.querySelector(this.getDigitSelectorByIndex(i) + '.current');
-                const all = this.options.containerElement.querySelectorAll(this.getDigitSelectorByIndex(i));
-                const first = this.options.containerElement.querySelector(this.getDigitSelectorByIndex(i) + ':first-child');
-
-                if (all[0]) all[0].classList.add('clockFix');
-                all.forEach(el => el.classList.remove('current'));
-
-                if (first) first.classList.add('current');
-                all.forEach(el => el.classList.remove('previous'));
-                if (active) active.classList.add('previous');
-            }
-
-            this.options.containerElement.classList.add('play');
-        };
-
-        FlipClock.prototype.setToTime = function(time) {
-            const timeArray = time.replace(/:/g, '').split('').reverse();
-
-            for (let i = 0; i < this.digitSelectors.length; i++) {
-                const digit = this.options.containerElement.querySelectorAll(this.getDigitSelectorByIndex(i))[parseInt(timeArray[i])];
-
-                this.options.containerElement.classList.remove('play');
-
-                if (digit) {
-                    digit.classList.add('current');
-                }
-                this.options.containerElement.classList.add('play');
-            }
-        };
-
-        FlipClock.prototype.setFaceSegmentGroupMaxValue = function(segmentGroupName) {
-            const self = this;
-            const group = this.getFaceSegmentGroupDom(segmentGroupName);
-
-            group.forEach((el, idx) => {
-                self.options.containerElement.classList.remove('play');
-
-                const maxValue = self.options.face[segmentGroupName].maxValue.toString().split('');
-
-                const currentLi = el.querySelector('li.current');
-                if (currentLi) currentLi.classList.remove('current');
-                
-                const targetLi = el.querySelector('li[data-digit="' + maxValue[idx] + '"]');
-                if (targetLi) targetLi.classList.add('current');
-
-                self.options.containerElement.classList.add('play');
-            });
-        };
-
-        FlipClock.prototype.tick = function() {
-            this.doTick(0);
-        };
-
-        FlipClock.prototype.getCurrentTime = function() {
-            const currentTime = [];
-            const currentElements = this.options.containerElement.querySelectorAll('li.current');
-            
-            currentElements.forEach(el => {
-                currentTime.push(el.getAttribute('data-digit'));
-            });
-
-            return parseInt(currentTime.join(''), 10);
-        };
-
-        FlipClock.prototype.getDigitSelectorByIndex = function(digitIndex) {
-            return 'ul.' + this.digitSelectors[digitIndex] + ' li';
-        };
-
-        FlipClock.prototype.getFaceSegmentGroupNameByDigitElement = function(digitElement) {
-            return digitElement.parentElement.getAttribute('data-face-segment-group');
-        };
-
-        FlipClock.prototype.getFaceSegmentByDigitElement = function(digitElement) {
-            return this.options.face[this.getFaceSegmentGroupNameByDigitElement(digitElement)];
-        };
-
-        FlipClock.prototype.getFaceSegmentGroupDom = function(segmentGroupName) {
-            return Array.from(this.options.containerElement.querySelectorAll('.' + segmentGroupName));
-        };
-
-        FlipClock.prototype.getCurrentDigitDom = function(segmentGroupName) {
-            return Array.from(this.options.containerElement.querySelectorAll('.' + segmentGroupName + ' li.current'));
-        };
-
-        FlipClock.prototype.getCurrentFaceSegmentGroupValue = function(digitElement) {
-            const segmentGroupName = this.getFaceSegmentGroupNameByDigitElement(digitElement);
-            const values = [];
-
-            this.getCurrentDigitDom(segmentGroupName).forEach((el, idx) => {
-                values[idx] = el.getAttribute('data-digit');
-            });
-
-            return values.join('');
-        };
-
-        FlipClock.prototype.doTick = function(digitIndex) {
-            let nextDigit, pseudoSelector;
-
-            if (this.options.isCountdown === false && this.isMaxTimeReached()) {
-                this.resetDigits();
-                return;
-            }
-
-            this.options.containerElement.classList.remove('play');
-
-            if (this.options.isCountdown === true) {
-                pseudoSelector = ':first-child';
-            } else {
-                pseudoSelector = ':last-child';
-            }
-
-            let activeDigit = this.options.containerElement.querySelector(this.getDigitSelectorByIndex(digitIndex) + '.current');
-
-            if (!activeDigit) {
-                if (this.options.isCountdown) {
-                    activeDigit = this.options.containerElement.querySelector(this.getDigitSelectorByIndex(digitIndex) + ':last-child');
-                    nextDigit = activeDigit?.previousElementSibling;
-                } else {
-                    activeDigit = this.options.containerElement.querySelectorAll(this.getDigitSelectorByIndex(digitIndex))[0];
-                    nextDigit = activeDigit?.nextElementSibling;
-                }
-
-                if (activeDigit) {
-                    activeDigit.classList.add('previous');
-                    activeDigit.classList.remove('current');
-                }
-
-                if (nextDigit) {
-                    nextDigit.classList.add('current');
-                }
-            } else if (activeDigit.matches(pseudoSelector)) {
-                const allDigits = this.options.containerElement.querySelectorAll(this.getDigitSelectorByIndex(digitIndex));
-                allDigits.forEach(el => el.classList.remove('previous'));
-
-                if (this.options.isCountdown === true && this.isMinTimeReached()) {
-                    this.stop();
-                    return;
-                }
-
-                activeDigit.classList.add('previous');
-                activeDigit.classList.remove('current');
-
-                if (this.options.isCountdown === true) {
-                    activeDigit.classList.add('countdownFix');
-                    activeDigit = this.options.containerElement.querySelector(this.getDigitSelectorByIndex(digitIndex) + ':last-child');
-                } else {
-                    activeDigit = this.options.containerElement.querySelectorAll(this.getDigitSelectorByIndex(digitIndex))[0];
-                    activeDigit.classList.add('clockFix');
-                }
-
-                if (activeDigit) {
-                    activeDigit.classList.add('current');
-                }
-
-                if (typeof this.digitSelectors[digitIndex + 1] !== 'undefined') {
-                    this.doTick(digitIndex + 1);
-                }
-            } else {
-                const allDigits = this.options.containerElement.querySelectorAll(this.getDigitSelectorByIndex(digitIndex));
-                allDigits.forEach(el => el.classList.remove('previous'));
-
-                activeDigit.classList.add('previous');
-                activeDigit.classList.remove('current');
-
-                if (this.options.isCountdown === true) {
-                    nextDigit = activeDigit.previousElementSibling;
-                } else {
-                    nextDigit = activeDigit.nextElementSibling;
-                }
-
-                if (nextDigit) {
-                    nextDigit.classList.add('current');
-                }
-            }
-
-            const group = this.getFaceSegmentByDigitElement(activeDigit);
-            if (group && this.getCurrentFaceSegmentGroupValue(activeDigit) > group.maxValue) {
-                this.setFaceSegmentGroupMaxValue(this.getFaceSegmentGroupNameByDigitElement(activeDigit));
-            }
-
-            this.options.containerElement.classList.add('play');
-            this.cleanZIndexFix(activeDigit, this.digitSelectors[digitIndex]);
-        };
-
-        FlipClock.prototype.isMaxTimeReached = function() {
-            return this.getCurrentTime() >= parseInt(this.options.maxTime.replace(/:/g, ''), 10);
-        };
-
-        FlipClock.prototype.isMinTimeReached = function() {
-            return this.getCurrentTime() <= parseInt(this.options.minTime.replace(/:/g, ''), 10);
-        };
-
-        FlipClock.prototype.cleanZIndexFix = function(activeDigit, selector) {
-            if (this.options.isCountdown === true) {
-                const fix = this.options.containerElement.querySelector('.' + selector + ' .countdownFix');
-
-                if (fix && !fix.classList.contains('previous') && !fix.classList.contains('current')) {
-                    fix.classList.remove('countdownFix');
-                }
-            } else {
-                const siblings = activeDigit.parentElement.children;
-                Array.from(siblings).forEach(sibling => sibling.classList.remove('clockFix'));
-            }
-        };
-
-        // Initialize the countdown when component mounts
-        if (countdownRef.current) {
-            new FlipClock({
-                isCountdown: true,
-                startTime: '31:00:00:05',
-                containerElement: countdownRef.current,
-                face: {
-                    days: {
-                        maxValue: 31
-                    },
-                    hours: {
-                        maxValue: 23
-                    },
-                    minutes: {
-                        maxValue: 59
-                    },
-                    seconds: {
-                        maxValue: 59
-                    }
-                }
-            });
-        }
-
-        // Cleanup on unmount
-        return () => {
-            if (countdownRef.current) {
-                countdownRef.current.innerHTML = '';
-            }
-        };
-    }, []);
-
-    return (
-      <>
-        {/* Navbar PAN 2027 */}
-        <PanAfricaNavbar />
-
-        {/* main body of PAN 2027 */}
-        <main className='min-h-screen bg-yellow-50'>
-            <div className="container">
-                <div className="countdown" ref={countdownRef} />
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+
+  useEffect(() => {
+    // Update every second
+    const interval = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    // Cleanup on unmount
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      {/* Navbar PAN 2027 */}
+      <PanAfricaNavbar />
+
+      {/* main body of PAN 2027 */}
+      <div className="min-h-screen pt-32 bg-cover bg-no-repeat bg-center" style={{backgroundImage: 'url(/pan/pan2027b.png)'}}>
+        {/* count down */},
+        <div className="px-[1rem] lg:px-[3rem]">
+          
+          <div>
+                <h1 className="text-center font-black text-3xl uppercase">Count Down to </h1>
+                <h1 className="text-center font-black text-3xl uppercase">PAN Africa Hash 2027</h1>
+          </div>
+
+          <div className="flex items-center gap-12">
+                {/* Days */}
+                <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-blue-600 mb-1 sm:mb-2">
+                  {timeLeft.days.toString().padStart(2, "0")}
+                </div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
+                  Days
+                </div>
+                </div>
+
+                {/* Hours */}
+                <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-green-600 mb-1 sm:mb-2">
+                  {timeLeft.hours.toString().padStart(2, "0")}
+                </div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
+                  Hours
+                </div>
+                </div>
+
+                {/* Minutes */}
+                <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-orange-600 mb-1 sm:mb-2">
+                  {timeLeft.minutes.toString().padStart(2, "0")}
+                </div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
+                  Minutes
+                </div>
+                </div>
+
+                {/* Seconds */}
+                <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-red-600 mb-1 sm:mb-2">
+                  {timeLeft.seconds.toString().padStart(2, "0")}
+                </div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
+                  Seconds
+                </div>
+                </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+
+      {/* main body of PAN 2027 */}
+      <main>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+          {/* Countdown Title */}
+          {/* <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-800 mb-2 sm:mb-4 px-2">
+                        PAN AFRICA 2027
+                    </h1>
+                    <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 px-4">
+                        Countdown to July 26, 2027
+                    </p>
+                </div> */}
+
+          {/* Countdown Display */}
+          <div className="flex justify-center items-center px-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 w-full max-w-6xl">
+              {/* Days */}
+              <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-blue-600 mb-1 sm:mb-2">
+                  {timeLeft.days.toString().padStart(2, "0")}
+                </div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
+                  Days
+                </div>
+              </div>
+
+              {/* Hours */}
+              <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-green-600 mb-1 sm:mb-2">
+                  {timeLeft.hours.toString().padStart(2, "0")}
+                </div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
+                  Hours
+                </div>
+              </div>
+
+              {/* Minutes */}
+              <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-orange-600 mb-1 sm:mb-2">
+                  {timeLeft.minutes.toString().padStart(2, "0")}
+                </div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
+                  Minutes
+                </div>
+              </div>
+
+              {/* Seconds */}
+              <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-red-600 mb-1 sm:mb-2">
+                  {timeLeft.seconds.toString().padStart(2, "0")}
+                </div>
+                <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
+                  Seconds
+                </div>
+              </div>
             </div>
+          </div>
 
-            {/* <div className='pt-32'>
-              Hello meeeeeeeeeeeeee
-            </div> */}
-        </main>
+          {/* Additional Info */}
+        </div>
+      </main>
 
-        {/* Footer PAN 2027 */}
-        {/* <Footer /> */}
-      </>
-    );
+      {/* Footer PAN 2027 */}
+      {/* <Footer /> */}
+    </>
+  );
 }
