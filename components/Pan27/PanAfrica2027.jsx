@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Users, Clock, Award, Star } from 'lucide-react';
 import PanAfricaNavbar from "./PanAfricaNavbar";
@@ -12,6 +12,8 @@ const calculateTimeLeft = () => {
   const targetDate = new Date("2027-07-26T00:00:00").getTime();
   const now = new Date().getTime();
   const difference = targetDate - now;
+
+  
 
   if (difference > 0) {
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -48,6 +50,9 @@ export default function PanAfricaPage() {
 
   const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft());
   const [count1, setCount1] = useState(1247);
+  const welcomeRef = useRef(null);
+  const [balloonBurstId, setBalloonBurstId] = useState(0);
+  const [beers, setBeers] = useState([]);
 
   useEffect(() => {
     // Update countdown every second
@@ -57,6 +62,42 @@ export default function PanAfricaPage() {
 
     // Cleanup on unmount
     return () => clearInterval(interval);
+  }, []);
+
+  // Observe the welcome heading section to trigger balloons when in view
+  useEffect(() => {
+    if (!welcomeRef.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // increment id to retrigger animation
+            // Generate randomized beers on each trigger
+            setBeers(() => {
+              const count = 14; // increased by 6
+              const arr = Array.from({ length: count }).map((_, i) => {
+                const left = Math.floor(8 + Math.random() * 84); // 8% - 92%
+                const size = Math.random();
+                const clsSize = size < 0.35 ? 'sm' : size > 0.75 ? 'lg' : '';
+                const delay = (Math.random() * 0.6).toFixed(2); // 0 - 0.6s
+                const duration = (3 + Math.random() * 1.2).toFixed(2); // 3 - 4.2s
+                return {
+                  key: `${Date.now()}-${i}-${Math.random().toString(36).slice(2)}`,
+                  left: `${left}%`,
+                  cls: `beer ${clsSize}`.trim(),
+                  style: { animationDelay: `${delay}s`, animationDuration: `${duration}s` }
+                };
+              });
+              return arr;
+            });
+            setBalloonBurstId((id) => id + 1);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(welcomeRef.current);
+    return () => observer.disconnect();
   }, []);
 
 
@@ -248,8 +289,22 @@ export default function PanAfricaPage() {
         </div>
 
         {/* welcome section */}
-        <div className="relative z-10 px-[1rem] lg:px-[3rem] my-10 mt-20">
-          <h2 className="text-center text-gray-100 font-black text-3xl uppercase">
+        <div ref={welcomeRef} className="relative z-10 px-[1rem] lg:px-[3rem] my-10 mt-20">
+          {/* Floating balloons overlay (appears when section enters view) */}
+          {balloonBurstId > 0 && (
+            <div key={balloonBurstId} className="beers">
+              {beers.map((b) => (
+                <div key={b.key} className={b.cls} style={{ left: b.left, ...b.style }} />
+              ))}
+            </div>
+          )}
+          {balloonBurstId > 0 && (
+            <div className="foot-images">
+              <div className="foot-img foot-left" />
+              <div className="foot-img foot-right" />
+            </div>
+          )}
+          <h2 className="text-center text-gray-100 font-black  text-3xl lg:text-5xl uppercase">
             Welcome to PAN Africa Hash 2027
           </h2>
 
@@ -307,7 +362,7 @@ export default function PanAfricaPage() {
 
 
           {/* Body of event dashboard */}
-          
+
 
 
 

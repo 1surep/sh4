@@ -1084,3 +1084,162 @@
 
 
 
+/* ========================= BALLOONS (Pan Africa 2027 welcome section) ========================= */
+@keyframes balloon-rise {
+  0% { transform: translateY(40px) scale(0.95); opacity: 0; }
+  8% { opacity: 1; }
+  50% { transform: translateY(-120px) scale(1.02); opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(-260px) scale(1); opacity: 0; }
+}
+
+.balloons {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px; /* start slightly below section */
+  pointer-events: none;
+  height: 260px; /* area where balloons rise */
+  overflow: visible;
+  z-index: 1; /* above overlay background but below main content if needed */
+}
+
+.balloon {
+  position: absolute;
+  width: 28px;
+  height: 36px;
+  border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+  opacity: 0;
+  animation-name: balloon-rise;
+  animation-duration: 3.6s; /* overridden inline for randomness */
+  animation-timing-function: cubic-bezier(.22,.61,.36,1);
+  animation-fill-mode: forwards;
+  will-change: transform, opacity;
+  box-shadow: inset -4px -6px 0 rgba(255,255,255,0.18); 
+}
+
+/* Balloon string */
+.balloon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 34px;
+  width: 1.5px;
+  height: 26px;
+  background: rgba(255,255,255,0.6);
+  transform: translateX(-50%);
+}
+
+/* Project-inspired colors (tailwind-like palette) */
+.balloon.green { background: #15803d; }   /* green-700 */
+.balloon.green-light { background: #22c55e; } /* green-500 */
+.balloon.blue { background: #2563eb; }    /* blue-600 */
+.balloon.sky { background: #0ea5e9; }     /* sky-500 */
+.balloon.amber { background: #f59e0b; }   /* amber-500 */
+.balloon.orange { background: #f97316; }  /* orange-500 */
+.balloon.red { background: #ef4444; }     /* red-500 */
+.balloon.rose { background: #e11d48; }    /* rose-600 */
+
+/* Staggered positions and timings */
+.balloon.pos-1 { left: 8%;  animation-delay: .05s; }
+.balloon.pos-2 { left: 18%; animation-delay: .25s; }
+.balloon.pos-3 { left: 28%; animation-delay: .45s; }
+.balloon.pos-4 { left: 40%; animation-delay: .15s; }
+.balloon.pos-5 { left: 52%; animation-delay: .35s; }
+.balloon.pos-6 { left: 64%; animation-delay: .55s; }
+.balloon.pos-7 { left: 76%; animation-delay: .2s; }
+.balloon.pos-8 { left: 88%; animation-delay: .4s; }
+
+/* Slight size variations */
+.balloon.sm { transform-origin: center; width: 22px; height: 30px; }
+.balloon.lg { transform-origin: center; width: 34px; height: 44px; }
+
+/* ========================= BEERS (Pan Africa 2027 welcome section) ========================= */
+.beers {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  pointer-events: none;
+  height: 260px;
+  overflow: visible;
+  z-index: 1;
+}
+
+.beer {
+  position: absolute;
+  width: 28px;
+  height: 36px;
+  opacity: 0;
+  animation-name: balloon-rise; /* reuse smooth rise */
+  animation-duration: 3.6s;     /* randomized inline */
+  animation-timing-function: cubic-bezier(.22,.61,.36,1);
+  animation-fill-mode: forwards;
+  will-change: transform, opacity;
+  background-image: url('/beerit.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.beer.sm { width: 22px; height: 30px; }
+.beer.lg { width: 34px; height: 44px; }
+
+/* ========================= FOOTRUN images (two) ========================= */
+@keyframes foot-pop {
+  0% { transform: translateY(12px) scale(0.96); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.foot-images {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  height: 120px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.foot-img {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  background-image: url('/footrun.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  animation: foot-pop 600ms ease-out forwards;
+}
+
+@keyframes foot-bob-left {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(3px, -6px) rotate(-3deg); }
+  50%  { transform: translate(0, -2px) rotate(0deg); }
+  75%  { transform: translate(2px, -5px) rotate(-2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes foot-bob-right {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(-3px, -6px) rotate(3deg); }
+  50%  { transform: translate(0, -2px) rotate(0deg); }
+  75%  { transform: translate(-2px, -5px) rotate(2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.foot-left {
+  left: 6%;
+  /* pop-in, then looped bob */
+  animation: foot-pop 600ms ease-out forwards, foot-bob-left 3.4s ease-in-out .6s infinite both;
+}
+
+.foot-right {
+  right: 6%;
+  /* slightly different timing for natural desync */
+  animation: foot-pop 600ms ease-out forwards, foot-bob-right 3s ease-in-out .6s infinite both;
+}
