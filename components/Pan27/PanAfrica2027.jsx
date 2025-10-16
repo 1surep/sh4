@@ -139,6 +139,12 @@ export default function PanAfricaPage() {
 
           {/* count down */}
           <div className="flex items-center px-[1rem] lg:px-[3rem] gap-3 justify-center mt-8  lg:gap-12">
+             {/* Localized floating background for dark section */}
+          <ul className="background">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <li key={i}></li>
+            ))}
+          </ul>
             {/* Days */}
             <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-blue-600 mb-1 sm:mb-2">
@@ -429,11 +435,6 @@ export default function PanAfricaPage() {
                 </button>
               </div>
             </div>
-
-
-
-
-
           </div>
 
 
