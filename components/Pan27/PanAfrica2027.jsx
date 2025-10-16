@@ -446,6 +446,171 @@ export default function PanAfricaPage() {
 
 
         </div>
+
+
+        {/* Tourism */}
+        <div className="relative z-10 my-10 mt-20">
+          {/* HEADING */}
+          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+            {/* Localized background effect (dark variant for light bg) */}
+            <ul className="background-dark">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
+            <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
+              PAN 
+            </h1>
+
+            <div className="relative text-center">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+                AFRICA HASH 2027
+              </p>
+              <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
+                TOURISM
+              </h2>
+            </div>
+          </section>
+
+
+          {/* Tourism body */}
+
+
+
+
+        </div>
+
+
+        {/* VISA*/}
+        <div className="relative z-10 my-10 mt-20">
+          {/* HEADING */}
+          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+            {/* Localized background effect (dark variant for light bg) */}
+            <ul className="background-dark">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
+            <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
+              PAN 
+            </h1>
+
+            <div className="relative text-center">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+                AFRICA HASH 2027
+              </p>
+              <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
+                VISA
+              </h2>
+            </div>
+          </section>
+
+
+          {/* Visa body */}
+        </div>
+
+
+        {/* GALLERY */}
+        <div className="relative z-10 my-10 mt-20">
+          {/* HEADING */}
+          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+            {/* Localized background effect (dark variant for light bg) */}
+            <ul className="background-dark">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
+            <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
+              PAN 
+            </h1>
+
+            <div className="relative text-center">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+                AFRICA HASH 2027
+              </p>
+              <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
+                GALLERY
+              </h2>
+            </div>
+          </section>
+
+
+          {/* GALLERYbody */}
+
+
+        </div>
+
+
+        {/* SECURITY */}
+        <div className="relative z-10 my-10 mt-20">
+          {/* HEADING */}
+          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+            {/* Localized background effect (dark variant for light bg) */}
+            <ul className="background-dark">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
+            <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
+              PAN 
+            </h1>
+
+            <div className="relative text-center">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+                AFRICA HASH 2027
+              </p>
+              <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
+                EMERGENCY/SECURITY
+              </h2>
+            </div>
+          </section>
+
+
+          {/* EMERGENCY / SECURITY body */}
+
+          
+        </div>
+
+
+        {/* Our Sponsor */}
+        <div className="relative z-10 my-10 mt-20">
+          {/* HEADING */}
+          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+            {/* Localized background effect (dark variant for light bg) */}
+            <ul className="background-dark">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
+            <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
+              PAN 
+            </h1>
+
+            <div className="relative text-center">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+                AFRICA HASH 2027
+              </p>
+              <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
+                OUR SPONSORS
+              </h2>
+            </div>
+          </section>
+
+
+          {/* OUR SPONSORS body */}
+
+          
+        </div>
+
+
+        
+
+
+
+
+
+
+
       </motion.div>
 
       {/* Footer PAN 2027 */}
