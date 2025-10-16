@@ -115,9 +115,7 @@ export default function PanAfricaPage() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
-        className="min-h-screen pt-32 bg-cover relative overflow-hidden bg-green-900/80 text-gray-200 bg-no-repeat bg-center"
-        style={{ backgroundImage: "url(/pan/pan2027.png)" }}
-      >
+        className="min-h-screen pt-32 bg-cover relative overflow-hidden bg-green-900/80 text-gray-200 ">
         {/* Animated Floating Background */}
         <ul className="background">
           {Array.from({ length: 10 }).map((_, i) => (
@@ -184,7 +182,13 @@ export default function PanAfricaPage() {
         </div>
 
         {/* widget section */}
-        <div className="relative z-10 px-[1rem] lg:px-[3rem] my-10">
+        <div className="relative z-10 px-[1rem] lg:px-[3rem] my-10 overflow-hidden">
+          {/* Localized floating background for dark section */}
+          <ul className="background">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <li key={i}></li>
+            ))}
+          </ul>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {/* 1. Pay your rego & show numbers of rego hasher +5 */}
             <motion.div
@@ -289,7 +293,13 @@ export default function PanAfricaPage() {
         </div>
 
         {/* welcome section */}
-        <div ref={welcomeRef} className="relative z-10 px-[1rem] lg:px-[3rem] my-10 mt-20">
+        <div ref={welcomeRef} className="relative z-10 px-[1rem] lg:px-[3rem] my-10 mt-20 overflow-hidden">
+          {/* Localized floating background for dark section */}
+          <ul className="background">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <li key={i}></li>
+            ))}
+          </ul>
           {/* Floating balloons overlay (appears when section enters view) */}
           {balloonBurstId > 0 && (
             <div key={balloonBurstId} className="beers">
@@ -344,9 +354,15 @@ export default function PanAfricaPage() {
         </div>
 
         {/* Event details friday - Sunday */}
-        <div className="relative z-10  my-10 mt-20">
+        <div className="relative z-10 my-10 mt-20">
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white">
+          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+            {/* Localized background effect (dark variant for light bg) */}
+            <ul className="background-dark">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
             <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
               PAN 
             </h1>
@@ -363,18 +379,18 @@ export default function PanAfricaPage() {
 
 
           {/* Body of event dashboard */}
-          <div className="relative py-12 gap-5 z-10 px-[1rem] lg:px-[3rem] text-gray-200 grid grid-cols-1 md:grid-cols-2 lg:flex items-center lg:justify-between justify-center">
+          <div className="relative py-12 gap-5 z-10 px-[1rem] lg:px-[3rem] text-gray-800 grid grid-cols-1 md:grid-cols-2 lg:flex items-center lg:justify-between justify-center">
 
             {/* Friday Run */}
-            <div className="flex relative z-10 items-center gap-4 w-fit border-2 border-white">
-              <div>
-                <Image/>
+            <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
+              <div className="w-full">
+                <Image src='/event1.jpg' width={120} height={120} alt='Friday run image' className='rounded-[8px] w-full'/>
               </div>
 
-              <div>
-                <h3 className="">Friday Run 10/10/2027</h3>
-                <p className="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                <button className="mt-5 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+              <div className="w-full text-gray-200">
+                <h3 className="font-semibold">Friday Run 10/10/2027</h3>
+                <p className="text-sm opacity-80 tracking-[1px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit itaque voluptatum aspernatur corporis eaque atque provident repellat deserunt nemo perspiciatis quasi distinctio recusandae iste! Dolore, voluptatum! Optio cumque numquam aspernatur, nisi asperiores similique.</p>
+                <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                   View More
                 </button>
               </div>
@@ -383,15 +399,15 @@ export default function PanAfricaPage() {
 
 
             {/* Saturday Run */}
-            <div className="flex relative z-10 items-center gap-4 w-fit border-2 border-white">
-              <div>
-                <Image/>
+            <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
+              <div className="w-full">
+                <Image src='/event2.jpg' width={120} height={120} alt='Friday run image' className='rounded-[8px] w-full'/>
               </div>
 
-              <div>
-                <h3 className="">Friday Run 10/10/2027</h3>
-                <p className="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                <button className="mt-5 w-full bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+              <div className="w-full text-gray-200">
+                <h3 className="font-semibold">Saturday Run 11/10/2027</h3>
+                <p className="text-sm opacity-80 tracking-[1px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit itaque voluptatum aspernatur corporis eaque atque provident repellat deserunt nemo perspiciatis quasi distinctio recusandae iste! Dolore, voluptatum! Optio cumque numquam aspernatur, nisi asperiores similique.</p>
+                <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                   View More
                 </button>
               </div>
@@ -400,15 +416,15 @@ export default function PanAfricaPage() {
 
 
             {/* Sunday Run */}
-            <div className="flex relative z-10 items-center gap-4 w-fit border-2 border-white">
-              <div>
-                <Image/>
+            <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
+              <div className="w-full">
+                <Image src='/event3.jpg' width={120} height={120} alt='Friday run image' className='rounded-[8px] w-full'/>
               </div>
 
-              <div>
-                <h3 className="">Friday Run 10/10/2027</h3>
-                <p className="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                <button className="mt-5 w-full bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+              <div className="w-full text-gray-200">
+                <h3 className="font-semibold">Sunday Run 12/10/2027</h3>
+                <p className="text-sm opacity-80 tracking-[1px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit itaque voluptatum aspernatur corporis eaque atque provident repellat deserunt nemo perspiciatis quasi distinctio recusandae iste! Dolore, voluptatum! Optio cumque numquam aspernatur, nisi asperiores similique.</p>
+                <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                   View More
                 </button>
               </div>
