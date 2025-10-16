@@ -6,6 +6,22 @@ import { Users, Clock, Award, Star } from 'lucide-react';
 import PanAfricaNavbar from "./PanAfricaNavbar";
 import Footer from "../Footer";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css/navigation';
+
+// game
+import { Dock, DockIcon } from "@/components/ui/dock";
+import GuessGame from "@/components/GuessGame"; 
+import { GrGamepad } from "react-icons/gr";
+
+
+
+
+
 
 // Helper function to calculate countdown
 const calculateTimeLeft = () => {
@@ -30,6 +46,11 @@ const calculateTimeLeft = () => {
 };
 
 export default function PanAfricaPage() {
+  const [showGame, setShowGame] = useState(false);
+
+
+
+
   const footerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -104,18 +125,21 @@ export default function PanAfricaPage() {
 
   
 
+  // Function to handle navbar visibility
+  const shouldShowNavbar = !showGame;
+
   return (
     <>
       {/* Navbar PAN 2027 */}
-      <PanAfricaNavbar />
+      {shouldShowNavbar && <PanAfricaNavbar />}
 
       {/* main body of PAN 2027 */}
       <motion.div
         variants={footerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="min-h-screen pt-32 bg-cover relative overflow-hidden bg-green-900/80 text-gray-200 ">
+        animate="visible"
+        className="min-h-screen pt-32 bg-cover relative overflow-hidden bg-green-900/80 text-gray-200 "
+      >
         {/* Animated Floating Background */}
         <ul className="background">
           {Array.from({ length: 10 }).map((_, i) => (
@@ -139,12 +163,12 @@ export default function PanAfricaPage() {
 
           {/* count down */}
           <div className="flex items-center px-[1rem] lg:px-[3rem] gap-3 justify-center mt-8  lg:gap-12">
-             {/* Localized floating background for dark section */}
-          <ul className="background">
-            {Array.from({ length: 10 }).map((_, i) => (
-              <li key={i}></li>
-            ))}
-          </ul>
+            {/* Localized floating background for dark section */}
+            <ul className="background">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
             {/* Days */}
             <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-blue-600 mb-1 sm:mb-2">
@@ -299,7 +323,10 @@ export default function PanAfricaPage() {
         </div>
 
         {/* welcome section */}
-        <div ref={welcomeRef} className="relative z-10 px-[1rem] lg:px-[3rem] my-10 mt-20 overflow-hidden">
+        <div
+          ref={welcomeRef}
+          className="relative z-10 px-[1rem] lg:px-[3rem] my-10 mt-20 overflow-hidden"
+        >
           {/* Localized floating background for dark section */}
           <ul className="background">
             {Array.from({ length: 10 }).map((_, i) => (
@@ -310,7 +337,11 @@ export default function PanAfricaPage() {
           {balloonBurstId > 0 && (
             <div key={balloonBurstId} className="beers">
               {beers.map((b) => (
-                <div key={b.key} className={b.cls} style={{ left: b.left, ...b.style }} />
+                <div
+                  key={b.key}
+                  className={b.cls}
+                  style={{ left: b.left, ...b.style }}
+                />
               ))}
             </div>
           )}
@@ -360,7 +391,7 @@ export default function PanAfricaPage() {
         </div>
 
         {/* Event details friday - Sunday */}
-        <div className="relative z-10 my-10 mt-20">
+        <div className="relative z-10 my-1 ">
           {/* HEADING */}
           <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
@@ -370,12 +401,12 @@ export default function PanAfricaPage() {
               ))}
             </ul>
             <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
-              PAN 
+              HASH
             </h1>
 
             <div className="relative text-center">
               <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
-                AFRICA HASH 2027
+                PAN AFRICA HASH 2027
               </p>
               <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
                 EVENT DASHBOARD
@@ -383,107 +414,541 @@ export default function PanAfricaPage() {
             </div>
           </section>
 
-
           {/* Body of event dashboard */}
           <div className="relative py-12 gap-5 z-10 px-[1rem] lg:px-[3rem] text-gray-800 grid grid-cols-1 md:grid-cols-2 lg:flex items-center lg:justify-between justify-center">
-
             {/* Friday Run */}
             <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
               <div className="w-full">
-                <Image src='/event1.jpg' width={120} height={120} alt='Friday run image' className='rounded-[8px] w-full'/>
+                <Image
+                  src="/event1.jpg"
+                  width={120}
+                  height={120}
+                  alt="Friday run image"
+                  className="rounded-[8px] w-full"
+                />
               </div>
 
               <div className="w-full text-gray-200">
                 <h3 className="font-semibold">Friday Run 10/10/2027</h3>
-                <p className="text-sm opacity-80 tracking-[1px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit itaque voluptatum aspernatur corporis eaque atque provident repellat deserunt nemo perspiciatis quasi distinctio recusandae iste! Dolore, voluptatum! Optio cumque numquam aspernatur, nisi asperiores similique.</p>
+                <p className="text-sm opacity-80 tracking-[1px]">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit
+                  itaque voluptatum aspernatur corporis eaque atque provident
+                  repellat deserunt nemo perspiciatis quasi distinctio
+                  recusandae iste! Dolore, voluptatum! Optio cumque numquam
+                  aspernatur, nisi asperiores similique.
+                </p>
                 <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                   View More
                 </button>
               </div>
             </div>
-
-
 
             {/* Saturday Run */}
             <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
               <div className="w-full">
-                <Image src='/event2.jpg' width={120} height={120} alt='Friday run image' className='rounded-[8px] w-full'/>
+                <Image
+                  src="/event2.jpg"
+                  width={120}
+                  height={120}
+                  alt="Friday run image"
+                  className="rounded-[8px] w-full"
+                />
               </div>
 
               <div className="w-full text-gray-200">
                 <h3 className="font-semibold">Saturday Run 11/10/2027</h3>
-                <p className="text-sm opacity-80 tracking-[1px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit itaque voluptatum aspernatur corporis eaque atque provident repellat deserunt nemo perspiciatis quasi distinctio recusandae iste! Dolore, voluptatum! Optio cumque numquam aspernatur, nisi asperiores similique.</p>
+                <p className="text-sm opacity-80 tracking-[1px]">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit
+                  itaque voluptatum aspernatur corporis eaque atque provident
+                  repellat deserunt nemo perspiciatis quasi distinctio
+                  recusandae iste! Dolore, voluptatum! Optio cumque numquam
+                  aspernatur, nisi asperiores similique.
+                </p>
                 <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                   View More
                 </button>
               </div>
             </div>
 
-
-
             {/* Sunday Run */}
             <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
               <div className="w-full">
-                <Image src='/event3.jpg' width={120} height={120} alt='Friday run image' className='rounded-[8px] w-full'/>
+                <Image
+                  src="/event3.jpg"
+                  width={120}
+                  height={120}
+                  alt="Friday run image"
+                  className="rounded-[8px] w-full"
+                />
               </div>
 
               <div className="w-full text-gray-200">
                 <h3 className="font-semibold">Sunday Run 12/10/2027</h3>
-                <p className="text-sm opacity-80 tracking-[1px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit itaque voluptatum aspernatur corporis eaque atque provident repellat deserunt nemo perspiciatis quasi distinctio recusandae iste! Dolore, voluptatum! Optio cumque numquam aspernatur, nisi asperiores similique.</p>
+                <p className="text-sm opacity-80 tracking-[1px]">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit
+                  itaque voluptatum aspernatur corporis eaque atque provident
+                  repellat deserunt nemo perspiciatis quasi distinctio
+                  recusandae iste! Dolore, voluptatum! Optio cumque numquam
+                  aspernatur, nisi asperiores similique.
+                </p>
                 <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                   View More
                 </button>
               </div>
             </div>
           </div>
-
-
-
-
-
-
-
-
-
         </div>
-
-
-        {/* Tourism */}
-        <div className="relative z-10 my-10 mt-20">
-          {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
-            {/* Localized background effect (dark variant for light bg) */}
-            <ul className="background-dark">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <li key={i}></li>
-              ))}
-            </ul>
-            <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
-              PAN 
-            </h1>
-
-            <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
-                AFRICA HASH 2027
-              </p>
-              <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
-               TOURISM
-              </h2>
-            </div>
-          </section>
-
-
-
-
-        </div>
-
-
-
-
-
-
-
       </motion.div>
+
+      {/* Tourism */}
+      <div className="relative z-10 my-1 ">
+        {/* HEADING */}
+        <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          {/* Localized background effect (dark variant for light bg) */}
+          <ul className="background-dark">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <li key={i}></li>
+            ))}
+          </ul>
+          <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
+            HASH
+          </h1>
+
+          <div className="relative text-center">
+            <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              PAN AFRICA HASH 2027
+            </p>
+            <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
+              TOURISM
+            </h2>
+
+            {/* button to take a tour */}
+            <a
+              href="https://tourismsierraleone.com/where-to-go/freetown"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex items-center border-2 border-[#f9b84f] px-4 py-2 rounded-lg bg-[#f9b84f] text-white transition-all duration-500 ease-in-out gap-2 cursor-pointer font-bold w-fit mx-auto"
+            >
+              Take a Tour
+            </a>
+          </div>
+        </section>
+
+        {/* swiperjs / body of Tourism section */}
+        <section className="relative py-2 pt-32 bg-cover bg-green-900/80 text-gray-200 overflow-hidden">
+          {/* Animated Floating Background */}
+          <ul className="background">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <li key={i}></li>
+            ))}
+          </ul>
+
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/50"></div>
+          
+          {/* swipers */}
+          <div
+            id="section4"
+            className="relative z-10 md:px-[3rem] overflow-hidden font-arvo px-[1rem] pb-[2rem]"
+          >
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={30}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 },
+              }}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+              }}
+              navigation={true}
+              // pagination={{
+              // clickable: true,
+              // }}
+              modules={[Pagination, Autoplay]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s1.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/D5.png"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/D6.png"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/D7.png"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s2.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/D3.png"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s3.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s4.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s5.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s6.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s7.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s8.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s9.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s10.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s11.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s12.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s13.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s14.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s15.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s16.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s17.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s19.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s21.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+
+              <SwiperSlide>
+                <div className=" overflow-hidden relative w-full h-48">
+                  <Image
+                    src="/s22.jpg"
+                    fill
+                    alt="image"
+                    className="rounded-[12px] object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </section>
+      </div>
+
+      {/* sh4 hash game */}
+      <div className="relative z-10 my-1 ">
+        {/* HEADING */}
+        <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          {/* Localized background effect (dark variant for light bg) */}
+          <ul className="background-dark">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <li key={i}></li>
+            ))}
+          </ul>
+          <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
+            HASH
+          </h1>
+
+          <div className="relative text-center">
+            <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              THE ULTIMATE HASH GAME
+            </p>
+            <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
+              ARE YOU ON?
+            </h2>
+
+            {/* Play Button */}
+            <div>
+              <div className="flex  justify-center pt-8">
+                <button
+                  onClick={() => setShowGame(true)}
+                  className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-700 hover:text-gray-900 font-semibold px-6 py-3 rounded-2xl transition-all flex items-center gap-2"
+                >
+                  Press Play <GrGamepad className="animate-bounce text-2xl" />
+                </button>
+              </div>
+
+              <p className="text-base text-center pt-1 pb-8 "><i>How well do you know the hash? Press Play to find out</i></p>
+
+              {/* Game Modal */}
+      {showGame && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md">
+          <div className="relative w-[90%] md:w-[500px] max-h-[85vh] overflow-y-auto bg-gray-900 text-white rounded-2xl p-4 shadow-xl">
+            <button
+              onClick={() => {
+                console.log('X button clicked - closing game');
+                setShowGame(false);
+              }}
+              className="absolute top-3 cursor-pointer right-4 text-gray-300 hover:text-white text-xl z-10"
+            >
+              ✖
+            </button>
+             <GuessGame onClose={() => setShowGame(false)} />
+          </div>
+        </div>
+      )}
+
+
+
+            </div>
+
+
+
+          </div>
+        </section>
+
+        {/* swiperjs / body of Tourism section */}
+        <section className="relative py-2 pt-32 bg-cover bg-green-900/80 text-gray-200 overflow-hidden">
+          {/* Animated Floating Background */}
+          <ul className="background">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <li key={i}></li>
+            ))}
+          </ul>
+
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/50"></div>
+        </section>
+      </div>
+
+      
+
+
+
+
+
+
+
 
       {/* Footer PAN 2027 */}
       <Footer />

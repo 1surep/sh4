@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Dock, DockIcon } from "@/components/ui/dock";
-import GuessGame from "@/components/GuessGame"; 
+import GuessGame from "@/components/GuessGame";
 import { GrGamepad } from "react-icons/gr";
 
 const HeroEight = () => {
@@ -86,24 +86,30 @@ const HeroEight = () => {
         <div className="flex  justify-center pt-8">
           <button
             onClick={() => setShowGame(true)}
-            className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-700 hover:text-gray-900 font-semibold px-6 py-3 rounded-2xl transition-all flex items-center gap-2">
-            Press Play <GrGamepad className="animate-bounce text-2xl"/>
+            className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-700 hover:text-gray-900 font-semibold px-6 py-3 rounded-2xl transition-all flex items-center gap-2"
+          >
+            Press Play <GrGamepad className="animate-bounce text-2xl" />
           </button>
         </div>
-        <p className="text-sm text-center pt-1 pb-8 "><i>How well do you know the hash? Press Play to find out</i></p>
+        <p className="text-base text-center pt-1 pb-8 ">
+          <i>How well do you know the hash? Press Play to find out</i>
+        </p>
       </section>
 
       {/* Game Modal */}
       {showGame && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md">
           <div className="relative w-[90%] md:w-[500px] max-h-[85vh] overflow-y-auto bg-gray-900 text-white rounded-2xl p-4 shadow-xl">
-            <button
-              onClick={() => setShowGame(false)}
-              className="absolute top-3 right-4 text-gray-300 hover:text-white text-xl"
+          <button
+              onClick={() => {
+                console.log('X button clicked - closing game');
+                setShowGame(false);
+              }}
+              className="absolute top-3 cursor-pointer right-4 text-gray-300 hover:text-white text-xl z-10"
             >
               ✖
             </button>
-             <GuessGame onClose={() => setShowGame(false)} />
+            <GuessGame onClose={() => setShowGame(false)} />
           </div>
         </div>
       )}
