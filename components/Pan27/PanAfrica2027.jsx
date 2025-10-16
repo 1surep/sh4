@@ -298,15 +298,16 @@ export default function PanAfricaPage() {
               ))}
             </div>
           )}
+          <h2 className="text-center text-gray-100 font-black  text-3xl lg:text-5xl uppercase">
+            Welcome to PAN Africa Hash 2027
+          </h2>
+
           {balloonBurstId > 0 && (
             <div className="foot-images">
               <div className="foot-img foot-left" />
               <div className="foot-img foot-right" />
             </div>
           )}
-          <h2 className="text-center text-gray-100 font-black  text-3xl lg:text-5xl uppercase">
-            Welcome to PAN Africa Hash 2027
-          </h2>
 
           <div className="lg:flex grid grid-cols-1 items-center gap-4 py-10 w-full">
             <Image
@@ -362,6 +363,62 @@ export default function PanAfricaPage() {
 
 
           {/* Body of event dashboard */}
+          <div className="relative py-12 gap-5 z-10 px-[1rem] lg:px-[3rem] text-gray-200 grid grid-cols-1 md:grid-cols-2 lg:flex items-center lg:justify-between justify-center">
+
+            {/* Friday Run */}
+            <div className="flex relative z-10 items-center gap-4 w-fit border-2 border-white">
+              <div>
+                <Image/>
+              </div>
+
+              <div>
+                <h3 className="">Friday Run 10/10/2027</h3>
+                <p className="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                <button className="mt-5 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                  View More
+                </button>
+              </div>
+            </div>
+
+
+
+            {/* Saturday Run */}
+            <div className="flex relative z-10 items-center gap-4 w-fit border-2 border-white">
+              <div>
+                <Image/>
+              </div>
+
+              <div>
+                <h3 className="">Friday Run 10/10/2027</h3>
+                <p className="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                <button className="mt-5 w-full bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                  View More
+                </button>
+              </div>
+            </div>
+
+
+
+            {/* Sunday Run */}
+            <div className="flex relative z-10 items-center gap-4 w-fit border-2 border-white">
+              <div>
+                <Image/>
+              </div>
+
+              <div>
+                <h3 className="">Friday Run 10/10/2027</h3>
+                <p className="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                <button className="mt-5 w-full bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                  View More
+                </button>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
 
 
 

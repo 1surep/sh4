@@ -1195,11 +1195,14 @@
 }
 
 .foot-images {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 14px;
-  height: 120px;
+  position: relative; /* now in normal flow below heading */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* right-end side */
+  gap: 16px;
+  width: 100%;
+  padding: 12px 0 0 0;
+  min-height: 84px;
   pointer-events: none;
   z-index: 1;
 }
@@ -1233,13 +1236,11 @@
 }
 
 .foot-left {
-  left: 6%;
   /* pop-in, then looped bob */
   animation: foot-pop 600ms ease-out forwards, foot-bob-left 3.4s ease-in-out .6s infinite both;
 }
 
 .foot-right {
-  right: 6%;
   /* slightly different timing for natural desync */
   animation: foot-pop 600ms ease-out forwards, foot-bob-right 3s ease-in-out .6s infinite both;
 }
