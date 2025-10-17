@@ -6,6 +6,7 @@ import { Users, Clock, Award, Star } from 'lucide-react';
 import PanAfricaNavbar from "./PanAfricaNavbar";
 import Footer from "../Footer";
 import Image from "next/image";
+import ChatbotModal from "../Chat/ChatbotModal";
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
@@ -1076,6 +1077,9 @@ export default function PanAfricaPage() {
 
       {/* Footer PAN 2027 */}
       <Footer />
+
+      {/* Chatbot Modal */}
+      <ChatbotModal />
     </>
   );
 }

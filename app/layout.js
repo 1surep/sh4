@@ -1,15 +1,17 @@
-'use client'
+"use client";
 
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { FaArrowUp } from "react-icons/fa";
 
 const outfit = Outfit({
   variable: "--font-outfit", // Define the CSS variable
   subsets: ["latin"],
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 // export const metadata = {
@@ -19,14 +21,23 @@ const outfit = Outfit({
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const isPanAfricaPage = pathname === '/pan-africa-2027';
+  const isPanAfricaPage = pathname === "/pan-africa-2027";
 
   return (
     <html lang="en" data-theme="light">
       <body className={`${outfit.variable} font-outfit antialiased`}>
-        {!isPanAfricaPage && <Navbar/>}
+        {!isPanAfricaPage && <Navbar />}
         {children}
-        {!isPanAfricaPage && <Footer/>}
+        {!isPanAfricaPage && <Footer />}
+
+        {/* Back to Top Button */}
+        <Link href="#top">
+          <div className="w-[5px] rounded-full px-6 py-4 bg-green-900/80 hover:bg-green-900/100 items-center justify-center ring-8 hover:ring-slate-700 z-50 flex fixed left-5 bottom-5 transition-all duration-300 ease-in-out">
+            <span className="font-bold text-gray-200">
+              <FaArrowUp />
+            </span>
+          </div>
+        </Link>
       </body>
     </html>
   );
