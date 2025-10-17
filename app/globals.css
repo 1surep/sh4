@@ -6,6 +6,11 @@
   themes: light --default, dark --prefersdark, light;
 }
 
+
+*{
+  scroll-behavior: smooth; 
+}
+
 /* Countdown Timer Styles */
 .container {
     display: flex;
@@ -824,22 +829,66 @@
 
 .keg .pipe {
   position: absolute;
-  width: 10px;
-  height: 40px;
+  width: 8px;
+  height: 30px;
   background-color: #ccc;
-  top: 33px;
-  left: 10px;
+  top: 25px;
+  left: 8px;
+}
+
+@media (min-width: 640px) {
+  .keg .pipe {
+    width: 9px;
+    height: 35px;
+    top: 29px;
+    left: 9px;
+  }
+}
+
+@media (min-width: 768px) {
+  .keg .pipe {
+    width: 10px;
+    height: 40px;
+    top: 33px;
+    left: 10px;
+  }
 }
 
 .keg .pipe::before {
-  width: 40px;
-  height: 20px;
+  width: 30px;
+  height: 15px;
   background:
-    radial-gradient(circle at 10px 10px, #eee 7px, #ccc 7px, #ccc 10px, transparent 10px),
+    radial-gradient(circle at 8px 8px, #eee 5px, #ccc 5px, #ccc 8px, transparent 8px),
     linear-gradient(#ccc 50%, #999 50%);
-  border-radius: 10px;
+  border-radius: 8px;
   top: -2px;
-  left: -5px;
+  left: -4px;
+}
+
+@media (min-width: 640px) {
+  .keg .pipe::before {
+    width: 35px;
+    height: 18px;
+    background:
+      radial-gradient(circle at 9px 9px, #eee 6px, #ccc 6px, #ccc 9px, transparent 9px),
+      linear-gradient(#ccc 50%, #999 50%);
+    border-radius: 9px;
+    top: -2px;
+    left: -4px;
+  }
+}
+
+@media (min-width: 768px) {
+  .keg .pipe::before {
+    width: 40px;
+    height: 20px;
+    background:
+      radial-gradient(circle at 10px 10px, #eee 7px, #ccc 7px, #ccc 10px, transparent 10px),
+      linear-gradient(#ccc 50%, #999 50%);
+    border-radius: 10px;
+    top: -2px;
+    left: -5px;
+  }
 }
 
 .keg .pipe::after {
@@ -868,12 +917,30 @@
 .keg .handle {
   position: absolute;
   border-style: solid;
-  border-width: 50px 10px 0 10px;
+  border-width: 30px 6px 0 6px;
   border-color: black transparent transparent transparent;
-  top: -10px;
-  left: 5px;
-  transform-origin: center 50px;
+  top: -6px;
+  left: 3px;
+  transform-origin: center 30px;
   animation: handle 5s infinite;
+}
+
+@media (min-width: 640px) {
+  .keg .handle {
+    border-width: 40px 8px 0 8px;
+    top: -8px;
+    left: 4px;
+    transform-origin: center 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .keg .handle {
+    border-width: 50px 10px 0 10px;
+    top: -10px;
+    left: 5px;
+    transform-origin: center 50px;
+  }
 }
 
 @keyframes handle {
@@ -882,30 +949,92 @@
 }
 
 .keg .handle::before {
-  width: 20px;
-  height: 10px;
+  width: 12px;
+  height: 6px;
   background-color: #ccc;
-  top: -60px;
-  left: -10px;
-  border-radius: 5px 5px 0 0;
+  top: -36px;
+  left: -6px;
+  border-radius: 3px 3px 0 0;
+}
+
+@media (min-width: 640px) {
+  .keg .handle::before {
+    width: 16px;
+    height: 8px;
+    top: -48px;
+    left: -8px;
+    border-radius: 4px 4px 0 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .keg .handle::before {
+    width: 20px;
+    height: 10px;
+    top: -60px;
+    left: -10px;
+    border-radius: 5px 5px 0 0;
+  }
 }
 
 .keg .handle::after {
-  width: 10px;
-  height: 20px;
+  width: 6px;
+  height: 12px;
   background-color: #ccc;
-  top: -20px;
-  left: -5px;
+  top: -12px;
+  left: -3px;
+}
+
+@media (min-width: 640px) {
+  .keg .handle::after {
+    width: 8px;
+    height: 16px;
+    top: -16px;
+    left: -4px;
+  }
+}
+
+@media (min-width: 768px) {
+  .keg .handle::after {
+    width: 10px;
+    height: 20px;
+    top: -20px;
+    left: -5px;
+  }
 }
 
 .glass::before {
-  width: 50px;
-  height: 40px;
-  border: 10px solid;
-  top: 20px;
-  right: -20px;
-  border-radius: 0 40% 40% 0;
+  width: 35px;
+  height: 28px;
+  border: 7px solid;
+  top: 14px;
+  right: -14px;
+  border-radius: 0 28% 28% 0;
   clip-path: inset(0 0 0 72%);
+}
+
+@media (min-width: 640px) {
+  .glass::before {
+    width: 42px;
+    height: 34px;
+    border: 8px solid;
+    top: 17px;
+    right: -17px;
+    border-radius: 0 34% 34% 0;
+    clip-path: inset(0 0 0 72%);
+  }
+}
+
+@media (min-width: 768px) {
+  .glass::before {
+    width: 50px;
+    height: 40px;
+    border: 10px solid;
+    top: 20px;
+    right: -20px;
+    border-radius: 0 40% 40% 0;
+    clip-path: inset(0 0 0 72%);
+  }
 }
 
 .beer::before {
