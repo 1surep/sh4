@@ -24,10 +24,10 @@ const Hero12=()=>{
           {/* BODY SECTION */}
           <section className="pb-16 bg-yellow-50 ">
 
-            <div className="flex flex-col items-center justify-center py-12">
+            <div className="flex flex-col items-center justify-center py-3">
               <h1 className="text-gray-700 font-bold text-3xl">Questions? Suggestions?</h1>
               <p className="py-1 text-gray-600">Drop us a message - we'll respond as soon as possible.</p>
-              <h1>Contact Us</h1>
+              {/* <h1 className="text-gray-700 font-bold text-3xl">Contact Us</h1> */}
             </div>
 
 

@@ -12,12 +12,21 @@ import HeroTen from "@/components/Hero/HeroTen";
 import HeroThree from "@/components/Hero/HeroThree";
 import HeroTwo from "@/components/Hero/HeroTwo";
 import React from "react";
+import ChatbotModal from "@/components/Chat/ChatbotModal";
 
 
 const Home=()=>{
   return (
-    <>
-      <main className="">
+    <div 
+    style={{
+        
+      width: "100vw",
+      minHeight: "100vh",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}>
+
+      <main  id="top">
         <HeroOne/>
         <HeroTwo/>
         <HeroThree/>
@@ -35,11 +44,17 @@ const Home=()=>{
        
     
         </main>
-      </>
+        {/* chatbot modal */}
+        <ChatbotModal />
+      </div>
     )
 
 
 
   };
 
-  export default Home;
+  const WrappedHome = () => (
+    <Home />
+  );
+
+  export default WrappedHome;
