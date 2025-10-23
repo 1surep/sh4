@@ -397,7 +397,7 @@ export default function PanAfricaPage() {
               <div className="flex items-start justify-between">
                 <div>
                   <h3 className="text-gray-900 font-extrabold text-lg">
-                    Accommodation
+                    Hotels & Bookings
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
                     Find stay options and room distance from the Main venue.
@@ -459,7 +459,7 @@ export default function PanAfricaPage() {
                 PAN AFRICA HASH 2027
               </p>
               <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
-                VISA DASHBOARD / AIR PORT PICK-UP
+                VISA DASHBOARD / LOGISTICS
               </h2>
             </div>
           </section>

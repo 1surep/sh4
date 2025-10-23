@@ -124,8 +124,10 @@ const PanAfricaNavbar = () => {
         {/* Desktop PAN Nav items */}
         <div className='hidden lg:flex items-center gap-6 xl:gap-8 z-10'>
           <div className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>About PAN Africa</div>
+          <div className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Visa / Logistics</div>
+          <div className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Sponsors</div>
           <div className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Tourism</div>
-          <div className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Visa</div>
+     
 
           <Link 
             href='#gallery'
@@ -133,8 +135,11 @@ const PanAfricaNavbar = () => {
             className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Gallery
           </Link>
 
-          <div className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Security/Emergency</div>
-          <div className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Our Sponsor</div>
+   
+
+          <div className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>LOC & Advisory Council</div>
+
+         
         </div>
 
         {/* Mobile Menu Button */}
