@@ -139,13 +139,13 @@ const Navbar = () => {
 
                 {/* Admin login */}
                 <motion.div
-                    className="flex items-center gap-3 font-black text-gray-700"
+                    className="flex cursor-pointer hover:text-cyan-600 items-center gap-1 font-black text-gray-700"
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     whileHover={{ scale: 1.05 }}
                 >
-                    Misma <LuUserCog className="text-2xl text-gray-700"/>
+                    Misma <LuUserCog className="text-2xl text-gray-700 hover:text-cyan-600"/>
                 </motion.div>
             </nav>
 
