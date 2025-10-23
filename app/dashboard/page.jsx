@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Users, ShoppingBag, TrendingUp, DollarSign, Home, LogOut, Plus, UserPlus } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
@@ -8,8 +8,15 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const Dashboard = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
   const router = useRouter();
+
+  // Protect the dashboard - redirect to signin if not authenticated
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/signin');
+    }
+  }, [user, loading, router]);
 
   const footerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -33,6 +40,23 @@ const Dashboard = () => {
     logout();
     router.push('/signin');
   };
+
+  // Show loading state while checking authentication
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render dashboard if not authenticated
+  if (!user) {
+    return null;
+  }
 
   return (
     <>

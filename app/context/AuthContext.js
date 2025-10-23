@@ -32,6 +32,10 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setUser(null);
+    // Clear the authentication cookie
+    if (typeof document !== 'undefined') {
+      document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
   };
 
   return (

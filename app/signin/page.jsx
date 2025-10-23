@@ -76,16 +76,19 @@ export default function SignIn() {
             email: response.data.user.email,
             createdAt: response.data.user.createdAt
           };
-          
+
           // console.log('Calling login with userData:', userData);
-          
+
           authContext.login(userData, response.data.token);
-          
+
+          // Store token in cookie for middleware authentication
+          document.cookie = `token=${response.data.token}; path=/; max-age=${60 * 60 * 24 * 7}`; // 7 days
+
           // console.log('User logged in successfully');
-          
+
           // Only show success message AFTER login succeeds
           setSuccess(response.data.message || 'Signed in successfully!');
-          
+
           // Redirect to home page after 1.5 seconds
           setTimeout(() => {
             // console.log('Redirecting to home page...');
