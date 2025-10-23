@@ -6,6 +6,7 @@ import { LuUserCog } from "react-icons/lu";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link"; // Added Link import
+import { FaUserShield } from "react-icons/fa";
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -143,7 +144,7 @@ const Navbar = () => {
           </motion.ul>
 
           {/* Admin login */}
-          <Link href={'/signup'}>
+          <Link href={"/signin"}>
             <motion.div
               className="flex cursor-pointer hover:text-cyan-600 items-center gap-1 font-black text-gray-700"
               initial={{ opacity: 0, x: 50 }}
@@ -151,8 +152,7 @@ const Navbar = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
             >
-              Misma{" "}
-              <LuUserCog className="text-2xl text-gray-700 hover:text-cyan-600" />
+              Misma <FaUserShield className="text-2xl text-cyan-600" />
             </motion.div>
           </Link>
         </nav>
@@ -287,10 +287,12 @@ const Navbar = () => {
                     className="mt-8 pt-4 border-t border-gray-200"
                     variants={menuItemVariants}
                   >
-                    <div className="flex items-center text-xl gap-3 font-black text-gray-700">
-                      <LuUserCog className="text-2xl" />
-                      <span>Misma</span>
-                    </div>
+                    <Link href={"/signin"}>
+                      <div className="flex items-center text-xl gap-3 font-black text-gray-700">
+                        <FaUserShield className="text-2xl text-cyan-600" />
+                        <span>Misma</span>
+                      </div>
+                    </Link>
                   </motion.div>
                 </div>
               </motion.div>
