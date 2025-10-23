@@ -3,7 +3,6 @@ import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { useAuth } from "../context/AuthContext";
 
 
 
@@ -21,7 +20,6 @@ const SignUp=()=>{
     const [success, setSuccess] = useState('');
 
     const router = useRouter();
-    const { login } = useAuth();
 
     // on submit form change to handleChange = (e) => {
     const handleChange = (e) => {
@@ -44,16 +42,13 @@ const SignUp=()=>{
     try {
       const response = await axios.post('/api/auth/signup', formData);
       
-      if (response.data.success && response.data.user && response.data.token) {
-        setSuccess(response.data.message);
-        login(response.data.user, response.data.token);
+      if (response.data.success) {
+        setSuccess(response.data.message || 'Account created successfully!');
         
+        // Redirect to signin after 1.5 seconds
         setTimeout(() => {
           router.push('/signin');
         }, 1500);
-        setTimeout(() => {
-          setSuccess('');
-        }, 5000);
       }
     } catch (err) {
       const errorMessage = err.response?.data?.message || err.response?.data?.error || 'Something went wrong. Please try again.';
@@ -82,9 +77,10 @@ const SignUp=()=>{
               </p>
             </div>
 
-            {/*  */}
+            {/*  FORM*/}
             
-            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <form className="mt-8 space-y-6 mx-[1rem]" onSubmit={handleSubmit}>
+              {/* NAME */}
               <div>
                 <label htmlFor="name" className="sr-only">Name</label>
                 <input
@@ -98,6 +94,8 @@ const SignUp=()=>{
                   onChange={handleChange}
                 />
               </div>
+
+              {/* EMAIL */}
               
               <div>
                 <label htmlFor="email" className="sr-only">Email</label>
@@ -113,6 +111,7 @@ const SignUp=()=>{
                 />
               </div>
               
+              {/* PASSWORD */}
               <div>
                 <label htmlFor="password" className="sr-only">Password</label>
                 <input
@@ -179,4 +178,3 @@ const SignUp=()=>{
 
 };
 export default SignUp;
-

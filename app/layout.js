@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { FaArrowUp } from "react-icons/fa";
+import { AuthProvider } from "./context/AuthContext";
 
 const outfit = Outfit({
   variable: "--font-outfit", // Define the CSS variable
@@ -22,22 +23,25 @@ const outfit = Outfit({
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const isPanAfricaPage = pathname === "/pan-africa-2027";
+  const isDashboardPage = pathname === "/dashboard";
 
   return (
     <html lang="en" data-theme="light">
       <body className={`${outfit.variable} font-outfit antialiased`}>
-        {!isPanAfricaPage && <Navbar />}
-        {children}
-        {!isPanAfricaPage && <Footer />}
+        <AuthProvider>
+          {!isPanAfricaPage && !isDashboardPage && <Navbar />}
+          {children}
+          {!isPanAfricaPage && !isDashboardPage && <Footer />}
 
-        {/* Back to Top Button */}
-        <Link href="#top">
-          <div className="w-[5px] rounded-full px-6 py-4 bg-green-900/80 hover:bg-green-900/100 items-center justify-center ring-8 hover:ring-slate-700 z-50 flex fixed left-5 bottom-5 transition-all duration-300 ease-in-out">
-            <span className="font-bold text-gray-200">
-              <FaArrowUp />
-            </span>
-          </div>
-        </Link>
+          {/* Back to Top Button */}
+          <Link href="#top">
+            <div className="w-[5px] rounded-full px-6 py-4 bg-green-900/80 hover:bg-green-900/100 items-center justify-center ring-8 hover:ring-slate-700 z-50 flex fixed left-5 bottom-5 transition-all duration-300 ease-in-out">
+              <span className="font-bold text-gray-200">
+                <FaArrowUp />
+              </span>
+            </div>
+          </Link>
+        </AuthProvider>
       </body>
     </html>
   );
