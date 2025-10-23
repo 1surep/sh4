@@ -75,7 +75,7 @@ const HeroTen=()=>{
                     </p>
                     <div className="mt-10 flex items-center justify-center gap-x-6">
                       <a
-                        href="#"
+                        href="#section2"
                         className=" bg-yellow-400 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-300 focus-visible:outline rounded-[12px] focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
                       >
                         JOIN NOW

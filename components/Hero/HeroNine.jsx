@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { FiCornerRightDown } from "react-icons/fi";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const events = [
   {
@@ -90,10 +91,10 @@ const HeroNine = () => {
                     <i>by {event.author}</i>
                   </div>
 
-                  <button className="mt-4 flex items-center border-2 border-[#f9b84f] px-4 py-2 rounded-lg hover:bg-[#f9b84f] hover:text-white transition-all duration-500 ease-in-out gap-2 text-[#f9b84f] cursor-pointer font-bold w-fit">
+                  <Link href={'/event'} className="mt-4 flex items-center border-2 border-[#f9b84f] px-4 py-2 rounded-lg hover:bg-[#f9b84f] hover:text-white transition-all duration-500 ease-in-out gap-2 text-[#f9b84f] cursor-pointer font-bold w-fit">
                     Read More...
                     <FiCornerRightDown className="animate-bounce font-bold" />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}

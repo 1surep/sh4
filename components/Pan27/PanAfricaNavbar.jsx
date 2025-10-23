@@ -106,7 +106,7 @@ const PanAfricaNavbar = () => {
 
           <div className="text-center z-10">
             <p className="text-white font-bold text-sm sm:text-base">PAN Africa 2027</p>
-            <p className="text-xs sm:text-sm text-blue-100">Sierra H4 Vision</p>
+            <p className="text-xs sm:text-sm text-blue-100">Sierra The Duo Kennel</p>
           </div>
         </motion.div>
 

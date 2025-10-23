@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useCallback, useMemo } from "react";
 
 const HeroOne = () => {
@@ -55,26 +56,27 @@ const HeroOne = () => {
           {/* BUTTONS */}
           <div className="md:flex grid grid-cols-1 items-center justify-center mt-8 gap-6 ">
             {/* button 1 */}
-            <div className="  flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-4">
               <a
-                href="#about"
-                className="bg-green-500 cursor-pointer hover:bg-green-700 hover:text-gray-200 text-black font-semibold px-6 py-3 rounded-2xl transition-all">
-                Join The Adventure
+                href="https://pay.monime.io/069165304"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-500 cursor-pointer hover:bg-green-700 hover:text-gray-200 text-black font-semibold px-6 py-3 rounded-2xl transition-all"
+              >
+                Rego PAN Africa 2027
               </a>
-             
             </div>
 
             {/* button 2 */}
             <div className="flex items-center justify-center gap-4">
-              <a
-                href="#about"
-                className="bg-[#f9b84f] cursor-pointer hover:text-gray-700 hover:bg-[#e3a63f] text-black font-semibold px-6 py-3 rounded-2xl transition-all">
+              <Link
+                href="/pan-africa-2027"
+                className="bg-[#f9b84f] cursor-pointer hover:text-gray-700 hover:bg-[#e3a63f] text-black font-semibold px-6 py-3 rounded-2xl transition-all"
+              >
                 On On PAN Africa 2027
-              </a>
-             
+              </Link>
             </div>
           </div>
-
 
           {/* scroll effect bouncing icon */}
           <div className="lg:mt-1 mt-10  flex justify-center">

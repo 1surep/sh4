@@ -23,7 +23,7 @@ const HeroFour=()=>{
 
             {/* write up */}
             <div className="w-full px-[1rem] py-8">
-                {/* Heading */}
+              {/* Heading */}
               <section className="relative flex flex-col items-center justify-center py-16 bg-white">
                 {/* Background word */}
                 <h1 className="absolute text-[6rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
@@ -43,14 +43,29 @@ const HeroFour=()=>{
 
               <div className="py-6">
                 <p className="tracking-[1px] text-base">
-                The Hash House Harriers is an international group of non-competitive social running clubs. Enthusiasts refer to themselves as “hashers” and to the activity as “hashing”. Although the parameters that each chapter sets may differ, in general, a hare sets a trail and is followed by the pack. At the run’s conclusion, hashers typically eat, drink, and socialize. The group typically gets together to humourously note on-trail misbehaviour with tongue-in-cheek drinking songs and “down downs”.
+                  The Hash House Harriers is an international group of
+                  non-competitive social running clubs. Enthusiasts refer to
+                  themselves as “hashers” and to the activity as “hashing”.
+                  Although the parameters that each chapter sets may differ, in
+                  general, a hare sets a trail and is followed by the pack. At
+                  the run’s conclusion, hashers typically eat, drink, and
+                  socialize. The group typically gets together to humourously
+                  note on-trail misbehaviour with tongue-in-cheek drinking songs
+                  and “down downs”.
                 </p>
               </div>
 
               {/* Button */}
-              <button className="items-center border-2 border-[#f9b84f] px-3 py-1 rounded-[8px] hover:bg-yellow-500 hover:text-gray-100 transition-all duration-500 ease-in-out flex gap-1 text-[#f9b84f] cursor-pointer font-bold">
-                Read More...<FiCornerRightDown  className="animate-bounce font-bold"/>
-              </button>
+              <a
+                href="https://www.hashhouseharriers.com/what-is-hashing/"
+                target="_blank"
+                rel="noopener noreferrer"
+               >
+                <button className="items-center border-2 border-[#f9b84f] px-3 py-1 rounded-[8px] hover:bg-yellow-500 hover:text-gray-100 transition-all duration-500 ease-in-out flex gap-1 text-[#f9b84f] cursor-pointer font-bold">
+                  Read More...{" "}
+                  <FiCornerRightDown className="animate-bounce font-bold" />
+                </button>
+              </a>
             </div>
           </div>
         </section>

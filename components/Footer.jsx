@@ -99,38 +99,59 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 text-gray-200">
               <li>
-                <Link href="/" className="hover:text-yellow-400 transition-colors">
+                <Link
+                  href="/"
+                  className="hover:text-yellow-400 transition-colors"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-yellow-400 transition-colors">
+                <Link
+                  href="/about"
+                  className="hover:text-yellow-400 transition-colors"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="hover:text-yellow-400 transition-colors">
+                <Link
+                  href="/events"
+                  className="hover:text-yellow-400 transition-colors"
+                >
                   Events
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="hover:text-yellow-400 transition-colors">
+                <Link
+                  href="/events"
+                  className="hover:text-yellow-400 transition-colors"
+                >
                   PAN Africa 2027
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="hover:text-yellow-400 transition-colors">
+                <Link
+                  href="/gallery"
+                  className="hover:text-yellow-400 transition-colors"
+                >
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-yellow-400 transition-colors">
+                <Link
+                  href="/contact"
+                  className="hover:text-yellow-400 transition-colors"
+                >
                   Contact Us
                 </Link>
               </li>
 
               <li>
-                <Link href="/" className="hover:text-yellow-400 transition-colors">
+                <Link
+                  href="/"
+                  className="hover:text-yellow-400 transition-colors"
+                >
                   Visa
                 </Link>
               </li>
@@ -145,12 +166,18 @@ const Footer = () => {
             <p className="text-gray-200 text-sm mb-4">
               Gearing up for the ultimate hashing event in Africa.
             </p>
-            <Link
-              href="/pan2027"
-              className="bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-300"
-            >
-              Pay Rego
-            </Link>
+
+            {/* Pay rego button */}
+            <div className="">
+              <a
+                href="https://pay.monime.io/069165304"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-300"
+              >
+                Pay Rego
+              </a>
+            </div>
           </motion.div>
 
           {/* Shop with Us */}
@@ -258,7 +285,7 @@ const Footer = () => {
           <p className="text-gray-300 text-sm text-center">
             © {new Date().getFullYear()} Sierra H4. All Rights Reserved.{" "}
             <span className="text-yellow-400 font-medium">
-              Designed & Developed by info@loukama.com
+              Designed & Developed by <b>XGM 1SurePlayer</b>
             </span>
           </p>
         </motion.div>

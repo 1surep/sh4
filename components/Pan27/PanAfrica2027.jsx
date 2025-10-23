@@ -157,8 +157,11 @@ export default function PanAfricaPage() {
             <h1 className="text-center text-gray-100 font-black text-3xl uppercase">
               Count Down to{" "}
             </h1>
-            <h1 className="text-center text-gray-100 font-black text-3xl uppercase">
-              PAN Africa Hash 2027
+            <h1 className="text-center  justify-center text-gray-100 font-black text-3xl uppercase flex items-center gap-1">
+              PAN Africa Hash 2027 
+              <span>  
+                <Image src='/flag.png' width={30} height={30} alt="image-of country-flag" className="rounded-full" />
+              </span>
             </h1>
           </div>
 

@@ -99,7 +99,7 @@ const HeroTwo = () => {
     <>
       <section
         ref={sectionRef}
-        id="section1"
+        id="section2"
         className="relative overflow-hidden px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 min-h-screen pt-16 pb-12 md:pb-16"
         aria-label="Hero section with weekly run information"
       >
