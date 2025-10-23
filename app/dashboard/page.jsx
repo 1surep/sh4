@@ -115,7 +115,7 @@ const Dashboard = () => {
                     <ShoppingBag className="text-blue-500" size={24} />
                   </div>
                 </div>
-                <h3 className="text-gray-800 font-semibold text-sm mb-2">Click to add PAN 2027 Rego Hasher</h3>
+                <h3 className="text-gray-800 font-semibold text-sm mb-2">Click/Add PAN 2027 Rego Hasher</h3>
                 <div className="text-4xl font-bold text-gray-800">+</div>
               </div>
             </motion.div>
@@ -155,7 +155,7 @@ const Dashboard = () => {
                     <UserPlus className="text-blue-500" size={24} />
                   </div>
                 </div>
-                <h3 className="text-gray-800 font-semibold text-sm mb-2">Click to add to Sierra H4 database </h3>
+                <h3 className="text-gray-800 font-semibold text-sm mb-2">Click/Add to Sierra H4 database </h3>
                 <div className="text-4xl font-bold text-gray-800">+</div>
               </div>
             </motion.div>

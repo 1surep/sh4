@@ -37,7 +37,7 @@ const Chatbot = () => {
       console.error("fetch error:", error);
       setMessages((prev) => [
         ...prev,
-        { text: "Error: Purchase more token", sender: "bot" },
+        { text: "Error fetching response:", sender: "bot" },
       ]);
     } finally {
       setLoading(false);
