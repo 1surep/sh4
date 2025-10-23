@@ -288,7 +288,10 @@ const Navbar = () => {
                     variants={menuItemVariants}
                   >
                     <Link href={"/signin"}>
-                      <div className="flex items-center text-xl gap-3 font-black text-gray-700">
+                      <div 
+                        className="flex items-center text-xl gap-3 font-black text-gray-700 hover:text-cyan-600 cursor-pointer py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors"
+                        onClick={toggleMobileMenu}
+                      >
                         <FaUserShield className="text-2xl text-cyan-600" />
                         <span>Misma</span>
                       </div>
