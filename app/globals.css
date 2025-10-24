@@ -1133,7 +1133,7 @@
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.4);
   animation: animate 19s linear infinite;
 }
 

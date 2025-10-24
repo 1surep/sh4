@@ -13,6 +13,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
+import { BsWhatsapp } from "react-icons/bs";
+import Link from "next/link";
 
 // game
 import { Dock, DockIcon } from "@/components/ui/dock";
@@ -41,6 +43,51 @@ const calculateTimeLeft = () => {
 
 export default function PanAfricaPage() {
   const [showGame, setShowGame] = useState(false);
+
+
+  // Our sponsors
+  const dockItems = [
+    {
+      src: "/sponsor/amstel.jpg",
+      name: "Amstel Lager",
+      href: "https://www.facebook.com/share/1LcvFmZSD7/?mibextid=wwXIfr",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+    {
+      src: "/sponsor/np.jpg",
+      name: "National Petroleum",
+      href: "https://npgroup-ltd.com/sierraleone/",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+    {
+      src: "/sponsor/orange.jpg",
+      name: "Orange Money",
+      href: "https://www.orange.sl/en/orange-money.html",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+    {
+      src: "/sponsor/tourism.jpg",
+      name: "Ministry of Tourism and Cultural Affairs",
+      href: "https://tourism.gov.sl/",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+    {
+      src: "/sponsor/uba.jpg",
+      name: "United Bank of Africa",
+      href: "https://www.ubagroup.com",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+  ];
+
+
+
+
+
 
   const footerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -211,7 +258,6 @@ export default function PanAfricaPage() {
 
         {/* GM SH4 welcome section */}
         <div
-         
           ref={welcomeRef}
           className="relative z-10 px-[1rem] lg:px-[3rem] my-10 mt-20 overflow-hidden"
         >
@@ -244,9 +290,10 @@ export default function PanAfricaPage() {
             </div>
           )}
 
-          <div 
-            id='about'
-            className="lg:flex grid grid-cols-1 items-center gap-4 py-10 w-full">
+          <div
+            id="about"
+            className="lg:flex grid grid-cols-1 items-center gap-4 py-10 w-full"
+          >
             <Image
               src="/misma/gm.png"
               width={400}
@@ -411,9 +458,11 @@ export default function PanAfricaPage() {
               <div className="mt-4 text-sm text-gray-600">
                 Official hotels and nearby budget choices.
               </div>
-              <button className="mt-5 w-full bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-lg py-2">
+              <Link href="/pan-africa-2027/hotels">
+              <button className="mt-5 w-full cursor-pointer bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-lg py-2">
                 View details
               </button>
+              </Link>
             </motion.div>
 
             {/* 4. Wait for admin approval & check who is coming */}
@@ -436,7 +485,7 @@ export default function PanAfricaPage() {
               <div className="mt-4 text-sm text-gray-600">
                 We’ll update the list as approvals roll in.
               </div>
-              <button className="mt-5 w-full bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+              <button className="mt-5 w-full bg-yellow-600 cursor-pointer  hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                 Who is coming ?
               </button>
             </motion.div>
@@ -444,11 +493,9 @@ export default function PanAfricaPage() {
         </div>
 
         {/* Visa/PROTOCOL section*/}
-        <div 
-        id='visa'
-        className="relative z-10 my-1 ">
+        <div id="visa" className="relative z-10 my-12 ">
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
             <ul className="background-dark">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -468,14 +515,155 @@ export default function PanAfricaPage() {
               </h2>
             </div>
           </section>
+
+          {/* body of visa message */}
+          <div
+            className="min-h-screen bg-center bg-no-repeat bg-cover"
+            style={{ backgroundImage: "url('/freetown.jpg')" }}
+          >
+            {/* body of visa message */}
+            <div className="relative py-12 bg-cover bg-green-900/80 text-gray-200 overflow-hidden">
+              {/* Animated Floating Background */}
+              <ul className="background">
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <li key={i}></li>
+                ))}
+              </ul>
+
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-black/50"></div>
+
+              <div className="relative z-10 px-[1rem] lg:px-[3rem] max-w-4xl mx-auto">
+                {/* Introduction Text */}
+                <motion.div
+                  variants={itemVariants}
+                  className="bg-white/10 backdrop-blur rounded-xl p-6 lg:p-8 border border-white/20 mb-8"
+                >
+                  <h3 className="text-2xl lg:text-3xl font-bold text-yellow-400 mb-4 text-center">
+                    Visa Information
+                  </h3>
+                  <p className="text-gray-200 text-base tracking-[1px] lg:text-lg leading-relaxed mb-6 text-center">
+                    International participants planning to attend Pan Africa
+                    Hash 2027 in Sierra Leone may need to apply for a visa.
+                    Please use the official link below to begin your visa
+                    application process.
+                  </p>
+
+                  {/* Visa Application Button */}
+                  <div className="flex justify-center mb-6">
+                    <button
+                      className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-900 text-base lg:text-lg font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                      onClick={() =>
+                        window.open("https://www.evisa.gov.sl", "_blank")
+                      }
+                    >
+                      Apply for Visa
+                    </button>
+                  </div>
+                </motion.div>
+
+                {/* Protocol Lead Contact Information */}
+                <motion.div
+                  variants={itemVariants}
+                  className="bg-white/10 backdrop-blur rounded-xl p-6 lg:p-8 border border-white/20"
+                >
+                  <h3 className="text-2xl lg:text-3xl font-bold text-yellow-400 mb-6 text-center">
+                    Protocol Lead
+                  </h3>
+
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-yellow-400 shadow-xl">
+                      <Image
+                        src="/loc/yapyap.jpg"
+                        width={128}
+                        height={128}
+                        alt="Yap Yap Network"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div className="text-center">
+                      <h4 className="text-xl lg:text-2xl font-bold text-yellow-400 mb-2">
+                        Yap Yap Network
+                      </h4>
+                      <p className="text-gray-300 text-base lg:text-lg font-semibold mb-4">
+                        International Coordinator/Protocol Lead
+                      </p>
+                    </div>
+
+                    <div className="bg-white/5 rounded-lg p-4 w-full max-w-md space-y-3">
+                      <div className="flex items-center gap-3 text-gray-200">
+                        <svg
+                          className="w-5 h-5 text-cyan-400 flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          />
+                        </svg>
+                        <a
+                          href="mailto:contactyapyapnetwork@gmail.com"
+                          className="hover:text-cyan-400 transition-colors break-all"
+                        >
+                          contactyapyapnetwork@gmail.com
+                        </a>
+                      </div>
+
+                      <div className="flex items-center gap-3 text-gray-200">
+                        <svg
+                          className="w-5 h-5 text-yellow-400 flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                          />
+                        </svg>
+                        <a
+                          href="tel:+23273928927"
+                          className="hover:text-yellow-400 flex items-center gap-2 transition-colors"
+                        >
+                          +232 73 928 92
+                        </a>
+                      </div>
+
+                      {/* whatapp */}
+                      <p
+                        onClick={() =>
+                          window.open("https://wa.me/2327392892", "_blank")
+                        }
+                        className="flex items-center hover:text-green-500 gap-2 cursor-pointer"
+                      >
+                        <BsWhatsapp className="text-xl text-green-500" /> +232
+                        73 928 92
+                      </p>
+                    </div>
+
+                    <p className="text-center text-gray-300 text-sm mt-4 max-w-lg">
+                      For all visa and protocol-related inquiries, please
+                      contact Yap Yap Network directly. We're here to assist you
+                      with your travel arrangements to Sierra Leone.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Our Sponsor */}
-        <div 
-        id='sponsor'
-        className="relative z-10 my-1 ">
+        <div id="sponsor" className="relative z-10 my-1 ">
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
             <ul className="background-dark">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -495,14 +683,30 @@ export default function PanAfricaPage() {
               </h2>
             </div>
           </section>
+
+          {/* Our Sponsors body section */}
+          <div className=" relative  pt-12 bg-cover  text-gray-200 overflow-hidden flex items-center justify-center py-12 px-[1rem] lg:px-[3rem] w-full">
+            <div className=" grid grid-cols-1 lg:flex items-center gap-4 justify-center">
+              <Dock iconSize={80} className="gap-3 lg:gap-5">
+                {dockItems.map((item, index) => (
+                  <DockIcon
+                    key={index}
+                    src={item.src}
+                    name={item.name}
+                    href={item.href}
+                    target={item.target}
+                    rel={item.rel}
+                  />
+                ))}
+              </Dock>
+            </div>
+          </div>
         </div>
 
         {/* Tourism */}
-        <div
-        id='tourism'
-        className="relative z-10 my-1 ">
+        <div id="tourism" className="relative z-10 my-12 ">
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
             <ul className="background-dark">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -526,7 +730,7 @@ export default function PanAfricaPage() {
                 href="https://tourismsierraleone.com/where-to-go/freetown"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 flex items-center border-2 border-[#f9b84f] px-4 py-2 rounded-lg bg-[#f9b84f] text-white transition-all duration-500 ease-in-out gap-2 cursor-pointer font-bold w-fit mx-auto"
+                className="mt-4 flex items-center border-2 border-[#f9b84f] px-5 py-3 rounded-lg bg-[#f9b84f] text-black transition-all duration-500 ease-in-out gap-2 cursor-pointer font-bold w-fit mx-auto hover:bg-yellow-500"
               >
                 Take a Tour
               </a>
@@ -584,7 +788,7 @@ export default function PanAfricaPage() {
                 <SwiperSlide>
                   <div className=" overflow-hidden relative w-full h-48">
                     <Image
-                     src="/tourism/t2.jpg"
+                      src="/tourism/t2.jpg"
                       fill
                       alt="image"
                       className="rounded-[12px] object-cover"
@@ -940,11 +1144,6 @@ export default function PanAfricaPage() {
                     />
                   </div>
                 </SwiperSlide>
-
-                
-
-
-
               </Swiper>
             </div>
           </section>
@@ -953,7 +1152,7 @@ export default function PanAfricaPage() {
         {/* sh4 hash game */}
         <div className="relative z-10 my-1 ">
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
             <ul className="background-dark">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -977,7 +1176,7 @@ export default function PanAfricaPage() {
                 <div className="flex  justify-center pt-8">
                   <button
                     onClick={() => setShowGame(true)}
-                    className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-700 hover:text-gray-900 font-semibold px-6 py-3 rounded-2xl transition-all flex items-center gap-2"
+                    className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-black hover:text-gray-900 font-bold px-5 py-3 rounded-lg transition-all flex items-center gap-2"
                   >
                     Press Play <GrGamepad className="animate-bounce text-2xl" />
                   </button>
@@ -1025,7 +1224,7 @@ export default function PanAfricaPage() {
         {/* Gallery section*/}
         <div id="gallery" className="relative z-10 my-1 ">
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
             <ul className="background-dark">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -1047,12 +1246,147 @@ export default function PanAfricaPage() {
           </section>
 
           {/* gallery section */}
+          <div className="relative py-12 px-[1rem] lg:px-[3rem] bg-gray-50">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {/* Image 1 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/d2.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 2 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/d3.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 3 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/d4.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 4 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/D5.png"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 5 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/IMG-20250928-WA0067.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 6 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/IMG-20251011-WA0044.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 7 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/IMG-20251011-WA0046.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 8 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/IMG-20251011-WA0061.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 9 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/IMG-20251011-WA0069.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 10 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/IMG-20251011-WA0070.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 11 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/IMG-20251011-WA0078.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 12 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/IMG-20251011-WA0105.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Event details friday - Sunday */}
         <div className="relative z-10 my-1 ">
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
             <ul className="background-dark">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -1074,97 +1408,109 @@ export default function PanAfricaPage() {
           </section>
 
           {/* Body of event dashboard */}
-          <div className="relative py-12  gap-5 z-10 px-[1rem] lg:px-[3rem] text-gray-800 grid grid-cols-1 md:grid-cols-2 lg:flex items-center lg:justify-between justify-center">
-            {/* Friday Run */}
-            <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
-              <div className="w-full">
-                <Image
-                  src="/event1.jpg"
-                  width={120}
-                  height={120}
-                  alt="Friday run image"
-                  className="rounded-[8px] w-full"
-                />
+          <div className="relative py-12 bg-cover bg-green-900/80 text-gray-200 overflow-hidden">
+            {/* Animated Floating Background */}
+            <ul className="background">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
+
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black/50"></div>
+
+            <div className="relative z-10 px-[1rem] lg:px-[3rem] gap-5 grid grid-cols-1 md:grid-cols-2 lg:flex items-center lg:justify-between justify-center">
+              {/* Friday Run */}
+              <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
+                <div className="w-full">
+                  <Image
+                    src="/event1.jpg"
+                    width={120}
+                    height={120}
+                    alt="Friday run image"
+                    className="rounded-[8px] w-full"
+                  />
+                </div>
+
+                <div className="w-full text-gray-200">
+                  <h3 className="font-semibold">Friday Run 10/10/2027</h3>
+                  <p className="text-sm opacity-80 tracking-[1px]">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa
+                    odit itaque voluptatum aspernatur corporis eaque atque
+                    provident repellat deserunt nemo perspiciatis quasi
+                    distinctio recusandae iste! Dolore, voluptatum! Optio cumque
+                    numquam aspernatur, nisi asperiores similique.
+                  </p>
+                  <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                    View More
+                  </button>
+                </div>
               </div>
 
-              <div className="w-full text-gray-200">
-                <h3 className="font-semibold">Friday Run 10/10/2027</h3>
-                <p className="text-sm opacity-80 tracking-[1px]">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit
-                  itaque voluptatum aspernatur corporis eaque atque provident
-                  repellat deserunt nemo perspiciatis quasi distinctio
-                  recusandae iste! Dolore, voluptatum! Optio cumque numquam
-                  aspernatur, nisi asperiores similique.
-                </p>
-                <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
-                  View More
-                </button>
-              </div>
-            </div>
+              {/* Saturday Run */}
+              <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
+                <div className="w-full">
+                  <Image
+                    src="/event2.jpg"
+                    width={120}
+                    height={120}
+                    alt="Friday run image"
+                    className="rounded-[8px] w-full"
+                  />
+                </div>
 
-            {/* Saturday Run */}
-            <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
-              <div className="w-full">
-                <Image
-                  src="/event2.jpg"
-                  width={120}
-                  height={120}
-                  alt="Friday run image"
-                  className="rounded-[8px] w-full"
-                />
-              </div>
-
-              <div className="w-full text-gray-200">
-                <h3 className="font-semibold">Saturday Run 11/10/2027</h3>
-                <p className="text-sm opacity-80 tracking-[1px]">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit
-                  itaque voluptatum aspernatur corporis eaque atque provident
-                  repellat deserunt nemo perspiciatis quasi distinctio
-                  recusandae iste! Dolore, voluptatum! Optio cumque numquam
-                  aspernatur, nisi asperiores similique.
-                </p>
-                <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
-                  View More
-                </button>
-              </div>
-            </div>
-
-            {/* Sunday Run */}
-            <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
-              <div className="w-full">
-                <Image
-                  src="/event3.jpg"
-                  width={120}
-                  height={120}
-                  alt="Friday run image"
-                  className="rounded-[8px] w-full"
-                />
+                <div className="w-full text-gray-200">
+                  <h3 className="font-semibold">Saturday Run 11/10/2027</h3>
+                  <p className="text-sm opacity-80 tracking-[1px]">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa
+                    odit itaque voluptatum aspernatur corporis eaque atque
+                    provident repellat deserunt nemo perspiciatis quasi
+                    distinctio recusandae iste! Dolore, voluptatum! Optio cumque
+                    numquam aspernatur, nisi asperiores similique.
+                  </p>
+                  <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                    View More
+                  </button>
+                </div>
               </div>
 
-              <div className="w-full text-gray-200">
-                <h3 className="font-semibold">Sunday Run 12/10/2027</h3>
-                <p className="text-sm opacity-80 tracking-[1px]">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa odit
-                  itaque voluptatum aspernatur corporis eaque atque provident
-                  repellat deserunt nemo perspiciatis quasi distinctio
-                  recusandae iste! Dolore, voluptatum! Optio cumque numquam
-                  aspernatur, nisi asperiores similique.
-                </p>
-                <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
-                  View More
-                </button>
+              {/* Sunday Run */}
+              <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
+                <div className="w-full">
+                  <Image
+                    src="/event3.jpg"
+                    width={120}
+                    height={120}
+                    alt="Friday run image"
+                    className="rounded-[8px] w-full"
+                  />
+                </div>
+
+                <div className="w-full text-gray-200">
+                  <h3 className="font-semibold">Sunday Run 12/10/2027</h3>
+                  <p className="text-sm opacity-80 tracking-[1px]">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa
+                    odit itaque voluptatum aspernatur corporis eaque atque
+                    provident repellat deserunt nemo perspiciatis quasi
+                    distinctio recusandae iste! Dolore, voluptatum! Optio cumque
+                    numquam aspernatur, nisi asperiores similique.
+                  </p>
+                  <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                    View More
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-         {/*  LOC & Advisory Council*/}
-         <div id="gallery" className="relative z-10 my-1 ">
+        {/*  LOC & Advisory Council*/}
+        <div id="gallery" className="relative z-10 my-1 ">
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
             <ul className="background-dark">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -1187,9 +1533,10 @@ export default function PanAfricaPage() {
 
           {/* LOC & Advisory Council */}
           {/* LOC & Advisory Council */}
-          <div 
-          id='loc'
-          className="relative py-12 bg-cover bg-green-900/80 text-gray-200 overflow-hidden">
+          <div
+            id="loc"
+            className="relative py-12 bg-cover bg-green-900/80 text-gray-200 overflow-hidden"
+          >
             {/* Animated Floating Background */}
             <ul className="background">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -1209,19 +1556,71 @@ export default function PanAfricaPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {/* LOC Members */}
                   {[
-                    { name: "Dr. Kondo Belleh", position: "Chairman", image: "/tourism/t1.jpg" },
-                    { name: "Fuckimbo", position: "Vice Chairman", image: "/tourism/t2.jpg" },
-                    { name: "Pucci Ing", position: "Head of Communications", image: "/tourism/t3.jpg" },
-                    { name: "Yap Yap Network", position: "International Coordinator/ Head of Protocol", image: "/loc/yapyap.jpg" },
-                    { name: "I Don't Want To", position: "Head of Finance", image: "/tourism/t5.jpg" },
-                    { name: "Neneh Korraw", position: "Head of Logistics", image: "/tourism/t6.jpg" },
-                    { name: "Presidential Virus", position: "Head of Transport", image: "/tourism/t7.jpg" },
-                    { name: "Little Fox & Put It In the Hole", position: "Sponsorship Leads", image: "/tourism/t8.jpg" },
-                    { name: "Cork Wine", position: "Head of Welfare", image: "/tourism/t9.jpg" },
-                    { name: "Toto Specialist", position: "Security Coordinator", image: "/tourism/t10.jpg" },
-                    { name: "Just Capt. Gladis", position: "Head of Medic", image: "/tourism/t11.jpg" },
-                    { name: "Sniper", position: "Hash Cash", image: "/tourism/t12.jpg" },
-                    { name: "Sorry My Lord", position: "Liaison Officer", image: "/tourism/t13.jpg" }
+                    {
+                      name: "Dr. Kondo Belleh",
+                      position: "Chairman",
+                      image: "/tourism/t1.jpg",
+                    },
+                    {
+                      name: "Fuckimbo",
+                      position: "Vice Chairman",
+                      image: "/tourism/t2.jpg",
+                    },
+                    {
+                      name: "Pucci Ing",
+                      position: "Head of Communications",
+                      image: "/tourism/t3.jpg",
+                    },
+                    {
+                      name: "Yap Yap Network",
+                      position: "International Coordinator/ Head of Protocol",
+                      image: "/loc/yapyap.jpg",
+                    },
+                    {
+                      name: "I Don't Want To",
+                      position: "Head of Finance",
+                      image: "/tourism/t5.jpg",
+                    },
+                    {
+                      name: "Neneh Korraw",
+                      position: "Head of Logistics",
+                      image: "/tourism/t6.jpg",
+                    },
+                    {
+                      name: "Presidential Virus",
+                      position: "Head of Transport",
+                      image: "/tourism/t7.jpg",
+                    },
+                    {
+                      name: "Little Fox & Put It In the Hole",
+                      position: "Sponsorship Leads",
+                      image: "/tourism/t8.jpg",
+                    },
+                    {
+                      name: "Cork Wine",
+                      position: "Head of Welfare",
+                      image: "/tourism/t9.jpg",
+                    },
+                    {
+                      name: "Toto Specialist",
+                      position: "Security Coordinator",
+                      image: "/tourism/t10.jpg",
+                    },
+                    {
+                      name: "Just Capt. Gladis",
+                      position: "Head of Medic",
+                      image: "/tourism/t11.jpg",
+                    },
+                    {
+                      name: "Sniper",
+                      position: "Hash Cash",
+                      image: "/tourism/t12.jpg",
+                    },
+                    {
+                      name: "Sorry My Lord",
+                      position: "Liaison Officer",
+                      image: "/tourism/t13.jpg",
+                    },
                   ].map((member, index) => (
                     <motion.div
                       key={index}
@@ -1258,17 +1657,61 @@ export default function PanAfricaPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {/* Advisory Council Members */}
                   {[
-                    { name: "Muff Mask", location: "Accra H3 Ghana", image: "/tourism/t14.jpg" },
-                    { name: "Bushy", location: "Malawi", image: "/tourism/t15.jpg" },
-                    { name: "Short Cutter", location: "Akwa Ibom (Nigeria)", image: "/tourism/t16.jpg" },
-                    { name: "Artur-De- Lion Killer", location: "Kenya", image: "/tourism/t17.jpg" },
-                    { name: "Honey Tumba", location: "Sierra Leone", image: "/tourism/t18.jpg" },
-                    { name: "Slippery Cummer", location: "London H3", image: "/tourism/t19.jpg" },
-                    { name: "Sir KOP", location: "Lagos H3", image: "/tourism/t20.jpg" },
-                    { name: "Sir DLS", location: "Apapa H3 (Nigeria)", image: "/tourism/t21.jpg" },
-                    { name: "Mama Sarama", location: "Bamako H3 - Mali", image: "/tourism/t22.jpg" },
-                    { name: "Mother Theresa", location: "Ebonyi H3 Nigeria", image: "/tourism/t23.jpg" },
-                    { name: "Hazukashii", location: "USA", image: "/tourism/t24.jpg" }
+                    {
+                      name: "Muff Mask",
+                      location: "Accra H3 Ghana",
+                      image: "/tourism/t14.jpg",
+                    },
+                    {
+                      name: "Bushy",
+                      location: "Malawi",
+                      image: "/tourism/t15.jpg",
+                    },
+                    {
+                      name: "Short Cutter",
+                      location: "Akwa Ibom (Nigeria)",
+                      image: "/tourism/t16.jpg",
+                    },
+                    {
+                      name: "Artur-De- Lion Killer",
+                      location: "Kenya",
+                      image: "/tourism/t17.jpg",
+                    },
+                    {
+                      name: "Honey Tumba",
+                      location: "Sierra Leone",
+                      image: "/tourism/t18.jpg",
+                    },
+                    {
+                      name: "Slippery Cummer",
+                      location: "London H3",
+                      image: "/tourism/t19.jpg",
+                    },
+                    {
+                      name: "Sir KOP",
+                      location: "Lagos H3",
+                      image: "/tourism/t20.jpg",
+                    },
+                    {
+                      name: "Sir DLS",
+                      location: "Apapa H3 (Nigeria)",
+                      image: "/tourism/t21.jpg",
+                    },
+                    {
+                      name: "Mama Sarama",
+                      location: "Bamako H3 - Mali",
+                      image: "/tourism/t22.jpg",
+                    },
+                    {
+                      name: "Mother Theresa",
+                      location: "Ebonyi H3 Nigeria",
+                      image: "/tourism/t23.jpg",
+                    },
+                    {
+                      name: "Hazukashii",
+                      location: "USA",
+                      image: "/tourism/t24.jpg",
+                    },
                   ].map((member, index) => (
                     <motion.div
                       key={index}
@@ -1298,16 +1741,11 @@ export default function PanAfricaPage() {
               </div>
             </div>
           </div>
-         
-
-
         </div>
       </motion.div>
 
       {/* Horizontal Divider */}
-      <hr  className="w-full h-[1px] bg-gray-300" />
-
-     
+      <hr className="w-full h-[1px] bg-gray-300" />
 
       {/* Footer PAN 2027 */}
       <Footer />

@@ -72,12 +72,13 @@ const PanAfricaNavbar = () => {
 
   return (
     <>
-      <motion.nav className="px-4 sm:px-6 lg:px-12 font-semibold items-center flex justify-between py-4 w-full overflow-hidden bg-green-900 text-gray-200 shadow-lg fixed z-50"
+      <motion.nav
+        className="px-4 sm:px-6 lg:px-12 font-semibold items-center flex justify-between py-4 w-full overflow-hidden bg-green-900 text-gray-200 shadow-lg fixed z-50"
         variants={footerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}>
-
+        viewport={{ once: true, amount: 0.2 }}
+      >
         {/* Animated Floating Background */}
         <ul className="background">
           {Array.from({ length: 10 }).map((_, i) => (
@@ -89,89 +90,100 @@ const PanAfricaNavbar = () => {
         <div className="absolute inset-0 bg-black/50"></div>
 
         {/* Logo Section */}
-        <motion.div
-          className="flex items-center gap-2 sm:gap-3 z-10"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}>
-          <Image
-            src='/logo.jpg'
-            width={50}
-            height={50}
-            alt="sierrah4_logo"
-            className="rounded-full sm:w-[60px] sm:h-[60px]"
-            priority
-            unoptimized={false}
-          />
+        <Link href={'/'}>
+          <motion.div
+            className="flex items-center gap-2 sm:gap-3 z-10"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image
+              src="/logo.jpg"
+              width={50}
+              height={50}
+              alt="sierrah4_logo"
+              className="rounded-full sm:w-[60px] sm:h-[60px] relative z-30"
+              priority
+              unoptimized={false}
+            />
 
-          <div className="text-center z-10">
-            <p className="text-white font-bold text-sm sm:text-base">PAN Africa 2027</p>
-            <p className="text-xs sm:text-sm text-blue-100">Sierra The Duo Kennel</p>
-          </div>
-        </motion.div>
+            <div className="text-center z-10">
+              <p className="text-white font-bold text-sm sm:text-base">
+                PAN Africa 2027
+              </p>
+              <p className="text-xs sm:text-sm text-blue-100">
+                Sierra The Duo Kennel
+              </p>
+            </div>
+          </motion.div>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-8 z-10">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="text-white hover:text-yellow-200 transition-colors duration-300 font-medium flex items-center gap-2"
           >
-            <MdKeyboardBackspace className='text-2xl animate-pulse text-yellow-200' />
+            <MdKeyboardBackspace className="text-2xl animate-pulse text-yellow-200" />
             <span>Home</span>
           </Link>
         </div>
 
         {/* Desktop PAN Nav items */}
-        <div className='hidden lg:flex items-center gap-6 xl:gap-8 z-10'>
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8 z-10">
           {/* About */}
-          <Link 
-            href='#about'
+          <Link
+            href="#about"
             onClick={() => setIsMobileMenuOpen(false)}
-            className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>About PAN Africa
+            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
+          >
+            About PAN Africa
           </Link>
 
           {/* Visa */}
           <Link
-            href='#visa'
+            href="#visa"
             onClick={() => setIsMobileMenuOpen(false)}
-           className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Visa / Protocol
+            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
+          >
+            Visa / Protocol
           </Link>
-
 
           {/* Sponsor */}
-          <Link 
-            href='#sponsor'
+          <Link
+            href="#sponsor"
             onClick={() => setIsMobileMenuOpen(false)}
-          className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Sponsors
+            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
+          >
+            Sponsors
           </Link>
-
-
 
           {/* Tourism */}
           <Link
-            href='#tourism'
+            href="#tourism"
             onClick={() => setIsMobileMenuOpen(false)}
-            className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Tourism
+            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
+          >
+            Tourism
           </Link>
-     
-
 
           {/* Gallery */}
-          <Link 
-            href='#gallery'
+          <Link
+            href="#gallery"
             onClick={() => setIsMobileMenuOpen(false)}
-            className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>Gallery
+            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
+          >
+            Gallery
           </Link>
 
-   
           {/* LOC & Advisory Council */}
-          <Link 
-            href='#loc'
+          <Link
+            href="#loc"
             onClick={() => setIsMobileMenuOpen(false)}
-            className='hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base'>LOC & Advisory Council
+            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
+          >
+            LOC & Advisory Council
           </Link>
-
-         
         </div>
 
         {/* Mobile Menu Button */}
@@ -235,7 +247,7 @@ const PanAfricaNavbar = () => {
               <div className="flex items-center justify-between p-6 border-b border-green-700">
                 <div className="flex items-center gap-3">
                   <Image
-                    src='/logo.jpg'
+                    src="/logo.jpg"
                     width={40}
                     height={40}
                     alt="sierrah4_logo"
@@ -244,7 +256,9 @@ const PanAfricaNavbar = () => {
                     unoptimized={false}
                   />
                   <div>
-                    <p className="text-white font-bold text-sm">PAN Africa 2027</p>
+                    <p className="text-white font-bold text-sm">
+                      PAN Africa 2027
+                    </p>
                     <p className="text-xs text-blue-100">Sierra H4 Vision</p>
                   </div>
                 </div>
@@ -256,33 +270,36 @@ const PanAfricaNavbar = () => {
                   variants={mobileMenuItemVariants}
                   className="border-b border-green-700 pb-4"
                 >
-                  <Link 
-                    href="/" 
+                  <Link
+                    href="/"
                     className="text-white hover:text-yellow-200 transition-colors duration-300 font-medium flex items-center gap-3 text-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <MdKeyboardBackspace className='text-2xl text-yellow-200' />
+                    <MdKeyboardBackspace className="text-2xl text-yellow-200" />
                     Home
                   </Link>
                 </motion.div>
 
-                <motion.div variants={mobileMenuItemVariants} className="space-y-4">
-                  <div className='text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800'>
+                <motion.div
+                  variants={mobileMenuItemVariants}
+                  className="space-y-4"
+                >
+                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
                     About PAN Africa
                   </div>
-                  <div className='text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800'>
+                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
                     Tourism
                   </div>
-                  <div className='text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800'>
+                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
                     Visa
                   </div>
-                  <div className='text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800'>
+                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
                     Gallery
                   </div>
-                  <div className='text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800'>
+                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
                     Security/Emergency
                   </div>
-                  <div className='text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2'>
+                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2">
                     Our Sponsor
                   </div>
                 </motion.div>
