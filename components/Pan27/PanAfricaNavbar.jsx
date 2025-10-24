@@ -305,18 +305,6 @@ const PanAfricaNavbar = () => {
                   >
                     Sponsors
                   </a>
-                  <a
-                    href="#tourism"
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
-                  >
-                    Tourism
-                  </a>
-                  <a
-                    href="#gallery"
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
-                  >
-                    Gallery
-                  </a>
 
                   <a
                     href="#loc"
@@ -325,8 +313,40 @@ const PanAfricaNavbar = () => {
                     LOC & Advisory Council
                   </a>
 
+
+                  <a
+                    href="#tourism"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                  >
+                    Tourism
+                  </a>
+
+                  <a
+                    href="#game"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                  >
+                    Game
+                  </a>
+
+
+                  <a
+                    href="#gallery"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                  >
+                    Gallery
+                  </a>
+
+                  <a
+                    href="#event"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                  >
+                    Event
+                  </a>
+
+                  
+
                   <Link href={'/signin'}
-                    className=" gap-2 flex items-center text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2">
+                    className=" gap-2 flex items-center text-xl font-semibold text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2">
                     Mismanagement <FaUserShield className='text-2xl'/>
                   </Link>
                 </motion.div>

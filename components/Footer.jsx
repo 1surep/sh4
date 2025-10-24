@@ -6,6 +6,7 @@ import Image from "next/image";
 import { MdLocationOn, MdEmail } from "react-icons/md";
 import { BsFillTelephoneInboundFill } from "react-icons/bs";
 import { SocialIcon } from "react-social-icons";
+import { FaUserShield } from "react-icons/fa";
 
 const Footer = () => {
   const footerVariants = {
@@ -124,7 +125,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/events"
+                  href="/pan-africa-2027"
                   className="hover:text-yellow-400 transition-colors"
                 >
                   PAN Africa 2027
@@ -149,7 +150,7 @@ const Footer = () => {
 
               <li>
                 <Link
-                  href="/"
+                  href="/pan-africa-2027#visa"
                   className="hover:text-yellow-400 transition-colors"
                 >
                   Visa / Protocol
@@ -168,15 +169,44 @@ const Footer = () => {
                 </Link>
               </li>
 
-
-              {/* <li>
+              <li>
                 <Link
-                  href="/"
+                  href="/pan-africa-2027#sponsor"
                   className="hover:text-yellow-400 transition-colors"
                 >
-                   LOC & Advisory Council
+                  Sponsors
                 </Link>
-              </li> */}
+              </li>
+
+
+              <li>
+                <Link
+                  href="/pan-africa-2027#tourism"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Tourism
+                </Link>
+              </li>
+
+
+              <li>
+                <Link
+                  href="/pan-africa-2027#loc"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  LOC & Advisory Council
+                </Link>
+              </li>
+
+
+              <li>
+                <Link
+                  href="/signin"
+                  className="hover:text-yellow-400 flex items-center gap-2 transition-colors"
+                >
+                  Mismanagement <FaUserShield className="text-2xl"/>
+                </Link>
+              </li>
             </ul>
           </motion.div>
 

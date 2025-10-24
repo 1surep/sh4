@@ -702,7 +702,7 @@ export default function PanAfricaPage() {
         </div>
 
         {/*  LOC & Advisory Council*/}
-        <div id="gallery" className="relative z-10 my-1 ">
+        <div id="loc" className="relative z-10 my-1 ">
           {/* HEADING */}
           <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
@@ -1023,7 +1023,9 @@ export default function PanAfricaPage() {
         </div>
 
         {/* sh4 hash game */}
-        <div className="relative z-10 my-1 ">
+        <div 
+        id='game'
+        className="relative z-10 my-1 ">
           {/* HEADING */}
           <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
@@ -1257,7 +1259,9 @@ export default function PanAfricaPage() {
         </div>
 
         {/* Event details friday - Sunday */}
-        <div className="relative z-10 my-1 ">
+        <div 
+        id='event'
+        className="relative z-10 my-1 ">
           {/* HEADING */}
           <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}

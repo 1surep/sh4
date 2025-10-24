@@ -22,7 +22,8 @@ const Navbar = () => {
         "PAN 2027",
         "Gallery",
         "SH4 Shop",
-        "Contact Us"
+        "Contact Us",
+        "Reports"
     ];
 
     // Define the paths for each menu item
@@ -33,7 +34,8 @@ const Navbar = () => {
         "PAN 2027": "/pan-africa-2027",
         "Gallery": "/gallery",
         "SH4 Shop": "/sh4shop",
-        "Contact Us": "/contact"
+        "Contact Us": "/contact",
+        "Reports": "/reports"
     };
 
     const mobileMenuVariants = {
