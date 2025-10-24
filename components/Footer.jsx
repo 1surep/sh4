@@ -36,7 +36,7 @@ const Footer = () => {
 
   return (
     <motion.footer
-      className="relative overflow-hidden bg-green-900/80 text-gray-200 pt-12 pb-8"
+      className="relative overflow-hidden bg-green-900/80 text-gray-200 pb-16"
       variants={footerVariants}
       initial="hidden"
       whileInView="visible"
@@ -152,7 +152,29 @@ const Footer = () => {
                   href="/"
                   className="hover:text-yellow-400 transition-colors"
                 >
-                  Visa
+                  Visa / Protocol
+                </Link>
+              </li>
+
+             
+              
+
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                  Tourism
+                </Link>
+              </li>
+
+
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-yellow-400 transition-colors"
+                >
+                   LOC & Advisory Council
                 </Link>
               </li>
             </ul>
