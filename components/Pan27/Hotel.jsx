@@ -17,34 +17,38 @@ const Hotel = () => {
   };
 
   const hotels = [
-    {
-      name: "Radisson Blu Mammy Yoko Hotel",
-      category: "Luxury",
-      distance: "5 km from Main Venue",
-      price: "$150 - $250 per night",
-      image: "/hotels/hotel1.jpg", // Update with actual image path
-      phone: "+232 76 123 456",
-      email: "info@radisson-freetown.com",
-      rating: 5,
-      amenities: ["WiFi", "Pool", "Restaurant", "Bar", "Gym"],
-    },
+
     {
       name: "Bintumani Hotel",
+      category: "Luxury",
+     
+      distance: "Main Venue",
+      price: "$150 - $250 per night",
+      image: "/tourism/t27.jpg", // Update with actual image path
+      phone: "+232 76 234 567",
+      email: "info@bintumani.com",
+      rating: 5,
+      amenities: ["WiFi", "Restaurant", "Bar",  "Gym", "Pool",],
+    },
+
+    {
+      name: "Radisson Blu Mammy Yoko Hotel",
       category: "Mid-Range",
       distance: "3 km from Main Venue",
       price: "$80 - $130 per night",
-      image: "/hotels/hotel2.jpg", // Update with actual image path
-      phone: "+232 76 234 567",
-      email: "info@bintumani.com",
+      image: "/tourism/t22.jpg",
+      phone: "+232 76 123 456",
+      email: "info@radisson-freetown.com",
       rating: 4,
-      amenities: ["WiFi", "Restaurant", "Bar", "Conference Room"],
+      amenities: ["WiFi", "Pool", "Restaurant", "Bar", "Gym"],
     },
+    
     {
-      name: "Lagoonda Complex",
+      name: "The Lead Hotel",
       category: "Budget",
       distance: "2 km from Main Venue",
       price: "$40 - $70 per night",
-      image: "/hotels/hotel3.jpg", // Update with actual image path
+      image: "/tourism/t15.jpg",
       phone: "+232 76 345 678",
       email: "info@lagoonda.com",
       rating: 3,
