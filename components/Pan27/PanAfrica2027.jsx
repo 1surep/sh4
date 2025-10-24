@@ -701,6 +701,242 @@ export default function PanAfricaPage() {
           </div>
         </div>
 
+        {/*  LOC & Advisory Council*/}
+        <div id="gallery" className="relative z-10 my-1 ">
+          {/* HEADING */}
+          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
+            {/* Localized background effect (dark variant for light bg) */}
+            <ul className="background-dark">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
+            <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
+              HASH
+            </h1>
+
+            <div className="relative text-center">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+                PAN AFRICA HASH 2027
+              </p>
+              <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
+                LOC & Advisory Council
+              </h2>
+            </div>
+          </section>
+
+          {/* LOC & Advisory Council */}
+          {/* LOC & Advisory Council */}
+          <div
+            id="loc"
+            className="relative py-12 bg-cover bg-green-900/80 text-gray-200 overflow-hidden"
+          >
+            {/* Animated Floating Background */}
+            <ul className="background">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <li key={i}></li>
+              ))}
+            </ul>
+
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black/50"></div>
+
+            <div className="relative z-10 px-[1rem] lg:px-[3rem]">
+              {/* LOC Members Section */}
+              <div className="mb-16">
+                <h3 className="text-3xl font-bold text-center uppercase mb-8 text-yellow-400">
+                  Local Organizing Committee (LOC)
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {/* LOC Members */}
+                  {[
+                    {
+                      name: "Dr. Kondo Belleh",
+                      position: "Chairman",
+                      image: "/tourism/t1.jpg",
+                    },
+                    {
+                      name: "Fuckimbo",
+                      position: "Vice Chairman",
+                      image: "/tourism/t2.jpg",
+                    },
+                    {
+                      name: "Pucci Ing",
+                      position: "Head of Communications",
+                      image: "/tourism/t3.jpg",
+                    },
+                    {
+                      name: "Yap Yap Network",
+                      position: "International Coordinator/ Head of Protocol",
+                      image: "/loc/yapyap.jpg",
+                    },
+                    {
+                      name: "I Don't Want To",
+                      position: "Head of Finance",
+                      image: "/tourism/t5.jpg",
+                    },
+                    {
+                      name: "Neneh Korraw",
+                      position: "Head of Logistics",
+                      image: "/tourism/t6.jpg",
+                    },
+                    {
+                      name: "Presidential Virus",
+                      position: "Head of Transport",
+                      image: "/tourism/t7.jpg",
+                    },
+                    {
+                      name: "Little Fox & Put It In the Hole",
+                      position: "Sponsorship Leads",
+                      image: "/tourism/t8.jpg",
+                    },
+                    {
+                      name: "Cork Wine",
+                      position: "Head of Welfare",
+                      image: "/tourism/t9.jpg",
+                    },
+                    {
+                      name: "Toto Specialist",
+                      position: "Security Coordinator",
+                      image: "/tourism/t10.jpg",
+                    },
+                    {
+                      name: "Just Capt. Gladis",
+                      position: "Head of Medic",
+                      image: "/tourism/t11.jpg",
+                    },
+                    {
+                      name: "Sniper",
+                      position: "Hash Cash",
+                      image: "/tourism/t12.jpg",
+                    },
+                    {
+                      name: "Sorry My Lord",
+                      position: "Liaison Officer",
+                      image: "/tourism/t13.jpg",
+                    },
+                  ].map((member, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      className="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                    >
+                      <div className="text-center">
+                        <div className="w-40 h-40 mx-auto mb-3 rounded-full overflow-hidden border-2 border-yellow-400">
+                          <Image
+                            src={member.image}
+                            width={100}
+                            height={100}
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <h4 className="font-bold text-sm mb-1 text-yellow-400">
+                          {member.name}
+                        </h4>
+                        <p className="text-xs text-gray-300">
+                          {member.position}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Advisory Council Section */}
+              <div className="pb-12">
+                <h3 className="text-3xl uppercase font-bold text-center mb-8 text-yellow-400">
+                  Advisory Council
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {/* Advisory Council Members */}
+                  {[
+                    {
+                      name: "Muff Mask",
+                      location: "Accra H3 Ghana",
+                      image: "/tourism/t14.jpg",
+                    },
+                    {
+                      name: "Bushy",
+                      location: "Malawi",
+                      image: "/tourism/t15.jpg",
+                    },
+                    {
+                      name: "Short Cutter",
+                      location: "Akwa Ibom (Nigeria)",
+                      image: "/tourism/t16.jpg",
+                    },
+                    {
+                      name: "Artur-De- Lion Killer",
+                      location: "Kenya",
+                      image: "/tourism/t17.jpg",
+                    },
+                    {
+                      name: "Honey Tumba",
+                      location: "Sierra Leone",
+                      image: "/tourism/t18.jpg",
+                    },
+                    {
+                      name: "Slippery Cummer",
+                      location: "London H3",
+                      image: "/tourism/t19.jpg",
+                    },
+                    {
+                      name: "Sir KOP",
+                      location: "Lagos H3",
+                      image: "/tourism/t20.jpg",
+                    },
+                    {
+                      name: "Sir DLS",
+                      location: "Apapa H3 (Nigeria)",
+                      image: "/tourism/t21.jpg",
+                    },
+                    {
+                      name: "Mama Sarama",
+                      location: "Bamako H3 - Mali",
+                      image: "/tourism/t22.jpg",
+                    },
+                    {
+                      name: "Mother Theresa",
+                      location: "Ebonyi H3 Nigeria",
+                      image: "/tourism/t23.jpg",
+                    },
+                    {
+                      name: "Hazukashii",
+                      location: "USA",
+                      image: "/tourism/t24.jpg",
+                    },
+                  ].map((member, index) => (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      className="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                    >
+                      <div className="text-center">
+                        <div className="w-40 h-40 mx-auto mb-3 rounded-full overflow-hidden border-2 border-yellow-400">
+                          <Image
+                            src={member.image}
+                            width={100}
+                            height={100}
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <h4 className="font-bold text-sm mb-1 text-yellow-400">
+                          {member.name}
+                        </h4>
+                        <p className="text-xs text-gray-300">
+                          {member.location}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Tourism */}
         <div id="tourism" className="relative z-10 my-12 ">
           {/* HEADING */}
@@ -1144,241 +1380,7 @@ export default function PanAfricaPage() {
           </div>
         </div>
 
-        {/*  LOC & Advisory Council*/}
-        <div id="gallery" className="relative z-10 my-1 ">
-          {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
-            {/* Localized background effect (dark variant for light bg) */}
-            <ul className="background-dark">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <li key={i}></li>
-              ))}
-            </ul>
-            <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
-              HASH
-            </h1>
-
-            <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
-                PAN AFRICA HASH 2027
-              </p>
-              <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
-                LOC & Advisory Council
-              </h2>
-            </div>
-          </section>
-
-          {/* LOC & Advisory Council */}
-          {/* LOC & Advisory Council */}
-          <div
-            id="loc"
-            className="relative py-12 bg-cover bg-green-900/80 text-gray-200 overflow-hidden"
-          >
-            {/* Animated Floating Background */}
-            <ul className="background">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <li key={i}></li>
-              ))}
-            </ul>
-
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/50"></div>
-
-            <div className="relative z-10 px-[1rem] lg:px-[3rem]">
-              {/* LOC Members Section */}
-              <div className="mb-16">
-                <h3 className="text-3xl font-bold text-center uppercase mb-8 text-yellow-400">
-                  Local Organizing Committee (LOC)
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {/* LOC Members */}
-                  {[
-                    {
-                      name: "Dr. Kondo Belleh",
-                      position: "Chairman",
-                      image: "/tourism/t1.jpg",
-                    },
-                    {
-                      name: "Fuckimbo",
-                      position: "Vice Chairman",
-                      image: "/tourism/t2.jpg",
-                    },
-                    {
-                      name: "Pucci Ing",
-                      position: "Head of Communications",
-                      image: "/tourism/t3.jpg",
-                    },
-                    {
-                      name: "Yap Yap Network",
-                      position: "International Coordinator/ Head of Protocol",
-                      image: "/loc/yapyap.jpg",
-                    },
-                    {
-                      name: "I Don't Want To",
-                      position: "Head of Finance",
-                      image: "/tourism/t5.jpg",
-                    },
-                    {
-                      name: "Neneh Korraw",
-                      position: "Head of Logistics",
-                      image: "/tourism/t6.jpg",
-                    },
-                    {
-                      name: "Presidential Virus",
-                      position: "Head of Transport",
-                      image: "/tourism/t7.jpg",
-                    },
-                    {
-                      name: "Little Fox & Put It In the Hole",
-                      position: "Sponsorship Leads",
-                      image: "/tourism/t8.jpg",
-                    },
-                    {
-                      name: "Cork Wine",
-                      position: "Head of Welfare",
-                      image: "/tourism/t9.jpg",
-                    },
-                    {
-                      name: "Toto Specialist",
-                      position: "Security Coordinator",
-                      image: "/tourism/t10.jpg",
-                    },
-                    {
-                      name: "Just Capt. Gladis",
-                      position: "Head of Medic",
-                      image: "/tourism/t11.jpg",
-                    },
-                    {
-                      name: "Sniper",
-                      position: "Hash Cash",
-                      image: "/tourism/t12.jpg",
-                    },
-                    {
-                      name: "Sorry My Lord",
-                      position: "Liaison Officer",
-                      image: "/tourism/t13.jpg",
-                    },
-                  ].map((member, index) => (
-                    <motion.div
-                      key={index}
-                      variants={itemVariants}
-                      className="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
-                    >
-                      <div className="text-center">
-                        <div className="w-40 h-40 mx-auto mb-3 rounded-full overflow-hidden border-2 border-yellow-400">
-                          <Image
-                            src={member.image}
-                            width={100}
-                            height={100}
-                            alt={member.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <h4 className="font-bold text-sm mb-1 text-yellow-400">
-                          {member.name}
-                        </h4>
-                        <p className="text-xs text-gray-300">
-                          {member.position}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Advisory Council Section */}
-              <div className="pb-12">
-                <h3 className="text-3xl uppercase font-bold text-center mb-8 text-yellow-400">
-                  Advisory Council
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {/* Advisory Council Members */}
-                  {[
-                    {
-                      name: "Muff Mask",
-                      location: "Accra H3 Ghana",
-                      image: "/tourism/t14.jpg",
-                    },
-                    {
-                      name: "Bushy",
-                      location: "Malawi",
-                      image: "/tourism/t15.jpg",
-                    },
-                    {
-                      name: "Short Cutter",
-                      location: "Akwa Ibom (Nigeria)",
-                      image: "/tourism/t16.jpg",
-                    },
-                    {
-                      name: "Artur-De- Lion Killer",
-                      location: "Kenya",
-                      image: "/tourism/t17.jpg",
-                    },
-                    {
-                      name: "Honey Tumba",
-                      location: "Sierra Leone",
-                      image: "/tourism/t18.jpg",
-                    },
-                    {
-                      name: "Slippery Cummer",
-                      location: "London H3",
-                      image: "/tourism/t19.jpg",
-                    },
-                    {
-                      name: "Sir KOP",
-                      location: "Lagos H3",
-                      image: "/tourism/t20.jpg",
-                    },
-                    {
-                      name: "Sir DLS",
-                      location: "Apapa H3 (Nigeria)",
-                      image: "/tourism/t21.jpg",
-                    },
-                    {
-                      name: "Mama Sarama",
-                      location: "Bamako H3 - Mali",
-                      image: "/tourism/t22.jpg",
-                    },
-                    {
-                      name: "Mother Theresa",
-                      location: "Ebonyi H3 Nigeria",
-                      image: "/tourism/t23.jpg",
-                    },
-                    {
-                      name: "Hazukashii",
-                      location: "USA",
-                      image: "/tourism/t24.jpg",
-                    },
-                  ].map((member, index) => (
-                    <motion.div
-                      key={index}
-                      variants={itemVariants}
-                      className="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105"
-                    >
-                      <div className="text-center">
-                        <div className="w-40 h-40 mx-auto mb-3 rounded-full overflow-hidden border-2 border-yellow-400">
-                          <Image
-                            src={member.image}
-                            width={100}
-                            height={100}
-                            alt={member.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <h4 className="font-bold text-sm mb-1 text-yellow-400">
-                          {member.name}
-                        </h4>
-                        <p className="text-xs text-gray-300">
-                          {member.location}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </motion.div>
 
       {/* Horizontal Divider */}
