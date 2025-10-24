@@ -5,32 +5,42 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { MapPin, Phone, Mail, Star, DollarSign } from "lucide-react";
 import { IoArrowBackOutline } from "react-icons/io5";
+import Link from "next/link";
+import ChatbotModal from "../Chat/ChatbotModal";
 
 const Hotel = () => {
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0,
+      },
+    },
+  };
+
   const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.3, ease: "easeOut" },
     },
   };
 
   const hotels = [
-
     {
       name: "Bintumani Hotel",
       category: "Luxury",
-     
       distance: "Main Venue",
       price: "$150 - $250 per night",
-      image: "/tourism/t27.jpg", // Update with actual image path
+      image: "/tourism/t27.jpg",
       phone: "+232 76 234 567",
       email: "info@bintumani.com",
       rating: 5,
-      amenities: ["WiFi", "Restaurant", "Bar",  "Gym", "Pool",],
+      amenities: ["WiFi", "Restaurant", "Bar", "Gym", "Pool"],
     },
-
     {
       name: "Radisson Blu Mammy Yoko Hotel",
       category: "Mid-Range",
@@ -42,7 +52,6 @@ const Hotel = () => {
       rating: 4,
       amenities: ["WiFi", "Pool", "Restaurant", "Bar", "Gym"],
     },
-    
     {
       name: "The Lead Hotel",
       category: "Budget",
@@ -54,23 +63,20 @@ const Hotel = () => {
       rating: 3,
       amenities: ["WiFi", "Restaurant", "Parking"],
     },
-    // Add more hotels as needed
   ];
 
   return (
-    <>
+    <div>
       {/* Main Content */}
-      <motion.div
-        variants={fadeIn}
-        initial="hidden"
-        animate="visible"
-        className="min-h-screen pt-32 bg-gradient-to-br from-blue-50 to-green-50"
-      >
+      <div className="min-h-screen pt-32 bg-gradient-to-br from-blue-50 to-green-50">
         {/* Header Section */}
-        <div className="relative bg-gradient-to-r from-green-700 to-blue-700 text-white py-16 px-[1rem] lg:px-[3rem]">
-          <div className="max-w-6xl mx-auto text-center">
+        <div className="relative  bg-gradient-to-r from-green-700 to-blue-700 text-white py-16 px-[1rem] lg:px-[3rem]">
+          <div className="max-w-6xl mx-auto text-center px-[1rem] lg:px-[3rem]">
             <h1 className="text-4xl lg:text-5xl font-black flex items-center gap-3 justify-center uppercase mb-4">
-            <IoArrowBackOutline className="animate-pulse" /> Hotels & Accommodation
+              <Link href={"/pan-africa-2027"}>
+                <IoArrowBackOutline className="hover:animate-pulse cursor-pointer" />
+              </Link>
+              Hotels & Bookings
             </h1>
             <p className="text-lg lg:text-xl opacity-90">
               Find the perfect place to stay during Pan Africa Hash 2027
@@ -79,15 +85,17 @@ const Hotel = () => {
         </div>
 
         {/* Hotels List */}
-        <div className="px-[1rem] lg:px-[3rem] py-12 max-w-7xl mx-auto">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="px-[1rem] lg:px-[3rem] py-12 max-w-7xl mx-auto"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {hotels.map((hotel, index) => (
               <motion.div
                 key={index}
                 variants={fadeIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
               >
                 {/* Hotel Image */}
@@ -97,6 +105,7 @@ const Hotel = () => {
                     fill
                     alt={hotel.name}
                     className="object-cover"
+                    priority={index === 0}
                   />
                   <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-bold text-gray-800">
                     {hotel.category}
@@ -178,7 +187,10 @@ const Hotel = () => {
           </div>
 
           {/* Additional Information */}
-          <div className="mt-12 bg-white rounded-xl shadow-lg p-8">
+          <motion.div
+            variants={fadeIn}
+            className="mt-12 bg-white rounded-xl shadow-lg p-8"
+          >
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
               Booking Information
             </h2>
@@ -199,10 +211,12 @@ const Hotel = () => {
                 the main venue.
               </p>
             </div>
-          </div>
-        </div>
-      </motion.div>
-    </>
+          </motion.div>
+        </motion.div>
+      </div>
+       {/* chatbot modal */}
+       <ChatbotModal />
+    </div>
   );
 };
 

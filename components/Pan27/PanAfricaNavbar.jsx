@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdKeyboardBackspace, MdMenu, MdClose } from "react-icons/md";
+import { FaUserShield } from "react-icons/fa";
 
 const PanAfricaNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -72,6 +73,7 @@ const PanAfricaNavbar = () => {
 
   return (
     <>
+      {/* desktop view */}
       <motion.nav
         className="px-4 sm:px-6 lg:px-12 font-semibold items-center flex justify-between py-4 w-full overflow-hidden bg-green-900 text-gray-200 shadow-lg fixed z-50"
         variants={footerVariants}
@@ -90,7 +92,7 @@ const PanAfricaNavbar = () => {
         <div className="absolute inset-0 bg-black/50"></div>
 
         {/* Logo Section */}
-        <Link href={'/'}>
+        <Link href={"/"}>
           <motion.div
             className="flex items-center gap-2 sm:gap-3 z-10"
             initial={{ opacity: 0, x: -50 }}
@@ -245,7 +247,7 @@ const PanAfricaNavbar = () => {
             >
               {/* Mobile Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-green-700">
-                <div className="flex items-center gap-3">
+                <Link href={"/"} className="flex items-center gap-3">
                   <Image
                     src="/logo.jpg"
                     width={40}
@@ -261,7 +263,7 @@ const PanAfricaNavbar = () => {
                     </p>
                     <p className="text-xs text-blue-100">Sierra H4 Vision</p>
                   </div>
-                </div>
+                </Link>
               </div>
 
               {/* Mobile Menu Items */}
@@ -280,28 +282,53 @@ const PanAfricaNavbar = () => {
                   </Link>
                 </motion.div>
 
+                {/* mobile navigation menu */}
                 <motion.div
                   variants={mobileMenuItemVariants}
-                  className="space-y-4"
+                  className="space-y-4 scroll-smooth"
                 >
-                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
+                  <a
+                    href="#about"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                  >
                     About PAN Africa
-                  </div>
-                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
+                  </a>
+                  <a
+                    href="#visa"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                  >
+                    Visa / Protocol
+                  </a>
+                  <a
+                    href="#sponsor"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                  >
+                    Sponsors
+                  </a>
+                  <a
+                    href="#tourism"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                  >
                     Tourism
-                  </div>
-                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
-                    Visa
-                  </div>
-                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
+                  </a>
+                  <a
+                    href="#gallery"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                  >
                     Gallery
-                  </div>
-                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800">
-                    Security/Emergency
-                  </div>
-                  <div className="text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2">
-                    Our Sponsor
-                  </div>
+                  </a>
+
+                  <a
+                    href="#loc"
+                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2"
+                  >
+                    LOC & Advisory Council
+                  </a>
+
+                  <Link href={'/signin'}
+                    className=" gap-2 flex items-center text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2">
+                    Mismanagement <FaUserShield className='text-2xl'/>
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>

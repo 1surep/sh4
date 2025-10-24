@@ -41,9 +41,31 @@ const calculateTimeLeft = () => {
   }
 };
 
+// Helper function to generate beers array (only called on client)
+const generateBeers = () => {
+  const count = 14;
+  const arr = Array.from({ length: count }).map((_, i) => {
+    const left = Math.floor(8 + Math.random() * 84); // 8% - 92%
+    const size = Math.random();
+    const clsSize = size < 0.35 ? "sm" : size > 0.75 ? "lg" : "";
+    const delay = (Math.random() * 0.6).toFixed(2); // 0 - 0.6s
+    const duration = (3 + Math.random() * 1.2).toFixed(2); // 3 - 4.2s
+    return {
+      key: `beer-${i}-${Math.random().toString(36).slice(2)}`,
+      left: `${left}%`,
+      cls: `beer ${clsSize}`.trim(),
+      style: {
+        animationDelay: `${delay}s`,
+        animationDuration: `${duration}s`,
+      },
+    };
+  });
+  return arr;
+};
+
 export default function PanAfricaPage() {
   const [showGame, setShowGame] = useState(false);
-
+  const [mounted, setMounted] = useState(false);
 
   // Our sponsors
   const dockItems = [
@@ -84,11 +106,6 @@ export default function PanAfricaPage() {
     },
   ];
 
-
-
-
-
-
   const footerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -113,7 +130,10 @@ export default function PanAfricaPage() {
   const [balloonBurstId, setBalloonBurstId] = useState(0);
   const [beers, setBeers] = useState([]);
 
+  // Effect to set mounted flag and initialize countdown
   useEffect(() => {
+    setMounted(true);
+    
     // Update countdown every second
     const interval = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
@@ -130,30 +150,8 @@ export default function PanAfricaPage() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // increment id to retrigger animation
-            // Generate randomized beers on each trigger
-            setBeers(() => {
-              const count = 14; // increased by 6
-              const arr = Array.from({ length: count }).map((_, i) => {
-                const left = Math.floor(8 + Math.random() * 84); // 8% - 92%
-                const size = Math.random();
-                const clsSize = size < 0.35 ? "sm" : size > 0.75 ? "lg" : "";
-                const delay = (Math.random() * 0.6).toFixed(2); // 0 - 0.6s
-                const duration = (3 + Math.random() * 1.2).toFixed(2); // 3 - 4.2s
-                return {
-                  key: `${Date.now()}-${i}-${Math.random()
-                    .toString(36)
-                    .slice(2)}`,
-                  left: `${left}%`,
-                  cls: `beer ${clsSize}`.trim(),
-                  style: {
-                    animationDelay: `${delay}s`,
-                    animationDuration: `${duration}s`,
-                  },
-                };
-              });
-              return arr;
-            });
+            // Generate randomized beers only on client (inside useEffect)
+            setBeers(generateBeers());
             setBalloonBurstId((id) => id + 1);
           }
         });
@@ -217,7 +215,7 @@ export default function PanAfricaPage() {
             {/* Days */}
             <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-blue-600 mb-1 sm:mb-2">
-                {timeLeft.days.toString().padStart(2, "0")}
+                {mounted ? timeLeft.days.toString().padStart(2, "0") : "00"}
               </div>
               <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
                 Days
@@ -227,7 +225,7 @@ export default function PanAfricaPage() {
             {/* Hours */}
             <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-green-600 mb-1 sm:mb-2">
-                {timeLeft.hours.toString().padStart(2, "0")}
+                {mounted ? timeLeft.hours.toString().padStart(2, "0") : "00"}
               </div>
               <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
                 Hours
@@ -237,7 +235,7 @@ export default function PanAfricaPage() {
             {/* Minutes */}
             <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-orange-600 mb-1 sm:mb-2">
-                {timeLeft.minutes.toString().padStart(2, "0")}
+                {mounted ? timeLeft.minutes.toString().padStart(2, "0") : "00"}
               </div>
               <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
                 Minutes
@@ -247,7 +245,7 @@ export default function PanAfricaPage() {
             {/* Seconds */}
             <div className="bg-white rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 lg:p-8 text-center">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-red-600 mb-1 sm:mb-2">
-                {timeLeft.seconds.toString().padStart(2, "0")}
+                {mounted ? timeLeft.seconds.toString().padStart(2, "0") : "00"}
               </div>
               <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-600 font-semibold uppercase tracking-wide">
                 Seconds
@@ -354,14 +352,14 @@ export default function PanAfricaPage() {
                   Pan-African Hash history.
                 </p>
 
-                <p className="space-y-1">
+                <div className="space-y-1">
                   <p>On-On! 👣🍺</p>
 
                   <p>GM Dr. Kondo Belleh</p>
                   <p>
-                    <b> Sierra Hash House Harriers & Harriettes (SH4)</b>
+                    <b> Sierra Hash House Harriers & Harriettes (SH4)</b>
                   </p>
-                </p>
+                </div>
               </div>
             </div>
           </div>
@@ -483,7 +481,7 @@ export default function PanAfricaPage() {
                 <Clock className="text-yellow-600" size={28} />
               </div>
               <div className="mt-4 text-sm text-gray-600">
-                We’ll update the list as approvals roll in.
+                We'll update the list as approvals roll in.
               </div>
               <button className="mt-5 w-full bg-yellow-600 cursor-pointer  hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                 Who is coming ?
@@ -767,383 +765,22 @@ export default function PanAfricaPage() {
                   disableOnInteraction: false,
                 }}
                 navigation={true}
-                // pagination={{
-                // clickable: true,
-                // }}
                 modules={[Pagination, Autoplay]}
                 className="mySwiper"
               >
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t1.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t2.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t3.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t4.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t5.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t6.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t7.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t8.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t9.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t10.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t11.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t12.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t13.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t14.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t15.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t16.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t17.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t18.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t19.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t20.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t21.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t22.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t23.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t24.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t25.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t26.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t27.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t28.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t29.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t30.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className=" overflow-hidden relative w-full h-48">
-                    <Image
-                      src="/tourism/t31.jpg"
-                      fill
-                      alt="image"
-                      className="rounded-[12px] object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    />
-                  </div>
-                </SwiperSlide>
+                {Array.from({ length: 31 }).map((_, i) => (
+                  <SwiperSlide key={i}>
+                    <div className=" overflow-hidden relative w-full h-48">
+                      <Image
+                        src={`/tourism/t${i + 1}.jpg`}
+                        fill
+                        alt={`Tourism image ${i + 1}`}
+                        className="rounded-[12px] object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </section>

@@ -161,22 +161,22 @@ const Footer = () => {
 
               <li>
                 <Link
-                  href="/"
+                  href="/pan-africa-2027/hotels"
                   className="hover:text-yellow-400 transition-colors"
                 >
-                  Tourism
+                  Hotels / Bookings
                 </Link>
               </li>
 
 
-              <li>
+              {/* <li>
                 <Link
                   href="/"
                   className="hover:text-yellow-400 transition-colors"
                 >
                    LOC & Advisory Council
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </motion.div>
 
@@ -186,7 +186,7 @@ const Footer = () => {
               PAN Africa 2027
             </h3>
             <p className="text-gray-200 text-sm mb-4">
-              Gearing up for the ultimate hashing event in Africa.
+              After making payment, proceed to PAN 2027 page to fill the Registration form.
             </p>
 
             {/* Pay rego button */}
