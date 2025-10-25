@@ -155,6 +155,7 @@ const Dashboard = () => {
                 <h3 className="text-gray-800 font-semibold text-sm mb-2">
                   Add Hasher to PAN 2027 RegoList
                 </h3>
+
                 <div className="flex items-center gap-2">
                   <h1 className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg">
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
@@ -168,17 +169,19 @@ const Dashboard = () => {
                     </button>
                     <dialog
                       id="my_modal_5"
-                      className="modal modal-bottom sm:modal-middle">
-                      
+                      className="modal modal-bottom sm:modal-middle"
+                    >
                       {/* ADD HASHER FORM + */}
                       <div className="modal-box max-w-2xl">
                         <div className="flex items-center gap-3 mb-6">
                           <div className="p-2 bg-blue-100 rounded-lg">
                             <UserPlus className="text-blue-600" size={20} />
                           </div>
-                          <h3 className="font-bold text-xl text-gray-800">Add New Hasher</h3>
+                          <h3 className="font-bold text-xl text-gray-800">
+                            Add New Hasher
+                          </h3>
                         </div>
-                        
+
                         <div className="py-4">
                           <form className="space-y-6">
                             {/* Form Grid Layout */}
@@ -186,9 +189,10 @@ const Dashboard = () => {
                               {/* Hash Handle */}
                               <div className="space-y-2">
                                 <label className="block text-sm font-semibold text-gray-700">
-                                  Hash Handle <span className="text-red-500">*</span>
+                                  Hash Handle{" "}
+                                  <span className="text-red-500">*</span>
                                 </label>
-                                <input 
+                                <input
                                   type="text"
                                   placeholder="Enter Hash Handle"
                                   className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
@@ -201,7 +205,7 @@ const Dashboard = () => {
                                 <label className="block text-sm font-semibold text-gray-700">
                                   Kennel <span className="text-red-500">*</span>
                                 </label>
-                                <input 
+                                <input
                                   type="text"
                                   placeholder="Enter kennel name"
                                   className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
@@ -212,9 +216,10 @@ const Dashboard = () => {
                               {/* Country */}
                               <div className="space-y-2">
                                 <label className="block text-sm font-semibold text-gray-700">
-                                  Country <span className="text-red-500">*</span>
+                                  Country{" "}
+                                  <span className="text-red-500">*</span>
                                 </label>
-                                <input 
+                                <input
                                   type="text"
                                   placeholder="Enter Country"
                                   className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
@@ -225,9 +230,10 @@ const Dashboard = () => {
                               {/* Shirt Size */}
                               <div className="space-y-2">
                                 <label className="block text-sm font-semibold text-gray-700">
-                                  Shirt Size <span className="text-red-500">*</span>
+                                  Shirt Size{" "}
+                                  <span className="text-red-500">*</span>
                                 </label>
-                                <select 
+                                <select
                                   className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                   required
                                 >
@@ -252,16 +258,37 @@ const Dashboard = () => {
 
                               <div className="flex items-center justify-between gap-1">
                                 <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
-                                  <input type="radio" name="runType" value="Bush" className="mr-2 text-blue-600" />
-                                  <span className="text-sm font-medium">Walker</span>
+                                  <input
+                                    type="radio"
+                                    name="runType"
+                                    value="Bush"
+                                    className="mr-2 text-blue-600"
+                                  />
+                                  <span className="text-sm font-medium">
+                                    Walker
+                                  </span>
                                 </label>
                                 <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
-                                  <input type="radio" name="runType" value="Road" className="mr-2 text-blue-600" />
-                                  <span className="text-sm font-medium">Short </span>
+                                  <input
+                                    type="radio"
+                                    name="runType"
+                                    value="Road"
+                                    className="mr-2 text-blue-600"
+                                  />
+                                  <span className="text-sm font-medium">
+                                    Short{" "}
+                                  </span>
                                 </label>
                                 <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
-                                  <input type="radio" name="runType" value="Mixed" className="mr-2 text-blue-600" />
-                                  <span className="text-sm font-medium">Long</span>
+                                  <input
+                                    type="radio"
+                                    name="runType"
+                                    value="Mixed"
+                                    className="mr-2 text-blue-600"
+                                  />
+                                  <span className="text-sm font-medium">
+                                    Long
+                                  </span>
                                 </label>
                                 {/* <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
                                   <input type="radio" name="runType" value="Trail" className="mr-2 text-blue-600" />
@@ -284,16 +311,18 @@ const Dashboard = () => {
 
                             {/* Form Actions */}
                             <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                              <button 
+                              <button
                                 type="submit"
                                 className="flex-1 text-base bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                               >
                                 <UserPlus size={18} />
-                                Add 
+                                Add
                               </button>
-                              <button 
+                              <button
                                 type="button"
-                                onClick={() => document.getElementById("my_modal_5").close()}
+                                onClick={() =>
+                                  document.getElementById("my_modal_5").close()
+                                }
                                 className="flex-1 bg-gray-200 text-base hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200"
                               >
                                 Cancel
@@ -348,18 +377,150 @@ const Dashboard = () => {
                 <h3 className="text-gray-800 font-semibold text-sm mb-2">
                   Add/View Sierra H4 database{" "}
                 </h3>
+
                 <div className="flex items-center gap-2">
-                  <h1 className="text-4xl font-bold text-gray-800 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg">
-                    +
-                  </h1>
+                  <button
+                    className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg"
+                    onClick={() =>
+                      document.getElementById("my_modal_6").showModal()
+                    }
+                  >
+                    + Add
+                  </button>
+
+                  <dialog
+                    id="my_modal_6"
+                    className="modal modal-bottom sm:modal-middle"
+                  >
+                    {/* ADD HASHER FORM + */}
+                    <div className="modal-box max-w-2xl">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="p-2 bg-blue-100 rounded-lg">
+                          <UserPlus className="text-blue-600" size={20} />
+                        </div>
+                        <h3 className="font-bold text-xl text-gray-800">
+                          Add Hasher to SH4 Database
+                        </h3>
+                      </div>
+
+                      <div className="py-4">
+                        <form className="space-y-6">
+                          {/* Form Grid Layout */}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* Hash Handle */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-semibold text-gray-700">
+                                Hash Handle{" "}
+                                <span className="text-red-500">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                placeholder="Enter Hash handle"
+                                className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                required
+                              />
+                            </div>
+
+                            {/* Given Name */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-semibold text-gray-700">
+                                Given Name{" "}
+                                <span className="text-red-500">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                placeholder="Enter Given Name"
+                                className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                required
+                              />
+                            </div>
+
+                            {/* Surname */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-semibold text-gray-700">
+                                Surname <span className="text-red-500">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                placeholder="Enter Surname"
+                                className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                required
+                              />
+                            </div>
+
+                            {/* Gender */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-semibold text-gray-700">
+                                Gender <span className="text-red-500">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                placeholder="Enter gender"
+                                className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                required
+                              />
+                            </div>
+
+                            {/* Mobile number */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-semibold text-gray-700">
+                                Mobile Number{" "}
+                                <span className="text-red-500">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                placeholder="Enter mobile number"
+                                className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                required
+                              />
+                            </div>
+
+                            {/* email */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-semibold text-gray-700">
+                                Email <span className="text-red-500">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                placeholder="Enter email"
+                                className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                required
+                              />
+                            </div>
+                          </div>
+
+                          {/* Form Actions */}
+                          <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                            <button
+                              type="submit"
+                              className="flex-1 text-base bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                            >
+                              <UserPlus size={18} />
+                              Add
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                document.getElementById("my_modal_6").close()
+                              }
+                              className="flex-1 bg-gray-200 text-base hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200"
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
+
                   <p className="text-base font-semibold ml-auto text-gray-700 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer bg-yellow-300 rounded-lg flex items-center gap-2">
                     View <TfiEye className="text-lg" />
                   </p>
                 </div>
               </div>
             </motion.div>
-          </div>
-        </div>
+            </div>
+            </div>
 
         {/* TABLE SECTION */}
         <div className="px-[1rem] lg:px-[3rem]">
