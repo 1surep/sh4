@@ -30,7 +30,7 @@ const Navbar = () => {
     const itemPaths = {
         "Home": "/",
         "About Us": "/about",
-        "Events": "/events",
+        "Events": "/even",
         "PAN 2027": "/pan-africa-2027",
         "Gallery": "/gallery",
         "SH4 Shop": "/sh4shop",
