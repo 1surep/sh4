@@ -5,7 +5,7 @@ const HeroEleven=()=>{
       <>
         <section>
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center pt-6 pb-16 bg-white overflow-hidden">
+          <section className="relative flex flex-col items-center justify-center pt-6 lg:pt-16 pb-16 bg-white overflow-hidden">
             <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
               HASH
             </h1>
@@ -21,7 +21,8 @@ const HeroEleven=()=>{
           </section>
 
           {/* Body Section */}
-          <section>
+          <section className="min-h-screen py-12 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/shop.png')"}}>
+          
             
           </section>
         </section>

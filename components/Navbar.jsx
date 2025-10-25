@@ -33,7 +33,7 @@ const Navbar = () => {
         "Events": "/even",
         "PAN 2027": "/pan-africa-2027",
         "Gallery": "/gallery",
-        "SH4 Shop": "/sh4shop",
+        "SH4 Shop": "/shop",
         "Contact Us": "/contact",
         "Reports": "/reports"
     };
