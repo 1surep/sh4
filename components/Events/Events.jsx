@@ -40,7 +40,7 @@ const Events=()=>{
     return (
       <div className="pt-32 ">
         {/* HEADING */}
-        <section className="relative flex flex-col items-center justify-center pt-6 pb-16 bg-white overflow-hidden">
+        <section className="relative flex flex-col items-center justify-center mt-6 pb-16 bg-white overflow-hidden">
           <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
             EVENTS
           </h1>
@@ -57,7 +57,7 @@ const Events=()=>{
 
 
         {/* body */}
-        <section className="py-12 min-h-screen bg-gradient-to-b from-white to-gray-50 px-[1rem] lg:px-[3rem]">
+        <section className="py-12 min-h-screen bg-yellow-50 px-[1rem] lg:px-[3rem]">
           <div className="max-w-7xl mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-3">
             {events.map((event, index) => (
               <motion.div

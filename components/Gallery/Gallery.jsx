@@ -73,7 +73,7 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="pt-32 min-h-screen px-[1rem] lg:px-[3rem] bg-yellow-50">
+    <div className="pt-32 min-h-screen  bg-yellow-50">
       {/* HEADING */}
       <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
         {/* Localized background effect (dark variant for light bg) */}
