@@ -18,11 +18,11 @@ export async function POST(request) {
             kennelsData = await fs.readFile(kennelsDataPath, 'utf8');
         } catch (error) {
             console.warn('Kennels data file not found, using default context');
-            kennelsData = 'Abuja Hash House Harriers - A running club with a drinking problem. We meet every Saturday at 4 PM for hash runs around Abuja.';
+            kennelsData = 'Sierra H4 - A running club with a drinking problem. We meet every Wednesday & every 1st Saturday of the Month at 6 PM for hash runs.';
         }
 
         // Construct the full prompt with the kennels data
-        const fullPrompt = `You are a helpful assistant for Abuja Hash House Harriers. Please answer the following question based on the provided Hash DB data:\n\n${kennelsData}\n\nUser Question: ${prompt}`;
+        const fullPrompt = `You are a helpful assistant for Sierra H4. Please answer the following question based on the provided data:\n\n${kennelsData}\n\nUser Question: ${prompt}`;
 
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         const model = genAI.getGenerativeModel({model: "gemini-2.5-flash"});
