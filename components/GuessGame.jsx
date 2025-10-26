@@ -30,7 +30,7 @@ const GuessGame = ({ onClose }) => {
     },
     {
       type: "fun",
-      question: "What was this table called in PAH 2025?",
+      question: "What was this table called at PAH 2025?",
       correctAnswer: "Spirits of Africa",
       options: ["Liquor of Africa ", "Cider of Africa ", "Draught of Africa ", "Spirits of Africa"],
       image: "/gamedata/g3.jpg",
