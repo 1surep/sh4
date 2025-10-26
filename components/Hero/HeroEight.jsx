@@ -65,7 +65,9 @@ const HeroEight = () => {
         </section>
 
         {/* Body of section of our SPONSOR */}
-        <div className="bg-yellow-50 flex items-center justify-center py-12 px-[1rem] lg:px-[3rem] w-full">
+        <div 
+        id="game"
+        className="bg-yellow-50 flex items-center justify-center py-12 px-[1rem] lg:px-[3rem] w-full">
           <div className="bg-gray-100 grid grid-cols-1 lg:flex items-center gap-4 justify-center">
             <Dock iconSize={80} className="gap-3 lg:gap-5">
               {dockItems.map((item, index) => (
@@ -84,7 +86,7 @@ const HeroEight = () => {
 
         {/* sh4 hash game */}
         <div 
-        id="game"
+        
         className="relative z-10 my-1 ">
           {/* HEADING */}
           <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
