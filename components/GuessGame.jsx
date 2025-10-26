@@ -150,7 +150,7 @@ const GuessGame = ({ onClose }) => {
     {
       type: "fun",
       question: "First PAH in 1996 was held in?",
-      correctAnswer: "Addiss Ababa",
+      correctAnswer: "Addis Ababa",
       options: ["Addis Alem", "Addis Ejersa", "Addis Ababa", "Addis Ejerie"],
       image: "/gamedata/g20.jpg",
     },
