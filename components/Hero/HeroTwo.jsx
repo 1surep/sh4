@@ -303,7 +303,7 @@ const HeroTwo = () => {
               {/* Info Section */}
               <div className="w-full sm:w-1/2 flex flex-col justify-center gap-3 py-2">
                 <h3 className="font-black text-yellow-300 text-center sm:text-left text-lg sm:text-xl mb-1">
-                  Run info.
+                  Run info
                 </h3>
 
                 <ul className="space-y-2.5 text-sm sm:text-base">

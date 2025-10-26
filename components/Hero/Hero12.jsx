@@ -22,7 +22,7 @@ const Hero12=()=>{
           </section>
 
           {/* BODY SECTION */}
-          <section className="pb-16 bg-yellow-50 ">
+          <section className="pb-16 bg-yellow-50 px-[1rem] lg:px-[3rem]">
 
             <div className="flex flex-col items-center justify-center py-3">
               <h1 className="text-gray-700 font-bold text-3xl">Questions? Suggestions?</h1>

@@ -70,7 +70,7 @@ const HeroSix = () => {
                  <div className="text-[#f9b84f] text-2xl font-semibold italic mb-3">Be Strong</div>
                  <div className="w-16 h-0.5 bg-gray-50 mb-4"></div>
                  <p className="text-gray-50 text-sm leading-relaxed">
-                   To get rid of weekends hangoversssssssssssssssssssss.
+                   To get rid of weekends hangoverssssssssssssssssss.
                  </p>
                </div>
 
