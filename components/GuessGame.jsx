@@ -16,7 +16,7 @@ const GuessGame = ({ onClose }) => {
   const gameData = [
     {
       type: "fun",
-      question: "How much is the Rego for 2027 PAH? ",
+      question: "How much is the Rego for 2027 PAH?",
       correctAnswer: "150 USD Dollars",
       options: ["261 NZD Dollars", "210 CAD Dollars", "150 USD Dollars", "230 AUD Dollars"],
       image: "/gamedata/g1.jpg",
@@ -30,14 +30,14 @@ const GuessGame = ({ onClose }) => {
     },
     {
       type: "fun",
-      question: "What was this table called in PAH 2025? ",
+      question: "What was this table called in PAH 2025?",
       correctAnswer: "Spirits of Africa",
       options: ["Liquor of Africa ", "Cider of Africa ", "Draught of Africa ", "Spirits of Africa"],
       image: "/gamedata/g3.jpg",
     },
     {
       type: "fun",
-      question: "What is this gathering called in the Hash? ",
+      question: "What is this gathering called in the Hash?",
       correctAnswer: "Circle",
       options: ["Circle", "Town Hall", "Round up", "Line up"],
       image: "/gamedata/g4.jpg",
@@ -100,14 +100,14 @@ const GuessGame = ({ onClose }) => {
     },
     {
       type: "fun",
-      question: "Sierra H4 also runs? ",
+      question: "Sierra H4 also runs?",
       correctAnswer: "Every 1st Saturday at 10AM",
       options: ["Every Saturday at 10AM", "Every 1st Saturday at 10AM", "Every 4th Saturday at 10AM", "Every 3rd Saturday at 10AM"],
       image: "/gamedata/g12.jpg",
     },
     {
       type: "fun",
-      question: "What do you need to attend PAH 2027? ",
+      question: "What do you need to attend PAH 2027?",
       correctAnswer: "Rego and Hotel",
       options: ["Rego and Hotel", "Diego and Chantel", "Tango and Motel", "Small Chops & Big Chops"],
       image: "/gamedata/g14.jpg",
@@ -135,7 +135,7 @@ const GuessGame = ({ onClose }) => {
     },
     {
       type: "fun",
-      question: "What day is October 22, 2027? ",
+      question: "What day is October 22, 2027?",
       correctAnswer: "Friday",
       options: ["Friday", "Thursday ", "Saturday ", "Wednesday "],
       image: "/gamedata/g18.jpg",
@@ -149,7 +149,7 @@ const GuessGame = ({ onClose }) => {
     },
     {
       type: "fun",
-      question: "First PAH in 1996 was held in ?",
+      question: "First PAH in 1996 was held in?",
       correctAnswer: "Addiss Ababa",
       options: ["Addis Alem", "Addis Ejersa", "Addis Ababa", "Addis Ejerie"],
       image: "/gamedata/g20.jpg",
