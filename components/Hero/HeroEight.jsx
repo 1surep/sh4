@@ -83,7 +83,9 @@ const HeroEight = () => {
         </div>
 
         {/* sh4 hash game */}
-        <div className="relative z-10 my-1 ">
+        <div 
+        id="game"
+        className="relative z-10 my-1 ">
           {/* HEADING */}
           <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}

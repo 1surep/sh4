@@ -22,6 +22,7 @@ const Navbar = () => {
         "PAH 2027",
         "Gallery",
         "SH4 Shop",
+        "Game",
         "Contact Us",
         "Reports"
     ];
@@ -34,6 +35,7 @@ const Navbar = () => {
         "PAH 2027": "/pan-africa-2027",
         "Gallery": "/gallery",
         "SH4 Shop": "/shop",
+        "Game": "/#game",
         "Contact Us": "/contact",
         "Reports": "/reports"
     };
@@ -265,7 +267,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu Items */}
                 <div className="p-4">
-                  <motion.ul className="space-y-4">
+                  <motion.ul className="space-y-3">
                     {menuItems.map((item, index) => (
                       <motion.li
                         key={item}
