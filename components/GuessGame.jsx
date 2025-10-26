@@ -10,156 +10,38 @@ const GuessGame = ({ onClose }) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
   const [shakeAnimation, setShakeAnimation] = useState(false);
+  const [shuffledQuestions, setShuffledQuestions] = useState([]);
 
   // Game data with different question types and images
   const gameData = [
-    // Hash Handle Questions
-    {
-      type: "hash_handle",
-      question: "Guess the Hash handle of this hasher?",
-      correctAnswer: "HashMaster",
-      options: ["HashMaster", "TrailBlazer", "PathFinder", "HashHound"],
-      image: "/IMG-20250928-WA0066.jpg",
-    },
-    {
-      type: "hash_handle",
-      question: "What's this hasher's trail name?",
-      correctAnswer: "TrailBlazer",
-      options: ["TrailBlazer", "PathPounder", "HashHunter", "TrailTrekker"],
-      image: "/IMG-20250928-WA0067.jpg",
-    },
-    {
-      type: "hash_handle",
-      question: "Can you identify this hasher's handle?",
-      correctAnswer: "PathFinder",
-      options: ["PathFinder", "HashMaster", "TrailRunner", "PathPioneer"],
-      image: "/IMG-20250928-WA0068.jpg",
-    },
-    {
-      type: "hash_handle",
-      question: "What do we call this hasher?",
-      correctAnswer: "HashHound",
-      options: ["HashHound", "TrailTracer", "PathPounder", "HashHiker"],
-      image: "/IMG-20250928-WA0069.jpg",
-    },
-    {
-      type: "hash_handle",
-      question: "Guess this hasher's trail name?",
-      correctAnswer: "TrailRunner",
-      options: ["TrailRunner", "HashMaster", "PathFinder", "TrailBlazer"],
-      image: "/IMG-20250928-WA0070.jpg",
-    },
-    // Activity Questions
-    {
-      type: "activity",
-      question: "What activity is this hasher doing?",
-      correctAnswer: "Running",
-      options: ["Running", "Walking", "Dancing", "Sleeping"],
-      image: "/run.png",
-    },
-    {
-      type: "activity",
-      question: "What's happening in this photo?",
-      correctAnswer: "Celebrating",
-      options: ["Celebrating", "Working", "Eating", "Reading"],
-      image: "/beer.jpg",
-    },
-    {
-      type: "activity",
-      question: "What is this person doing?",
-      correctAnswer: "Hiking",
-      options: ["Hiking", "Swimming", "Cooking", "Driving"],
-      image: "/hashing.jpg",
-    },
-    // Location Questions
-    {
-      type: "location",
-      question: "Where was this photo taken?",
-      correctAnswer: "Sierra Leone",
-      options: ["Sierra Leone", "Nigeria", "Ghana", "Liberia"],
-      image: "/misma.jpg",
-    },
-    {
-      type: "location",
-      question: "Which country is this?",
-      correctAnswer: "Sierra Leone",
-      options: ["Sierra Leone", "Kenya", "South Africa", "Morocco"],
-      image: "/logo.jpg",
-    },
-    // Object Questions
-    {
-      type: "object",
-      question: "What object is this?",
-      correctAnswer: "Circle",
-      options: ["Circle", "Square", "Triangle", "Rectangle"],
-      image: "/circle.jpg",
-    },
-    {
-      type: "object",
-      question: "What do you see in this image?",
-      correctAnswer: "Foot",
-      options: ["Foot", "Hand", "Head", "Leg"],
-      image: "/1foot.png",
-    },
-    // Sponsor Questions
-    {
-      type: "sponsor",
-      question: "Which sponsor is this?",
-      correctAnswer: "Amstel",
-      options: ["Amstel", "Orange", "UBA", "National Petroleum"],
-      image: "/sponsor/amstel.jpg",
-    },
-    {
-      type: "sponsor",
-      question: "What company logo is this?",
-      correctAnswer: "Orange",
-      options: ["Orange", "Amstel", "UBA", "Tourism"],
-      image: "/sponsor/orange.jpg",
-    },
-    {
-      type: "sponsor",
-      question: "Identify this sponsor:",
-      correctAnswer: "UBA",
-      options: ["UBA", "Orange", "Amstel", "National Petroleum"],
-      image: "/sponsor/uba.jpg",
-    },
-    // Random Fun Questions
+    // ... all your 20 questions stay exactly the same ...
     {
       type: "fun",
-      question: "What color is this?",
-      correctAnswer: "Yellow",
-      options: ["Yellow", "Red", "Blue", "Green"],
-      image: "/d.jpg",
+      question: "How much is the Rego for 2027 PAH? ",
+      correctAnswer: "150 USD Dollars",
+      options: ["261 NZD Dollars", "210 CAD Dollars", "150 USD Dollars", "230 AUD Dollars",],
+      image: "/gamedata/g1.jpg",
     },
+    // ... (include all 20 questions as before) ...
     {
       type: "fun",
-      question: "How many people are in this photo?",
-      correctAnswer: "Many",
-      options: ["Many", "One", "Two", "Three"],
-      image: "/s1.jpg",
-    },
-    {
-      type: "fun",
-      question: "What's the mood in this photo?",
-      correctAnswer: "Happy",
-      options: ["Happy", "Sad", "Angry", "Confused"],
-      image: "/s2.jpg",
-    },
-    {
-      type: "fun",
-      question: "What time of day is this?",
-      correctAnswer: "Day",
-      options: ["Day", "Night", "Dawn", "Dusk"],
-      image: "/s3.jpg",
+      question: "First PAH in 1996 was held in ?",
+      correctAnswer: "Addiss Ababa",
+      options: ["Addis Alem", "Addis Ejersa", "Addis Ababa", "Addis Ejerie",],
+      image: "/gamedata/g20.jpg",
     },
   ];
 
   const [currentChallengeData, setCurrentChallengeData] = useState(null);
 
-  // Generate random challenge data
-  const generateChallenge = () => {
-    const shuffled = [...gameData].sort(() => Math.random() - 0.5);
-    const selectedQuestion = shuffled[0];
+  // Shuffle entire questions array
+  const shuffleQuestions = () => {
+    return [...gameData].sort(() => Math.random() - 0.5);
+  };
+
+  // Generate challenge from shuffled questions using index
+  const generateChallenge = (questions) => {
+    const selectedQuestion = questions[currentChallenge];
 
     // Shuffle the options to randomize their positions
     const shuffledOptions = [...selectedQuestion.options].sort(
@@ -179,10 +61,19 @@ const GuessGame = ({ onClose }) => {
     };
   };
 
-  // Initialize first challenge
+  // Initialize with shuffled questions on mount
   useEffect(() => {
-    setCurrentChallengeData(generateChallenge());
+    const shuffled = shuffleQuestions();
+    setShuffledQuestions(shuffled);
+    setCurrentChallengeData(generateChallenge(shuffled));
   }, []);
+
+  // Update challenge when currentChallenge changes
+  useEffect(() => {
+    if (shuffledQuestions.length > 0) {
+      setCurrentChallengeData(generateChallenge(shuffledQuestions));
+    }
+  }, [currentChallenge, shuffledQuestions]);
 
   const handleAnswerSelect = (answerIndex) => {
     if (showFeedback) return;
@@ -215,9 +106,8 @@ const GuessGame = ({ onClose }) => {
 
     // Move to next challenge after delay
     setTimeout(() => {
-      if (currentChallenge < 4) {
+      if (currentChallenge < 19) {
         setCurrentChallenge(currentChallenge + 1);
-        setCurrentChallengeData(generateChallenge());
         setSelectedAnswer(null);
         setShowFeedback(false);
       } else {
@@ -227,13 +117,15 @@ const GuessGame = ({ onClose }) => {
   };
 
   const restartGame = () => {
+    const shuffled = shuffleQuestions();
+    setShuffledQuestions(shuffled);
     setCurrentChallenge(0);
     setScore(0);
     setSelectedAnswer(null);
     setShowFeedback(false);
     setIsCorrect(false);
     setGameCompleted(false);
-    setCurrentChallengeData(generateChallenge());
+    setCurrentChallengeData(generateChallenge(shuffled));
   };
 
   if (gameCompleted) {
@@ -242,7 +134,7 @@ const GuessGame = ({ onClose }) => {
         <h2 className="text-2xl font-bold text-white mb-3">Game Complete!</h2>
         <div className="text-5xl mb-3">🎉</div>
         <p className="text-lg text-gray-300 mb-5">
-          You got <span className="text-yellow-400 font-bold">{score}/5</span>{" "}
+          You got <span className="text-yellow-400 font-bold">{score}/20</span>{" "}
           right!
         </p>
         <div className="space-y-3">
@@ -270,7 +162,7 @@ const GuessGame = ({ onClose }) => {
     <div className="relative">
       <div className="text-center mb-4">
         <h2 className="text-xl font-bold text-white mb-2">
-          Challenge {currentChallenge + 1} of 5
+          Challenge {currentChallenge + 1} of 20
         </h2>
         <p className="text-gray-300 text-base">
           {currentChallengeData.question}

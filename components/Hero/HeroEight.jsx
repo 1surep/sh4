@@ -64,7 +64,7 @@ const HeroEight = () => {
           </div>
         </section>
 
-        {/* Body of section */}
+        {/* Body of section of our SPONSOR */}
         <div className="bg-yellow-50 flex items-center justify-center py-12 px-[1rem] lg:px-[3rem] w-full">
           <div className="bg-gray-100 grid grid-cols-1 lg:flex items-center gap-4 justify-center">
             <Dock iconSize={80} className="gap-3 lg:gap-5">
