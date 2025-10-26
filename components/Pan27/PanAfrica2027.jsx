@@ -754,7 +754,7 @@ export default function PanAfricaPage() {
                     {
                       name: "Dr. Kondo Belleh",
                       position: "Chairman",
-                      image: "/tourism/t1.jpg",
+                      image: "/gm.jpg",
                     },
                     {
                       name: "Fuckimbo",
