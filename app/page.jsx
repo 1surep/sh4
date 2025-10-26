@@ -45,7 +45,7 @@ const Home=()=>{
     
         </main>
         {/* chatbot modal */}
-        <ChatbotModal />
+        {/* <ChatbotModal /> */}
       </div>
     )
 

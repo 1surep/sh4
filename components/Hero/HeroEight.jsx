@@ -55,7 +55,7 @@ const HeroEight = () => {
           </h1>
 
           <div className="relative text-center">
-            <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+            <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
               HASHING
             </p>
             <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
@@ -89,7 +89,7 @@ const HeroEight = () => {
         
         className="relative z-10 my-1 ">
           {/* HEADING */}
-          <section className="relative flex flex-col items-center justify-center py-16 bg-white overflow-hidden">
+          <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
             {/* Localized background effect (dark variant for light bg) */}
             <ul className="background-dark">
               {Array.from({ length: 10 }).map((_, i) => (
@@ -101,7 +101,7 @@ const HeroEight = () => {
             </h1>
 
             <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
                 THE ULTIMATE HASH GAME
               </p>
               <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">

@@ -144,7 +144,7 @@ const HeroTwo = () => {
             variants={itemVariants}
             aria-label="Social media links">
             {/* WhatsApp */}
-            <motion.div
+            {/* <motion.div
               variants={socialIconVariants}
               whileHover={{ scale: 1.15, y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -159,7 +159,7 @@ const HeroTwo = () => {
                 style={{ height: 40, width: 40 }}
                 className="sm:!h-12 sm:!w-12 transition-shadow hover:shadow-lg hover:shadow-green-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
               />
-            </motion.div>
+            </motion.div> */}
 
             {/* TikTok */}
             <motion.div
@@ -303,14 +303,24 @@ const HeroTwo = () => {
               {/* Info Section */}
               <div className="w-full sm:w-1/2 flex flex-col justify-center gap-3 py-2">
                 <h3 className="font-black text-yellow-300 text-center sm:text-left text-lg sm:text-xl mb-1">
-                  Run No.: 501
+                  Run info.
                 </h3>
 
                 <ul className="space-y-2.5 text-sm sm:text-base">
                   <li className="font-medium flex items-center justify-center sm:justify-start gap-3 hover:text-yellow-300 transition-colors">
                     <BsCalendarDate className="text-yellow-400 flex-shrink-0" size={18} aria-hidden="true" />
-                    <span>March 20, 2022</span>
+                    <span>Every Wednesday &</span>
                   </li>
+
+                  <li className="font-medium flex items-center justify-center sm:justify-start gap-3 hover:text-yellow-300 transition-colors">
+                    <BsCalendarDate className="text-yellow-400 flex-shrink-0" size={18} aria-hidden="true" />
+                    <span>Every 1<sup>st</sup> Saturday</span>
+                  </li>
+
+
+
+
+
                   <li className="font-medium flex items-center justify-center sm:justify-start gap-3 hover:text-yellow-300 transition-colors">
                     <MdOutlineAccessTime className="text-yellow-400 flex-shrink-0" size={20} aria-hidden="true" />
                     <span>Time 06:00 PM</span>
@@ -319,10 +329,11 @@ const HeroTwo = () => {
                     <LiaMoneyBillWaveSolid className="text-yellow-400 flex-shrink-0" size={20} aria-hidden="true" />
                     <span>Rego: SL 10</span>
                   </li>
-                  <li className="font-medium flex items-center justify-center sm:justify-start gap-3 hover:text-yellow-300 transition-colors">
+
+                  {/* <li className="font-medium flex items-center justify-center sm:justify-start gap-3 hover:text-yellow-300 transition-colors">
                     <SlLocationPin className="text-yellow-400 flex-shrink-0" size={18} aria-hidden="true" />
                     <span className="text-sm">Bajra Sandhi Renon, Denpasar</span>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>

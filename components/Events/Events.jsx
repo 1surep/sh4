@@ -46,7 +46,7 @@ const Events=()=>{
           </h1>
 
           <div className="relative text-center">
-            <p className="text-[#f9b84f] uppercase tracking-[1px] font-semibold text-sm mb-2">
+            <p className="text-[#f9b84f] uppercase tracking-[1px] font-semibold text-2xl mb-2">
             Sierra H4
             </p>
             <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">

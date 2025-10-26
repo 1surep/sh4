@@ -71,7 +71,7 @@ const HeroOne = () => {
             <div className="flex items-center justify-center gap-4">
               <Link
                 href="/pan-africa-2027"
-                className="bg-[#f9b84f] cursor-pointer hover:text-gray-700 hover:bg-[#e3a63f] text-black font-semibold px-6 py-3 rounded-2xl transition-all"
+                className="bg-[#f9b84f] cursor-pointer hover:text-white hover:bg-[#e3a63f] text-black font-semibold px-6 py-3 rounded-2xl transition-all"
               >
                 On On PAN Africa 2027
               </Link>

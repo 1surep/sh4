@@ -100,7 +100,7 @@ const PanAfricaNavbar = () => {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/logo.jpg"
+              src="/pahlogo.jpg"
               width={50}
               height={50}
               alt="sierrah4_logo"
@@ -114,7 +114,7 @@ const PanAfricaNavbar = () => {
                 PAN Africa 2027
               </p>
               <p className="text-xs sm:text-sm text-blue-100">
-                Sierra The Duo Kennel
+                Sierra H4 : The Duo Kennel
               </p>
             </div>
           </motion.div>
@@ -139,7 +139,7 @@ const PanAfricaNavbar = () => {
             onClick={() => setIsMobileMenuOpen(false)}
             className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
           >
-            About PAN Africa
+            About PAH 2027
           </Link>
 
           {/* Visa */}
@@ -249,7 +249,7 @@ const PanAfricaNavbar = () => {
               <div className="flex items-center justify-between p-6 border-b border-green-700">
                 <Link href={"/"} className="flex items-center gap-3">
                   <Image
-                    src="/logo.jpg"
+                    src="/pahlogo.jpg"
                     width={40}
                     height={40}
                     alt="sierrah4_logo"
@@ -291,7 +291,7 @@ const PanAfricaNavbar = () => {
                     href="#about"
                     className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
                   >
-                    About PAN Africa
+                    About PAH 2027
                   </a>
                   <a
                     href="#visa"

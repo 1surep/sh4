@@ -12,7 +12,7 @@ const Hero12=()=>{
             </h1>
 
             <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] uppercase font-semibold text-sm mb-2">
+              <p className="text-[#f9b84f] tracking-[1px] uppercase font-semibold text-2xl mb-2">
                 Sierra Hash House Harriers & Harriettes
               </p>
               <h2 className="text-4xl tracking-[1px]  md:text-5xl font-bold text-gray-800">
@@ -105,7 +105,7 @@ const Hero12=()=>{
                 {/* button */}
                 <button
                   type="submit"
-                  className=" bg-yellow-400 px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-300 focus-visible:outline rounded-[12px] mx-auto flex focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                  className=" bg-yellow-400 cursor-pointer px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-300 focus-visible:outline rounded-[12px] mx-auto flex focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
                 >
                   Send Message
                 </button>

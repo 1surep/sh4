@@ -339,6 +339,10 @@ const Footer = () => {
             <span className="text-yellow-400 font-medium">
               Designed & Developed by <b>XGM 1SurePlayer</b>
             </span>
+
+            <span className="flex items-center justify-center rounded-full pt-1 ">
+              <Image src='/me.jpg' width={50} height={50} alt="image_developer" className="rounded-full ring ring-yellow-400 "/>
+            </span>
           </p>
         </motion.div>
       </div>

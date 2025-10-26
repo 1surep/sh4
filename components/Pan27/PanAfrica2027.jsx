@@ -385,7 +385,7 @@ export default function PanAfricaPage() {
                     1. Pay your rego
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
-                    Secure your spot for PAN Africa 2027.
+                    Secure your spot for PAN Africa Hash 2027.
                   </p>
                 </div>
                 <Award className="text-amber-500" size={28} />
@@ -418,7 +418,7 @@ export default function PanAfricaPage() {
                     2. Fill the Google form
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
-                    Provide details and upload your payment receipt.
+                    Provide details by uploading your payment receipt.
                   </p>
                 </div>
                 <Users className="text-blue-600" size={28} />
@@ -454,7 +454,8 @@ export default function PanAfricaPage() {
                 <Star className="text-rose-600" size={28} />
               </div>
               <div className="mt-4 text-sm text-gray-600">
-                Official hotels and nearby budget choices.
+                Main Venue | 2<sup>nd</sup> Venue | 3<sup>rd</sup> Venue 
+                <br /> Contact: +232-80-668590
               </div>
               <Link href="/pan-africa-2027/hotels">
               <button className="mt-5 w-full cursor-pointer bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-lg py-2">
@@ -505,7 +506,7 @@ export default function PanAfricaPage() {
             </h1>
 
             <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
                 PAN AFRICA HASH 2027
               </p>
               <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
@@ -673,7 +674,7 @@ export default function PanAfricaPage() {
             </h1>
 
             <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
                 PAN AFRICA HASH 2027
               </p>
               <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
@@ -716,10 +717,10 @@ export default function PanAfricaPage() {
             </h1>
 
             <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
                 PAN AFRICA HASH 2027
               </p>
-              <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
+              <h2 className="text-4xl tracking-[1px] uppercase md:text-5xl font-bold text-gray-800">
                 LOC & Advisory Council
               </h2>
             </div>
@@ -952,7 +953,7 @@ export default function PanAfricaPage() {
             </h1>
 
             <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
                 PAN AFRICA HASH 2027
               </p>
               <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
@@ -1039,7 +1040,7 @@ export default function PanAfricaPage() {
             </h1>
 
             <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
                 THE ULTIMATE HASH GAME
               </p>
               <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
@@ -1111,7 +1112,7 @@ export default function PanAfricaPage() {
             </h1>
 
             <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
                 PAN AFRICA HASH 2027
               </p>
               <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
@@ -1275,7 +1276,7 @@ export default function PanAfricaPage() {
             </h1>
 
             <div className="relative text-center">
-              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
+              <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
                 PAN AFRICA HASH 2027
               </p>
               <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
@@ -1394,7 +1395,7 @@ export default function PanAfricaPage() {
       <Footer />
 
       {/* Chatbot Modal */}
-      <ChatbotModal />
+      {/* <ChatbotModal /> */}
     </>
   );
 }

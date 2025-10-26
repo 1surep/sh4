@@ -87,8 +87,8 @@ const Gallery = () => {
         </h1>
 
         <div className="relative text-center">
-          <p className="text-[#f9b84f] tracking-[1px] font-semibold text-sm mb-2">
-            HASH GALLERY
+          <p className="text-[#f9b84f] tracking-[1px] font-semibold text-2xl mb-2">
+            SH4 GALLERY
           </p>
           <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
             PHOTO COLLECTION

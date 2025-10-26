@@ -17,7 +17,7 @@ const HeroSeven=()=>{
 
             {/* Foreground text */}
             <div className="relative text-center">
-              <p className="text-[#f9b84f] font-semibold text-sm mb-2 tracking-[1px]">
+              <p className="text-[#f9b84f] font-semibold text-2xl mb-2 tracking-[1px]">
                 MISMANAGEMENT
               </p>
               <h2 className="text-4xl md:text-5xl tracking-[1px] font-bold text-gray-800">
