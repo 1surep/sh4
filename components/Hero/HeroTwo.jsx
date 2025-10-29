@@ -7,7 +7,7 @@ import { SocialIcon } from "react-social-icons";
 import { BsCalendarDate } from "react-icons/bs";
 import { MdOutlineAccessTime } from "react-icons/md";
 import { LiaMoneyBillWaveSolid } from "react-icons/lia";
-import { SlLocationPin } from "react-icons/sl";
+
 
 const HeroTwo = () => {
   const images = ["/beer.jpg", "/circle.jpg","/beer.jpg", "/D4.png"];
@@ -143,23 +143,7 @@ const HeroTwo = () => {
             className="flex items-center justify-center sm:justify-start gap-4 mb-8 sm:mb-10"
             variants={itemVariants}
             aria-label="Social media links">
-            {/* WhatsApp */}
-            {/* <motion.div
-              variants={socialIconVariants}
-              whileHover={{ scale: 1.15, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <SocialIcon
-                href="https://www.whatsapp.com"
-                url="https://www.whatsapp.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Join us on WhatsApp"
-                style={{ height: 40, width: 40 }}
-                className="sm:!h-12 sm:!w-12 transition-shadow hover:shadow-lg hover:shadow-green-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
-              />
-            </motion.div> */}
+           
 
             {/* TikTok */}
             <motion.div
@@ -257,17 +241,6 @@ const HeroTwo = () => {
                 R U ON?
               </motion.h2>
 
-              {/* <motion.button
-                className="mt-4 px-8 py-3 sm:px-10 sm:py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold text-base sm:text-lg rounded-full shadow-xl hover:shadow-2xl hover:shadow-yellow-500/50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                aria-label="Join the next run"
-              >
-                Join the Next Run
-              </motion.button> */}
             </motion.div>
           </motion.div>
 
@@ -280,13 +253,13 @@ const HeroTwo = () => {
             aria-label="Weekly run information">
             {/* Card Header */}
             <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 w-full rounded-t-2xl overflow-hidden shadow-lg">
-              <h2 className="text-gray-900 font-black p-4 sm:p-5 text-center text-lg sm:text-xl tracking-tight">
+              {/* <h2 className="text-gray-900 font-black p-4 sm:p-5 text-center text-lg sm:text-xl tracking-tight">
                 Our Weekly Run Update!
-              </h2>
+              </h2> */}
             </div>
 
             {/* Card Body */}
-            <div className="flex flex-col sm:flex-row w-full gap-5 sm:gap-6 bg-black/60 rounded-b-2xl backdrop-blur-xl border-2 border-white/10 shadow-2xl p-5 sm:p-6 hover:border-white/20 transition-all duration-300">
+            <div className="flex flex-col sm:flex-row w-full gap-4 py-4 bg-black/60 rounded-2xl backdrop-blur-xl border-2 border-white/10 shadow-2xl  mx-8 hover:border-white/20 transition-all duration-300">
               {/* Image Section */}
               <div className="w-full sm:w-1/2 flex justify-center items-center">
                 <div className="relative group">
@@ -303,7 +276,7 @@ const HeroTwo = () => {
               {/* Info Section */}
               <div className="w-full sm:w-1/2 flex flex-col justify-center gap-3 py-2">
                 <h3 className="font-black text-yellow-300 text-center sm:text-left text-lg sm:text-xl mb-1">
-                  Run info
+                  SH4 Run info
                 </h3>
 
                 <ul className="space-y-2.5 text-sm sm:text-base">
@@ -327,13 +300,10 @@ const HeroTwo = () => {
                   </li>
                   <li className="font-medium flex items-center justify-center sm:justify-start gap-3 hover:text-yellow-300 transition-colors">
                     <LiaMoneyBillWaveSolid className="text-yellow-400 flex-shrink-0" size={20} aria-hidden="true" />
-                    <span>Rego: SL 10</span>
+                    <span>Rego: Nle 30 | Nle 250</span>
                   </li>
 
-                  {/* <li className="font-medium flex items-center justify-center sm:justify-start gap-3 hover:text-yellow-300 transition-colors">
-                    <SlLocationPin className="text-yellow-400 flex-shrink-0" size={18} aria-hidden="true" />
-                    <span className="text-sm">Bajra Sandhi Renon, Denpasar</span>
-                  </li> */}
+                  
                 </ul>
               </div>
             </div>

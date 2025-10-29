@@ -553,7 +553,7 @@ export default function PanAfricaPage() {
                     <button
                       className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-900 text-base lg:text-lg font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
                       onClick={() =>
-                        window.open("https://www.evisa.gov.sl", "_blank")
+                        window.open("https://www.visitsierraleone.org/online-visa/", "_blank")
                       }
                     >
                       Apply for Visa
