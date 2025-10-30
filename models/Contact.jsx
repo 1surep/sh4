@@ -25,6 +25,11 @@ const contactSchema = new mongoose.Schema ({
         trim: true,
     },
 
+    read: {
+        type: Boolean,
+        default: false
+    },
+
    
     createdAt: {
         type: Date,

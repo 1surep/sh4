@@ -17,3 +17,13 @@ export async function POST(req) {
     );
   }
 }
+
+export async function GET() {
+  await connectDB();
+  try {
+    const messages = await contactModel.find({}).sort({ createdAt: -1 }).lean();
+    return NextResponse.json(messages, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: "Failed to fetch messages", error }, { status: 500 });
+  }
+}
