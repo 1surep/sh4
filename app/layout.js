@@ -20,12 +20,13 @@ function RootLayout({ children }) {
   const pathname = usePathname();
   const isPanAfricaPage = pathname === "/pan-africa-2027";
   const isDashboardPage = pathname === "/dashboard";
+  const isDashboardInboxPage = pathname === "/dashboard/inbox";
 
   return (
     <html lang="en" data-theme="light">
       <body className={`${outfit.variable} font-outfit antialiased`}>
         <AuthProvider>
-          {!isPanAfricaPage && !isDashboardPage && <Navbar />}
+          {!isPanAfricaPage && !isDashboardPage && !isDashboardInboxPage && <Navbar />}
           {children}
           {!isPanAfricaPage && !isDashboardPage && <Footer />}
 

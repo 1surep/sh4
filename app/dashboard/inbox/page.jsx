@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
  import { useAuth } from "@/app/context/AuthContext";
  import { useRouter } from "next/navigation";
+import Image from "next/image";
  
  const InboxPage = () => {
    const { user, loading } = useAuth();
@@ -59,7 +60,16 @@ import React, { useEffect, useState } from "react";
    if (!user) return null;
  
    return (
-     <div className="min-h-screen pt-32 bg-gray-100 py-12 px-[1rem] lg:px-[3rem]">
+     <div className="min-h-screen bg-gray-100 py-12 px-[1rem] lg:px-[3rem]">
+      <div className="flex justify-center items-center rounded-full mb-6">
+        <Image
+          src="/logo.jpg"
+          alt="kennel logo"
+          width={100}
+          height={100}
+          className="rounded-full"
+        />
+      </div>
       <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
            <h1 className="text-2xl lg:text-4xl font-bold text-gray-800">SH4 Inbox</h1>
