@@ -1,9 +1,52 @@
-import React from "react";
+'use client';
+
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const Hero12=()=>{
+    const [hashhandle, setHashhandle] = useState("");
+    const [email, setEmail] = useState("");
+    const [subject, setSubject] = useState("");
+    const [message, setMessage] = useState("");
+    const [submitting, setSubmitting] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!hashhandle || !email || !message) {
+            toast.error("Hash handle, email and message are required.");
+            return;
+        }
+
+        setSubmitting(true);
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ hashhandle, email, subject, message }),
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error(data?.message || "Failed to send message");
+            }
+
+            toast.success(data?.message || "Message sent successfully.");
+            setHashhandle("");
+            setEmail("");
+            setSubject("");
+            setMessage("");
+        } catch (err) {
+            toast.error(err.message || "Something went wrong");
+        } finally {
+            setSubmitting(false);
+        }
+    };
     return (
       <>
+        <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnFocusLoss draggable pauseOnHover theme="light" />
         <section>
           {/* HEADING */}
           <section className="relative flex flex-col items-center justify-center pt-6 lg:pt-16 pb-16 bg-white overflow-hidden">
@@ -33,21 +76,23 @@ const Hero12=()=>{
 
             {/* form div */}
             <div className="flex flex-col items-center ">
-              <form className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
+              <form onSubmit={handleSubmit} className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
                 {/* name */}
                 <div className="mb-4">
                   <label
                     htmlFor="name"
                     className="block text-gray-700 text-sm font-bold mb-2"
                   >
-                    Name:
+                    Hash Handle:
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Your Name"
+                    placeholder="Your Hash Handle"
+                    value={hashhandle}
+                    onChange={(e) => setHashhandle(e.target.value)}
                   />
                 </div>
 
@@ -65,6 +110,8 @@ const Hero12=()=>{
                     name="email"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
@@ -82,6 +129,8 @@ const Hero12=()=>{
                     name="subject"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Subject"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                   />
                 </div>
 
@@ -99,15 +148,18 @@ const Hero12=()=>{
                     rows="5"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Your Message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                   ></textarea>
                 </div>
 
                 {/* button */}
                 <button
                   type="submit"
-                  className=" bg-yellow-400 cursor-pointer px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-300 focus-visible:outline rounded-[12px] mx-auto flex focus-visible:outline-offset-2 focus-visible:outline-yellow-400"
+                  className=" bg-yellow-400 cursor-pointer px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-yellow-300 focus-visible:outline rounded-[12px] mx-auto flex focus-visible:outline-offset-2 focus-visible:outline-yellow-400 disabled:opacity-60"
+                  disabled={submitting}
                 >
-                  Send Message
+                  {submitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>

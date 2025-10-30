@@ -355,7 +355,190 @@ const Dashboard = () => {
                 <h3 className="text-gray-800 font-semibold text-sm mb-2">
                   Total Hasher in SH4
                 </h3>
-                <div className="text-3xl font-bold text-gray-800">+120</div>
+
+                <div className="flex items-center justify-between">
+                  <div className="text-3xl font-bold text-gray-800">+120</div>
+
+                  <div className="flex items-center gap-2">
+                  <h1 className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg">
+                    {/* Open the modal using document.getElementById('ID').showModal() method */}
+                    <button
+                      className="bt cursor-pointer"
+                      onClick={() =>
+                        document.getElementById("my_modal_5").showModal()
+                      }
+                    >
+                      Inbox
+                    </button>
+                    <dialog
+                      id="my_modal_5"
+                      className="modal modal-bottom sm:modal-middle"
+                    >
+                      {/* ADD HASHER FORM + */}
+                      <div className="modal-box max-w-2xl">
+                        <div className="flex items-center gap-3 mb-6">
+                          <div className="p-2 bg-blue-100 rounded-lg">
+                            <UserPlus className="text-blue-600" size={20} />
+                          </div>
+                          <h3 className="font-bold text-xl text-gray-800">
+                            Add New Hasher
+                          </h3>
+                        </div>
+
+                        <div className="py-4">
+                          <form className="space-y-6">
+                            {/* Form Grid Layout */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              {/* Hash Handle */}
+                              <div className="space-y-2">
+                                <label className="block text-sm font-semibold text-gray-700">
+                                  Hash Handle{" "}
+                                  <span className="text-red-500">*</span>
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="Enter Hash Handle"
+                                  className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                  required
+                                />
+                              </div>
+
+                              {/* Kennel */}
+                              <div className="space-y-2">
+                                <label className="block text-sm font-semibold text-gray-700">
+                                  Kennel <span className="text-red-500">*</span>
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="Enter kennel name"
+                                  className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                  required
+                                />
+                              </div>
+
+                              {/* Country */}
+                              <div className="space-y-2">
+                                <label className="block text-sm font-semibold text-gray-700">
+                                  Country{" "}
+                                  <span className="text-red-500">*</span>
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="Enter Country"
+                                  className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                  required
+                                />
+                              </div>
+
+                              {/* Shirt Size */}
+                              <div className="space-y-2">
+                                <label className="block text-sm font-semibold text-gray-700">
+                                  Shirt Size{" "}
+                                  <span className="text-red-500">*</span>
+                                </label>
+                                <select
+                                  className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                  required
+                                >
+                                  <option value="">Select Size</option>
+                                  <option value="S">S</option>
+                                  <option value="M">M</option>
+                                  <option value="L">L</option>
+                                  <option value="XL">XL</option>
+                                  <option value="XXL">XXL</option>
+                                  <option value="3XL">3XL</option>
+                                  <option value="4XL">4XL</option>
+                                  <option value="5XL">5XL</option>
+                                </select>
+                              </div>
+                            </div>
+
+                            {/* Run Type - Full Width */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-semibold text-gray-700">
+                                Run Type <span className="text-red-500">*</span>
+                              </label>
+
+                              <div className="flex items-center justify-between gap-1">
+                                <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
+                                  <input
+                                    type="radio"
+                                    name="runType"
+                                    value="Bush"
+                                    className="mr-2 text-blue-600"
+                                  />
+                                  <span className="text-sm font-medium">
+                                    Walker
+                                  </span>
+                                </label>
+                                <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
+                                  <input
+                                    type="radio"
+                                    name="runType"
+                                    value="Road"
+                                    className="mr-2 text-blue-600"
+                                  />
+                                  <span className="text-sm font-medium">
+                                    Short{" "}
+                                  </span>
+                                </label>
+                                <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
+                                  <input
+                                    type="radio"
+                                    name="runType"
+                                    value="Mixed"
+                                    className="mr-2 text-blue-600"
+                                  />
+                                  <span className="text-sm font-medium">
+                                    Long
+                                  </span>
+                                </label>
+                                {/* <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
+                                  <input type="radio" name="runType" value="Trail" className="mr-2 text-blue-600" />
+                                  <span className="text-sm font-medium">Trail</span>
+                                </label> */}
+                              </div>
+                            </div>
+
+                            {/* Additional Notes */}
+                            {/* <div className="space-y-2">
+                              <label className="block text-sm font-semibold text-gray-700">
+                                Additional Notes
+                              </label>
+                              <textarea 
+                                placeholder="Any additional information about the hasher..."
+                                rows={3}
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white resize-none"
+                              />
+                            </div> */}
+
+                            {/* Form Actions */}
+                            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                              <button
+                                type="submit"
+                                className="flex-1 text-base bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                              >
+                                <UserPlus size={18} />
+                                Add
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  document.getElementById("my_modal_5").close()
+                                }
+                                className="flex-1 bg-gray-200 text-base hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200"
+                              >
+                                Cancel
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </dialog>
+                  </h1>
+                  </div>
+                </div>
+               
               </div>
             </motion.div>
 
