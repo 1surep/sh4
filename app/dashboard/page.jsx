@@ -19,6 +19,9 @@ const Dashboard = () => {
   const [shirt, setShirt] = useState("");
   const [runType, setRunType] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [regoList, setRegoList] = useState([]);
+  const [editing, setEditing] = useState(null); // holds document _id when editing
+  const [editValues, setEditValues] = useState({ hashhandle: "", kennel: "", country: "", shirt: "", run: "" });
 
   // Protect the dashboard - redirect to signin if not authenticated
   useEffect(() => {
@@ -26,6 +29,23 @@ const Dashboard = () => {
       router.push('/signin');
     }
   }, [user, loading, router]);
+
+  useEffect(() => {
+    if (!loading && user) {
+      fetchRegoList();
+    }
+  }, [loading, user]);
+
+  const fetchRegoList = async () => {
+    try {
+      const res = await fetch('/api/regolist', { cache: 'no-store' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || 'Failed to load');
+      setRegoList(data || []);
+    } catch (err) {
+      toast.error(err.message || 'Failed to load');
+    }
+  };
 
   const footerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -73,10 +93,55 @@ const Dashboard = () => {
       setRunType("");
       document.getElementById("my_modal_5")?.close();
       toast.success(data?.message || "Saved successfully");
+      fetchRegoList();
     } catch (err) {
       toast.error(err.message || 'Something went wrong');
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!confirm('Delete this entry?')) return;
+    try {
+      const res = await fetch(`/api/regolist/${id}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || 'Failed to delete');
+      toast.success('Deleted successfully');
+      fetchRegoList();
+    } catch (err) {
+      toast.error(err.message || 'Delete failed');
+    }
+  };
+
+  const openEditModal = (item) => {
+    setEditing(item._id);
+    setEditValues({
+      hashhandle: item.hashhandle || "",
+      kennel: item.kennel || "",
+      country: item.country || "",
+      shirt: item.shirt || "",
+      run: item.run || "",
+    });
+    document.getElementById('edit_modal')?.showModal();
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`/api/regolist/${editing}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(editValues)
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || 'Failed to update');
+      toast.success('Updated successfully');
+      document.getElementById('edit_modal')?.close();
+      setEditing(null);
+      fetchRegoList();
+    } catch (err) {
+      toast.error(err.message || 'Update failed');
     }
   };
 
@@ -777,21 +842,96 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="text-left">
-                <td className="border border-gray-300 p-2">1</td>
-                <td className="border border-gray-300 p-2">John Doe</td>
-                <td className="border border-gray-300 p-2">
-                  john.doe@example.com
-                </td>
-                <td className="border border-gray-300 p-2">+2348123456789</td>
-                <td className="border border-gray-300 p-2">Nigeria</td>
-                <td className="border border-gray-300 p-2">Bush</td>
-                <td className="border border-gray-300 p-2">Edit\Delete</td>
-              </tr>
+              {regoList.length === 0 ? (
+                <tr>
+                  <td className="border border-gray-300 p-4 text-center text-gray-500" colSpan={7}>No entries yet</td>
+                </tr>
+              ) : (
+                regoList.map((item, idx) => (
+                  <tr className="text-left" key={item._id}>
+                    <td className="border border-gray-300 p-2">{idx + 1}</td>
+                    <td className="border border-gray-300 p-2">{item.hashhandle}</td>
+                    <td className="border border-gray-300 p-2">{item.kennel}</td>
+                    <td className="border border-gray-300 p-2">{item.country}</td>
+                    <td className="border border-gray-300 p-2">{item.shirt}</td>
+                    <td className="border border-gray-300 p-2">{item.run}</td>
+                    <td className="border border-gray-300 p-2">
+                      <div className="flex items-center gap-2">
+                        <button className="px-3 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-sm cursor-pointer" onClick={() => openEditModal(item)}>Edit</button>
+                        <button className="px-3 py-1 rounded bg-red-600 hover:bg-red-700 text-white text-sm cursor-pointer" onClick={() => handleDelete(item._id)}>Delete</button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
       </motion.div>
+      {/* Edit Modal */}
+      <dialog id="edit_modal" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box max-w-2xl">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 bg-blue-100 rounded-lg">
+              <UserPlus className="text-blue-600" size={20} />
+            </div>
+            <h3 className="font-bold text-xl text-gray-800">Edit Hasher</h3>
+          </div>
+          <div className="py-4">
+            <form className="space-y-6" onSubmit={handleEditSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700">Hash Handle <span className="text-red-500">*</span></label>
+                  <input type="text" className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white" required value={editValues.hashhandle} onChange={(e) => setEditValues({ ...editValues, hashhandle: e.target.value })} />
+                </div>
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700">Kennel <span className="text-red-500">*</span></label>
+                  <input type="text" className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white" required value={editValues.kennel} onChange={(e) => setEditValues({ ...editValues, kennel: e.target.value })} />
+                </div>
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700">Country <span className="text-red-500">*</span></label>
+                  <input type="text" className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white" required value={editValues.country} onChange={(e) => setEditValues({ ...editValues, country: e.target.value })} />
+                </div>
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700">Shirt Size <span className="text-red-500">*</span></label>
+                  <select className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white" required value={editValues.shirt} onChange={(e) => setEditValues({ ...editValues, shirt: e.target.value })}>
+                    <option value="">Select Size</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                    <option value="3XL">3XL</option>
+                    <option value="4XL">4XL</option>
+                    <option value="5XL">5XL</option>
+                  </select>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-gray-700">Run Type <span className="text-red-500">*</span></label>
+                <div className="flex items-center justify-between gap-1">
+                  <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
+                    <input type="radio" name="editRunType" value="Walker" className="mr-2 text-blue-600" checked={editValues.run === 'Walker'} onChange={(e) => setEditValues({ ...editValues, run: e.target.value })} />
+                    <span className="text-sm font-medium">Walker</span>
+                  </label>
+                  <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
+                    <input type="radio" name="editRunType" value="Short" className="mr-2 text-blue-600" checked={editValues.run === 'Short'} onChange={(e) => setEditValues({ ...editValues, run: e.target.value })} />
+                    <span className="text-sm font-medium">Short</span>
+                  </label>
+                  <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
+                    <input type="radio" name="editRunType" value="Long" className="mr-2 text-blue-600" checked={editValues.run === 'Long'} onChange={(e) => setEditValues({ ...editValues, run: e.target.value })} />
+                    <span className="text-sm font-medium">Long</span>
+                  </label>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                <button type="submit" className="flex-1 text-base bg-blue-600 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all cursor-pointer duration-200">Save</button>
+                <button type="button" onClick={() => { document.getElementById('edit_modal')?.close(); setEditing(null); }} className="flex-1 bg-gray-200 text-base cursor-pointer hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </>
   );
 };
