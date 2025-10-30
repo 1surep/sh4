@@ -1,16 +1,24 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Users, ShoppingBag, TrendingUp, DollarSign, Home, LogOut, Plus, UserPlus } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { TfiEye } from "react-icons/tfi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Dashboard = () => {
   const { user, logout, loading } = useAuth();
   const router = useRouter();
+  const [hashhandle, setHashhandle] = useState("");
+  const [kennel, setKennel] = useState("");
+  const [country, setCountry] = useState("");
+  const [shirt, setShirt] = useState("");
+  const [runType, setRunType] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   // Protect the dashboard - redirect to signin if not authenticated
   useEffect(() => {
@@ -42,6 +50,36 @@ const Dashboard = () => {
     router.push('/signin');
   };
 
+  const handleAddHasherSubmit = async (e) => {
+    e.preventDefault();
+    if (!hashhandle || !kennel || !country || !shirt || !runType) {
+      toast.error("Please complete all required fields.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/regolist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ hashhandle, kennel, country, shirt, run: runType })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || 'Failed to save');
+      // reset
+      setHashhandle("");
+      setKennel("");
+      setCountry("");
+      setShirt("");
+      setRunType("");
+      document.getElementById("my_modal_5")?.close();
+      toast.success(data?.message || "Saved successfully");
+    } catch (err) {
+      toast.error(err.message || 'Something went wrong');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   // Show loading state while checking authentication
   if (loading) {
     return (
@@ -61,6 +99,7 @@ const Dashboard = () => {
 
   return (
     <>
+      <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick pauseOnFocusLoss draggable pauseOnHover theme="light" />
       <motion.div
         variants={footerVariants}
         initial="hidden"
@@ -178,12 +217,12 @@ const Dashboard = () => {
                             <UserPlus className="text-blue-600" size={20} />
                           </div>
                           <h3 className="font-bold text-xl text-gray-800">
-                            Add New Hasher
+                            Add New Hasher PAH 2027 Rego List
                           </h3>
                         </div>
 
                         <div className="py-4">
-                          <form className="space-y-6">
+                          <form className="space-y-6" onSubmit={handleAddHasherSubmit}>
                             {/* Form Grid Layout */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                               {/* Hash Handle */}
@@ -197,6 +236,8 @@ const Dashboard = () => {
                                   placeholder="Enter Hash Handle"
                                   className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                   required
+                                  value={hashhandle}
+                                  onChange={(e) => setHashhandle(e.target.value)}
                                 />
                               </div>
 
@@ -210,6 +251,8 @@ const Dashboard = () => {
                                   placeholder="Enter kennel name"
                                   className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                   required
+                                  value={kennel}
+                                  onChange={(e) => setKennel(e.target.value)}
                                 />
                               </div>
 
@@ -224,6 +267,8 @@ const Dashboard = () => {
                                   placeholder="Enter Country"
                                   className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                   required
+                                  value={country}
+                                  onChange={(e) => setCountry(e.target.value)}
                                 />
                               </div>
 
@@ -236,6 +281,8 @@ const Dashboard = () => {
                                 <select
                                   className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                   required
+                                  value={shirt}
+                                  onChange={(e) => setShirt(e.target.value)}
                                 >
                                   <option value="">Select Size</option>
                                   <option value="S">S</option>
@@ -261,8 +308,10 @@ const Dashboard = () => {
                                   <input
                                     type="radio"
                                     name="runType"
-                                    value="Bush"
+                                    value="Walker"
                                     className="mr-2 text-blue-600"
+                                    checked={runType === 'Walker'}
+                                    onChange={(e) => setRunType(e.target.value)}
                                   />
                                   <span className="text-sm font-medium">
                                     Walker
@@ -272,8 +321,10 @@ const Dashboard = () => {
                                   <input
                                     type="radio"
                                     name="runType"
-                                    value="Road"
+                                    value="Short"
                                     className="mr-2 text-blue-600"
+                                    checked={runType === 'Short'}
+                                    onChange={(e) => setRunType(e.target.value)}
                                   />
                                   <span className="text-sm font-medium">
                                     Short{" "}
@@ -283,8 +334,10 @@ const Dashboard = () => {
                                   <input
                                     type="radio"
                                     name="runType"
-                                    value="Mixed"
+                                    value="Long"
                                     className="mr-2 text-blue-600"
+                                    checked={runType === 'Long'}
+                                    onChange={(e) => setRunType(e.target.value)}
                                   />
                                   <span className="text-sm font-medium">
                                     Long
@@ -313,17 +366,18 @@ const Dashboard = () => {
                             <div className="flex flex-col sm:flex-row gap-3 pt-4">
                               <button
                                 type="submit"
-                                className="flex-1 text-base bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                                className="flex-1 text-base bg-blue-600 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all cursor-pointer duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                                disabled={submitting}
                               >
                                 <UserPlus size={18} />
-                                Add
+                                {submitting ? 'Saving...' : 'Add'}
                               </button>
                               <button
                                 type="button"
                                 onClick={() =>
                                   document.getElementById("my_modal_5").close()
                                 }
-                                className="flex-1 bg-gray-200 text-base hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200"
+                                className="flex-1 bg-gray-200 text-base cursor-pointer hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200"
                               >
                                 Cancel
                               </button>
@@ -707,7 +761,7 @@ const Dashboard = () => {
 
         {/* TABLE SECTION */}
         <div className="px-[1rem] lg:px-[3rem]">
-          <h1 className="text-2xl font-bold text-gray-800 text-center py-8">
+          <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 text-center py-8">
             PAN AFRICA HASH 2027 REGISTRATION LIST
           </h1>
           <table className="w-full border-collapse border border-gray-300">
