@@ -829,7 +829,8 @@ const Dashboard = () => {
           <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 text-center py-8">
             PAN AFRICA HASH 2027 REGISTRATION LIST
           </h1>
-          <table className="w-full border-collapse border border-gray-300">
+          <div className="w-full overflow-x-auto lg:overflow-visible">
+          <table className="w-full min-w-[800px] lg:min-w-0 border-collapse border border-gray-300 text-sm">
             <thead className="bg-gray-100">
               <tr className="text-left">
                 <th className="border border-gray-300 p-2">S/N</th>
@@ -866,6 +867,7 @@ const Dashboard = () => {
               )}
             </tbody>
           </table>
+          </div>
         </div>
       </motion.div>
       {/* Edit Modal */}
