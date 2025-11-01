@@ -151,13 +151,13 @@ const PanAfricaNavbar = () => {
             Visa / Protocol
           </Link>
 
-          {/* Sponsor */}
+          {/* Who is Coming/ regoList*/}
           <Link
-            href="#sponsor"
+            href={'/whoiscoming'}
             onClick={() => setIsMobileMenuOpen(false)}
             className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
           >
-            Sponsors
+            RegoList
           </Link>
 
           {/* Tourism */}
@@ -169,13 +169,13 @@ const PanAfricaNavbar = () => {
             Tourism
           </Link>
 
-          {/* Gallery */}
+          {/* Hotel */}
           <Link
-            href="#gallery"
+            href={'/pan-africa-2027/hotels'}
             onClick={() => setIsMobileMenuOpen(false)}
             className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
           >
-            Gallery
+            Hotel
           </Link>
 
           {/* LOC & Advisory Council */}
@@ -299,12 +299,13 @@ const PanAfricaNavbar = () => {
                   >
                     Visa / Protocol
                   </a>
-                  <a
-                    href="#sponsor"
+
+                  <Link
+                     href={'/whoiscoming'}
                     className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
                   >
-                    Sponsors
-                  </a>
+                    RegoList
+                  </Link>
 
                   <a
                     href="#loc"
@@ -329,12 +330,12 @@ const PanAfricaNavbar = () => {
                   </a>
 
 
-                  <a
-                    href="#gallery"
+                  <Link
+                    href={'/pan-africa-2027/hotels'}
                     className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
                   >
-                    Gallery
-                  </a>
+                    Hotel
+                  </Link>
 
                   <a
                     href="#event"
