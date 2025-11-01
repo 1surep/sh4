@@ -675,7 +675,7 @@ const Dashboard = () => {
               </div>
             </motion.div>
             </div>
-            </div>
+        </div>
 
         {/* TABLE SECTION */}
         <div className="px-[1rem] lg:px-[3rem]">

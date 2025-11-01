@@ -484,9 +484,13 @@ export default function PanAfricaPage() {
               <div className="mt-4 text-sm text-gray-600">
                 We'll update the list as approvals roll in.
               </div>
-              <button className="mt-5 w-full bg-yellow-600 cursor-pointer  hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
-                Who is coming ?
-              </button>
+              
+              {/* Who is coming button */}
+              <Link href={'/whoiscoming'}>
+                <button className="mt-5 w-full bg-yellow-600 cursor-pointer  hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                  Who is coming
+                </button>
+              </Link>
             </motion.div>
           </div>
         </div>

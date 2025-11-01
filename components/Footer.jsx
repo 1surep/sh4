@@ -260,23 +260,7 @@ const Footer = () => {
             variants={itemVariants}
             aria-label="Social media links"
           >
-            {/* WhatsApp */}
-            <motion.div
-              variants={socialIconVariants}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <SocialIcon
-                href="https://www.whatsapp.com"
-                url="https://www.whatsapp.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Join us on WhatsApp"
-                style={{ height: 32, width: 32 }}
-                className="transition-shadow hover:shadow-lg hover:shadow-green-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
-              />
-            </motion.div>
+            
 
             {/* TikTok */}
             <motion.div

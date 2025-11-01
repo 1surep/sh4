@@ -142,7 +142,7 @@ const HeroSeven=()=>{
                   <p className="font-semibold text-lg text-gray-800">
                     Hash Beer
                   </p>
-                  <p className="text-gray-600">Name:????</p>
+                  <p className="text-gray-600">Kaka Pipe</p>
                 </div>
               </div>
 
@@ -176,7 +176,7 @@ const HeroSeven=()=>{
                   <p className="font-semibold text-lg text-gray-800">
                     Hash Discipline
                   </p>
-                  <p className="text-gray-600">Name:???</p>
+                  <p className="text-gray-600">Presidential Virus</p>
                 </div>
               </div>
             </motion.div>

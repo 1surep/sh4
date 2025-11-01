@@ -32,7 +32,8 @@ export async function POST(req) {
 export async function GET() {
   try {
     await connectDB();
-    const items = await RegolistModel.find({}).sort({ createdAt: -1 });
+    // Change sort to createdAt: 1 for ascending (oldest-first)
+    const items = await RegolistModel.find({}).sort({ createdAt: 1 });
     return NextResponse.json(items, { status: 200 });
   } catch (error) {
     return NextResponse.json(
