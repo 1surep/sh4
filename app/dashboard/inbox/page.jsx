@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
  import { useAuth } from "@/app/context/AuthContext";
  import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
  
  const InboxPage = () => {
    const { user, loading } = useAuth();
@@ -77,9 +78,10 @@ import Image from "next/image";
          </div>
         <div className="flex items-center gap-2">
           <button
-            className="text-sm px-3 py-2 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 cursor-pointer"
+            className="text-sm px-3 py-2 rounded bg-blue-600 flex items-center gap-2 hover:bg-blue-700 text-white cursor-pointer"
             onClick={() => router.push('/dashboard')}
           >
+            <ArrowLeft size={16} />
             Back to Dashboard
           </button>
         </div>

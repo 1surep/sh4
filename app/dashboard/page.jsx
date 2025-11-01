@@ -9,6 +9,8 @@ import Image from "next/image";
 import { TfiEye } from "react-icons/tfi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Spinner from "@/components/ui/Spinner";
+import Link from "next/link";
 
 const Dashboard = () => {
   const { user, logout, loading } = useAuth();
@@ -25,6 +27,14 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+  // --- 1. Add state for SH4 modal at the top with other useStates ---
+  const [sh4Hashhandle, setSh4Hashhandle] = useState("");
+  const [sh4Givenname, setSh4Givenname] = useState("");
+  const [sh4Surname, setSh4Surname] = useState("");
+  const [sh4Gender, setSh4Gender] = useState("");
+  const [sh4Number, setSh4Number] = useState("");
+  const [sh4Email, setSh4Email] = useState("");
+  const [submittingSH4, setSubmittingSH4] = useState(false);
 
   // Protect the dashboard - redirect to signin if not authenticated
   useEffect(() => {
@@ -145,6 +155,46 @@ const Dashboard = () => {
       fetchRegoList();
     } catch (err) {
       toast.error(err.message || 'Update failed');
+    }
+  };
+
+  // --- 2. Declare a submission handler ---
+  const handleSH4AddSubmit = async (e) => {
+    e.preventDefault();
+    if (!sh4Hashhandle || !sh4Givenname || !sh4Surname || !sh4Gender || !sh4Number || !sh4Email) {
+      toast.error("Please complete all required fields.");
+      return;
+    }
+    setSubmittingSH4(true);
+    try {
+      const res = await fetch("/api/tracker", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          hashhandle: sh4Hashhandle,
+          givenname: sh4Givenname,
+          surname: sh4Surname,
+          gender: sh4Gender,
+          number: sh4Number,
+          email: sh4Email
+        })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || "Failed to save");
+      // Reset fields
+      setSh4Hashhandle("");
+      setSh4Givenname("");
+      setSh4Surname("");
+      setSh4Gender("");
+      setSh4Number("");
+      setSh4Email("");
+      document.getElementById("my_modal_6")?.close();
+      toast.success(data?.message || "Saved successfully");
+      // If you have a fetchTrackerList function, call it here to refresh
+    } catch (err) {
+      toast.error(err.message || "Something went wrong");
+    } finally {
+      setSubmittingSH4(false);
     }
   };
 
@@ -429,24 +479,11 @@ const Dashboard = () => {
                                     Long
                                   </span>
                                 </label>
-                                {/* <label className="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors duration-200">
-                                  <input type="radio" name="runType" value="Trail" className="mr-2 text-blue-600" />
-                                  <span className="text-sm font-medium">Trail</span>
-                                </label> */}
+                                
                               </div>
                             </div>
 
-                            {/* Additional Notes */}
-                            {/* <div className="space-y-2">
-                              <label className="block text-sm font-semibold text-gray-700">
-                                Additional Notes
-                              </label>
-                              <textarea 
-                                placeholder="Any additional information about the hasher..."
-                                rows={3}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white resize-none"
-                              />
-                            </div> */}
+                           
 
                             {/* Form Actions */}
                             <div className="flex flex-col sm:flex-row gap-3 pt-4">
@@ -530,7 +567,7 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <h3 className="text-gray-800 font-semibold text-sm mb-2">
-                  Add/View Sierra H4 database{" "}
+                  Sierra H4  Hash Tracker{" "}
                 </h3>
 
                 <div className="flex items-center gap-2">
@@ -559,7 +596,8 @@ const Dashboard = () => {
                       </div>
 
                       <div className="py-4">
-                        <form className="space-y-6">
+                        {/* form */}
+                        <form className="space-y-6" onSubmit={handleSH4AddSubmit}>
                           {/* Form Grid Layout */}
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Hash Handle */}
@@ -573,6 +611,8 @@ const Dashboard = () => {
                                 placeholder="Enter Hash handle"
                                 className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                 required
+                                value={sh4Hashhandle}
+                                onChange={e => setSh4Hashhandle(e.target.value)}
                               />
                             </div>
 
@@ -587,6 +627,8 @@ const Dashboard = () => {
                                 placeholder="Enter Given Name"
                                 className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                 required
+                                value={sh4Givenname}
+                                onChange={e => setSh4Givenname(e.target.value)}
                               />
                             </div>
 
@@ -600,6 +642,8 @@ const Dashboard = () => {
                                 placeholder="Enter Surname"
                                 className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                 required
+                                value={sh4Surname}
+                                onChange={e => setSh4Surname(e.target.value)}
                               />
                             </div>
 
@@ -613,6 +657,8 @@ const Dashboard = () => {
                                 placeholder="Enter gender"
                                 className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                 required
+                                value={sh4Gender}
+                                onChange={e => setSh4Gender(e.target.value)}
                               />
                             </div>
 
@@ -627,6 +673,8 @@ const Dashboard = () => {
                                 placeholder="Enter mobile number"
                                 className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                 required
+                                value={sh4Number}
+                                onChange={e => setSh4Number(e.target.value)}
                               />
                             </div>
 
@@ -640,25 +688,28 @@ const Dashboard = () => {
                                 placeholder="Enter email"
                                 className="w-full py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
                                 required
+                                value={sh4Email}
+                                onChange={e => setSh4Email(e.target.value)}
                               />
                             </div>
                           </div>
 
                           {/* Form Actions */}
                           <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                            <button
+                          <button
                               type="submit"
-                              className="flex-1 text-base bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                              className="flex-1 text-base bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                              disabled={submittingSH4} // Disable button when submitting
                             >
-                              <UserPlus size={18} />
-                              Add
+                              {submittingSH4 ? "Adding..." : "Add"} {/* Conditional text */}
+                              {submittingSH4 && <Spinner />} {/* Optional: Add a spinner component */}
                             </button>
                             <button
                               type="button"
                               onClick={() =>
                                 document.getElementById("my_modal_6").close()
                               }
-                              className="flex-1 bg-gray-200 text-base hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200"
+                              className="flex-1 bg-gray-200 text-base hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all cursor-pointer duration-200"
                             >
                               Cancel
                             </button>
@@ -668,9 +719,9 @@ const Dashboard = () => {
                     </div>
                   </dialog>
 
-                  <p className="text-base font-semibold ml-auto text-gray-700 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer bg-yellow-300 rounded-lg flex items-center gap-2">
+                  <Link href={'/dashboard/tracker'} className="text-base font-semibold ml-auto text-gray-700 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer bg-yellow-300 rounded-lg flex items-center gap-2">
                     View <TfiEye className="text-lg" />
-                  </p>
+                  </Link>
                 </div>
               </div>
             </motion.div>
