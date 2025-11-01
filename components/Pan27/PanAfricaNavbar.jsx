@@ -177,6 +177,15 @@ const PanAfricaNavbar = () => {
           >
             Hotel
           </Link>
+          
+          {/* Game */}
+          <Link
+            href="#game"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
+          >
+            Game
+          </Link>
 
           {/* LOC & Advisory Council */}
           <Link
@@ -184,7 +193,7 @@ const PanAfricaNavbar = () => {
             onClick={() => setIsMobileMenuOpen(false)}
             className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
           >
-            LOC & Advisory Council
+            LOC
           </Link>
         </div>
 
@@ -311,7 +320,7 @@ const PanAfricaNavbar = () => {
                     href="#loc"
                     className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2"
                   >
-                    LOC & Advisory Council
+                    LOC
                   </a>
 
 
