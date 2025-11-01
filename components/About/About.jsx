@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import HeroSeven from "../Hero/HeroSeven";
 import HeroEight from "../Hero/HeroEight";
+import Hero12 from "../Hero/Hero12";
 
 // Section heading with divider (reuse for all sections)
 function SectionHeading({ text }) {
@@ -349,6 +350,10 @@ export default function AboutPage() {
 
         {/* Our Sponsor */}
         <HeroEight/>
+
+
+        {/* Contact Us */}
+        <Hero12/>
 
 
 
