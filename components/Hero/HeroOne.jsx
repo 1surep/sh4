@@ -63,7 +63,7 @@ const HeroOne = () => {
                 rel="noopener noreferrer"
                 className="bg-green-500 cursor-pointer hover:bg-green-700 hover:text-gray-200 text-black font-semibold px-6 py-3 rounded-2xl transition-all"
               >
-                Rego PAN Africa 2027
+                Rego PAH 2027
               </a>
             </div>
 
@@ -73,7 +73,7 @@ const HeroOne = () => {
                 href="/pan-africa-2027"
                 className="bg-[#f9b84f] cursor-pointer hover:text-white hover:bg-[#e3a63f] text-black font-semibold px-6 py-3 rounded-2xl transition-all"
               >
-                On On PAN Africa 2027
+                On On PAH 2027
               </Link>
             </div>
           </div>

@@ -21,7 +21,7 @@ const Navbar = () => {
         "Events",
         "PAH 2027",
         "Gallery",
-        "SH4 Shop",
+        // "SH4 Shop",
         "Game",
         "Contact Us",
         "Reports"
@@ -34,7 +34,7 @@ const Navbar = () => {
         "Events": "/even",
         "PAH 2027": "/pan-africa-2027",
         "Gallery": "/gallery",
-        "SH4 Shop": "/shop",
+        // "SH4 Shop": "/shop",
         "Game": "/#game",
         "Contact Us": "/contact",
         "Reports": "/reports"

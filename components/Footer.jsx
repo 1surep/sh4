@@ -240,12 +240,12 @@ const Footer = () => {
             <p className="text-gray-200 text-sm mb-4">
               We offer a variety of services at our SH4 Shop.
             </p>
-            <Link
-              href="/sh4"
+            <button
+              disabled
               className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
             >
-              Shop Now
-            </Link>
+              Coming Soon...
+            </button>
           </motion.div>
         </div>
 
