@@ -235,10 +235,10 @@ const Footer = () => {
           {/* Shop with Us */}
           <motion.div className="col-span-1" variants={itemVariants}>
             <h3 className="text-lg font-semibold mb-4 text-cyan-400">
-              Shop with SH4
+              Shop with Sierra H4
             </h3>
             <p className="text-gray-200 text-sm mb-4">
-              We offer a variety of services at our SH4 Shop.
+              We offer a variety of services at our Sierra H4 Shop.
             </p>
             <button
               disabled

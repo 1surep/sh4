@@ -357,7 +357,7 @@ export default function PanAfricaPage() {
 
                   <p>GM Dr. Kondo Belleh</p>
                   <p>
-                    <b> Sierra Hash House Harriers & Harriettes (SH4)</b>
+                    <b> Sierra Hash House Harriers & Harriettes (Sierra H4)</b>
                   </p>
                 </div>
               </div>
