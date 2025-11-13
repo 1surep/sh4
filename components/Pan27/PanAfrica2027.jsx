@@ -902,9 +902,9 @@ export default function PanAfricaPage() {
                       image: "/tourism/t22.jpg",
                     },
                     {
-                      name: "Mother Theresa",
+                      name: "DGM Mother Theresa",
                       location: "Ebonyi H3 Nigeria",
-                      image: "/tourism/t23.jpg",
+                      image: "/loc/md.jpg",
                     },
                     {
                       name: "Hazukashii",
@@ -1253,6 +1253,18 @@ export default function PanAfricaPage() {
               <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <Image
                   src="/pan/IMG-20251011-WA0105.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+
+              {/* Image 12 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/md.jpg"
                   width={400}
                   height={300}
                   alt="Pan Africa Hash 2027 Gallery"
