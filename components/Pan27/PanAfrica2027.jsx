@@ -868,8 +868,8 @@ export default function PanAfricaPage() {
                     },
                     {
                       name: "Short Cutter",
-                      location: "Akwa Ibom (Nigeria)",
-                      image: "/tourism/t16.jpg",
+                      location: "Warri Nigeria",
+                      image: "/loc/ssc.jpg",
                     },
                     {
                       name: "Artur-De- Lion Killer",
@@ -888,13 +888,13 @@ export default function PanAfricaPage() {
                     },
                     {
                       name: "Sir KOP",
-                      location: "Lagos H3",
+                      location: "Lagos H3 Nigeria",
                       image: "/tourism/t20.jpg",
                     },
                     {
                       name: "Sir DLS",
-                      location: "Apapa H3 (Nigeria)",
-                      image: "/tourism/t21.jpg",
+                      location: "Apapa H3 Nigeria",
+                      image: "/loc/dls.jpg",
                     },
                     {
                       name: "Mama Sarama",
@@ -1216,6 +1216,17 @@ export default function PanAfricaPage() {
                 />
               </div>
 
+              {/* Image 12 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/ssc.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
               {/* Image 9 */}
               <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <Image
@@ -1231,6 +1242,17 @@ export default function PanAfricaPage() {
               <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <Image
                   src="/pan/IMG-20251011-WA0070.jpg"
+                  width={400}
+                  height={300}
+                  alt="Pan Africa Hash 2027 Gallery"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+
+              {/* Image 12 */}
+              <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Image
+                  src="/pan/dls.jpg"
                   width={400}
                   height={300}
                   alt="Pan Africa Hash 2027 Gallery"
