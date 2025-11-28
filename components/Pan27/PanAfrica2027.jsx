@@ -874,7 +874,7 @@ export default function PanAfricaPage() {
                     {
                       name: "Artur-De- Lion Killer",
                       location: "Kenya",
-                      image: "/tourism/t17.jpg",
+                      image: "/loc/authr.jpg",
                     },
                     {
                       name: "Honey Tumba",
@@ -899,7 +899,7 @@ export default function PanAfricaPage() {
                     {
                       name: "Mama Sarama",
                       location: "Bamako H3 - Mali",
-                      image: "/tourism/t22.jpg",
+                      image: "/pan/mama.jpg",
                     },
                     {
                       name: "DGM Mother Theresa",
@@ -909,7 +909,7 @@ export default function PanAfricaPage() {
                     {
                       name: "Hazukashii",
                       location: "USA",
-                      image: "/tourism/t24.jpg",
+                      image: "/loc/vaga.jpg",
                     },
                   ].map((member, index) => (
                     <motion.div
@@ -1172,6 +1172,8 @@ export default function PanAfricaPage() {
                 />
               </div>
 
+              
+
               {/* Image 5 */}
               <div className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <Image
@@ -1293,6 +1295,8 @@ export default function PanAfricaPage() {
                   className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                 />
               </div>
+
+              
             </div>
           </div>
         </div>
