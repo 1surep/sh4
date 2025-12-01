@@ -129,6 +129,20 @@ export default function PanAfricaPage() {
   const welcomeRef = useRef(null);
   const [balloonBurstId, setBalloonBurstId] = useState(0);
   const [beers, setBeers] = useState([]);
+  const [regoList, setRegoList] = useState([]);
+
+  // Fetch regoList data
+  const fetchRegoList = async () => {
+    try {
+      const res = await fetch('/api/regolist', { cache: 'no-store' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || 'Failed to load');
+      setRegoList(data || []);
+    } catch (err) {
+      console.error('Failed to fetch regoList:', err);
+      setRegoList([]);
+    }
+  };
 
   // Effect to set mounted flag and initialize countdown
   useEffect(() => {
@@ -138,6 +152,9 @@ export default function PanAfricaPage() {
     const interval = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
+
+    // Fetch regoList on mount
+    fetchRegoList();
 
     // Cleanup on unmount
     return () => clearInterval(interval);
@@ -391,10 +408,11 @@ export default function PanAfricaPage() {
                 <Award className="text-amber-500" size={28} />
               </div>
               <div className="mt-4">
-                <div className="text-xl font-black text-green-700">+540</div>
                 <div className="text-xs uppercase tracking-wide text-gray-500">
-                  Rego Hashers
+                  Rego Hashers +
                 </div>
+                <div className="text-3xl font-bold text-gray-800">{regoList.length}</div>
+                
               </div>
               {/* Pay rego button */}
               <button
