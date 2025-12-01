@@ -293,7 +293,7 @@ export default function PanAfricaPage() {
             className="lg:flex grid grid-cols-1 items-center gap-4 py-10 w-full"
           >
             <Image
-              src="/misma/gm.png"
+              src="/pan/gm.jpg"
               width={400}
               height={400}
               alt="image of hasher"
@@ -459,7 +459,7 @@ export default function PanAfricaPage() {
               </div>
               <Link href="/pan-africa-2027/hotels">
               <button className="mt-5 w-full cursor-pointer bg-rose-600 hover:bg-rose-700 text-white text-sm font-semibold rounded-lg py-2">
-                View details
+                Book Hotel
               </button>
               </Link>
             </motion.div>
@@ -763,12 +763,12 @@ export default function PanAfricaPage() {
                     {
                       name: "Fuckimbo",
                       position: "Vice Chairman",
-                      image: "/tourism/t2.jpg",
+                      image: "/misma/ra.png",
                     },
                     {
-                      name: "Pucci Ing",
+                      name: "Pucci Engineerer ",
                       position: "Head of Communications",
-                      image: "/tourism/t3.jpg",
+                      image: "/loc/pe.jpg",
                     },
                     {
                       name: "Yap Yap Network",
@@ -783,18 +783,25 @@ export default function PanAfricaPage() {
                     {
                       name: "Neneh Korraw",
                       position: "Head of Logistics",
-                      image: "/tourism/t6.jpg",
+                      image: "/misma/mom.png",
                     },
                     {
                       name: "Presidential Virus",
                       position: "Head of Transport",
-                      image: "/tourism/t7.jpg",
+                      image: "/misma/discipline.png",
                     },
                     {
-                      name: "Little Fox & Put It In the Hole",
-                      position: "Sponsorship Leads",
-                      image: "/tourism/t8.jpg",
+                      name: "Little Fox",
+                      position: "Head of Sponsorship 1",
+                      image: "/loc/littlefox.jpg",
                     },
+
+                    {
+                      name: "Put It On The Hole",
+                      position: "Head of Sponsorship 2",
+                      image: "/loc/hole.jpg",
+                    },
+
                     {
                       name: "Cork Wine",
                       position: "Head of Welfare",
@@ -803,17 +810,17 @@ export default function PanAfricaPage() {
                     {
                       name: "Toto Specialist",
                       position: "Security Coordinator",
-                      image: "/tourism/t10.jpg",
+                      image: "/loc/toto.jpg",
                     },
                     {
-                      name: "Just Capt. Gladis",
+                      name: "Used Condom",
                       position: "Head of Medic",
-                      image: "/tourism/t11.jpg",
+                      image: "/loc/usedcomdon.jpg",
                     },
                     {
                       name: "Sniper",
                       position: "Hash Cash",
-                      image: "/tourism/t12.jpg",
+                      image: "/loc/hashcash.jpg",
                     },
                     {
                       name: "Sorry My Lord",
@@ -858,57 +865,57 @@ export default function PanAfricaPage() {
                   {[
                     {
                       name: "Muff Mask",
-                      location: "Accra H3 Ghana",
-                      image: "/tourism/t14.jpg",
+                      location: "Accra H3",
+                      image: "/loc/muff.jpg",
                     },
                     {
                       name: "Bushy",
-                      location: "Malawi",
+                      location: "Malawi H3",
                       image: "/tourism/t15.jpg",
                     },
                     {
                       name: "Short Cutter",
-                      location: "Warri Nigeria",
+                      location: "Warri H3",
                       image: "/loc/ssc.jpg",
                     },
                     {
                       name: "Artur-De- Lion Killer",
-                      location: "Kenya",
+                      location: "Kenya H3",
                       image: "/loc/authr.jpg",
                     },
                     {
-                      name: "Honey Tumba",
-                      location: "Sierra Leone",
-                      image: "/tourism/t18.jpg",
+                      name: "DGM Honey Tumba",
+                      location: "Sierra H4",
+                      image: "/loc/tumba.jpg",
                     },
                     {
-                      name: "Slippery Cummer",
-                      location: "London H3",
-                      image: "/tourism/t19.jpg",
+                      name: "GM Slippery Comer",
+                      location: "Lagos H3",
+                      image: "/loc/slip.jpg",
                     },
                     {
                       name: "Sir KOP",
-                      location: "Lagos H3 Nigeria",
+                      location: "Lagos H3",
                       image: "/tourism/t20.jpg",
                     },
                     {
                       name: "Sir DLS",
-                      location: "Apapa H3 Nigeria",
+                      location: "Apapa H3",
                       image: "/loc/dls.jpg",
                     },
                     {
                       name: "Mama Sarama",
-                      location: "Bamako H3 - Mali",
+                      location: "Bamako H3",
                       image: "/pan/mama.jpg",
                     },
                     {
                       name: "DGM Mother Theresa",
-                      location: "Ebonyi H3 Nigeria",
+                      location: "Ebonyi H3",
                       image: "/loc/md.jpg",
                     },
                     {
-                      name: "Hazukashii",
-                      location: "USA",
+                      name: "Vagabond",
+                      location: "USA H3",
                       image: "/loc/vaga.jpg",
                     },
                   ].map((member, index) => (
@@ -1344,7 +1351,7 @@ export default function PanAfricaPage() {
               <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
                 <div className="w-full">
                   <Image
-                    src="/event1.jpg"
+                    src="/d3.jpg"
                     width={120}
                     height={120}
                     alt="Friday run image"
@@ -1353,16 +1360,14 @@ export default function PanAfricaPage() {
                 </div>
 
                 <div className="w-full text-gray-200">
-                  <h3 className="font-semibold">Friday Run 10/10/2027</h3>
+                  <h3 className="font-semibold">Friday Red Dress</h3>
                   <p className="text-sm opacity-80 tracking-[1px]">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa
-                    odit itaque voluptatum aspernatur corporis eaque atque
-                    provident repellat deserunt nemo perspiciatis quasi
-                    distinctio recusandae iste! Dolore, voluptatum! Optio cumque
-                    numquam aspernatur, nisi asperiores similique.
+                  Charity Fun Run: Details to be announced soon
+
                   </p>
-                  <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                  <button 
+                  disabled={true}
+                  className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                     View More
                   </button>
                 </div>
@@ -1372,7 +1377,7 @@ export default function PanAfricaPage() {
               <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
                 <div className="w-full">
                   <Image
-                    src="/event2.jpg"
+                    src="/s12.jpg"
                     width={120}
                     height={120}
                     alt="Friday run image"
@@ -1381,16 +1386,14 @@ export default function PanAfricaPage() {
                 </div>
 
                 <div className="w-full text-gray-200">
-                  <h3 className="font-semibold">Saturday Run 11/10/2027</h3>
+                  <h3 className="font-semibold">Saturday Main Event</h3>
                   <p className="text-sm opacity-80 tracking-[1px]">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa
-                    odit itaque voluptatum aspernatur corporis eaque atque
-                    provident repellat deserunt nemo perspiciatis quasi
-                    distinctio recusandae iste! Dolore, voluptatum! Optio cumque
-                    numquam aspernatur, nisi asperiores similique.
+                  City Run: Details to be announced soon
+
                   </p>
-                  <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                  <button 
+                  disabled={true}
+                  className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                     View More
                   </button>
                 </div>
@@ -1400,7 +1403,7 @@ export default function PanAfricaPage() {
               <div className="flex flex-col relative z-10 items-center gap-4 w-full border-2 border-white rounded-xl p-3">
                 <div className="w-full">
                   <Image
-                    src="/event3.jpg"
+                    src="/s1.jpg"
                     width={120}
                     height={120}
                     alt="Friday run image"
@@ -1409,16 +1412,13 @@ export default function PanAfricaPage() {
                 </div>
 
                 <div className="w-full text-gray-200">
-                  <h3 className="font-semibold">Sunday Run 12/10/2027</h3>
+                  <h3 className="font-semibold">Sunday Recovery Run</h3>
                   <p className="text-sm opacity-80 tracking-[1px]">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nesciunt, cupiditate, aperiam delectus incidunt rem ipsa
-                    odit itaque voluptatum aspernatur corporis eaque atque
-                    provident repellat deserunt nemo perspiciatis quasi
-                    distinctio recusandae iste! Dolore, voluptatum! Optio cumque
-                    numquam aspernatur, nisi asperiores similique.
+                    Recovery Run: Details to be announced soon
                   </p>
-                  <button className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
+                  <button 
+                  disabled={true}
+                  className="mt-3 w-fit px-4 bg-yellow-600 hover:bg-yellow-700 text-white text-sm font-semibold rounded-lg py-2">
                     View More
                   </button>
                 </div>

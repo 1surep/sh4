@@ -191,7 +191,7 @@ const HeroSeven=()=>{
             >
               {/* A */}
               <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
-                <Image
+              <Image
                   src="/misma/onsec.png"
                   width={100}
                   height={100}
@@ -206,7 +206,7 @@ const HeroSeven=()=>{
 
               {/* b */}
               <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
-                <Image
+              <Image
                   src="/misma/registrar.png"
                   width={100}
                   height={100}
@@ -223,7 +223,7 @@ const HeroSeven=()=>{
 
               {/* c */}
               <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
-                <Image
+              <Image
                   src="/misma/welfare.png"
                   width={100}
                   height={100}
@@ -239,9 +239,9 @@ const HeroSeven=()=>{
               </div>
 
               {/* d */}
-              {/* <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
-                <Image
-                  src="/misma/discipline.png"
+              <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
+              <Image
+                  src="/misma/flash.jpg"
                   width={100}
                   height={100}
                   alt="image of hasher"
@@ -249,12 +249,89 @@ const HeroSeven=()=>{
                 />
                 <div>
                   <p className="font-semibold text-lg text-gray-800">
-                    Nenneh korraw
+                    Hash Flash
                   </p>
-                  <p className="text-gray-600">Master of Music</p>
+                  <p className="text-gray-600">Sleeping Pucci</p>
+                </div>
+              </div>
+            </motion.div>
+
+
+            {/* THIRD 4 misma */}
+            <motion.div
+              className="bg-gray-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-8 justify-center p-8 rounded-2xl shadow-lg" //
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              {/* A */}
+              <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
+              <Image
+                  src="/misma/ftf.jpg"
+                  width={100}
+                  height={100}
+                  alt="image of hasher"
+                  className=" h-full w-full rounded-[12px] mb-4"
+                />
+                <div>
+                  <p className="font-semibold text-lg text-gray-800">Trail Master</p>
+                  <p className="text-gray-600">Fuck The Teacher</p>
+                </div>
+              </div>
+
+              {/* b */}
+              {/* <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
+              <Image
+                  src="/misma/registrar.png"
+                  width={100}
+                  height={100}
+                  alt="image of hasher"
+                  className=" h-full w-full rounded-[12px] mb-4"
+                />
+                <div>
+                  <p className="font-semibold text-lg text-gray-800">
+                    Hash Registrar
+                  </p>
+                  <p className="text-gray-600">Rasta Plasta</p>
+                </div>
+              </div> */}
+
+              {/* c */}
+              {/* <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
+              <Image
+                  src="/misma/welfare.png"
+                  width={100}
+                  height={100}
+                  alt="image of hasher"
+                  className=" h-full w-full rounded-[12px] mb-4"
+                />
+                <div>
+                  <p className="font-semibold text-lg text-gray-800">
+                    Hash Welfare 
+                  </p>
+                  <p className="text-gray-600">Little Fox</p>
+                </div>
+              </div> */}
+
+              {/* d */}
+              {/* <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
+              <Image
+                  src="/misma/flash.jpg"
+                  width={100}
+                  height={100}
+                  alt="image of hasher"
+                  className=" h-full w-full rounded-[12px] mb-4"
+                />
+                <div>
+                  <p className="font-semibold text-lg text-gray-800">
+                    Hash Flash
+                  </p>
+                  <p className="text-gray-600">Sleeping Pucci</p>
                 </div>
               </div> */}
             </motion.div>
+
           </div>
         </section>
       </>

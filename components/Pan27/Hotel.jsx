@@ -34,10 +34,10 @@ const Hotel = () => {
       name: "Bintumani Hotel",
       category: "Luxury",
       distance: "Main Venue",
-      price: "$150 - $250 per night",
+      price: "$TBA per night",
       image: "/tourism/t27.jpg",
-      phone: "+232 76 234 567",
-      email: "info@bintumani.com",
+      // phone: "+232 76 234 567",
+      // email: "info@bintumani.com",
       rating: 5,
       amenities: ["WiFi", "Restaurant", "Bar", "Gym", "Pool"],
     },
@@ -45,10 +45,10 @@ const Hotel = () => {
       name: "Radisson Blu Mammy Yoko Hotel",
       category: "Mid-Range",
       distance: "3 km from Main Venue",
-      price: "$80 - $130 per night",
+      price: "$TBA per night",
       image: "/tourism/t22.jpg",
-      phone: "+232 76 123 456",
-      email: "info@radisson-freetown.com",
+      // phone: "+232 76 123 456",
+      // email: "info@radisson-freetown.com",
       rating: 4,
       amenities: ["WiFi", "Pool", "Restaurant", "Bar", "Gym"],
     },
@@ -56,10 +56,10 @@ const Hotel = () => {
       name: "The Lead Hotel",
       category: "Budget",
       distance: "2 km from Main Venue",
-      price: "$40 - $70 per night",
+      price: "$TBA per night",
       image: "/tourism/t15.jpg",
-      phone: "+232 76 345 678",
-      email: "info@lagoonda.com",
+      // phone: "+232 76 345 678",
+      // email: "info@lagoonda.com",
       rating: 3,
       amenities: ["WiFi", "Restaurant", "Parking"],
     },
@@ -156,7 +156,7 @@ const Hotel = () => {
                   </div>
 
                   {/* Contact Info */}
-                  <div className="border-t pt-4 space-y-2">
+                  {/* <div className="border-t pt-4 space-y-2">
                     <div className="flex items-center gap-2 text-sm text-gray-600">
                       <Phone size={16} className="text-green-600" />
                       <a
@@ -175,7 +175,7 @@ const Hotel = () => {
                         {hotel.email}
                       </a>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Book Button */}
                   <button className="mt-4 w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2 rounded-lg transition-colors duration-300">
@@ -187,7 +187,7 @@ const Hotel = () => {
           </div>
 
           {/* Additional Information */}
-          <motion.div
+          {/* <motion.div
             variants={fadeIn}
             className="mt-12 bg-white rounded-xl shadow-lg p-8"
           >
@@ -211,7 +211,7 @@ const Hotel = () => {
                 the main venue.
               </p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
        {/* chatbot modal */}
