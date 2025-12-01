@@ -35,6 +35,7 @@ const Dashboard = () => {
   const [sh4Number, setSh4Number] = useState("");
   const [sh4Email, setSh4Email] = useState("");
   const [submittingSH4, setSubmittingSH4] = useState(false);
+  const [trackerCount, setTrackerCount] = useState(0);
 
   // Protect the dashboard - redirect to signin if not authenticated
   useEffect(() => {
@@ -46,6 +47,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (!loading && user) {
       fetchRegoList();
+      fetchTrackerCount();
     }
   }, [loading, user]);
 
@@ -57,6 +59,18 @@ const Dashboard = () => {
       setRegoList(data || []);
     } catch (err) {
       toast.error(err.message || 'Failed to load');
+    }
+  };
+
+  const fetchTrackerCount = async () => {
+    try {
+      const res = await fetch('/api/tracker', { cache: 'no-store' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || 'Failed to load');
+      setTrackerCount(Array.isArray(data) ? data.length : 0);
+    } catch (err) {
+      console.error('Failed to fetch tracker count:', err);
+      setTrackerCount(0);
     }
   };
 
@@ -190,7 +204,7 @@ const Dashboard = () => {
       setSh4Email("");
       document.getElementById("my_modal_6")?.close();
       toast.success(data?.message || "Saved successfully");
-      // If you have a fetchTrackerList function, call it here to refresh
+      fetchTrackerCount(); // Refresh tracker count after adding new entry
     } catch (err) {
       toast.error(err.message || "Something went wrong");
     } finally {
@@ -534,17 +548,17 @@ const Dashboard = () => {
                 </h3>
 
                 <div className="flex items-center justify-between">
-                  <div className="text-3xl font-bold text-gray-800">+120</div>
+                  <div className="text-3xl font-bold text-gray-800">+{trackerCount}</div>
 
                   <div className="flex items-center gap-2">
-                  <h1 className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg">
-                    <button
-                      className="bt cursor-pointer"
-                      onClick={() => router.push('/dashboard/inbox')}
-                    >
-                      Inbox
-                    </button>
-                  </h1>
+                  <button
+                    className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg"
+                    onClick={() =>
+                      document.getElementById("my_modal_6").showModal()
+                    }
+                  >
+                    + Add
+                  </button>
                   </div>
                 </div>
                
@@ -571,14 +585,16 @@ const Dashboard = () => {
                 </h3>
 
                 <div className="flex items-center gap-2">
-                  <button
-                    className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg"
-                    onClick={() =>
-                      document.getElementById("my_modal_6").showModal()
-                    }
-                  >
-                    + Add
-                  </button>
+                <h1 className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg">
+                    <button
+                      className="bt cursor-pointer"
+                      onClick={() => router.push('/dashboard/inbox')}
+                    >
+                      Inbox
+                    </button>
+                  </h1>
+
+
 
                   <dialog
                     id="my_modal_6"
