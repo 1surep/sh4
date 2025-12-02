@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Chatbot from "./Chatbot";
 import { FocusTextProvider } from "./FocusTextProvider";
+import "./chatbot.css";
 
 const ChatbotModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,44 +39,30 @@ const ChatbotModal = () => {
       </button>
 
       {isOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0,0,0,0.5)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 10000,
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "white",
-              borderRadius: "8px",
-              padding: "20px",
-              position: "relative",
-              width: "90%",
-              maxWidth: "700px",
-            }}
+        <div className="chatbot-modal-container">
+          <button
+            onClick={toggleModal}
+            className="chatbot-close-btn"
+            aria-label="Close chatbot"
           >
-            <button
-              onClick={toggleModal}
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "10px",
-                background: "none",
-                border: "none",
-                fontSize: "24px",
-                cursor: "pointer",
-              }}
-            >
-              &times;
-            </button>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          
+          <button
+            className="chatbot-menu-btn"
+            aria-label="Menu"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <div className="chatbot-modal-wrapper">
             <FocusTextProvider>
               <Chatbot />
             </FocusTextProvider>
