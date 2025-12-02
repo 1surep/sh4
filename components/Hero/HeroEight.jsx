@@ -51,6 +51,14 @@ const HeroEight = () => {
       target: "_blank",
       rel: "noopener noreferrer",
     },
+
+    {
+      src: "/sponsor/monime.avif",
+      name: "Monime",
+      href: "https://monime.io/",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
   ];
 
   return (

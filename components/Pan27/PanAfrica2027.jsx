@@ -112,6 +112,15 @@ export default function PanAfricaPage() {
       target: "_blank",
       rel: "noopener noreferrer",
     },
+
+    {
+      src: "/sponsor/monime.avif",
+      name: "Monime",
+      href: "https://monime.io/",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
+    
   ];
 
   const footerVariants = {
