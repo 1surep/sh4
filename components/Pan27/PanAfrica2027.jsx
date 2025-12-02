@@ -104,6 +104,14 @@ export default function PanAfricaPage() {
       target: "_blank",
       rel: "noopener noreferrer",
     },
+
+    {
+      src: "/sponsor/rokel.png",
+      name: "Rokel Commented Bank",
+      href: "https://www.rokelbank.sl/",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
   ];
 
   const footerVariants = {
@@ -932,8 +940,8 @@ export default function PanAfricaPage() {
                       image: "/loc/md.jpg",
                     },
                     {
-                      name: "Vagabond",
-                      location: "USA H3",
+                      name: "Hazukashii",
+                      location: "Vagabond H3",
                       image: "/loc/vaga.jpg",
                     },
                   ].map((member, index) => (

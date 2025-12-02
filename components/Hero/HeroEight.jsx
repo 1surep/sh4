@@ -43,6 +43,14 @@ const HeroEight = () => {
       target: "_blank",
       rel: "noopener noreferrer",
     },
+
+    {
+      src: "/sponsor/rokel.png",
+      name: "Rokel Commented Bank",
+      href: "https://www.rokelbank.sl/",
+      target: "_blank",
+      rel: "noopener noreferrer",
+    },
   ];
 
   return (
