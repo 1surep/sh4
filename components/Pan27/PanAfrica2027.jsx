@@ -66,6 +66,7 @@ const generateBeers = () => {
 export default function PanAfricaPage() {
   const [showGame, setShowGame] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
 
   // Our sponsors
   const dockItems = [
@@ -327,7 +328,7 @@ export default function PanAfricaPage() {
             className="lg:flex grid grid-cols-1 items-center gap-4 py-10 w-full"
           >
             <Image
-              src="/pan/gm.jpg"
+              src="/loc/GM.jpg"
               width={400}
               height={400}
               alt="image of hasher"
@@ -336,63 +337,43 @@ export default function PanAfricaPage() {
               unoptimized={false}
             />
 
-            <div className="w-full">
+            <div className="w-full relative z-10">
               <h1 className="text-2xl font-black text-center text-yellow-400">
                 A Message from the Sierra H4 Grand Master: On-On to PAH 2027!
               </h1>
-              <div className="tracking-[1px] py-2 space-y-2">
+              <div className="tracking-[1px] py-2 space-y-2 relative z-10">
                 <p>
-                  Distinguished Hashers, esteemed partners, fellow citizens of
-                  Sierra Leone, and friends across the Pan-African Hash
-                  community,
+                 Distinguished Hashers, esteemed partners, fellow citizens of Sierra Leone,
+                  and friends across the Pan-African Hash community,
                 </p>
 
                 <p>
-                  It is with immense pride and excitement that I address you
-                  today. Our successful bid to host the Pan African Hash (PAH)
-                  2027 in Accra, Ghana, secured with the invaluable endorsement
-                  of Sierra Leone's Ministry of Tourism and Cultural Affairs,
-                  was more than a win for SierraH4; it was a historic triumph
-                  for our entire nation. Sierra Leone is ready to welcome the
-                  world.
+                It is with immense pride and excitement that I address you today. Our successful bid to host the Pan African Hash (PAH) 2027 in Accra, Ghana, secured with the invaluable endorsement of Sierra Leone's Ministry of Tourism and Cultural Affairs, was more than a win for SierraH4; it was a historic triumph for our entire nation. Sierra Leone is ready to welcome the world.
                 </p>
 
                 <p>
-                  Forging Partnerships for a Progressive Sierra Leone: Sierra
-                  Hash House Harriers and Harriettes (SierraH4) is more than a
-                  running club; we are a catalyst for eco-tourism and community
-                  development. Our vision, strongly supported by the Government
-                  of Sierra Leone through a strategic Memorandum of
-                  Understanding (MOU) with the Ministry of Tourism, is to
-                  leverage the global Hash movement to showcase the unspoiled
-                  beauty and vast potential of our homeland.
+                  <b>Forging Partnerships for a Progressive Sierra Leone</b>
                 </p>
 
                 <p>
-                  Join the Fastest-Growing Movement in West Africa: As the
-                  youngest and fastest-growing kennel in West Africa, our energy
-                  is a testament to our members' enthusiasm and the vibrancy of
-                  our community. We celebrate a powerful spirit of unity with
-                  the wider hashing family, including our strong bond with our
-                  brother kennel, the Freetown Hash House Harriers (FH3).
+                Sierra Hash House Harriers and Harriettes (SierraH4) is more than a running club; we are a catalyst for eco-tourism and community development. Our vision, strongly supported by the Government of Sierra Leone through a strategic Memorandum of Understanding (MOU) with the Ministry of Tourism, is to leverage the global Hash movement to showcase the unspoiled beauty and vast potential of our homeland.
                 </p>
 
                 <p>
-                  To every citizen of Sierra Leone, I extend a heartfelt
-                  invitation: Join SierraH4! Whether you seek fitness,
-                  fellowship, or a meaningful way to contribute to our nation's
-                  story, the Hash trail awaits. We need your energy, passion,
-                  and pride to make PAH 2027 the most memorable event in
-                  Pan-African Hash history.
+                We call on forward-thinking organizations, corporations, and international investors to join us by signing strategic MOUs. These partnerships are the foundation of our success, creating a trusted, government-backed gateway for the global community of hikers, investors, and adventure tourists to explore Sierra Leone with confidence. By partnering with SierraH4, you are investing directly in a future where sustainable tourism drives economic growth, community empowerment, and international goodwill.
                 </p>
 
-                <div className="space-y-1">
-                  <p>On-On! 👣🍺</p>
-
-                  <p>GM Dr. Kondo Belleh</p>
-                  <p>
-                    <b> Sierra Hash House Harriers & Harriettes (Sierra H4)</b>
-                  </p>
+                {/* read more... */}
+                <div className="flex justify-center mt-8 relative z-20">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      console.log("Read More button clicked");
+                      setIsMessageModalOpen(true);
+                    }}
+                    className="bg-[#f9b84f] !cursor-pointer hover:bg-[#e3a63f] text-gray-900 text-base lg:text-lg font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg relative z-20">
+                    Read More...
+                  </button>
                 </div>
               </div>
             </div>
@@ -573,7 +554,7 @@ export default function PanAfricaPage() {
 
               <div className="relative z-10 px-[1rem] lg:px-[3rem] max-w-4xl mx-auto">
                 {/* Introduction Text */}
-                <motion.div
+                {/* <motion.div
                   variants={itemVariants}
                   className="bg-white/10 backdrop-blur rounded-xl p-6 lg:p-8 border border-white/20 mb-8"
                 >
@@ -587,7 +568,7 @@ export default function PanAfricaPage() {
                     application process.
                   </p>
 
-                  {/* Visa Application Button */}
+                 
                   <div className="flex justify-center mb-6">
                     <button
                       className="bg-[#f9b84f] cursor-pointer hover:bg-[#e3a63f] text-gray-900 text-base lg:text-lg font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
@@ -598,14 +579,14 @@ export default function PanAfricaPage() {
                       Apply for Visa
                     </button>
                   </div>
-                </motion.div>
+                </motion.div> */}
 
                 {/* Protocol Lead Contact Information */}
                 <motion.div
                   variants={itemVariants}
                   className="bg-white/10 backdrop-blur rounded-xl p-6 lg:p-8 border border-white/20"
                 >
-                  <h3 className="text-2xl lg:text-3xl font-bold text-yellow-400 mb-6 text-center">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-yellow-400 mb-6 text-center">
                     Protocol Lead
                   </h3>
 
@@ -621,10 +602,10 @@ export default function PanAfricaPage() {
                     </div>
 
                     <div className="text-center">
-                      <h4 className="text-xl lg:text-2xl font-bold text-yellow-400 mb-2">
+                      <h4 className="text-2xl lg:text-3xl font-bold text-yellow-400 mb-2">
                         Yap Yap Network
                       </h4>
-                      <p className="text-gray-300 text-base lg:text-lg font-semibold mb-4">
+                      <p className="text-gray-300 text-lg lg:text-xl font-semibold mb-4">
                         International Coordinator/Protocol Lead
                       </p>
                     </div>
@@ -838,9 +819,9 @@ export default function PanAfricaPage() {
                     },
 
                     {
-                      name: "Cork Wine",
+                      name: "Fuckinabae",
                       position: "Head of Welfare",
-                      image: "/tourism/t9.jpg",
+                      image: "/loc/fuck.jpg",
                     },
                     {
                       name: "Toto Specialist",
@@ -858,9 +839,9 @@ export default function PanAfricaPage() {
                       image: "/loc/hashcash.jpg",
                     },
                     {
-                      name: "Sorry My Lord",
+                      name: "RA Sorry My Lord",
                       position: "Liaison Officer",
-                      image: "/tourism/t13.jpg",
+                      image: "/loc/lord.jpg",
                     },
                   ].map((member, index) => (
                     <motion.div
@@ -904,9 +885,9 @@ export default function PanAfricaPage() {
                       image: "/loc/muff.jpg",
                     },
                     {
-                      name: "Bushy",
+                      name: "AINT ZE BUSH",
                       location: "Malawi H3",
-                      image: "/tourism/t15.jpg",
+                      image: "/loc/ant.jpg",
                     },
                     {
                       name: "Short Cutter",
@@ -1471,8 +1452,105 @@ export default function PanAfricaPage() {
       {/* Footer PAN 2027 */}
       <Footer />
 
-      {/* Chatbot Modal */}
-      {/* <ChatbotModal /> */}
+   
+
+      {/* Message Modal */}
+      {isMessageModalOpen && (
+        <div 
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black bg-opacity-75 backdrop-blur-sm"
+          onClick={() => setIsMessageModalOpen(false)}
+        >
+          <div 
+            className="relative bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsMessageModalOpen(false)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 transition-colors duration-200"
+              aria-label="Close modal"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+
+            {/* Modal Header */}
+            <div className="bg-gradient-to-r from-[#f9b84f] to-[#e3a63f] px-6 py-4 border-b border-gray-200">
+              <h2 className="text-2xl font-black text-gray-900 text-center">
+                A Message from the Sierra H4 Grand Master: On-On to PAH 2027!
+              </h2>
+            </div>
+
+            {/* Modal Content */}
+            <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4 text-gray-800">
+              <p>
+                Distinguished Hashers, esteemed partners, fellow citizens of Sierra Leone, and friends across the Pan-African Hash community,
+              </p>
+
+              <p>
+                It is with immense pride and excitement that I address you today. Our successful bid to host the Pan African Hash (PAH) 2027 in Accra, Ghana, secured with the invaluable endorsement of Sierra Leone's Ministry of Tourism and Cultural Affairs, was more than a win for SierraH4; it was a historic triumph for our entire nation. Sierra Leone is ready to welcome the world.
+              </p>
+
+              <p>
+                <b>Forging Partnerships for a Progressive Sierra Leone</b>
+              </p>
+
+              <p>
+                Sierra Hash House Harriers and Harriettes (SierraH4) is more than a running club; we are a catalyst for eco-tourism and community development. Our vision, strongly supported by the Government of Sierra Leone through a strategic Memorandum of Understanding (MOU) with the Ministry of Tourism, is to leverage the global Hash movement to showcase the unspoiled beauty and vast potential of our homeland.
+              </p>
+
+              <p>
+                We call on forward-thinking organizations, corporations, and international investors to join us by signing strategic MOUs. These partnerships are the foundation of our success, creating a trusted, government-backed gateway for the global community of hikers, investors, and adventure tourists to explore Sierra Leone with confidence. By partnering with SierraH4, you are investing directly in a future where sustainable tourism drives economic growth, community empowerment, and international goodwill.
+              </p>
+
+              <p>
+                <b>Our Core Mission: Camaraderie and Compassion</b>
+              </p>
+
+              <p>
+                As a non-profit, our mandate extends beyond the trail. We are committed to bridging generations, fostering an environment of camaraderie, friendship, and mutual respect. We believe in the power of unity and collective well-being.
+              </p>
+
+              <p>
+                This commitment is embodied in our dedicated social responsibility initiatives. SierraH4 is a proud collaborator with the Thinking Pink Breast Cancer Foundation. Through our annual Red Dress Run and fundraising events during Breast Cancer Awareness Month, we channel proceeds directly into their vital work—running not just for fitness, but for life-saving awareness and support.
+              </p>
+
+              <p>
+                <b>Join the Fastest-Growing Movement in West Africa</b>
+              </p>
+
+              <p>
+                As the youngest and fastest-growing kennel in West Africa, our energy is a testament to our members' enthusiasm and the vibrancy of our community. We celebrate a powerful spirit of unity with the wider hashing family, including our strong bond with our brother kennel, the Freetown Hash House Harriers (FH3).
+              </p>
+
+              <p>
+                To every citizen of Sierra Leone, I extend a heartfelt invitation: Join SierraH4! Whether you seek fitness, fellowship, or a meaningful way to contribute to our nation's story, the Hash trail awaits. We need your energy, passion, and pride to make PAH 2027 the most memorable event in Pan-African Hash history.
+              </p>
+
+              <p className="pt-4">
+                <b>On-On!</b>
+              </p>
+
+              <p>
+                <b>GM Dr. Kondo Belleh</b><br />
+                Sierra Hash House Harriers and Harriettes (SH4)
+              </p>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="bg-gray-50 px-6 py-4 border-t border-gray-200 flex justify-end">
+              <button
+                onClick={() => setIsMessageModalOpen(false)}
+                className="bg-[#f9b84f] hover:bg-[#e3a63f] text-gray-900 font-bold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
