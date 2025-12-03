@@ -774,7 +774,7 @@ export default function PanAfricaPage() {
                     {
                       name: "Dr. Kondo Belleh",
                       position: "Chairman",
-                      image: "/gm.jpg",
+                      image: "/pan/gm.jpg",
                     },
                     {
                       name: "Fuckimbo",
@@ -794,7 +794,7 @@ export default function PanAfricaPage() {
                     {
                       name: "I Don't Want To",
                       position: "Head of Finance",
-                      image: "/tourism/t5.jpg",
+                      image: "/loc/idwt.jpg",
                     },
                     {
                       name: "Neneh Korraw",
