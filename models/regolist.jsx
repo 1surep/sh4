@@ -27,6 +27,12 @@ const regolistSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    payment: {
+      type: String,
+      enum: ["Fully Paid", "Part Paid", "Not Paid"],
+      default: "Not Paid",
+      trim: true,
+    },
   },
   { timestamps: true }
 );

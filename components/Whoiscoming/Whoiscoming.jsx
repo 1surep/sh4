@@ -8,10 +8,35 @@ const Whoiscoming = () => {
   const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const fetchRegoList = async () => {
+    try {
+      const res = await fetch("/api/regolist", { 
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.message || 'Failed to load');
+      
+      // Ensure payment field exists for all items
+      const dataWithPayment = (data || []).map(item => ({
+        ...item,
+        payment: item.payment || "Not Paid"
+      }));
+      
+      setRegoList(dataWithPayment);
+    } catch (err) {
+      console.error('Failed to fetch rego list:', err);
+      setRegoList([]);
+    }
+  };
+
   useEffect(() => {
-    fetch("/api/regolist")
-      .then((res) => res.json())
-      .then((data) => setRegoList(data || []));
+    // Only fetch once on component mount
+    fetchRegoList();
   }, []);
 
   const filteredRegoList = regoList.filter((item) => {
@@ -82,26 +107,40 @@ const Whoiscoming = () => {
               <th className="border border-gray-300 p-2">Country</th>
               <th className="border border-gray-300 p-2">Shirt Size</th>
               <th className="border border-gray-300 p-2">Run Type</th>
+              <th className="border border-gray-300 p-2">Payment</th>
             </tr>
           </thead>
           <tbody>
             {paginatedRegoList.length === 0 ? (
               <tr>
-                <td className="border border-gray-300 p-4 text-center text-gray-500" colSpan={6}>
+                <td className="border border-gray-300 p-4 text-center text-gray-500" colSpan={7}>
                   No entries yet
                 </td>
               </tr>
             ) : (
-              paginatedRegoList.map((item, idx) => (
-                <tr className="text-left" key={item._id}>
-                  <td className="border border-gray-300 p-2">{startIndex + idx + 1}</td>
-                  <td className="border border-gray-300 p-2">{item.hashhandle}</td>
-                  <td className="border border-gray-300 p-2">{item.kennel}</td>
-                  <td className="border border-gray-300 p-2">{item.country}</td>
-                  <td className="border border-gray-300 p-2">{item.shirt}</td>
-                  <td className="border border-gray-300 p-2">{item.run}</td>
-                </tr>
-              ))
+              paginatedRegoList.map((item, idx) => {
+                const getPaymentBgColor = (payment) => {
+                  if (payment === "Fully Paid") return "bg-green-600";
+                  if (payment === "Part Paid") return "bg-orange-600";
+                  return "bg-red-600";
+                };
+                const paymentStatus = item.payment || "Not Paid";
+                return (
+                  <tr className="text-left" key={item._id}>
+                    <td className="border border-gray-300 p-2">{startIndex + idx + 1}</td>
+                    <td className="border border-gray-300 p-2">{item.hashhandle}</td>
+                    <td className="border border-gray-300 p-2">{item.kennel}</td>
+                    <td className="border border-gray-300 p-2">{item.country}</td>
+                    <td className="border border-gray-300 p-2">{item.shirt}</td>
+                    <td className="border border-gray-300 p-2">{item.run}</td>
+                    <td className="border border-gray-300 p-2">
+                      <span className={`px-3 py-1 rounded text-white text-sm ${getPaymentBgColor(paymentStatus)}`}>
+                        {paymentStatus}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })
             )}
           </tbody>
         </table>

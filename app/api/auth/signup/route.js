@@ -7,7 +7,7 @@ export async function POST(request) {
     try {
         await connectDB();
 
-        // const { email, password, name } = await request.json();
+        const { email, password, name } = await request.json();
 
         if (!email || !password || !name) {
             return NextResponse.json (

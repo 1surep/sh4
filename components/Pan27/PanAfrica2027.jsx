@@ -224,7 +224,7 @@ export default function PanAfricaPage() {
 
         {/* Text & count down write up */}
         <div className="px-[1rem] lg:px-[3rem] z-10 relative">
-          <div className="flex gap-2 items-center justify-center mx-auto w-full">
+          <div className="flex flex-col gap-2 items-center justify-center mx-auto w-full">
             <h1 className="text-center gap-2  justify-center text-gray-100 font-black text-3xl uppercase flex items-center">
               COUNT DOWN
               <span>
@@ -237,6 +237,10 @@ export default function PanAfricaPage() {
                 />
               </span>
             </h1>
+
+            <p className="text-center text-gray-100 font-bold text-3xl uppercase">
+              22<sup>nd</sup> - 24<sup>th</sup> October 2027  
+            </p>  
           </div>
 
           {/* count down */}

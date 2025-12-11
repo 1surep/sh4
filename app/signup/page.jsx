@@ -47,7 +47,7 @@ const SignUp=()=>{
     setSuccess('');
 
     try {
-      // const response = await axios.post('/api/auth/signup', formData);
+      const response = await axios.post('/api/auth/signup', formData);
       
       if (response.data.success) {
         setSuccess(response.data.message || 'Account created successfully!');

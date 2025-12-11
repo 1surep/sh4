@@ -23,7 +23,7 @@ const Dashboard = () => {
   const [submitting, setSubmitting] = useState(false);
   const [regoList, setRegoList] = useState([]);
   const [editing, setEditing] = useState(null); // holds document _id when editing
-  const [editValues, setEditValues] = useState({ hashhandle: "", kennel: "", country: "", shirt: "", run: "" });
+  const [editValues, setEditValues] = useState({ hashhandle: "", kennel: "", country: "", shirt: "", run: "", payment: "Not Paid" });
   const [searchQuery, setSearchQuery] = useState("");
   const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -108,7 +108,7 @@ const Dashboard = () => {
       const res = await fetch('/api/regolist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ hashhandle, kennel, country, shirt, run: runType })
+        body: JSON.stringify({ hashhandle, kennel, country, shirt, run: runType, payment: "Not Paid" })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to save');
@@ -149,6 +149,7 @@ const Dashboard = () => {
       country: item.country || "",
       shirt: item.shirt || "",
       run: item.run || "",
+      payment: item.payment || "Not Paid",
     });
     document.getElementById('edit_modal')?.showModal();
   };
@@ -497,7 +498,19 @@ const Dashboard = () => {
                               </div>
                             </div>
 
-                           
+                            {/* Payment */}
+                            <div className="space-y-2">
+                              <label className="block text-sm font-semibold text-gray-700">
+                                Payment
+                              </label>
+                              <select
+                                className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
+                                value="Not Paid"
+                                disabled
+                              >
+                                <option value="Not Paid">Not Paid (Default)</option>
+                              </select>
+                            </div>
 
                             {/* Form Actions */}
                             <div className="flex flex-col sm:flex-row gap-3 pt-4">
@@ -786,31 +799,99 @@ const Dashboard = () => {
                 <th className="border border-gray-300 p-2">Country</th>
                 <th className="border border-gray-300 p-2">Shirt Size</th>
                 <th className="border border-gray-300 p-2">Run Type</th>
+                <th className="border border-gray-300 p-2">Payment</th>
                 <th className="border border-gray-300 p-2">Action</th>
               </tr>
             </thead>
             <tbody>
               {paginatedRegoList.length === 0 ? (
                 <tr>
-                  <td className="border border-gray-300 p-4 text-center text-gray-500" colSpan={7}>No entries yet</td>
+                  <td className="border border-gray-300 p-4 text-center text-gray-500" colSpan={8}>No entries yet</td>
                 </tr>
               ) : (
-                paginatedRegoList.map((item, idx) => (
-                  <tr className="text-left" key={item._id}>
-                    <td className="border border-gray-300 p-2">{startIndex + idx + 1}</td>
-                    <td className="border border-gray-300 p-2">{item.hashhandle}</td>
-                    <td className="border border-gray-300 p-2">{item.kennel}</td>
-                    <td className="border border-gray-300 p-2">{item.country}</td>
-                    <td className="border border-gray-300 p-2">{item.shirt}</td>
-                    <td className="border border-gray-300 p-2">{item.run}</td>
-                    <td className="border border-gray-300 p-2">
-                      <div className="flex items-center gap-2">
-                        <button className="px-3 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-sm cursor-pointer" onClick={() => openEditModal(item)}>Edit</button>
-                        <button className="px-3 py-1 rounded bg-red-600 hover:bg-red-700 text-white text-sm cursor-pointer" onClick={() => handleDelete(item._id)}>Delete</button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
+                paginatedRegoList.map((item, idx) => {
+                  const getPaymentBgColor = (payment) => {
+                    if (payment === "Fully Paid") return "bg-green-600";
+                    if (payment === "Part Paid") return "bg-orange-600";
+                    return "bg-red-600";
+                  };
+                  return (
+                    <tr className="text-left" key={item._id}>
+                      <td className="border border-gray-300 p-2">{startIndex + idx + 1}</td>
+                      <td className="border border-gray-300 p-2">{item.hashhandle}</td>
+                      <td className="border border-gray-300 p-2">{item.kennel}</td>
+                      <td className="border border-gray-300 p-2">{item.country}</td>
+                      <td className="border border-gray-300 p-2">{item.shirt}</td>
+                      <td className="border border-gray-300 p-2">{item.run}</td>
+                      <td className="border border-gray-300 p-2">
+                        <select
+                          value={item.payment || "Not Paid"}
+                          onChange={async (e) => {
+                            const newPayment = e.target.value;
+                            // Optimistic update - immediately update the UI
+                            setRegoList(prevList => 
+                              prevList.map(prevItem => 
+                                prevItem._id === item._id 
+                                  ? { ...prevItem, payment: newPayment }
+                                  : prevItem
+                              )
+                            );
+                            try {
+                              const res = await fetch(`/api/regolist/${item._id}`, {
+                                method: 'PUT',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                  hashhandle: item.hashhandle,
+                                  kennel: item.kennel,
+                                  country: item.country,
+                                  shirt: item.shirt,
+                                  run: item.run,
+                                  payment: newPayment
+                                })
+                              });
+                              const data = await res.json();
+                              if (!res.ok) throw new Error(data?.message || 'Failed to update');
+                              
+                              // Update state with the response from server to ensure consistency
+                              if (data.item) {
+                                setRegoList(prevList => 
+                                  prevList.map(prevItem => 
+                                    prevItem._id === item._id 
+                                      ? { ...prevItem, payment: data.item.payment || newPayment }
+                                      : prevItem
+                                  )
+                                );
+                              }
+                              
+                              toast.success('Payment status updated');
+                            } catch (err) {
+                              // Revert on error
+                              setRegoList(prevList => 
+                                prevList.map(prevItem => 
+                                  prevItem._id === item._id 
+                                    ? { ...prevItem, payment: item.payment || "Not Paid" }
+                                    : prevItem
+                                )
+                              );
+                              toast.error(err.message || 'Update failed');
+                            }
+                          }}
+                          className={`w-full py-1 px-2 text-sm text-white rounded cursor-pointer ${getPaymentBgColor(item.payment || "Not Paid")} border-none focus:ring-2 focus:ring-blue-500`}
+                        >
+                          <option value="Fully Paid" className="bg-green-600">Fully Paid</option>
+                          <option value="Part Paid" className="bg-orange-600">Part Paid</option>
+                          <option value="Not Paid" className="bg-red-600">Not Paid</option>
+                        </select>
+                      </td>
+                      <td className="border border-gray-300 p-2">
+                        <div className="flex items-center gap-2">
+                          <button className="px-3 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-sm cursor-pointer" onClick={() => openEditModal(item)}>Edit</button>
+                          <button className="px-3 py-1 rounded bg-red-600 hover:bg-red-700 text-white text-sm cursor-pointer" onClick={() => handleDelete(item._id)}>Delete</button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })
               )}
             </tbody>
           </table>
@@ -896,6 +977,14 @@ const Dashboard = () => {
                     <span className="text-sm font-medium">Long</span>
                   </label>
                 </div>
+              </div>
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-gray-700">Payment</label>
+                <select className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white" value={editValues.payment} onChange={(e) => setEditValues({ ...editValues, payment: e.target.value })}>
+                  <option value="Fully Paid">Fully Paid</option>
+                  <option value="Part Paid">Part Paid</option>
+                  <option value="Not Paid">Not Paid</option>
+                </select>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <button type="submit" className="flex-1 text-base bg-blue-600 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all cursor-pointer duration-200">Save</button>
