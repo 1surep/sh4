@@ -161,7 +161,7 @@ const SignUp=()=>{
                 </div>
               )}
     
-              <div>
+              {/* <div>
                 <button
                   type="submit"
                   disabled={loading}
@@ -176,7 +176,7 @@ const SignUp=()=>{
                     </div>
                   ) : 'Sign Up'}
                 </button>
-              </div>
+              </div> */}
     
               <div className="text-center">
                 <span className="text-sm text-gray-600">

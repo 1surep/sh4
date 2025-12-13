@@ -20,6 +20,7 @@ const Dashboard = () => {
   const [country, setCountry] = useState("");
   const [shirt, setShirt] = useState("");
   const [runType, setRunType] = useState("");
+  const [payment, setPayment] = useState("Not Paid");
   const [submitting, setSubmitting] = useState(false);
   const [regoList, setRegoList] = useState([]);
   const [editing, setEditing] = useState(null); // holds document _id when editing
@@ -108,7 +109,7 @@ const Dashboard = () => {
       const res = await fetch('/api/regolist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ hashhandle, kennel, country, shirt, run: runType, payment: "Not Paid" })
+        body: JSON.stringify({ hashhandle, kennel, country, shirt, run: runType, payment })
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to save');
@@ -118,6 +119,7 @@ const Dashboard = () => {
       setCountry("");
       setShirt("");
       setRunType("");
+      setPayment("Not Paid");
       document.getElementById("my_modal_5")?.close();
       toast.success(data?.message || "Saved successfully");
       fetchRegoList();
@@ -494,7 +496,7 @@ const Dashboard = () => {
                                     Long
                                   </span>
                                 </label>
-                                
+
                               </div>
                             </div>
 
@@ -505,10 +507,12 @@ const Dashboard = () => {
                               </label>
                               <select
                                 className="w-full py-2 px-3 text-base  border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
-                                value="Not Paid"
-                                disabled
+                                value={payment}
+                                onChange={(e) => setPayment(e.target.value)}
                               >
-                                <option value="Not Paid">Not Paid (Default)</option>
+                                <option value="Fully Paid">Fully Paid</option>
+                                <option value="Part Paid">Part Paid</option>
+                                <option value="Not Paid">Not Paid</option>
                               </select>
                             </div>
 
@@ -564,17 +568,17 @@ const Dashboard = () => {
                   <div className="text-3xl font-bold text-gray-800">+{trackerCount}</div>
 
                   <div className="flex items-center gap-2">
-                  <button
-                    className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg"
-                    onClick={() =>
-                      document.getElementById("my_modal_6").showModal()
-                    }
-                  >
-                    + Add
-                  </button>
+                    <button
+                      className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg"
+                      onClick={() =>
+                        document.getElementById("my_modal_6").showModal()
+                      }
+                    >
+                      + Add
+                    </button>
                   </div>
                 </div>
-               
+
               </div>
             </motion.div>
 
@@ -598,7 +602,7 @@ const Dashboard = () => {
                 </h3>
 
                 <div className="flex items-center gap-2">
-                <h1 className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg">
+                  <h1 className="text-base font-semibold text-gray-800 bg-yellow-300 px-3 hover:bg-yellow-400 duration-500 transition-all py-1 cursor-pointer rounded-lg">
                     <button
                       className="bt cursor-pointer"
                       onClick={() => router.push('/dashboard/inbox')}
@@ -725,7 +729,7 @@ const Dashboard = () => {
 
                           {/* Form Actions */}
                           <div className="flex flex-col sm:flex-row gap-3 pt-4">
-                          <button
+                            <button
                               type="submit"
                               className="flex-1 text-base bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                               disabled={submittingSH4} // Disable button when submitting
@@ -754,7 +758,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </motion.div>
-            </div>
+          </div>
         </div>
 
         {/* TABLE SECTION */}
@@ -790,111 +794,111 @@ const Dashboard = () => {
           </div>
 
           <div className="w-full overflow-x-auto lg:overflow-visible">
-          <table className="w-full min-w-[800px] lg:min-w-0 border-collapse border border-gray-300 text-sm">
-            <thead className="bg-gray-100">
-              <tr className="text-left">
-                <th className="border border-gray-300 p-2">S/N</th>
-                <th className="border border-gray-300 p-2">Hash Handle</th>
-                <th className="border border-gray-300 p-2">Kennel</th>
-                <th className="border border-gray-300 p-2">Country</th>
-                <th className="border border-gray-300 p-2">Shirt Size</th>
-                <th className="border border-gray-300 p-2">Run Type</th>
-                <th className="border border-gray-300 p-2">Payment</th>
-                <th className="border border-gray-300 p-2">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedRegoList.length === 0 ? (
-                <tr>
-                  <td className="border border-gray-300 p-4 text-center text-gray-500" colSpan={8}>No entries yet</td>
+            <table className="w-full min-w-[800px] lg:min-w-0 border-collapse border border-gray-300 text-sm">
+              <thead className="bg-gray-100">
+                <tr className="text-left">
+                  <th className="border border-gray-300 p-2">S/N</th>
+                  <th className="border border-gray-300 p-2">Hash Handle</th>
+                  <th className="border border-gray-300 p-2">Kennel</th>
+                  <th className="border border-gray-300 p-2">Country</th>
+                  <th className="border border-gray-300 p-2">Shirt Size</th>
+                  <th className="border border-gray-300 p-2">Run Type</th>
+                  <th className="border border-gray-300 p-2">Payment</th>
+                  <th className="border border-gray-300 p-2">Action</th>
                 </tr>
-              ) : (
-                paginatedRegoList.map((item, idx) => {
-                  const getPaymentBgColor = (payment) => {
-                    if (payment === "Fully Paid") return "bg-green-600";
-                    if (payment === "Part Paid") return "bg-orange-600";
-                    return "bg-red-600";
-                  };
-                  return (
-                    <tr className="text-left" key={item._id}>
-                      <td className="border border-gray-300 p-2">{startIndex + idx + 1}</td>
-                      <td className="border border-gray-300 p-2">{item.hashhandle}</td>
-                      <td className="border border-gray-300 p-2">{item.kennel}</td>
-                      <td className="border border-gray-300 p-2">{item.country}</td>
-                      <td className="border border-gray-300 p-2">{item.shirt}</td>
-                      <td className="border border-gray-300 p-2">{item.run}</td>
-                      <td className="border border-gray-300 p-2">
-                        <select
-                          value={item.payment || "Not Paid"}
-                          onChange={async (e) => {
-                            const newPayment = e.target.value;
-                            // Optimistic update - immediately update the UI
-                            setRegoList(prevList => 
-                              prevList.map(prevItem => 
-                                prevItem._id === item._id 
-                                  ? { ...prevItem, payment: newPayment }
-                                  : prevItem
-                              )
-                            );
-                            try {
-                              const res = await fetch(`/api/regolist/${item._id}`, {
-                                method: 'PUT',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({
-                                  hashhandle: item.hashhandle,
-                                  kennel: item.kennel,
-                                  country: item.country,
-                                  shirt: item.shirt,
-                                  run: item.run,
-                                  payment: newPayment
-                                })
-                              });
-                              const data = await res.json();
-                              if (!res.ok) throw new Error(data?.message || 'Failed to update');
-                              
-                              // Update state with the response from server to ensure consistency
-                              if (data.item) {
-                                setRegoList(prevList => 
-                                  prevList.map(prevItem => 
-                                    prevItem._id === item._id 
-                                      ? { ...prevItem, payment: data.item.payment || newPayment }
-                                      : prevItem
-                                  )
-                                );
-                              }
-                              
-                              toast.success('Payment status updated');
-                            } catch (err) {
-                              // Revert on error
-                              setRegoList(prevList => 
-                                prevList.map(prevItem => 
-                                  prevItem._id === item._id 
-                                    ? { ...prevItem, payment: item.payment || "Not Paid" }
+              </thead>
+              <tbody>
+                {paginatedRegoList.length === 0 ? (
+                  <tr>
+                    <td className="border border-gray-300 p-4 text-center text-gray-500" colSpan={8}>No entries yet</td>
+                  </tr>
+                ) : (
+                  paginatedRegoList.map((item, idx) => {
+                    const getPaymentBgColor = (payment) => {
+                      if (payment === "Fully Paid") return "bg-green-600";
+                      if (payment === "Part Paid") return "bg-orange-600";
+                      return "bg-red-600";
+                    };
+                    return (
+                      <tr className="text-left" key={item._id}>
+                        <td className="border border-gray-300 p-2">{startIndex + idx + 1}</td>
+                        <td className="border border-gray-300 p-2">{item.hashhandle}</td>
+                        <td className="border border-gray-300 p-2">{item.kennel}</td>
+                        <td className="border border-gray-300 p-2">{item.country}</td>
+                        <td className="border border-gray-300 p-2">{item.shirt}</td>
+                        <td className="border border-gray-300 p-2">{item.run}</td>
+                        <td className="border border-gray-300 p-2">
+                          <select
+                            value={item.payment || "Not Paid"}
+                            onChange={async (e) => {
+                              const newPayment = e.target.value;
+                              // Optimistic update - immediately update the UI
+                              setRegoList(prevList =>
+                                prevList.map(prevItem =>
+                                  prevItem._id === item._id
+                                    ? { ...prevItem, payment: newPayment }
                                     : prevItem
                                 )
                               );
-                              toast.error(err.message || 'Update failed');
-                            }
-                          }}
-                          className={`w-full py-1 px-2 text-sm text-white rounded cursor-pointer ${getPaymentBgColor(item.payment || "Not Paid")} border-none focus:ring-2 focus:ring-blue-500`}
-                        >
-                          <option value="Fully Paid" className="bg-green-600">Fully Paid</option>
-                          <option value="Part Paid" className="bg-orange-600">Part Paid</option>
-                          <option value="Not Paid" className="bg-red-600">Not Paid</option>
-                        </select>
-                      </td>
-                      <td className="border border-gray-300 p-2">
-                        <div className="flex items-center gap-2">
-                          <button className="px-3 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-sm cursor-pointer" onClick={() => openEditModal(item)}>Edit</button>
-                          <button className="px-3 py-1 rounded bg-red-600 hover:bg-red-700 text-white text-sm cursor-pointer" onClick={() => handleDelete(item._id)}>Delete</button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
+                              try {
+                                const res = await fetch(`/api/regolist/${item._id}`, {
+                                  method: 'PUT',
+                                  headers: { 'Content-Type': 'application/json' },
+                                  body: JSON.stringify({
+                                    hashhandle: item.hashhandle,
+                                    kennel: item.kennel,
+                                    country: item.country,
+                                    shirt: item.shirt,
+                                    run: item.run,
+                                    payment: newPayment
+                                  })
+                                });
+                                const data = await res.json();
+                                if (!res.ok) throw new Error(data?.message || 'Failed to update');
+
+                                // Update state with the response from server to ensure consistency
+                                if (data.item) {
+                                  setRegoList(prevList =>
+                                    prevList.map(prevItem =>
+                                      prevItem._id === item._id
+                                        ? { ...prevItem, payment: data.item.payment || newPayment }
+                                        : prevItem
+                                    )
+                                  );
+                                }
+
+                                toast.success('Payment status updated');
+                              } catch (err) {
+                                // Revert on error
+                                setRegoList(prevList =>
+                                  prevList.map(prevItem =>
+                                    prevItem._id === item._id
+                                      ? { ...prevItem, payment: item.payment || "Not Paid" }
+                                      : prevItem
+                                  )
+                                );
+                                toast.error(err.message || 'Update failed');
+                              }
+                            }}
+                            className={`w-full py-1 px-2 text-sm text-white rounded cursor-pointer ${getPaymentBgColor(item.payment || "Not Paid")} border-none focus:ring-2 focus:ring-blue-500`}
+                          >
+                            <option value="Fully Paid" className="bg-green-600">Fully Paid</option>
+                            <option value="Part Paid" className="bg-orange-600">Part Paid</option>
+                            <option value="Not Paid" className="bg-red-600">Not Paid</option>
+                          </select>
+                        </td>
+                        <td className="border border-gray-300 p-2">
+                          <div className="flex items-center gap-2">
+                            <button className="px-3 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-sm cursor-pointer" onClick={() => openEditModal(item)}>Edit</button>
+                            <button className="px-3 py-1 rounded bg-red-600 hover:bg-red-700 text-white text-sm cursor-pointer" onClick={() => handleDelete(item._id)}>Delete</button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
           </div>
 
           {/* Pagination footer */}
