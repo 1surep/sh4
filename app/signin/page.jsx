@@ -225,7 +225,7 @@ export default function SignIn() {
             </button>
           </div>
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <span className="text-sm text-gray-600">
               Don&apos;t have an account?{' '}
               <button
@@ -236,7 +236,7 @@ export default function SignIn() {
                 Sign Up
               </button>
             </span>
-          </div> 
+          </div>  */}
         </form>
       </div>
     </div>
