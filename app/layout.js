@@ -11,6 +11,7 @@ import { FaArrowUp } from "react-icons/fa";
 import { AuthProvider } from "./context/AuthContext";
 import Spinner from "@/components/ui/Spinner";
 import { useState, useEffect } from "react";
+import Script from "next/script";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -35,6 +36,20 @@ function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
       <body className={`${outfit.variable} font-outfit antialiased`}>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-31P4QPST27"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-31P4QPST27');
+          `}
+        </Script>
+
         {loading && <Spinner />}
         <AuthProvider>
           {!isPanAfricaPage && !isDashboardPage && !isDashboardInboxPage && <Navbar />}
