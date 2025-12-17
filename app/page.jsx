@@ -15,7 +15,7 @@ import ChatbotModal from "@/components/Chat/ChatbotModal";
 import StructuredData from "@/components/SEO/StructuredData";
 
 export const metadata = {
-  title: "Home",
+  title: "Sierrah4",
   description: "Welcome to Sierra H4 - Freetown's favorite drinking club with a running problem. Join us for weekly trail runs, social events, and the 2027 Pan Africa Hash. Experience the best of hashing in Sierra Leone.",
   openGraph: {
     title: "Sierra H4 - Hash House Harriers & Harriettes",
@@ -35,49 +35,49 @@ export const metadata = {
   },
 };
 
-const Home=()=>{
+const Home = () => {
   return (
     <>
       <StructuredData type="SportsActivity" />
-      <div 
-      style={{
-          
-        width: "100vw",
-        minHeight: "100vh",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}>
+      <div
+        style={{
 
-        <main  id="top">
-          <HeroOne/>
-          <HeroTwo/>
-          <HeroThree/>
-          <HeroFour/>
-          <HeroFive/>
-          <HeroSix/>
-          <HeroSeven/>
-          <HeroEight/>
-          <HeroNine/>
-          <HeroTen/>
+          width: "100vw",
+          minHeight: "100vh",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}>
+
+        <main id="top">
+          <HeroOne />
+          <HeroTwo />
+          <HeroThree />
+          <HeroFour />
+          <HeroFive />
+          <HeroSix />
+          <HeroSeven />
+          <HeroEight />
+          <HeroNine />
+          <HeroTen />
           {/* <HeroEleven/> */}
-          <Hero12/>
-         
-        
-         
-      
-          </main>
-          {/* chatbot modal */}
-          {/* <ChatbotModal /> */}
-        </div>
+          <Hero12 />
+
+
+
+
+        </main>
+        {/* chatbot modal */}
+        {/* <ChatbotModal /> */}
+      </div>
     </>
-    )
+  )
 
 
 
-  };
+};
 
-  const WrappedHome = () => (
-    <Home />
-  );
+const WrappedHome = () => (
+  <Home />
+);
 
-  export default WrappedHome;
+export default WrappedHome;
