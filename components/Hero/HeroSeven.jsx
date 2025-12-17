@@ -38,7 +38,7 @@ const HeroSeven=()=>{
               {/* A */}
               <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
                 <Image
-                  src="/misma/gm.png"
+                  src="/misma/ra.png"
                   width={100}
                   height={100}
                   alt="image of hasher"
@@ -48,45 +48,11 @@ const HeroSeven=()=>{
                   <p className="font-semibold text-lg text-gray-800">
                     Grand Master
                   </p>
-                  <p className="text-gray-600"> Dr. Kondo Belleh</p>
-                </div>
-              </div>
-
-              {/* b */}
-              <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
-                <Image
-                  src="/misma/ra.png"
-                  width={100}
-                  height={100}
-                  alt="image of hasher"
-                  className=" h-full w-full rounded-[12px] mb-4"
-                />
-                <div>
-                  <p className="font-semibold text-lg text-gray-800">
-                    Religious Advisor
-                  </p>
                   <p className="text-gray-600">Fuckimbo</p>
                 </div>
               </div>
 
-              {/* c */}
-              <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
-                <Image
-                  src="/misma/warden.png"
-                  width={100}
-                  height={100}
-                  alt="image of hasher"
-                  className=" h-full w-full rounded-[12px] mb-4"
-                />
-                <div>
-                  <p className="font-semibold text-lg text-gray-800">
-                    Circle Warden
-                  </p>
-                  <p className="text-gray-600">Yap Yap Network</p>
-                </div>
-              </div>
-
-              {/* d */}
+              {/* b */}
               <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
                 <Image
                   src="/misma/mom.png"
@@ -97,9 +63,43 @@ const HeroSeven=()=>{
                 />
                 <div>
                   <p className="font-semibold text-lg text-gray-800">
-                    Nenneh korraw
+                    Religious Advisor
                   </p>
-                  <p className="text-gray-600">Master of Music</p>
+                  <p className="text-gray-600">Neneh Korraw</p>
+                </div>
+              </div>
+
+              {/* c */}
+              <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
+                <Image
+                  src="/misma/warden.svg"
+                  width={100}
+                  height={100}
+                  alt="image of hasher"
+                  className=" h-full w-full rounded-[12px] mb-4"
+                />
+                <div>
+                  <p className="font-semibold text-lg text-gray-800">
+                    Circle Warden
+                  </p>
+                  <p className="text-gray-600">Leftover</p>
+                </div>
+              </div>
+
+              {/* d */}
+              <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
+                <Image
+                  src="/misma/smooth.svg"
+                  width={100}
+                  height={100}
+                  alt="image of hasher"
+                  className=" h-full w-full rounded-[12px] mb-4"
+                />
+                <div>
+                  <p className="font-semibold text-lg text-gray-800">
+                  Master of Music
+                  </p>
+                  <p className="text-gray-600">Smooth Operator </p>
                 </div>
               </div>
             </motion.div>
@@ -115,7 +115,7 @@ const HeroSeven=()=>{
               {/* A */}
               <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
                 <Image
-                  src="/misma/hashcash.png"
+                  src="/misma/flash.jpg"
                   width={100}
                   height={100}
                   alt="image of hasher"
@@ -125,14 +125,14 @@ const HeroSeven=()=>{
                   <p className="font-semibold text-lg text-gray-800">
                     Hash Cash
                   </p>
-                  <p className="text-gray-600">Fuckinabae</p>
+                  <p className="text-gray-600">Sleeping Pucci</p>
                 </div>
               </div>
 
               {/* b */}
               <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
-                <Image
-                  src="/misma/hashbeer.png"
+              <Image
+                  src="/misma/borbor.svg"
                   width={100}
                   height={100}
                   alt="image of hasher"
@@ -142,7 +142,7 @@ const HeroSeven=()=>{
                   <p className="font-semibold text-lg text-gray-800">
                     Hash Beer
                   </p>
-                  <p className="text-gray-600">Kaka Pipe</p>
+                  <p className="text-gray-600">Borbor Tumba</p>
                 </div>
               </div>
 
@@ -241,7 +241,7 @@ const HeroSeven=()=>{
               {/* d */}
               <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
               <Image
-                  src="/misma/flash.jpg"
+                  src="/misma/dick-flash.svg"
                   width={100}
                   height={100}
                   alt="image of hasher"
@@ -251,7 +251,7 @@ const HeroSeven=()=>{
                   <p className="font-semibold text-lg text-gray-800">
                     Hash Flash
                   </p>
-                  <p className="text-gray-600">Sleeping Pucci</p>
+                  <p className="text-gray-600">Dick Rental</p>
                 </div>
               </div>
             </motion.div>
@@ -281,9 +281,9 @@ const HeroSeven=()=>{
               </div>
 
               {/* b */}
-              {/* <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
+              <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
               <Image
-                  src="/misma/registrar.png"
+                  src="/misma/web-master.svg"
                   width={100}
                   height={100}
                   alt="image of hasher"
@@ -291,16 +291,16 @@ const HeroSeven=()=>{
                 />
                 <div>
                   <p className="font-semibold text-lg text-gray-800">
-                    Hash Registrar
+                    Web Master
                   </p>
-                  <p className="text-gray-600">Rasta Plasta</p>
+                  <p className="text-gray-600">Pucci Engineer</p>
                 </div>
-              </div> */}
+              </div>
 
               {/* c */}
               {/* <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
               <Image
-                  src="/misma/welfare.png"
+                  src="/misma/"
                   width={100}
                   height={100}
                   alt="image of hasher"
@@ -308,9 +308,9 @@ const HeroSeven=()=>{
                 />
                 <div>
                   <p className="font-semibold text-lg text-gray-800">
-                    Hash Welfare 
+                    -
                   </p>
-                  <p className="text-gray-600">Little Fox</p>
+                  <p className="text-gray-600"></p>
                 </div>
               </div> */}
 

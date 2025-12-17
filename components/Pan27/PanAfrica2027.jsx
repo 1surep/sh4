@@ -776,12 +776,12 @@ export default function PanAfricaPage() {
                   {/* LOC Members */}
                   {[
                     {
-                      name: "Dr. Kondo Belleh",
+                      name: "Ex GM Dr. Kondo Belleh",
                       position: "Chairman",
                       image: "/pan/gm.jpg",
                     },
                     {
-                      name: "Fuckimbo",
+                      name: "GM Fuckimbo",
                       position: "Vice Chairman",
                       image: "/misma/ra.png",
                     },
@@ -801,7 +801,7 @@ export default function PanAfricaPage() {
                       image: "/loc/idwt.jpg",
                     },
                     {
-                      name: "Neneh Korraw",
+                      name: "RA Neneh Korraw",
                       position: "Head of Logistics",
                       image: "/misma/mom.png",
                     },
@@ -846,6 +846,11 @@ export default function PanAfricaPage() {
                       name: "RA Sorry My Lord",
                       position: "Liaison Officer",
                       image: "/loc/lord.jpg",
+                    },
+                    {
+                      name: "Sniper",
+                      position: "Hash Cash - PAH",
+                      image: "/loc/sniper.svg",
                     },
                   ].map((member, index) => (
                     <motion.div
@@ -1538,7 +1543,7 @@ export default function PanAfricaPage() {
               </p>
 
               <p>
-                <b>GM Dr. Kondo Belleh</b><br />
+                <b>Ex GM Dr. Kondo Belleh</b><br />
                 Sierra Hash House Harriers and Harriettes (SH4)
               </p>
             </div>
