@@ -105,7 +105,7 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/logo.jpg"
+              src="/xmaslogo.png"
               width={80}
               height={80}
               alt="sierrah4_logo"

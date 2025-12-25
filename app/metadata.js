@@ -84,16 +84,18 @@ export const metadata = {
   alternates: {
     canonical: "https://sierrah4.com",
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  themeColor: "#166534",
   other: {
     "geo.region": "SL-W",
     "geo.placename": "Freetown",
     "geo.position": "8.4840;-13.2299",
     "ICBM": "8.4840, -13.2299",
   },
+};
+
+// Viewport and themeColor should be exported separately in Next.js 13+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#166534",
 };

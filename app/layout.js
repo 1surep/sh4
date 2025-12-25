@@ -2,7 +2,8 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/Layout/ClientLayout";
 import StructuredData from "@/components/SEO/StructuredData";
-import { metadata } from "./metadata";
+import { metadata, viewport } from "./metadata";
+import SnowfallEffect from "@/components/Snowfall";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -11,7 +12,7 @@ const outfit = Outfit({
   display: "swap",
 });
 
-export { metadata };
+export { metadata, viewport };
 
 export default function RootLayout({ children }) {
   return (
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <body className={`${outfit.variable} font-outfit antialiased`}>
         <StructuredData type="Organization" />
         <StructuredData type="WebSite" />
+        <SnowfallEffect />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
