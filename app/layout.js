@@ -20,7 +20,9 @@ export default function RootLayout({ children }) {
       <body className={`${outfit.variable} font-outfit antialiased`}>
         <StructuredData type="Organization" />
         <StructuredData type="WebSite" />
-        <SnowfallEffect />
+
+        {/* snow fall effect */}
+        {/* <SnowfallEffect /> */}
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

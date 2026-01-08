@@ -35,6 +35,8 @@ const Footer = () => {
     },
   };
 
+    
+  
   return (
     <motion.footer
       className="relative overflow-hidden bg-green-900/80 text-gray-200 pb-16"
