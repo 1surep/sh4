@@ -89,6 +89,11 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <MdEmail /> h4sierra@gmail.com
               </li>
+
+              <li className="flex items-center gap-2">
+                <MdEmail /> info@sierrah4.com
+              </li>
+
               <li className="flex items-center gap-2">
                 <BsFillTelephoneInboundFill /> +232-80-668590
               </li>

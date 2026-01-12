@@ -786,7 +786,7 @@ export default function PanAfricaPage() {
                       image: "/misma/ra.png",
                     },
                     {
-                      name: "Pucci Engineerer ",
+                      name: "Pucci Engineer",
                       position: "Head of Communications",
                       image: "/loc/pe.jpg",
                     },
