@@ -404,7 +404,7 @@ export default function PanAfricaPage() {
                     1. Pay your rego
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
-                    Secure your spot for PAN Africa Hash 2027.
+                    Secure your spot . <br /> Registration Fee: $150.00 <br/> Processing Fee: $5.00
                   </p>
                 </div>
                 <Award className="text-amber-500" size={28} />
@@ -420,7 +420,7 @@ export default function PanAfricaPage() {
               <button
                 className="mt-5 w-full bg-green-700 cursor-pointer hover:bg-green-800 text-white text-sm font-semibold rounded-lg py-2"
                 onClick={() =>
-                  window.open("https://pay.monime.io/069165304", "_blank")
+                  window.open("https://pay.monime.io/069165304?amount=15500&checkout=true", "_blank")
                 }
               >
                 Pay Rego
@@ -651,23 +651,22 @@ export default function PanAfricaPage() {
                             d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                           />
                         </svg>
-                        <a
+                        <a 
                           href="tel:+23273928927"
                           className="hover:text-yellow-400 flex items-center gap-2 transition-colors"
                         >
-                          +232 73 928 92
+                          +232 73 928 927
                         </a>
                       </div>
 
                       {/* whatapp */}
                       <p
                         onClick={() =>
-                          window.open("https://wa.me/2327392892", "_blank")
+                          window.open("https://wa.me/23273928927", "_blank")
                         }
                         className="flex items-center hover:text-green-500 gap-2 cursor-pointer"
                       >
-                        <BsWhatsapp className="text-xl text-green-500" /> +232
-                        73 928 92
+                        <BsWhatsapp className="text-xl text-green-500" /> +232 73 928 927
                       </p>
                     </div>
 
@@ -783,7 +782,7 @@ export default function PanAfricaPage() {
                     {
                       name: "GM Fuckimbo",
                       position: "Vice Chairman",
-                      image: "/misma/ra.png",
+                      image: "/misma/gm26.png",
                     },
                     {
                       name: "Pucci Engineer",
@@ -793,7 +792,7 @@ export default function PanAfricaPage() {
                     {
                       name: "Yap Yap Network",
                       position: "International Coordinator/ Head of Protocol",
-                      image: "/loc/yapyap.jpg",
+                      image: "/loc/yap.jpeg",
                     },
                     {
                       name: "I Don't Want To",
@@ -819,7 +818,7 @@ export default function PanAfricaPage() {
                     {
                       name: "Put It On The Hole",
                       position: "Head of Sponsorship 2",
-                      image: "/loc/hole.jpg",
+                      image: "/loc/holee.png",
                     },
 
                     {
@@ -840,18 +839,18 @@ export default function PanAfricaPage() {
                     {
                       name: "Sniper",
                       position: "Hash Cash",
-                      image: "/loc/hashcash.jpg",
+                      image: "/loc/snipe.jpg",
                     },
                     {
                       name: "RA Sorry My Lord",
                       position: "Liaison Officer",
                       image: "/loc/lord.jpg",
                     },
-                    {
-                      name: "Sniper",
-                      position: "Hash Cash - PAH",
-                      image: "/loc/sniper.svg",
-                    },
+                    // {
+                    //   name: "Sniper",
+                    //   position: "Hash Cash - PAH",
+                    //   image: "/loc/sniper.svg",
+                    // },
                   ].map((member, index) => (
                     <motion.div
                       key={index}
@@ -911,7 +910,7 @@ export default function PanAfricaPage() {
                     {
                       name: "DGM Honey Tumba",
                       location: "Sierra H4",
-                      image: "/loc/tumba.jpg",
+                      image: "/loc/tumba.jpeg",
                     },
                     {
                       name: "GM Slippery Comer",

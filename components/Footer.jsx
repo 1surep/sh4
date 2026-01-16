@@ -7,6 +7,7 @@ import { MdLocationOn, MdEmail } from "react-icons/md";
 import { BsFillTelephoneInboundFill } from "react-icons/bs";
 import { SocialIcon } from "react-social-icons";
 import { FaUserShield } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa6";
 
 const Footer = () => {
   const footerVariants = {
@@ -95,7 +96,18 @@ const Footer = () => {
               </li>
 
               <li className="flex items-center gap-2">
-                <BsFillTelephoneInboundFill /> +232-80-668590
+                <BsFillTelephoneInboundFill /> +232 80 668 590
+              </li>
+
+              <li className="flex items-center gap-2">
+                <a 
+                  href="https://wa.me/23273928927" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-green-400 transition-colors cursor-pointer"
+                >
+                  <FaWhatsapp /> +232 73 928 927
+                </a>
               </li>
             </ul>
           </motion.div>
@@ -269,7 +281,7 @@ const Footer = () => {
           >
             
 
-            {/* TikTok */}
+            {/* Twitter X */}
             <motion.div
               variants={socialIconVariants}
               whileHover={{ scale: 1.1, y: -2 }}
@@ -277,11 +289,11 @@ const Footer = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <SocialIcon
-                href="https://www.tiktok.com"
-                url="https://www.tiktok.com"
+                href="https://x.com/sierra_h4"
+                url="https://x.com/sierra_h4"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow us on TikTok"
+                aria-label="Follow us on X"
                 style={{ height: 32, width: 32 }}
                 className="transition-shadow hover:shadow-lg hover:shadow-pink-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
               />
@@ -295,8 +307,8 @@ const Footer = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <SocialIcon
-                href="https://www.instagram.com"
-                url="https://www.instagram.com"
+                href="https://www.instagram.com/sierra_h4"
+                url="https://www.instagram.com/sierra_h4"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on Instagram"
@@ -313,8 +325,8 @@ const Footer = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <SocialIcon
-                href="https://www.facebook.com"
-                url="https://www.facebook.com"
+                href="https://facebook.com/sierrah4"
+                url="https://facebook.com/sierrah4"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on Facebook"
