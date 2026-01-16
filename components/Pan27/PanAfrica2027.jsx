@@ -404,7 +404,7 @@ export default function PanAfricaPage() {
                     1. Pay your rego
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
-                    Secure your spot . <br /> Registration Fee: $150.00 <br/> Processing Fee: $5.00
+                  Registration Fee: $150.00 <br/> Processing Fee: $5.00
                   </p>
                 </div>
                 <Award className="text-amber-500" size={28} />
