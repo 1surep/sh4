@@ -298,9 +298,9 @@ const HeroSeven=()=>{
               </div>
 
               {/* c */}
-              {/* <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
+              <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">
               <Image
-                  src="/misma/"
+                  src="/misma/yap.png"
                   width={100}
                   height={100}
                   alt="image of hasher"
@@ -308,11 +308,11 @@ const HeroSeven=()=>{
                 />
                 <div>
                   <p className="font-semibold text-lg text-gray-800">
-                    -
+                    International Coordinator
                   </p>
-                  <p className="text-gray-600"></p>
+                  <p className="text-gray-600">Yap Yap Network</p>
                 </div>
-              </div> */}
+              </div>
 
               {/* d */}
               {/* <div className="flex flex-col h-full w-full items-center text-center p-4 bg-white rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl ">

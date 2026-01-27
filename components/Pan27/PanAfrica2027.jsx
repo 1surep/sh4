@@ -398,7 +398,7 @@ export default function PanAfricaPage() {
               variants={itemVariants}
               className="bg-white/95 backdrop-blur rounded-xl shadow-lg p-5 border border-white/40 hover:shadow-xl transition-transform duration-300 hover:-translate-y-1"
             >
-              <div className="flex items-start justify-between">
+              <div className="flex items-start justify-between text-">
                 <div>
                   <h3 className="text-gray-900 font-extrabold text-lg">
                     1. Pay your rego
