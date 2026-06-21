@@ -96,7 +96,7 @@ const Footer = () => {
               </li>
 
               <li className="flex items-center gap-2">
-                <BsFillTelephoneInboundFill /> +232 80 668 590
+                <BsFillTelephoneInboundFill /> +232-80-668-590
               </li>
 
               <li className="flex items-center gap-2">
