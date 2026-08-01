@@ -241,7 +241,7 @@ const Footer = () => {
             {/* Pay rego button */}
             <div className="">
               <a
-                href="https://pay.monime.io/069165304"
+                href="https://pay.monime.io/069165304?amount=20600&checkout=true"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-300"

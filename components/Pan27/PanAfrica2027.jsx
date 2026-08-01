@@ -420,7 +420,7 @@ export default function PanAfricaPage() {
               <button
                 className="mt-5 w-full bg-green-700 cursor-pointer hover:bg-green-800 text-white text-sm font-semibold rounded-lg py-2"
                 onClick={() =>
-                  window.open("https://pay.monime.io/069165304?amount=15500&checkout=true", "_blank")
+                  window.open("https://pay.monime.io/069165304?amount=20600&checkout=true", "_blank")
                 }
               >
                 Pay Rego

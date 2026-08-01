@@ -58,7 +58,7 @@ const HeroOne = () => {
             {/* button 1 */}
             <div className="flex items-center justify-center gap-4">
               <a
-                href="https://pay.monime.io/069165304?amount=15500&checkout=true"
+                href="https://pay.monime.io/069165304?amount=20600&checkout=true"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 cursor-pointer hover:bg-green-700 hover:text-gray-200 text-black font-semibold px-6 py-3 rounded-2xl transition-all"
