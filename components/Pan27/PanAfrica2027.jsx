@@ -404,7 +404,7 @@ export default function PanAfricaPage() {
                     1. Pay your rego
                   </h3>
                   <p className="text-gray-600 text-sm mt-1">
-                  Registration Fee: $150.00 <br/> Processing Fee: $5.00
+                  Registration Fee: $200.00 <br/> Processing Fee: $6.00
                   </p>
                 </div>
                 <Award className="text-amber-500" size={28} />
@@ -450,7 +450,7 @@ export default function PanAfricaPage() {
               <button
                 className="mt-5 w-full bg-blue-600 cursor-pointer hover:bg-blue-700 text-white text-sm font-semibold rounded-lg py-2"
                 onClick={() =>
-                  window.open("https://forms.gle/rPVHFYS7b2Hqyuzk8", "_blank")
+                  window.open("https://prettyform.addxt.com/a/form/vf/1FAIpQLSe7T8tpAQAiZAk6AtQOp62Fqj5VzHSUkOMf1X5O18-RjNRRew", "_blank")
                 }
               >
                 Fill Registration Form
