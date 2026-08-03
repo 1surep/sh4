@@ -1,6 +1,10 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /signin
+Disallow: /signup
 
 # Host
 Host: https://sierrah4.com

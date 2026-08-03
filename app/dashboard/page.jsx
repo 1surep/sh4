@@ -57,7 +57,10 @@ const Dashboard = () => {
       const res = await fetch('/api/regolist', { cache: 'no-store' });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to load');
-      setRegoList(data || []);
+      setRegoList((data || []).map((item, index) => ({
+        ...item,
+        sn: index + 1
+      })));
     } catch (err) {
       toast.error(err.message || 'Failed to load');
     }
@@ -821,7 +824,7 @@ const Dashboard = () => {
                     };
                     return (
                       <tr className="text-left" key={item._id}>
-                        <td className="border border-gray-300 p-2">{startIndex + idx + 1}</td>
+                        <td className="border border-gray-300 p-2">{item.sn ?? (startIndex + idx + 1)}</td>
                         <td className="border border-gray-300 p-2">{item.hashhandle}</td>
                         <td className="border border-gray-300 p-2">{item.kennel}</td>
                         <td className="border border-gray-300 p-2">{item.country}</td>

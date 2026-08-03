@@ -21,9 +21,10 @@ const Whoiscoming = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to load');
       
-      // Ensure payment field exists for all items
-      const dataWithPayment = (data || []).map(item => ({
+      // Ensure payment field exists for all items and assign original registration S/N
+      const dataWithPayment = (data || []).map((item, index) => ({
         ...item,
+        sn: index + 1,
         payment: item.payment || "Not Paid"
       }));
       
@@ -127,7 +128,7 @@ const Whoiscoming = () => {
                 const paymentStatus = item.payment || "Not Paid";
                 return (
                   <tr className="text-left" key={item._id}>
-                    <td className="border border-gray-300 p-2">{startIndex + idx + 1}</td>
+                    <td className="border border-gray-300 p-2">{item.sn ?? (startIndex + idx + 1)}</td>
                     <td className="border border-gray-300 p-2">{item.hashhandle}</td>
                     <td className="border border-gray-300 p-2">{item.kennel}</td>
                     <td className="border border-gray-300 p-2">{item.country}</td>
