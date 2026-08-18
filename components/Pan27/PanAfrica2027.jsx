@@ -501,7 +501,15 @@ export default function PanAfricaPage() {
                 </div>
                 <Clock className="text-yellow-600" size={28} />
               </div>
-              <div className="mt-4 text-sm text-gray-600">
+              <div className="mt-4">
+                <div className="text-xs uppercase tracking-wide text-gray-500">
+                  Paid Up Hashers
+                </div>
+                <div className="text-3xl font-bold text-gray-800">
+                  {regoList.filter((item) => item.payment === "Fully Paid").length}
+                </div>
+              </div>
+              <div className="mt-2 text-sm text-gray-600">
                 We'll update the list as approvals roll in.
               </div>
               
