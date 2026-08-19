@@ -16,6 +16,9 @@ export default function ClientLayout({ children }) {
   const isPanAfricaPage = pathname === "/pan-africa-2027";
   const isDashboardPage = pathname === "/dashboard";
   const isDashboardInboxPage = pathname === "/dashboard/inbox";
+  // The offline page must stand alone - navbar, footer and chatbot all look
+  // broken without a connection.
+  const isOfflinePage = pathname === "/offline";
 
   // Spinner logic
   const [loading, setLoading] = useState(false);
@@ -64,11 +67,12 @@ export default function ClientLayout({ children }) {
 
       {loading && <Spinner />}
       <AuthProvider>
-        {!isPanAfricaPage && !isDashboardPage && !isDashboardInboxPage && <Navbar />}
+        {!isPanAfricaPage && !isDashboardPage && !isDashboardInboxPage && !isOfflinePage && <Navbar />}
         {children}
-        {!isPanAfricaPage && !isDashboardPage && <Footer />}
+        {!isPanAfricaPage && !isDashboardPage && !isOfflinePage && <Footer />}
 
         {/* Back to Top Button */}
+        {!isOfflinePage && (
         <Link href="#top">
           <div className="w-[5px] rounded-full px-6 py-4 bg-green-900/80 hover:bg-green-900/100 items-center justify-center ring-8 hover:ring-yellow-500/70 z-50 flex fixed left-8 bottom-5 transition-all duration-500 ease-in-out">
             <span className="font-bold text-gray-200">
@@ -76,9 +80,10 @@ export default function ClientLayout({ children }) {
             </span>
           </div>
         </Link>
+        )}
 
         {/* Chatbot Modal - renders on all pages */}
-        <ChatbotModal />
+        {!isOfflinePage && <ChatbotModal />}
       </AuthProvider>
     </>
   );
