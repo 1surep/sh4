@@ -1,8 +1,12 @@
 import connectDB from "@/lib/mongodb";
 import RegolistModel from "@/models/regolist";
 import { NextResponse } from "next/server";
+import { getAuth, unauthorized } from "@/lib/requireAuth";
 
 export async function POST(req) {
+  // Admin only
+  if (!getAuth(req)) return unauthorized();
+
   try {
     const { hashhandle, kennel, country, shirt, run, payment } = await req.json();
 

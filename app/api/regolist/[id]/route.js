@@ -1,8 +1,12 @@
 import connectDB from "@/lib/mongodb";
 import RegolistModel from "@/models/regolist";
 import { NextResponse } from "next/server";
+import { getAuth, unauthorized } from "@/lib/requireAuth";
 
 export async function PUT(req, { params }) {
+  // Admin only
+  if (!getAuth(req)) return unauthorized();
+
   try {
     const { id } = await params;
     const body = await req.json();
@@ -61,6 +65,9 @@ export async function PUT(req, { params }) {
 }
 
 export async function DELETE(_req, { params }) {
+  // Admin only
+  if (!getAuth(_req)) return unauthorized();
+
   try {
     const { id } = await params;
     await connectDB();
