@@ -53,7 +53,7 @@ const PanAfricaNavbar = () => {
             width={44}
             height={44}
             alt="Pan Africa Hash 2027 logo"
-            className="rounded-full object-cover border-2 border-sh4-gold"
+            className="w-11 h-11 rounded-full object-cover border-2 border-sh4-gold"
             priority
           />
           <span>
@@ -105,7 +105,7 @@ const PanAfricaNavbar = () => {
                   width={38}
                   height={38}
                   alt="Pan Africa Hash 2027 logo"
-                  className="rounded-full object-cover border-2 border-sh4-gold"
+                  className="w-[38px] h-[38px] rounded-full object-cover border-2 border-sh4-gold"
                   priority
                 />
                 <div>
@@ -158,7 +158,7 @@ const PanAfricaNavbar = () => {
             >
               <div className="flex items-center justify-between p-4 border-b border-sh4-line">
                 <div className="flex items-center gap-3">
-                  <Image src="/pahlogo.jpg" width={40} height={40} alt="Pan Africa Hash 2027 logo" className="rounded-full object-cover border-2 border-sh4-gold" />
+                  <Image src="/pahlogo.jpg" width={40} height={40} alt="Pan Africa Hash 2027 logo" className="w-10 h-10 rounded-full object-cover border-2 border-sh4-gold" />
                   <div>
                     <p className="text-sh4-ink font-display text-sm tracking-wide">PAH 2027</p>
                     <p className="text-[10px] text-sh4-muted uppercase tracking-widest">Sierra H4</p>

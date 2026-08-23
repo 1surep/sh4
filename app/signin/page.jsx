@@ -161,7 +161,7 @@ export default function SignIn() {
               alt="Sierra H4 logo"
               width={64}
               height={64}
-              className="mx-auto rounded-full object-cover border-[3px] border-sh4-gold"
+              className="w-16 h-16 mx-auto rounded-full object-cover border-[3px] border-sh4-gold"
             />
             <h1 className="mt-[18px] font-display text-3xl uppercase text-sh4-ink">
               Misma Sign In

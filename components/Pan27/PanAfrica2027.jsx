@@ -14,7 +14,6 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import { BsWhatsapp } from "react-icons/bs";
-import { Dock, DockIcon } from "@/components/ui/dock";
 import GuessGame from "@/components/GuessGame";
 import { GrGamepad } from "react-icons/gr";
 import { fadeUp, fadeLeft, fadeRight, stagger, viewportOnce } from "@/components/Home/animations";
@@ -194,8 +193,8 @@ export default function PanAfricaPage() {
           className="relative max-w-5xl mx-auto px-6 md:px-10 pt-12 pb-16 text-center"
         >
           <motion.div variants={fadeUp} className="flex items-center justify-center gap-3.5">
-            <Image src="/pahlogo.jpg" alt="Pan Africa Hash 2027 logo" width={64} height={64} className="rounded-full object-cover border-2 border-sh4-gold" />
-            <Image src="/flag.png" alt="Sierra Leone flag" width={36} height={36} className="rounded-full object-cover" />
+            <Image src="/pahlogo.jpg" alt="Pan Africa Hash 2027 logo" width={64} height={64} className="w-16 h-16 rounded-full object-cover border-2 border-sh4-gold" />
+            <Image src="/flag.png" alt="Sierra Leone flag" width={36} height={36} className="w-9 h-9 rounded-full object-cover" />
           </motion.div>
           <motion.h1 variants={fadeUp} className="mt-5 font-display text-[13vw] sm:text-6xl md:text-8xl leading-[0.98] uppercase">
             Pan Africa<br />Hash 2027
@@ -315,7 +314,7 @@ export default function PanAfricaPage() {
               href="https://prettyform.addxt.com/a/form/vf/1FAIpQLSe7T8tpAQAiZAk6AtQOp62Fqj5VzHSUkOMf1X5O18-RjNRRew"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 block text-center border-2 border-sh4-ink hover:bg-sh4-ink hover:text-sh4-cream text-sh4-ink text-sm font-bold rounded-lg py-2.5 transition-colors"
+              className="mt-5 block text-center bg-sh4-gold hover:bg-sh4-gold-dark text-sh4-ink text-sm font-bold rounded-lg py-2.5 transition-colors"
             >
               Fill registration form
             </a>
@@ -332,7 +331,7 @@ export default function PanAfricaPage() {
             <div className="mt-4 text-sm text-sh4-body">Contact: +232 80 668 590</div>
             <Link
               href="/pan-africa-2027/hotels"
-              className="mt-5 block text-center border-2 border-sh4-ink hover:bg-sh4-ink hover:text-sh4-cream text-sh4-ink text-sm font-bold rounded-lg py-2.5 transition-colors"
+              className="mt-5 block text-center bg-sh4-gold hover:bg-sh4-gold-dark text-sh4-ink text-sm font-bold rounded-lg py-2.5 transition-colors"
             >
               Book hotel
             </Link>
@@ -424,7 +423,7 @@ export default function PanAfricaPage() {
                 alt="Yap Yap Network, Head of Protocol"
                 width={72}
                 height={72}
-                className="rounded-full object-cover border-2 border-sh4-gold"
+                className="w-[72px] h-[72px] rounded-full object-cover border-2 border-sh4-gold"
               />
               <div>
                 <div className="font-bold text-lg">Yap Yap Network</div>
@@ -452,17 +451,34 @@ export default function PanAfricaPage() {
 
       {/* SPONSORS */}
       <section id="sponsor" className="bg-sh4-gold border-b-2 border-sh4-ink px-6 md:px-10 py-16 md:py-20">
-        <motion.div initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp} className="max-w-6xl mx-auto text-center">
-          <h2 className="font-display text-3xl md:text-4xl uppercase text-sh4-ink">Our sponsors</h2>
-          <p className="mt-2.5 text-[15.5px] text-sh4-ink/75">Backing the biggest hash Africa has ever seen.</p>
-          <div className="flex justify-center mt-8">
-            <Dock iconSize={72} className="gap-3 lg:gap-5">
-              {dockItems.map((item) => (
-                <DockIcon key={item.name} src={item.src} name={item.name} href={item.href} target={item.target} rel={item.rel} />
-              ))}
-            </Dock>
-          </div>
-        </motion.div>
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={viewportOnce} variants={fadeUp} className="text-center">
+            <h2 className="font-display text-3xl md:text-4xl uppercase text-sh4-ink">Our sponsors</h2>
+            <p className="mt-2.5 text-[15.5px] text-sh4-ink/75">Backing the biggest hash Africa has ever seen.</p>
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={stagger(0.07)}
+            className="grid gap-3.5 mt-9"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))" }}
+          >
+            {dockItems.map((item) => (
+              <motion.a
+                key={item.name}
+                variants={fadeUp}
+                href={item.href}
+                target={item.target}
+                rel={item.rel}
+                className="bg-white border-2 border-sh4-ink rounded-xl px-3.5 py-[22px] flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <Image src={item.src} alt={item.name} width={140} height={54} className="h-[54px] max-w-full object-contain" />
+                <span className="text-[12.5px] font-semibold text-sh4-ink text-center">{item.name}</span>
+              </motion.a>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* LOC & ADVISORY COUNCIL */}
@@ -487,7 +503,7 @@ export default function PanAfricaPage() {
                 variants={fadeUp}
                 className={`bg-white rounded-xl px-3.5 py-[22px] text-center transition-all duration-300 hover:-translate-y-1 ${member.highlight ? "border-2 border-sh4-gold" : "border border-sh4-line hover:border-sh4-gold"}`}
               >
-                <Image src={member.image} alt={member.name} width={84} height={84} className="rounded-full object-cover bg-sh4-cream mx-auto" />
+                <Image src={member.image} alt={member.name} width={84} height={84} className="w-[84px] h-[84px] rounded-full object-cover bg-sh4-cream mx-auto" />
                 <div className="text-[11px] tracking-widest uppercase text-sh4-amber font-bold mt-3">{member.position}</div>
                 <div className="font-bold text-[15px] mt-0.5 text-sh4-ink">{member.name}</div>
               </motion.div>
@@ -511,7 +527,7 @@ export default function PanAfricaPage() {
                 variants={fadeUp}
                 className="bg-white border border-sh4-line hover:border-sh4-gold rounded-xl px-3.5 py-[22px] text-center transition-all duration-300 hover:-translate-y-1"
               >
-                <Image src={member.image} alt={member.name} width={84} height={84} className="rounded-full object-cover bg-sh4-cream mx-auto" />
+                <Image src={member.image} alt={member.name} width={84} height={84} className="w-[84px] h-[84px] rounded-full object-cover bg-sh4-cream mx-auto" />
                 <div className="font-bold text-[15px] mt-3 text-sh4-ink">{member.name}</div>
                 <div className="text-[12.5px] text-sh4-muted mt-0.5">{member.location}</div>
               </motion.div>

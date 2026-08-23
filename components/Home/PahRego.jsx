@@ -24,7 +24,7 @@ const PahRego = () => {
               alt="Pan Africa Hash 2027 logo"
               width={56}
               height={56}
-              className="rounded-full object-cover border-2 border-sh4-gold"
+              className="w-14 h-14 rounded-full object-cover border-2 border-sh4-gold"
             />
             <span className="text-sh4-gold font-bold text-sm tracking-[0.18em] uppercase">
               Hosted by Sierra H4 &middot; The Duo Kennel
