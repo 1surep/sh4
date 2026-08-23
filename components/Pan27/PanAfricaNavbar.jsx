@@ -4,368 +4,208 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { MdKeyboardBackspace, MdMenu, MdClose } from "react-icons/md";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { FaUserShield } from "react-icons/fa";
+
+const navItems = [
+  { label: "Welcome", href: "#welcome" },
+  { label: "Visa / Protocol", href: "#visa" },
+  { label: "Hotels", href: "/pan-africa-2027/hotels" },
+  { label: "LOC", href: "#loc" },
+  { label: "Game", href: "#game" },
+  { label: "Who is coming", href: "/whoiscoming" },
+];
 
 const PanAfricaNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const footerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 },
-    },
-  };
+  const closeMenu = () => setIsMobileMenuOpen(false);
 
   const mobileMenuVariants = {
-    closed: {
-      opacity: 0,
-      x: "100%",
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    },
+    closed: { opacity: 0, x: "100%", transition: { duration: 0.3, ease: "easeInOut" } },
     open: {
       opacity: 1,
       x: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-        staggerChildren: 0.1,
-        delayChildren: 0.1
-      }
-    }
+      transition: { duration: 0.3, ease: "easeInOut", staggerChildren: 0.06, delayChildren: 0.1 },
+    },
   };
 
-  const mobileMenuItemVariants = {
-    closed: {
-      opacity: 0,
-      x: 50,
-      transition: {
-        duration: 0.2
-      }
-    },
-    open: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    }
+  const menuItemVariants = {
+    closed: { opacity: 0, x: 50, transition: { duration: 0.2 } },
+    open: { opacity: 1, x: 0, transition: { duration: 0.2 } },
   };
 
   const hamburgerVariants = {
-    closed: {
-      rotate: 0,
-      transition: { duration: 0.3 }
-    },
-    open: {
-      rotate: 180,
-      transition: { duration: 0.3 }
-    }
+    closed: { rotate: 0, transition: { duration: 0.3 } },
+    open: { rotate: 90, transition: { duration: 0.3 } },
   };
 
-
-
   return (
-    <>
-      {/* desktop view */}
+    <div>
       <motion.nav
-        className="px-4 sm:px-6 lg:px-12 font-semibold items-center flex justify-between py-4 w-full overflow-hidden bg-green-900 text-gray-200 shadow-lg fixed z-50"
-        variants={footerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        initial={{ y: -16, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="hidden lg:flex items-center justify-between gap-6 px-10 py-3 w-full bg-sh4-cream border-b-2 border-sh4-ink fixed top-0 z-50"
       >
-        {/* Animated Floating Background */}
-        <ul className="background">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <li key={i}></li>
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/pahlogo.jpg"
+            width={44}
+            height={44}
+            alt="Pan Africa Hash 2027 logo"
+            className="rounded-full object-cover border-2 border-sh4-gold"
+            priority
+          />
+          <span>
+            <span className="block font-display text-base tracking-wide text-sh4-ink">PAN AFRICA HASH 2027</span>
+            <span className="block text-[11px] text-sh4-muted uppercase tracking-widest">Hosted by Sierra H4</span>
+          </span>
+        </Link>
+
+        <ul className="flex items-center gap-6 text-sm font-semibold text-sh4-ink">
+          <li>
+            <Link href="/" className="hover:text-sh4-amber transition-colors">Home</Link>
+          </li>
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="relative py-1 hover:text-sh4-amber transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-[2px] after:w-0 after:bg-sh4-amber after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {item.label}
+              </Link>
+            </li>
           ))}
         </ul>
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <a
+          href="https://pay.monime.io/069165304?amount=20600&checkout=true"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-sh4-gold hover:bg-sh4-gold-dark text-sh4-ink font-bold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 hover:scale-[1.04] active:scale-[0.96]"
+        >
+          Pay rego
+        </a>
+      </motion.nav>
 
-        {/* Logo Section */}
-        <Link href={"/"}>
-          <motion.div
-            className="flex items-center gap-2 sm:gap-3 z-10"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Image
-              src="/pahlogo.jpg"
-              width={50}
-              height={50}
-              alt="sierrah4_logo"
-              className="rounded-full sm:w-[60px] sm:h-[60px] relative z-30"
-              priority
-              unoptimized={false}
-            />
+      {/* Mobile Navbar */}
+      <nav className="lg:hidden px-4 py-3 w-full bg-sh4-cream border-b-2 border-sh4-ink fixed top-0 z-50 flex items-center justify-between">
+        <AnimatePresence>
+          {!isMobileMenuOpen && (
+            <motion.div
+              className="flex items-center gap-2"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -30 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Link href="/" className="flex items-center gap-2">
+                <Image
+                  src="/pahlogo.jpg"
+                  width={38}
+                  height={38}
+                  alt="Pan Africa Hash 2027 logo"
+                  className="rounded-full object-cover border-2 border-sh4-gold"
+                  priority
+                />
+                <div>
+                  <p className="text-sh4-ink font-display text-xs tracking-wide">PAH 2027</p>
+                  <p className="text-[10px] text-sh4-muted uppercase tracking-widest">Sierra H4</p>
+                </div>
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-            <div className="text-center z-10">
-              <p className="text-white font-bold text-sm sm:text-base">
-                PAN Africa 2027
-              </p>
-              <p className="text-xs sm:text-sm text-blue-100">
-                Sierra H4 : The Duo Kennel
-              </p>
-            </div>
-          </motion.div>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8 z-10">
-          <Link
-            href="/"
-            className="text-white hover:text-yellow-200 transition-colors duration-300 font-medium flex items-center gap-2"
-          >
-            <MdKeyboardBackspace className="text-2xl animate-pulse text-yellow-200" />
-            <span>Home</span>
-          </Link>
-        </div>
-
-        {/* Desktop PAN Nav items */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8 z-10">
-          {/* About */}
-          <Link
-            href="#about"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
-          >
-            About PAH 2027
-          </Link>
-
-          {/* Visa */}
-          <Link
-            href="#visa"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
-          >
-            Visa / Protocol
-          </Link>
-
-          {/* Who is Coming/ regoList*/}
-          <Link
-            href={'/whoiscoming'}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
-          >
-            RegoList
-          </Link>
-
-          {/* Tourism */}
-          <Link
-            href="#tourism"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
-          >
-            Tourism
-          </Link>
-
-          {/* Hotel */}
-          <Link
-            href={'/pan-africa-2027/hotels'}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
-          >
-            Hotel
-          </Link>
-          
-          {/* Game */}
-          <Link
-            href="#game"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
-          >
-            Game
-          </Link>
-
-          {/* LOC & Advisory Council */}
-          <Link
-            href="#loc"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-yellow-200 cursor-pointer transition-colors duration-300 text-sm xl:text-base"
-          >
-            LOC
-          </Link>
-        </div>
-
-        {/* Mobile Menu Button */}
         <motion.button
-          className="lg:hidden z-20 p-2 rounded-lg hover:bg-green-800 transition-colors duration-300"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={() => setIsMobileMenuOpen((v) => !v)}
+          className="p-2 rounded-lg bg-sh4-ink/5 hover:bg-sh4-ink/10 transition-colors"
           variants={hamburgerVariants}
           animate={isMobileMenuOpen ? "open" : "closed"}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.9 }}
         >
           <AnimatePresence mode="wait">
             {isMobileMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ opacity: 0, rotate: -90 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: 90 }}
-                transition={{ duration: 0.2 }}
-              >
-                <MdClose className="text-2xl text-white" />
+              <motion.div key="close" initial={{ opacity: 0, rotate: -90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: 90 }} transition={{ duration: 0.2 }}>
+                <HiX className="text-2xl text-sh4-ink" />
               </motion.div>
             ) : (
-              <motion.div
-                key="menu"
-                initial={{ opacity: 0, rotate: 90 }}
-                animate={{ opacity: 1, rotate: 0 }}
-                exit={{ opacity: 0, rotate: -90 }}
-                transition={{ duration: 0.2 }}
-              >
-                <MdMenu className="text-2xl text-white" />
+              <motion.div key="menu" initial={{ opacity: 0, rotate: 90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: -90 }} transition={{ duration: 0.2 }}>
+                <HiMenuAlt3 className="text-2xl text-sh4-ink" />
               </motion.div>
             )}
           </AnimatePresence>
         </motion.button>
-      </motion.nav>
+      </nav>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+              className="fixed inset-0 bg-sh4-ink/50 z-40 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMenu}
             />
-
-            {/* Mobile Menu */}
             <motion.div
-              className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-green-900 shadow-2xl z-50 lg:hidden"
+              className="fixed top-0 right-0 h-full w-80 bg-sh4-cream shadow-2xl z-50 lg:hidden"
               variants={mobileMenuVariants}
               initial="closed"
               animate="open"
               exit="closed"
             >
-              {/* Mobile Menu Header */}
-              <div className="flex items-center justify-between p-6 border-b border-green-700">
-                <Link href={"/"} className="flex items-center gap-3">
-                  <Image
-                    src="/pahlogo.jpg"
-                    width={40}
-                    height={40}
-                    alt="sierrah4_logo"
-                    className="rounded-full"
-                    priority
-                    unoptimized={false}
-                  />
+              <div className="flex items-center justify-between p-4 border-b border-sh4-line">
+                <div className="flex items-center gap-3">
+                  <Image src="/pahlogo.jpg" width={40} height={40} alt="Pan Africa Hash 2027 logo" className="rounded-full object-cover border-2 border-sh4-gold" />
                   <div>
-                    <p className="text-white font-bold text-sm">
-                      PAN Africa 2027
-                    </p>
-                    <p className="text-xs text-blue-100">Sierra H4 Vision</p>
+                    <p className="text-sh4-ink font-display text-sm tracking-wide">PAH 2027</p>
+                    <p className="text-[10px] text-sh4-muted uppercase tracking-widest">Sierra H4</p>
                   </div>
-                </Link>
+                </div>
               </div>
 
-              {/* Mobile Menu Items */}
-              <div className="p-6 space-y-6">
-                <motion.div
-                  variants={mobileMenuItemVariants}
-                  className="border-b border-green-700 pb-4"
-                >
-                  <Link
-                    href="/"
-                    className="text-white hover:text-yellow-200 transition-colors duration-300 font-medium flex items-center gap-3 text-lg"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <MdKeyboardBackspace className="text-2xl text-yellow-200" />
-                    Home
+              <div className="p-4">
+                <motion.ul className="space-y-1">
+                  <motion.li variants={menuItemVariants} className="text-lg font-semibold text-sh4-ink py-2 px-3 rounded-lg hover:bg-sh4-ink/5 transition-colors" whileTap={{ scale: 0.98 }}>
+                    <Link href="/" onClick={closeMenu}>Home</Link>
+                  </motion.li>
+                  {navItems.map((item) => (
+                    <motion.li
+                      key={item.href}
+                      variants={menuItemVariants}
+                      className="text-lg font-semibold text-sh4-ink py-2 px-3 rounded-lg hover:bg-sh4-ink/5 transition-colors"
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Link href={item.href} onClick={closeMenu}>{item.label}</Link>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+
+                <motion.div className="mt-6 pt-4 border-t border-sh4-line space-y-3" variants={menuItemVariants}>
+                  <Link href="/signin" onClick={closeMenu}>
+                    <div className="flex items-center gap-3 text-lg font-bold text-sh4-ink py-2 px-3 rounded-lg hover:bg-sh4-ink/5 transition-colors">
+                      <FaUserShield className="text-xl text-sh4-amber" />
+                      <span>Misma</span>
+                    </div>
                   </Link>
-                </motion.div>
-
-                {/* mobile navigation menu */}
-                <motion.div
-                  variants={mobileMenuItemVariants}
-                  className="space-y-4 scroll-smooth"
-                >
                   <a
-                    href="#about"
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
+                    href="https://pay.monime.io/069165304?amount=20600&checkout=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMenu}
+                    className="block text-center bg-sh4-gold hover:bg-sh4-gold-dark text-sh4-ink font-bold py-3 rounded-xl transition-colors"
                   >
-                    About PAH 2027
+                    Pay rego
                   </a>
-                  <a
-                    href="#visa"
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
-                  >
-                    Visa / Protocol
-                  </a>
-
-                  <Link
-                     href={'/whoiscoming'}
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
-                  >
-                    RegoList
-                  </Link>
-
-                  <a
-                    href="#loc"
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2"
-                  >
-                    LOC
-                  </a>
-
-
-                  <a
-                    href="#tourism"
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
-                  >
-                    Tourism
-                  </a>
-
-                  <a
-                    href="#game"
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
-                  >
-                    Game
-                  </a>
-
-
-                  <Link
-                    href={'/pan-africa-2027/hotels'}
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
-                  >
-                    Hotel
-                  </Link>
-
-                  <a
-                    href="#event"
-                    className="block text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2 border-b border-green-800"
-                  >
-                    Event
-                  </a>
-
-                  
-
-                  <Link href={'/signin'}
-                    className=" gap-2 flex items-center text-xl font-semibold text-white hover:text-yellow-200 cursor-pointer transition-colors duration-300 py-2">
-                    Mismanagement <FaUserShield className='text-2xl'/>
-                  </Link>
                 </motion.div>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 

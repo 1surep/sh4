@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import { fadeUp, stagger, viewportOnce } from "@/components/Home/animations";
 
 const Reports = () => {
   // Reports data
@@ -57,89 +58,90 @@ const Reports = () => {
   ];
 
   return (
-    <div className="pt-32 min-h-screen  bg-yellow-50">
+    <div>
       {/* HEADING */}
-      <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
-        {/* Background effect */}
-        <ul className="background-dark">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <li key={i}></li>
-          ))}
-        </ul>
-        <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
-          REPORTS
-        </h1>
-
-        <div className="relative text-center">
-          <p className="text-[#f9b84f] uppercase tracking-[1px] font-semibold text-2xl mb-2">
-          Sierra H4 EVENTS
-          </p>
-          <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
-            EVENT REPORTS
-          </h2>
+      <header className="bg-sh4-ink text-sh4-cream px-6 md:px-10 py-16 md:py-[72px]">
+        <div className="max-w-6xl mx-auto">
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            className="text-sh4-gold font-bold text-sm tracking-[0.18em] uppercase mb-3"
+          >
+            Sierra H4 events
+          </motion.p>
+          <motion.h1
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            className="font-display text-[44px] md:text-[72px] lg:text-[84px] leading-[1] uppercase mb-4"
+          >
+            Event reports
+          </motion.h1>
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            className="text-lg text-sh4-cream/85 max-w-xl"
+          >
+            Official write-ups and financial reports from Sierra H4 events. Transparency, hash style.
+          </motion.p>
         </div>
-      </section>
+      </header>
 
-      {/* Reports Grid Section */}
-      <div className="relative py-12 bg-yellow-50">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-[1rem] lg:px-[3rem]">
-          {reportsData.map((report, index) => (
+      {/* Reports List Section */}
+      <section className="bg-sh4-cream px-6 md:px-10 py-16 md:py-[88px]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          variants={stagger(0.08)}
+          className="max-w-[860px] mx-auto flex flex-col gap-3.5"
+        >
+          {reportsData.map((report) => (
             <motion.div
               key={report.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500 flex flex-col justify-between p-6"
+              variants={fadeUp}
+              className="flex items-center gap-5 bg-white border border-sh4-line rounded-xl px-5 py-[22px] md:px-[26px]"
             >
-              {/* PDF Icon Container */}
-              <div className="w-full h-40 bg-gradient-to-br from-red-100 to-red-200 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  className="w-20 h-20 text-red-600"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4V5h12v10z" />
-                  <path d="M6 8h8v2H6V8zm0 4h4v2H6v-2z" />
-                </svg>
+              <div className="font-display text-[13px] tracking-[0.08em] bg-sh4-ink text-sh4-gold rounded-lg px-3 py-2.5 shrink-0">
+                PDF
               </div>
-
-              {/* Content */}
-              <div className="flex flex-col gap-3 flex-grow justify-between">
-                <h3 className="font-bold text-lg text-gray-800">
+              <div className="flex-1 min-w-0">
+                <div className="font-bold text-[16.5px] text-sh4-ink">
                   {report.title}
-                </h3>
-
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {report.description}
-                </p>
-
-                {/* View and Download Buttons */}
-                <div className="mt-4 flex gap-3 w-full">
-                  {/* View Button */}
-                  <a
-                    href={report.file}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center border-2 border-[#f9b84f] px-3 py-2 rounded-lg hover:bg-[#f9b84f] hover:text-white transition-all duration-500 ease-in-out text-[#f9b84f] cursor-pointer font-bold text-sm"
-                  >
-                    👁️ View
-                  </a>
-
-                  {/* Download Button */}
-                  <a
-                    href={report.file}
-                    download
-                    className="flex-1 flex items-center justify-center border-2 border-[#f9b84f] px-3 py-2 rounded-lg hover:bg-[#f9b84f] hover:text-white transition-all duration-500 ease-in-out text-[#f9b84f] cursor-pointer font-bold text-sm"
-                  >
-                    📥 Download
-                  </a>
                 </div>
+                <div className="text-[13.5px] text-sh4-muted">
+                  {report.description}
+                </div>
+              </div>
+              <div className="flex gap-2.5 shrink-0">
+                <a
+                  href={report.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-2 border-sh4-ink text-sh4-ink font-bold text-[13px] px-4 py-2 rounded-xl hover:bg-sh4-ink hover:text-sh4-cream transition-colors duration-300"
+                >
+                  View
+                </a>
+                <a
+                  href={report.file}
+                  download
+                  className="bg-sh4-gold text-sh4-ink font-bold text-[13px] px-4 py-2.5 rounded-xl hover:bg-sh4-amber transition-colors duration-300"
+                >
+                  Download
+                </a>
               </div>
             </motion.div>
           ))}
-        </div>
-      </div>
+          <p className="text-[13.5px] text-sh4-muted mt-3">
+            Report PDFs are hosted on the live site.
+          </p>
+        </motion.div>
+      </section>
     </div>
   );
 };

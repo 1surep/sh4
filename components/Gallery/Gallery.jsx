@@ -1,5 +1,8 @@
-import React from "react";
+'use client';
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp, stagger } from "@/components/Home/animations";
 
 const Gallery = () => {
   // Gallery data - easily add or remove images here
@@ -73,49 +76,49 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="pt-32 min-h-screen  bg-yellow-50">
+    <>
       {/* HEADING */}
-      <section className="relative flex flex-col items-center justify-center py-10 bg-white overflow-hidden">
-        {/* Localized background effect (dark variant for light bg) */}
-        <ul className="background-dark">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <li key={i}></li>
-          ))}
-        </ul>
-        <h1 className="absolute text-[6.5rem] lg:text-[10rem] font-extrabold text-gray-100 select-none tracking-[1px]">
-          GALLERY
-        </h1>
-
-        <div className="relative text-center">
-          <p className="text-[#f9b84f] uppercase tracking-[1px] font-semibold text-2xl mb-2">
-          Sierra H4 GALLERY
-          </p>
-          <h2 className="text-4xl tracking-[1px] md:text-5xl font-bold text-gray-800">
-            PHOTO COLLECTION
-          </h2>
-        </div>
-      </section>
+      <header className="bg-sh4-ink text-sh4-cream pt-28 pb-14 md:pb-16 px-6 md:px-10">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={stagger(0.1, 0.05)}
+          className="max-w-6xl mx-auto"
+        >
+          <motion.p variants={fadeUp} className="text-sh4-gold font-bold text-sm tracking-[0.18em] uppercase">
+            Sierra H4 Gallery
+          </motion.p>
+          <motion.h1
+            variants={fadeUp}
+            className="mt-3 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] uppercase"
+          >
+            Photo collection
+          </motion.h1>
+          <motion.p variants={fadeUp} className="mt-5 text-lg text-sh4-cream/85 max-w-lg text-pretty">
+            Trails, circles, down downs, and the occasional questionable decision. All documented by Hash Flash.
+          </motion.p>
+        </motion.div>
+      </header>
 
       {/* Gallery grid section */}
-      <div className="relative py-12 bg-yellow-50">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-[1rem] lg:px-[3rem]">
+      <section className="bg-sh4-cream px-6 md:px-10 py-20 md:py-24">
+        <div className="max-w-6xl mx-auto columns-2 md:columns-3 gap-4">
           {galleryData.map((image) => (
-            <div
+            <Image
               key={image.id}
-              className="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <Image
-                src={image.src}
-                width={400}
-                height={300}
-                alt={image.alt}
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-              />
-            </div>
+              src={image.src}
+              width={400}
+              height={500}
+              alt={image.alt}
+              className="w-full h-auto rounded-xl mb-4 block break-inside-avoid"
+            />
           ))}
         </div>
-      </div>
-    </div>
+        <p className="max-w-6xl mx-auto mt-6 text-sm text-sh4-muted">
+          Showing the full collection &middot; {galleryData.length} photos. More on Instagram.
+        </p>
+      </section>
+    </>
   );
 };
 

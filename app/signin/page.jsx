@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeUp } from '../../components/Home/animations';
 import { useAuth } from '../context/AuthContext';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
@@ -14,10 +17,10 @@ export default function SignIn() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  
+
   const router = useRouter();
   const authContext = useAuth();
-  
+
   // Debug: Check what we get from useAuth
   // console.log('Auth context:', authContext);
   // console.log('Login function:', authContext?.login);
@@ -39,7 +42,7 @@ export default function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Reset all states
     setLoading(true);
     setError('');
@@ -47,11 +50,11 @@ export default function SignIn() {
 
     try {
       // console.log('Attempting signin with:', formData.email);
-      
+
       const response = await axios.post('/api/auth/signin', formData);
-      
+
       // console.log('API Response:', response.data);
-      
+
       // Check if response is successful
       if (response.data.success) {
         // Verify we have all required data
@@ -100,7 +103,7 @@ export default function SignIn() {
             // console.log('Redirecting to home page...');
             router.push('/dashboard');
           }, 1500);
-          
+
         } catch (loginError) {
           // console.error('Login function error:', loginError);
           // console.error('Error details:', loginError.message);
@@ -110,7 +113,7 @@ export default function SignIn() {
           setLoading(false);
           return;
         }
-        
+
       } else {
         // API returned success: false
         const errorMsg = response.data.message || response.data.error || 'Signin failed';
@@ -118,10 +121,10 @@ export default function SignIn() {
         setError(errorMsg);
         setLoading(false);
       }
-      
+
     } catch (err) {
       console.error('Signin error caught:', err);
-      
+
       // Handle error response
       if (err.response) {
         // Server responded with error status
@@ -137,85 +140,100 @@ export default function SignIn() {
         console.error('Error:', err.message);
         setError('Something went wrong. Please try again.');
       }
-      
+
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex items-center justify-center bg-yellow-50 pt-36 w-full relative min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/eagle.png')" }}>
-      <div className="max-w-md w-full space-y-8 p-8 bg-white/80 rounded-lg shadow-md">
-        <div>
-          <h2 className="mt-6 uppercase text-center text-3xl font-extrabold text-gray-900">
-            Sign In
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Welcome back, <br /> You have no business here if you are not a mismanager of SH4.
-          </p>
-        </div>
-        
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="email" className="sr-only">Email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="appearance-none rounded-lg relative block w-full px-3 py-2 border border-black placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#000000] focus:border-black focus:z-10 sm:text-sm"
-              placeholder="Email address"
-              value={formData.email}
-              onChange={handleChange}
+    <div className="pt-28">
+      <section className="bg-sh4-ink px-6 py-20 md:py-24">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeUp}
+          className="max-w-md w-full mx-auto bg-sh4-cream rounded-xl p-8 md:p-10"
+        >
+          <div className="text-center">
+            <Image
+              src="/logo.jpg"
+              alt="Sierra H4 logo"
+              width={64}
+              height={64}
+              className="mx-auto rounded-full object-cover border-[3px] border-sh4-gold"
             />
-          </div>
-          
-          <div className="relative">
-            <label htmlFor="password" className="sr-only">Password</label>
-            <input
-              id="password"
-              name="password"
-              type={showPassword ? "text" : "password"}
-              required
-              className="appearance-none rounded-lg relative block w-full px-3 py-2 pr-12 border border-black placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#000000] focus:border-[#000000] focus:z-10 sm:text-sm"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            <button
-              type="button"
-              onClick={togglePasswordVisibility}
-              className="absolute inset-y-0 right-0 flex items-center justify-center pr-3 text-gray-500 hover:text-gray-700 focus:outline-none z-20 cursor-pointer bg-transparent border-0 w-12 h-full"
-              aria-label={showPassword ? "Hide password" : "Show password"}
-            >
-              {showPassword ? (
-                <AiOutlineEyeInvisible size={20} />
-              ) : (
-                <AiOutlineEye size={20} />
-              )}
-            </button>
+            <h1 className="mt-[18px] font-display text-3xl uppercase text-sh4-ink">
+              Misma Sign In
+            </h1>
+            <p className="mt-2 text-sm text-sh4-muted">
+              Mismanagement access only. Hashers, go run a trail instead.
+            </p>
           </div>
 
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm text-center">
-              {error}
-            </div>
-          )}
+          <form className="flex flex-col gap-4 mt-7" onSubmit={handleSubmit}>
+            <label htmlFor="email" className="flex flex-col gap-1.5 text-[13px] font-bold text-sh4-ink">
+              Email
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                className="border border-[#D8CFBB] rounded-lg px-3 py-2.5 text-[15px] font-normal bg-white focus:outline-none focus:border-sh4-amber"
+                placeholder="you@sierrah4.com"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </label>
 
-          {success && (
-            <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-sm text-center">
-              {success}
-            </div>
-          )}
+            <label htmlFor="password" className="flex flex-col gap-1.5 text-[13px] font-bold text-sh4-ink">
+              Password
+              <span className="flex gap-2">
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  required
+                  className="flex-1 min-w-0 border border-[#D8CFBB] rounded-lg px-3 py-2.5 text-[15px] font-normal bg-white focus:outline-none focus:border-sh4-amber"
+                  placeholder="Your password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="border border-[#D8CFBB] rounded-lg px-3 text-sh4-muted hover:text-sh4-ink transition-colors"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <AiOutlineEyeInvisible size={20} />
+                  ) : (
+                    <AiOutlineEye size={20} />
+                  )}
+                </button>
+              </span>
+            </label>
 
-          <div>
+            {error && (
+              <div className="bg-[#FBE7E4] border border-[#E8A79B] text-[#8A2E1D] px-4 py-3 rounded-xl text-sm text-center">
+                {error}
+              </div>
+            )}
+
+            {success && (
+              <div className="bg-[#E4F1E1] border border-[#A9CFA0] text-[#2E5C25] px-4 py-3 rounded-xl text-sm text-center">
+                {success}
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={loading}
-              className="group cursor-pointer relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#FFD700] hover:bg-[#FFD700] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-[#FFD700] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-sh4-gold hover:bg-sh4-gold-dark text-sh4-ink font-bold text-[15px] py-3.5 rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:hover:scale-100 mt-1.5"
             >
               {loading ? (
-                <div className="flex items-center">
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <div className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-sh4-ink" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
@@ -223,22 +241,26 @@ export default function SignIn() {
                 </div>
               ) : 'Sign In'}
             </button>
-          </div>
 
-          {/* <div className="text-center">
-            <span className="text-sm text-gray-600">
-              Don&apos;t have an account?{' '}
-              <button
-                type="button"
-                onClick={() => router.push('/signup')}
-                className="font-medium text-[#FFD700] hover:text-[#FFD700] cursor-pointer"
-              >
-                Sign Up
-              </button>
-            </span>
-          </div>  */}
-        </form>
-      </div>
+            <p className="text-center text-[13px] text-sh4-muted">
+              Locked out? Ask the Web Master, Pucci Engineer.
+            </p>
+
+            {/* <div className="text-center">
+              <span className="text-sm text-gray-600">
+                Don&apos;t have an account?{' '}
+                <button
+                  type="button"
+                  onClick={() => router.push('/signup')}
+                  className="font-medium text-[#FFD700] hover:text-[#FFD700] cursor-pointer"
+                >
+                  Sign Up
+                </button>
+              </span>
+            </div>  */}
+          </form>
+        </motion.div>
+      </section>
     </div>
   );
 }
