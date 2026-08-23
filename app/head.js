@@ -7,7 +7,7 @@ export default function Head() {
       <title>{metadata.title.default}</title>
       <meta name="description" content={metadata.description} />
       <meta name="keywords" content={metadata.keywords.join(", ")} />
-      <link rel="icon" href="/favicon.ico.ico" sizes="any" />
+      <link rel="icon" href="/favicon.ico" sizes="any" />
       <link rel="canonical" href="https://sierrah4.com" />
       {/* Open Graph */}
       <meta property="og:title" content={metadata.openGraph.title} />
