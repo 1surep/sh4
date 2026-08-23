@@ -1,18 +1,15 @@
-import Hero12 from "@/components/Hero/Hero12";
-import HeroEight from "@/components/Hero/HeroEight";
-import HeroEleven from "@/components/Hero/HeroEleven";
-import HeroFive from "@/components/Hero/HeroFive";
-import HeroFour from "@/components/Hero/HeroFour";
-import HeroNine from "@/components/Hero/HeroNine";
-import HeroOne from "@/components/Hero/HeroOne";
-import HeroSeven from "@/components/Hero/HeroSeven";
-import HeroSix from "@/components/Hero/HeroSix";
-import HeroTen from "@/components/Hero/HeroTen";
-import HeroThree from "@/components/Hero/HeroThree";
-import HeroTwo from "@/components/Hero/HeroTwo";
 import React from "react";
-import ChatbotModal from "@/components/Chat/ChatbotModal";
 import StructuredData from "@/components/SEO/StructuredData";
+import Hero from "@/components/Home/Hero";
+import ContactStrip from "@/components/Home/ContactStrip";
+import WhatIsHashing from "@/components/Home/WhatIsHashing";
+import WhyWeHash from "@/components/Home/WhyWeHash";
+import PahRego from "@/components/Home/PahRego";
+import EventsPreview from "@/components/Home/EventsPreview";
+import Mismanagement from "@/components/Home/Mismanagement";
+import GalleryPreview from "@/components/Home/GalleryPreview";
+import Sponsors from "@/components/Home/Sponsors";
+import ContactSection from "@/components/Home/ContactSection";
 
 export const metadata = {
   title: "Sierrah4",
@@ -39,45 +36,20 @@ const Home = () => {
   return (
     <>
       <StructuredData type="SportsActivity" />
-      <div
-        style={{
-
-          width: "100vw",
-          minHeight: "100vh",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}>
-
-        <main id="top">
-          <HeroOne />
-          <HeroTwo />
-          <HeroThree />
-          <HeroFour />
-          <HeroFive />
-          <HeroSix />
-          <HeroSeven />
-          <HeroEight />
-          <HeroNine />
-          <HeroTen />
-          {/* <HeroEleven/> */}
-          <Hero12 />
-
-
-
-
-        </main>
-        {/* chatbot modal */}
-        {/* <ChatbotModal /> */}
-      </div>
+      <main id="top" className="bg-sh4-cream">
+        <Hero />
+        <ContactStrip />
+        <WhatIsHashing />
+        <WhyWeHash />
+        <PahRego />
+        <EventsPreview />
+        <Mismanagement />
+        <GalleryPreview />
+        <Sponsors />
+        <ContactSection />
+      </main>
     </>
-  )
-
-
-
+  );
 };
 
-const WrappedHome = () => (
-  <Home />
-);
-
-export default WrappedHome;
+export default Home;
