@@ -29,14 +29,7 @@ export const metadata = {
   },
 };
 
-const GalleryPage=()=>{
-    return (
-        <div>
-            <Gallery/>
-        </div>
-    )
-
-
-
+const GalleryPage = () => {
+  return <Gallery />;
 };
 export default GalleryPage;

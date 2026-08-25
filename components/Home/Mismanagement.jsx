@@ -46,7 +46,7 @@ const Mismanagement = () => {
             alt="Grand Master Fuckimbo"
             width={132}
             height={132}
-            className="rounded-full object-cover border-[3px] border-sh4-gold bg-sh4-cream"
+            className="w-[132px] h-[132px] rounded-full object-cover border-[3px] border-sh4-gold bg-sh4-cream"
           />
           <div className="flex-1 min-w-[240px]">
             <div className="text-xs tracking-widest uppercase text-sh4-gold font-bold">Grand Master</div>
@@ -80,7 +80,7 @@ const Mismanagement = () => {
                 alt={member.name}
                 width={84}
                 height={84}
-                className="rounded-full object-cover bg-white mx-auto"
+                className="w-[84px] h-[84px] rounded-full object-cover bg-white mx-auto"
               />
               <div className="text-[11px] tracking-widest uppercase text-sh4-amber font-bold mt-3">{member.role}</div>
               <div className="font-bold text-[15px] mt-0.5 text-sh4-ink">{member.name}</div>

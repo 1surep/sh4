@@ -56,7 +56,7 @@ const Navbar = () => {
                         width={48}
                         height={48}
                         alt="Sierra H4 logo"
-                        className="rounded-full object-cover"
+                        className="w-12 h-12 rounded-full object-cover"
                         priority
                     />
                     <span>
@@ -110,7 +110,7 @@ const Navbar = () => {
                                     width={40}
                                     height={40}
                                     alt="Sierra H4 logo"
-                                    className="rounded-full object-cover"
+                                    className="w-10 h-10 rounded-full object-cover"
                                     priority
                                 />
                                 <div>
@@ -182,7 +182,7 @@ const Navbar = () => {
                                         width={40}
                                         height={40}
                                         alt="Sierra H4 logo"
-                                        className="rounded-full object-cover"
+                                        className="w-10 h-10 rounded-full object-cover"
                                     />
                                     <div>
                                         <p className="text-sh4-ink font-display text-sm tracking-wide">SIERRA H4</p>

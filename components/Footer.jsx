@@ -43,7 +43,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <motion.div variants={itemVariants}>
             <div className="flex items-center gap-3">
-              <Image src="/logo.jpg" width={48} height={48} alt="Sierra H4 logo" className="rounded-full object-cover" />
+              <Image src="/logo.jpg" width={48} height={48} alt="Sierra H4 logo" className="w-12 h-12 rounded-full object-cover" />
               <div>
                 <div className="font-display text-lg tracking-wide text-sh4-cream">SIERRA H4</div>
                 <div className="text-[11px] uppercase tracking-widest">The Duo Kennel</div>
@@ -104,7 +104,7 @@ const Footer = () => {
           <span>&copy; {new Date().getFullYear()} Sierra H4. All rights reserved.</span>
           <span className="flex items-center gap-2 text-sh4-gold">
             Designed &amp; developed by XGM 1SurePlayer
-            <Image src="/me.jpg" width={24} height={24} alt="developer" className="rounded-full ring-2 ring-sh4-gold" />
+            <Image src="/me.jpg" width={24} height={24} alt="developer" className="w-6 h-6 rounded-full ring-2 ring-sh4-gold" />
           </span>
         </motion.div>
       </div>
