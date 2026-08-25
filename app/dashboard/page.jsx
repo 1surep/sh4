@@ -26,6 +26,8 @@ const Dashboard = () => {
   const [editing, setEditing] = useState(null); // holds document _id when editing
   const [editValues, setEditValues] = useState({ hashhandle: "", kennel: "", country: "", shirt: "", run: "", payment: "Not Paid" });
   const [searchQuery, setSearchQuery] = useState("");
+  const [paymentFilter, setPaymentFilter] = useState("All");
+  const [paymentMenuOpen, setPaymentMenuOpen] = useState(false);
   const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   // --- 1. Add state for SH4 modal at the top with other useStates ---
@@ -218,8 +220,38 @@ const Dashboard = () => {
     }
   };
 
+  // Payment filter options and live counts (computed off the unfiltered list)
+  const PAYMENT_OPTIONS = ["All", "Fully Paid", "Part Paid", "Not Paid"];
+
+  const paymentCounts = regoList.reduce(
+    (acc, item) => {
+      const status = item.payment || "Not Paid";
+      if (status in acc) acc[status] += 1;
+      return acc;
+    },
+    { All: regoList.length, "Fully Paid": 0, "Part Paid": 0, "Not Paid": 0 }
+  );
+
+  const getPaymentFilterColor = (status) => {
+    if (status === "Fully Paid") return "bg-green-600 hover:bg-green-700";
+    if (status === "Part Paid") return "bg-orange-600 hover:bg-orange-700";
+    if (status === "Not Paid") return "bg-red-600 hover:bg-red-700";
+    return "bg-gray-700 hover:bg-gray-800";
+  };
+
+  const handlePaymentFilterSelect = (status) => {
+    setPaymentFilter(status);
+    setCurrentPage(1);
+    setPaymentMenuOpen(false);
+  };
+
   // Filtering and pagination derived data
   const filteredRegoList = regoList.filter((item) => {
+    // Payment status filter
+    if (paymentFilter !== "All" && (item.payment || "Not Paid") !== paymentFilter) {
+      return false;
+    }
+
     const q = searchQuery.trim().toLowerCase();
     if (!q) return true;
     return (
@@ -235,6 +267,15 @@ const Dashboard = () => {
   const safeCurrentPage = Math.min(currentPage, totalPages);
   const startIndex = (safeCurrentPage - 1) * Number(pageSize || 10);
   const paginatedRegoList = filteredRegoList.slice(startIndex, startIndex + Number(pageSize || 10));
+
+  // Keep currentPage within range when the filtered list shrinks (filter change,
+  // search, delete, or a row leaving the active payment filter). Without this the
+  // raw currentPage drifts past totalPages and the Prev/Next buttons appear dead.
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
 
   // Show loading state while checking authentication
   if (loading) {
@@ -781,6 +822,58 @@ const Dashboard = () => {
                 className="w-full max-w-xl py-2 px-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white focus:bg-white"
               />
             </div>
+            {/* Payment status filter */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setPaymentMenuOpen((open) => !open)}
+                className={`flex items-center justify-between gap-2 w-full sm:w-56 py-2 px-3 text-base text-white rounded-lg cursor-pointer transition-colors duration-200 ${getPaymentFilterColor(paymentFilter)}`}
+              >
+                <span className="font-medium">Payment: {paymentFilter}</span>
+                <span className="flex items-center gap-2">
+                  <span className="text-sm opacity-90">({paymentCounts[paymentFilter]})</span>
+                  <span className="text-xs">▾</span>
+                </span>
+              </button>
+
+              {paymentMenuOpen && (
+                <>
+                  {/* click-outside backdrop */}
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={() => setPaymentMenuOpen(false)}
+                  />
+                  <ul className="absolute left-0 sm:right-0 sm:left-auto mt-2 z-20 w-full sm:w-56 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden">
+                    {PAYMENT_OPTIONS.map((status) => (
+                      <li key={status}>
+                        <button
+                          type="button"
+                          onClick={() => handlePaymentFilterSelect(status)}
+                          className={`flex items-center justify-between w-full text-left py-2 px-3 text-sm cursor-pointer transition-colors duration-150 hover:bg-gray-100 ${paymentFilter === status ? "font-semibold text-gray-900 bg-gray-50" : "text-gray-700"}`}
+                        >
+                          <span className="flex items-center gap-2">
+                            <span
+                              className={`inline-block w-2.5 h-2.5 rounded-full ${
+                                status === "Fully Paid"
+                                  ? "bg-green-600"
+                                  : status === "Part Paid"
+                                  ? "bg-orange-600"
+                                  : status === "Not Paid"
+                                  ? "bg-red-600"
+                                  : "bg-gray-700"
+                              }`}
+                            />
+                            {status}
+                          </span>
+                          <span className="text-gray-500">{paymentCounts[status]}</span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
+
             <div className="flex items-center gap-2">
               <label className="text-sm text-gray-700">Rows per page</label>
               <select
@@ -794,6 +887,29 @@ const Dashboard = () => {
                 <option value={100}>100</option>
               </select>
             </div>
+          </div>
+
+          {/* Page indicator above the table so it is visible without scrolling */}
+          <div className="flex items-center justify-between mb-2 text-sm text-gray-600">
+            <span>
+              Showing <span className="font-semibold text-gray-800">{filteredRegoList.length === 0 ? 0 : startIndex + 1}-{Math.min(startIndex + Number(pageSize || 10), filteredRegoList.length)}</span> of{" "}
+              <span className="font-semibold text-gray-800">{filteredRegoList.length}</span>
+              {paymentFilter !== "All" && <span> ({paymentFilter})</span>}
+            </span>
+            {totalPages > 1 && (
+              <span className="font-medium text-gray-700">
+                Page {safeCurrentPage} of {totalPages}
+                {safeCurrentPage < totalPages && (
+                  <button
+                    type="button"
+                    onClick={() => setCurrentPage(totalPages)}
+                    className="ml-3 px-2 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-xs cursor-pointer"
+                  >
+                    Jump to last page »
+                  </button>
+                )}
+              </span>
+            )}
           </div>
 
           <div className="w-full overflow-x-auto lg:overflow-visible">
@@ -913,7 +1029,14 @@ const Dashboard = () => {
               <button
                 className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={safeCurrentPage <= 1}
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                onClick={() => setCurrentPage(1)}
+              >
+                « First
+              </button>
+              <button
+                className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={safeCurrentPage <= 1}
+                onClick={() => setCurrentPage(Math.max(1, safeCurrentPage - 1))}
               >
                 Prev
               </button>
@@ -921,9 +1044,16 @@ const Dashboard = () => {
               <button
                 className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={safeCurrentPage >= totalPages}
-                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                onClick={() => setCurrentPage(Math.min(totalPages, safeCurrentPage + 1))}
               >
                 Next
+              </button>
+              <button
+                className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={safeCurrentPage >= totalPages}
+                onClick={() => setCurrentPage(totalPages)}
+              >
+                Last »
               </button>
             </div>
           </div>

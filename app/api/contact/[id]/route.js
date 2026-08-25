@@ -1,8 +1,12 @@
 import connectDB from "@/lib/mongodb";
 import contactModel from "@/models/Contact";
 import { NextResponse } from "next/server";
+import { getAuth, unauthorized } from "@/lib/requireAuth";
 
 export async function PATCH(req, { params }) {
+  // Admin only
+  if (!getAuth(req)) return unauthorized();
+
   const { id } = params;
   await connectDB();
   try {

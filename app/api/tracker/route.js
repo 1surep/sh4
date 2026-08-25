@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
+import { getAuth, unauthorized } from "@/lib/requireAuth";
 import connectMongoDB from "@/lib/mongodb";
 import Tracker from "@/models/Tracker";
 
 export async function POST(request) {
+  // Admin only
+  if (!getAuth(request)) return unauthorized();
+
   const { hashhandle, givenname, surname, gender, number, email } = await request.json();
 
   try {
@@ -15,7 +19,10 @@ export async function POST(request) {
   }
 }
 
-export async function GET() {
+export async function GET(request) {
+  // Admin only
+  if (!getAuth(request)) return unauthorized();
+
   try {
     await connectMongoDB();
     const trackers = await Tracker.find();
