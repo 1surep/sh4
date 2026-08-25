@@ -8,7 +8,8 @@ name: Sync redesign branch and gate production deploy
 # 1. On every push to `redesign/homepage-sh4`, re-author any commit whose
 #    author email is ahmadbahofficial@gmail.com to gerald's identity.
 # 2. Merge the re-authored commits into the review branch, together with
-#    this repo's (velbon/sh4) latest `main`.
+#    this repo's (velbon/sh4) latest `main` AND 1surep/sh4's latest `main`,
+#    so the branch never drops unsurep's commits and stays mergeable.
 # 3. Force-push the result to 1surep/sh4's `gerald/redesign-and-tooling-review`
 #    branch, which is the existing head of PR #1 (base: main) — this updates
 #    the PR automatically, no new PR needed. Nothing deploys at this stage.
@@ -71,17 +72,24 @@ jobs:
           git push origin "redesign-reauthored:refs/heads/redesign/homepage-sh4" \
             --force-with-lease="refs/heads/redesign/homepage-sh4:${EXPECTED}"
 
-      - name: Build the review branch (velbon/sh4:main + re-authored redesign)
+      - name: Add 1surep/sh4 remote
+        run: |
+          set -euo pipefail
+          git remote add production "https://x-access-token:${{ secrets.CROSS_REPO_TOKEN }}@github.com/${REVIEW_REPO}.git"
+          git fetch production main "$REVIEW_BRANCH" || true
+
+      - name: Build the review branch (velbon/sh4:main + re-authored redesign + 1surep/sh4:main)
         run: |
           set -euo pipefail
           git checkout -B "$REVIEW_BRANCH" origin/main
           git merge --no-edit redesign-reauthored
+          # Always fold in 1surep/sh4:main's latest too, so the review branch
+          # never drops his own commits and stays cleanly mergeable.
+          git merge --no-edit production/main
 
       - name: Push the review branch to 1surep/sh4 (updates PR #1)
         run: |
           set -euo pipefail
-          git remote add production "https://x-access-token:${{ secrets.CROSS_REPO_TOKEN }}@github.com/${REVIEW_REPO}.git"
-          git fetch production "$REVIEW_BRANCH" || true
           if git rev-parse --verify -q "refs/remotes/production/${REVIEW_BRANCH}" >/dev/null; then
             git push production "HEAD:${REVIEW_BRANCH}" \
               --force-with-lease="refs/heads/${REVIEW_BRANCH}:$(git rev-parse production/${REVIEW_BRANCH})"
