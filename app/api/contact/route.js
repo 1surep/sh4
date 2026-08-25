@@ -1,6 +1,7 @@
 import connectDB from "@/lib/mongodb";
 import contactModel from "@/models/Contact";
 import { NextResponse } from "next/server";
+import { getAuth, unauthorized } from "@/lib/requireAuth";
 
 export async function POST(req) {
   const { hashhandle, email, subject, message } = await req.json();
@@ -18,7 +19,10 @@ export async function POST(req) {
   }
 }
 
-export async function GET() {
+export async function GET(request) {
+  // Admin only
+  if (!getAuth(request)) return unauthorized();
+
   await connectDB();
   try {
     const messages = await contactModel.find({}).sort({ createdAt: -1 }).lean();
