@@ -6,6 +6,19 @@
   themes: light --default, dark --prefersdark, light;
 }
 
+/* Sierra H4 redesign tokens */
+@theme {
+  --color-sh4-cream: #FAF5EA;
+  --color-sh4-ink: #1B1811;
+  --color-sh4-gold: #F9B84F;
+  --color-sh4-gold-dark: #E3A63F;
+  --color-sh4-amber: #B57B1E;
+  --color-sh4-muted: #6E675A;
+  --color-sh4-body: #4A4437;
+  --color-sh4-line: #E7DFCE;
+  --font-display: var(--font-anton);
+}
+
 
 *{
   scroll-behavior: smooth; 

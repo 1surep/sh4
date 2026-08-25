@@ -1,221 +1,149 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { MapPin, Phone, Mail, Star, DollarSign } from "lucide-react";
-import { IoArrowBackOutline } from "react-icons/io5";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeUp, stagger, viewportOnce } from "../Home/animations";
 import ChatbotModal from "../Chat/ChatbotModal";
 
+const hotels = [
+  {
+    name: "Bintumani Hotel",
+    badge: "Luxury · Main venue",
+    image: "/tourism/t27.jpg",
+    rating: 5,
+    amenities: ["WiFi", "Restaurant", "Bar", "Gym", "Pool"],
+  },
+  {
+    name: "Radisson Blu Mammy Yoko Hotel",
+    badge: "Mid-range · 3 km",
+    image: "/tourism/t22.jpg",
+    rating: 4,
+    amenities: ["WiFi", "Pool", "Restaurant", "Bar", "Gym"],
+  },
+  {
+    name: "The Lead Hotel",
+    badge: "Budget · 2 km",
+    image: "/tourism/t15.jpg",
+    rating: 3,
+    amenities: ["WiFi", "Restaurant", "Parking"],
+  },
+];
+
+const bookingInfo = [
+  "All hotel bookings should be made directly with the hotel.",
+  'Mention "Pan Africa Hash 2027" when booking to get special rates.',
+  "Early booking is recommended. Hotels fill up quickly during the event.",
+  "Transportation will be arranged from all official hotels to the main venue.",
+];
+
 const Hotel = () => {
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0,
-      },
-    },
-  };
-
-  const fadeIn = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.3, ease: "easeOut" },
-    },
-  };
-
-  const hotels = [
-    {
-      name: "Bintumani Hotel",
-      category: "Luxury",
-      distance: "Main Venue",
-      price: "$TBA per night",
-      image: "/tourism/t27.jpg",
-      // phone: "+232 76 234 567",
-      // email: "info@bintumani.com",
-      rating: 5,
-      amenities: ["WiFi", "Restaurant", "Bar", "Gym", "Pool"],
-    },
-    {
-      name: "Radisson Blu Mammy Yoko Hotel",
-      category: "Mid-Range",
-      distance: "3 km from Main Venue",
-      price: "$TBA per night",
-      image: "/tourism/t22.jpg",
-      // phone: "+232 76 123 456",
-      // email: "info@radisson-freetown.com",
-      rating: 4,
-      amenities: ["WiFi", "Pool", "Restaurant", "Bar", "Gym"],
-    },
-    {
-      name: "The Lead Hotel",
-      category: "Budget",
-      distance: "2 km from Main Venue",
-      price: "$TBA per night",
-      image: "/tourism/t15.jpg",
-      // phone: "+232 76 345 678",
-      // email: "info@lagoonda.com",
-      rating: 3,
-      amenities: ["WiFi", "Restaurant", "Parking"],
-    },
-  ];
-
   return (
-    <div>
-      {/* Main Content */}
-      <div className="min-h-screen pt-32 bg-gradient-to-br from-blue-50 to-green-50">
-        {/* Header Section */}
-        <div className="relative  bg-gradient-to-r from-green-700 to-blue-700 text-white py-16 px-[1rem] lg:px-[3rem]">
-          <div className="max-w-6xl mx-auto text-center px-[1rem] lg:px-[3rem]">
-            <h1 className="text-4xl lg:text-5xl font-black flex items-center gap-3 justify-center uppercase mb-4">
-              <Link href={"/pan-africa-2027"}>
-                <IoArrowBackOutline className="hover:animate-pulse cursor-pointer" />
-              </Link>
-              Hotels & Bookings
-            </h1>
-            <p className="text-lg lg:text-xl opacity-90">
-              Find the perfect place to stay during Pan Africa Hash 2027
-            </p>
-          </div>
+    <div className="pt-28">
+      {/* Header */}
+      <header className="bg-sh4-ink text-sh4-cream px-6 md:px-10 py-16 md:py-[72px]">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-sh4-gold font-bold text-sm tracking-[0.18em] uppercase mb-3">
+            Pan Africa Hash 2027
+          </p>
+          <h1 className="font-display text-[44px] md:text-[64px] lg:text-[84px] leading-[1] uppercase mb-5">
+            Hotels &amp; bookings
+          </h1>
+          <p className="text-lg text-sh4-cream/85 max-w-xl">
+            Find the perfect place to stay during Pan Africa Hash 2027. Transportation runs from all official hotels to the main venue.
+          </p>
         </div>
+      </header>
 
-        {/* Hotels List */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="px-[1rem] lg:px-[3rem] py-12 max-w-7xl mx-auto"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {hotels.map((hotel, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+      {/* Hotels */}
+      <section className="bg-sh4-cream px-6 md:px-10 py-16 md:py-[88px]">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={stagger(0.1)}
+            className="grid md:grid-cols-3 gap-7"
+          >
+            {hotels.map((hotel) => (
+              <motion.article
+                key={hotel.name}
+                variants={fadeUp}
+                className="bg-white border border-sh4-line rounded-xl overflow-hidden flex flex-col transition-transform duration-300 hover:-translate-y-1.5 hover:shadow-lg"
               >
-                {/* Hotel Image */}
-                <div className="relative h-48 w-full">
+                <div className="relative h-[210px] w-full">
                   <Image
                     src={hotel.image}
-                    fill
                     alt={hotel.name}
+                    fill
                     className="object-cover"
-                    priority={index === 0}
                   />
-                  <div className="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-bold text-gray-800">
-                    {hotel.category}
-                  </div>
+                  <span className="absolute top-3 right-3 bg-sh4-ink text-sh4-cream text-xs font-bold px-3 py-1.5 rounded-full">
+                    {hotel.badge}
+                  </span>
                 </div>
 
-                {/* Hotel Details */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">
+                <div className="p-6 flex flex-col gap-3 flex-1">
+                  <h3 className="text-xl font-semibold text-sh4-ink">
                     {hotel.name}
                   </h3>
 
-                  {/* Rating */}
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(hotel.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="text-yellow-500 fill-yellow-500"
-                        size={16}
-                      />
+                  <div className="text-sh4-gold text-sm tracking-wider" aria-label={`${hotel.rating} out of 5 stars`}>
+                    {"★".repeat(hotel.rating)}
+                    <span className="text-sh4-line">
+                      {"★".repeat(5 - hotel.rating)}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {hotel.amenities.map((amenity) => (
+                      <span
+                        key={amenity}
+                        className="bg-sh4-cream border border-sh4-line text-sh4-body text-xs px-2.5 py-1 rounded-full"
+                      >
+                        {amenity}
+                      </span>
                     ))}
                   </div>
 
-                  {/* Distance */}
-                  <div className="flex items-center gap-2 text-gray-600 mb-2">
-                    <MapPin size={18} className="text-green-600" />
-                    <span className="text-sm">{hotel.distance}</span>
+                  <div className="text-sm text-sh4-muted">
+                    Rate per night: to be announced
                   </div>
 
-                  {/* Price */}
-                  <div className="flex items-center gap-2 text-gray-600 mb-4">
-                    <DollarSign size={18} className="text-blue-600" />
-                    <span className="text-sm font-semibold">{hotel.price}</span>
-                  </div>
-
-                  {/* Amenities */}
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      {hotel.amenities.map((amenity, i) => (
-                        <span
-                          key={i}
-                          className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"
-                        >
-                          {amenity}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Contact Info */}
-                  {/* <div className="border-t pt-4 space-y-2">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <Phone size={16} className="text-green-600" />
-                      <a
-                        href={`tel:${hotel.phone}`}
-                        className="hover:text-green-600"
-                      >
-                        {hotel.phone}
-                      </a>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <Mail size={16} className="text-blue-600" />
-                      <a
-                        href={`mailto:${hotel.email}`}
-                        className="hover:text-blue-600"
-                      >
-                        {hotel.email}
-                      </a>
-                    </div>
-                  </div> */}
-
-                  {/* Book Button */}
-                  <button className="mt-4 w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2 rounded-lg transition-colors duration-300">
-                    Book Now
-                  </button>
+                  <Link
+                    href="/contact"
+                    className="mt-2 block text-center bg-sh4-gold hover:bg-sh4-gold-dark text-sh4-ink font-bold py-3 rounded-xl transition-colors duration-300"
+                  >
+                    Ask about booking
+                  </Link>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
 
-          {/* Additional Information */}
-          {/* <motion.div
-            variants={fadeIn}
-            className="mt-12 bg-white rounded-xl shadow-lg p-8"
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            className="max-w-6xl mx-auto mt-10 bg-white border border-sh4-line rounded-xl p-7 md:p-8"
           >
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              Booking Information
+            <h2 className="font-display text-2xl uppercase text-sh4-ink mb-4">
+              Booking information
             </h2>
-            <div className="space-y-3 text-gray-700">
-              <p>
-                • All hotel bookings should be made directly with the hotel.
-              </p>
-              <p>
-                • Mention "Pan Africa Hash 2027" when booking to get special
-                rates.
-              </p>
-              <p>
-                • Early booking is recommended as hotels fill up quickly during
-                the event.
-              </p>
-              <p>
-                • Transportation will be arranged from all official hotels to
-                the main venue.
-              </p>
-            </div>
-          </motion.div> */}
-        </motion.div>
-      </div>
-       {/* chatbot modal */}
-       <ChatbotModal />
+            <ul className="space-y-2.5 text-sh4-body">
+              {bookingInfo.map((item) => (
+                <li key={item} className="flex gap-2.5">
+                  <span className="text-sh4-gold font-bold">&#8226;</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </section>
+
+      <ChatbotModal />
     </div>
   );
 };

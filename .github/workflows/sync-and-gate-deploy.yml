@@ -1,0 +1,139 @@
+name: Sync redesign branch and gate production deploy
+
+# Requires a repo secret named CROSS_REPO_TOKEN: a GitHub personal access
+# token (classic, "repo" scope) belonging to an account with push access to
+# both this repo (velbon/sh4) and the review repo (1surep/sh4).
+#
+# Pipeline:
+# 1. On every push to `redesign/homepage-sh4`, re-author any commit whose
+#    author email is ahmadbahofficial@gmail.com to gerald's identity.
+# 2. Merge the re-authored commits into the review branch, together with
+#    this repo's (velbon/sh4) latest `main` AND 1surep/sh4's latest `main`,
+#    so the branch never drops unsurep's commits and stays mergeable.
+# 3. Force-push the result to 1surep/sh4's `gerald/redesign-and-tooling-review`
+#    branch, which is the existing head of PR #1 (base: main) — this updates
+#    the PR automatically, no new PR needed. Nothing deploys at this stage.
+# 4. Separately (schedule/manual), once unsurep approves PR #1, merge the
+#    approved branch into this repo's `main`. That push is what triggers
+#    Vercel's deploy — which updates sierrah4.com and sh4-navy.vercel.app
+#    together automatically, since they're aliases of the same Production
+#    deployment (no separate step required for that part).
+
+on:
+  push:
+    branches:
+      - redesign/homepage-sh4
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+
+env:
+  REVIEW_REPO: 1surep/sh4
+  REVIEW_BRANCH: gerald/redesign-and-tooling-review
+  REVIEW_PR_NUMBER: 1
+  GIT_AUTHOR_NAME: gerald
+  GIT_AUTHOR_EMAIL: gerald17006@gmail.com
+
+jobs:
+  sync-to-review:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CROSS_REPO_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name "$GIT_AUTHOR_NAME"
+          git config user.email "$GIT_AUTHOR_EMAIL"
+
+      - name: Re-author ahmadbahofficial commits on the redesign branch
+        run: |
+          set -euo pipefail
+          git fetch origin main redesign/homepage-sh4
+          BASE=$(git merge-base origin/main origin/redesign/homepage-sh4)
+          git checkout -B redesign-reauthored origin/redesign/homepage-sh4
+          git filter-branch -f --env-filter '
+            if [ "$GIT_AUTHOR_EMAIL" = "ahmadbahofficial@gmail.com" ]; then
+              export GIT_AUTHOR_NAME="gerald"
+              export GIT_AUTHOR_EMAIL="gerald17006@gmail.com"
+              export GIT_COMMITTER_NAME="gerald"
+              export GIT_COMMITTER_EMAIL="gerald17006@gmail.com"
+            fi
+          ' -- "$BASE"..HEAD
+
+      - name: Push re-authored history back over the redesign branch
+        run: |
+          set -euo pipefail
+          EXPECTED=$(git rev-parse origin/redesign/homepage-sh4)
+          git push origin "redesign-reauthored:refs/heads/redesign/homepage-sh4" \
+            --force-with-lease="refs/heads/redesign/homepage-sh4:${EXPECTED}"
+
+      - name: Add 1surep/sh4 remote
+        run: |
+          set -euo pipefail
+          git remote add production "https://x-access-token:${{ secrets.CROSS_REPO_TOKEN }}@github.com/${REVIEW_REPO}.git"
+          git fetch production main "$REVIEW_BRANCH" || true
+
+      - name: Build the review branch (velbon/sh4:main + re-authored redesign + 1surep/sh4:main)
+        run: |
+          set -euo pipefail
+          git checkout -B "$REVIEW_BRANCH" origin/main
+          git merge --no-edit redesign-reauthored
+          # Always fold in 1surep/sh4:main's latest too, so the review branch
+          # never drops his own commits and stays cleanly mergeable.
+          git merge --no-edit production/main
+
+      - name: Push the review branch to 1surep/sh4 (updates PR #1)
+        run: |
+          set -euo pipefail
+          if git rev-parse --verify -q "refs/remotes/production/${REVIEW_BRANCH}" >/dev/null; then
+            git push production "HEAD:${REVIEW_BRANCH}" \
+              --force-with-lease="refs/heads/${REVIEW_BRANCH}:$(git rev-parse production/${REVIEW_BRANCH})"
+          else
+            git push production "HEAD:${REVIEW_BRANCH}"
+          fi
+
+  gate-deploy:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CROSS_REPO_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name "$GIT_AUTHOR_NAME"
+          git config user.email "$GIT_AUTHOR_EMAIL"
+
+      - name: Check whether the review PR has been approved
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
+        run: |
+          set -euo pipefail
+          APPROVED=$(curl -s -H "Authorization: token ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${REVIEW_REPO}/pulls/${REVIEW_PR_NUMBER}/reviews" \
+            | node -e "let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const r=JSON.parse(d);console.log(Array.isArray(r)&&r.some(x=>x.state==='APPROVED'));})")
+          echo "approved=${APPROVED}" >> "$GITHUB_OUTPUT"
+
+      - name: Merge approved changes into main (triggers the Vercel deploy)
+        if: steps.check.outputs.approved == 'true'
+        run: |
+          set -euo pipefail
+          git remote add production "https://x-access-token:${{ secrets.CROSS_REPO_TOKEN }}@github.com/${REVIEW_REPO}.git"
+          git fetch production "$REVIEW_BRANCH"
+          if git merge-base --is-ancestor "production/${REVIEW_BRANCH}" origin/main; then
+            echo "Already deployed from the approved branch, nothing to do."
+            exit 0
+          fi
+          git checkout main
+          git merge --no-edit "production/${REVIEW_BRANCH}"
+          git push origin main

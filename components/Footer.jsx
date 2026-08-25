@@ -3,350 +3,109 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { MdLocationOn, MdEmail } from "react-icons/md";
-import { BsFillTelephoneInboundFill } from "react-icons/bs";
-import { SocialIcon } from "react-social-icons";
 import { FaUserShield } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa6";
+
+const quickLinks = [
+  { label: "About us", href: "/about" },
+  { label: "Events", href: "/even" },
+  { label: "PAH 2027", href: "/pan-africa-2027" },
+  { label: "Hotels & bookings", href: "/pan-africa-2027/hotels" },
+  { label: "Who is coming", href: "/whoiscoming" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Reports", href: "/reports" },
+  { label: "Contact us", href: "/contact" },
+];
 
 const Footer = () => {
   const footerVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 },
+      transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.15 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeInOut" },
-    },
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeInOut" } },
   };
 
-  const socialIconVariants = {
-    hover: {
-      scale: 1.1,
-      rotate: 360,
-      transition: { duration: 0.4, ease: "easeInOut" },
-    },
-  };
-
-    
-  
   return (
     <motion.footer
-      className="relative overflow-hidden bg-green-900/80 text-gray-200 pb-16"
+      className="bg-sh4-ink text-sh4-cream/80 px-6 md:px-10 pt-16 pb-10"
       variants={footerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
     >
-      {/* Animated Floating Background */}
-      <ul className="background">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <li key={i}></li>
-        ))}
-      </ul>
-
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
-
-      {/* Footer Content */}
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo and About */}
-          <motion.div className="col-span-1" variants={itemVariants}>
-            <div className="flex items-center mb-4">
-              <Image
-                src="/logo.jpg"
-                width={60}
-                height={60}
-                alt="sierrah4_logo"
-                className="rounded-full"
-              />
-              <div className="ml-3">
-                <h2 className="text-xl font-bold text-cyan-400 text-center">
-                  Sierra H4
-                </h2>
-                <p className="text-sm text-green-400 text-center">
-                  The Duo Kennel
-                </p>
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <motion.div variants={itemVariants}>
+            <div className="flex items-center gap-3">
+              <Image src="/logo.jpg" width={48} height={48} alt="Sierra H4 logo" className="w-12 h-12 rounded-full object-cover" />
+              <div>
+                <div className="font-display text-lg tracking-wide text-sh4-cream">SIERRA H4</div>
+                <div className="text-[11px] uppercase tracking-widest">The Duo Kennel</div>
               </div>
             </div>
-            <p className="text-gray-200 text-sm">
-              A drinking club with a running problem. Join us for adventure,
-              fun, and beer!
+            <p className="mt-4 text-sm leading-relaxed max-w-xs">
+              A drinking club with a running problem. Join us for adventure, fun, and beer.
             </p>
-
-            <ul className="pt-6 text-gray-200 space-y-2">
-              <li className="flex items-center gap-2">
-                <MdLocationOn /> Freetown, Sierra Leone
-              </li>
-              <li className="flex items-center gap-2">
-                <MdEmail /> h4sierra@gmail.com
-              </li>
-
-              <li className="flex items-center gap-2">
-                <MdEmail /> info@sierrah4.com
-              </li>
-
-              <li className="flex items-center gap-2">
-                <BsFillTelephoneInboundFill /> +232 80 668 590
-              </li>
-
-              <li className="flex items-center gap-2">
-                <a 
-                  href="https://wa.me/23273928927" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-green-400 transition-colors cursor-pointer"
-                >
-                  <FaWhatsapp /> +232 73 928 927
-                </a>
-              </li>
-            </ul>
+            <div className="flex gap-5 mt-4 text-sm font-semibold">
+              <a href="https://x.com/sierra_h4" target="_blank" rel="noopener noreferrer" className="relative text-sh4-gold hover:text-sh4-cream transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-sh4-cream after:transition-all after:duration-300 hover:after:w-full">X</a>
+              <a href="https://www.instagram.com/sierra_h4" target="_blank" rel="noopener noreferrer" className="relative text-sh4-gold hover:text-sh4-cream transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-sh4-cream after:transition-all after:duration-300 hover:after:w-full">Instagram</a>
+              <a href="https://facebook.com/sierrah4" target="_blank" rel="noopener noreferrer" className="relative text-sh4-gold hover:text-sh4-cream transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-sh4-cream after:transition-all after:duration-300 hover:after:w-full">Facebook</a>
+            </div>
           </motion.div>
 
-          {/* Quick Links */}
-          <motion.div className="col-span-1" variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 text-cyan-400">
-              Quick Links
-            </h3>
-            <ul className="space-y-2 text-gray-200">
-              <li>
-                <Link
-                  href="/"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  Home
+          <motion.div variants={itemVariants}>
+            <div className="text-[13px] uppercase tracking-widest text-sh4-gold font-bold mb-4">Quick links</div>
+            <div className="flex flex-col gap-2 text-sm">
+              {quickLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="hover:text-sh4-gold transition-colors">
+                  {link.label}
                 </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/events"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  Events
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/pan-africa-2027"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  PAN Africa 2027
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/gallery"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  Gallery
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  Contact Us
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/pan-africa-2027#visa"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  Visa / Protocol
-                </Link>
-              </li>
-
-             
-              
-
-              <li>
-                <Link
-                  href="/pan-africa-2027/hotels"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  Hotels / Bookings
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/pan-africa-2027#sponsor"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  Sponsors
-                </Link>
-              </li>
-
-
-              <li>
-                <Link
-                  href="/pan-africa-2027#tourism"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  Tourism
-                </Link>
-              </li>
-
-
-              <li>
-                <Link
-                  href="/pan-africa-2027#loc"
-                  className="hover:text-yellow-400 transition-colors"
-                >
-                  LOC & Advisory Council
-                </Link>
-              </li>
-
-
-              <li>
-                <Link
-                  href="/signin"
-                  className="hover:text-yellow-400 flex items-center gap-2 transition-colors"
-                >
-                  Mismanagement <FaUserShield className="text-2xl"/>
-                </Link>
-              </li>
-            </ul>
+              ))}
+              <Link href="/signin" className="hover:text-sh4-gold transition-colors flex items-center gap-2">
+                Mismanagement sign in <FaUserShield />
+              </Link>
+            </div>
           </motion.div>
 
-          {/* PAN 2027 */}
-          <motion.div className="col-span-1" variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 text-cyan-400">
-              PAN Africa 2027
-            </h3>
-            <p className="text-gray-200 text-sm mb-4">
-              After making payment, proceed to PAN 2027 page to fill the Registration form.
+          <motion.div variants={itemVariants}>
+            <div className="text-[13px] uppercase tracking-widest text-sh4-gold font-bold mb-4">Pan Africa 2027</div>
+            <p className="text-sm leading-relaxed mb-4">
+              After paying, complete the registration form on the PAH 2027 page.
             </p>
-
-            {/* Pay rego button */}
-            <div className="">
-              <a
-                href="https://pay.monime.io/069165304?amount=20600&checkout=true"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-400 transition-all duration-300"
-              >
-                Pay Rego
+            <a
+              href="https://pay.monime.io/069165304?amount=20600&checkout=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-sh4-gold hover:bg-sh4-gold-dark text-sh4-ink font-bold text-sm px-5 py-2.5 rounded-xl transition-all duration-200 hover:scale-[1.04] active:scale-[0.96]"
+            >
+              Pay rego
+            </a>
+            <div className="mt-6 text-sm space-y-1">
+              <p>Freetown, Sierra Leone</p>
+              <a href="mailto:h4sierra@gmail.com" className="block hover:text-sh4-gold transition-colors">h4sierra@gmail.com</a>
+              <p>+232 80 668 590</p>
+              <a href="https://wa.me/23273928927" target="_blank" rel="noopener noreferrer" className="block hover:text-sh4-gold transition-colors">
+                WhatsApp: +232 73 928 927
               </a>
             </div>
           </motion.div>
-
-          {/* Shop with Us */}
-          <motion.div className="col-span-1" variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 text-cyan-400">
-              Shop with Sierra H4
-            </h3>
-            <p className="text-gray-200 text-sm mb-4">
-              We offer a variety of services at our Sierra H4 Shop.
-            </p>
-            <button
-              disabled
-              className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
-            >
-              Coming Soon...
-            </button>
-          </motion.div>
         </div>
 
-        {/* Social Media + Copyright */}
         <motion.div
-          className="mt-10 pt-6 border-t border-gray-700 flex flex-col md:flex-row items-center justify-between gap-4"
+          className="border-t border-sh4-cream/15 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs"
           variants={itemVariants}
         >
-          {/* Social Icons - Smaller + Centered */}
-          <motion.nav
-            className="flex items-center justify-center gap-3"
-            variants={itemVariants}
-            aria-label="Social media links"
-          >
-            
-
-            {/* Twitter X */}
-            <motion.div
-              variants={socialIconVariants}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <SocialIcon
-                href="https://x.com/sierra_h4"
-                url="https://x.com/sierra_h4"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow us on X"
-                style={{ height: 32, width: 32 }}
-                className="transition-shadow hover:shadow-lg hover:shadow-pink-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
-              />
-            </motion.div>
-
-            {/* Instagram */}
-            <motion.div
-              variants={socialIconVariants}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <SocialIcon
-                href="https://www.instagram.com/sierra_h4"
-                url="https://www.instagram.com/sierra_h4"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow us on Instagram"
-                style={{ height: 32, width: 32 }}
-                className="transition-shadow hover:shadow-lg hover:shadow-purple-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
-              />
-            </motion.div>
-
-            {/* Facebook */}
-            <motion.div
-              variants={socialIconVariants}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <SocialIcon
-                href="https://facebook.com/sierrah4"
-                url="https://facebook.com/sierrah4"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow us on Facebook"
-                style={{ height: 32, width: 32 }}
-                className="transition-shadow hover:shadow-lg hover:shadow-blue-500/50 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900"
-              />
-            </motion.div>
-          </motion.nav>
-
-          {/* Copyright */}
-          <p className="text-gray-300 text-sm text-center">
-            © {new Date().getFullYear()} Sierra H4. All Rights Reserved.{" "}
-            <span className="text-yellow-400 font-medium">
-              Designed & Developed by <b>XGM 1SurePlayer</b>
-            </span>
-
-            <span className="flex items-center justify-center rounded-full pt-1 ">
-              <Image src='/me.jpg' width={50} height={50} alt="image_developer" className="rounded-full ring ring-yellow-400 "/>
-            </span>
-          </p>
+          <span>&copy; {new Date().getFullYear()} Sierra H4. All rights reserved.</span>
+          <span className="flex items-center gap-2 text-sh4-gold">
+            Designed &amp; developed by XGM 1SurePlayer
+            <Image src="/me.jpg" width={24} height={24} alt="developer" className="w-6 h-6 rounded-full ring-2 ring-sh4-gold" />
+          </span>
         </motion.div>
       </div>
     </motion.footer>

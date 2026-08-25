@@ -1,4 +1,4 @@
-import { Outfit } from "next/font/google";
+import { Outfit, Anton } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/Layout/ClientLayout";
 import StructuredData from "@/components/SEO/StructuredData";
@@ -14,12 +14,19 @@ const outfit = Outfit({
   display: "swap",
 });
 
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
 export { metadata, viewport };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light">
-      <body className={`${outfit.variable} font-outfit antialiased`}>
+      <body className={`${outfit.variable} ${anton.variable} font-outfit antialiased`}>
         {/*
           Chrome fires beforeinstallprompt before React hydrates, so capture it
           at parse time and stash it for the install banner to pick up.
@@ -30,7 +37,6 @@ export default function RootLayout({ children }) {
             __html: `(function(){try{window.__pwaInstallPrompt=null;window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();window.__pwaInstallPrompt=e;window.dispatchEvent(new Event("pwa-install-available"));});}catch(err){}})();`,
           }}
         />
-
         <StructuredData type="Organization" />
         <StructuredData type="WebSite" />
 
