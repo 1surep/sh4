@@ -81,7 +81,13 @@ jobs:
         run: |
           set -euo pipefail
           git remote add production "https://x-access-token:${{ secrets.CROSS_REPO_TOKEN }}@github.com/${REVIEW_REPO}.git"
-          git push production "HEAD:${REVIEW_BRANCH}" --force-with-lease
+          git fetch production "$REVIEW_BRANCH" || true
+          if git rev-parse --verify -q "refs/remotes/production/${REVIEW_BRANCH}" >/dev/null; then
+            git push production "HEAD:${REVIEW_BRANCH}" \
+              --force-with-lease="refs/heads/${REVIEW_BRANCH}:$(git rev-parse production/${REVIEW_BRANCH})"
+          else
+            git push production "HEAD:${REVIEW_BRANCH}"
+          fi
 
   gate-deploy:
     if: github.event_name != 'push'
